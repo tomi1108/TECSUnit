@@ -1,0 +1,145 @@
+# Celltype: tTask  #_MDEP_#
+$(_TECS_OBJ_DIR)tTask_tecsgen.o : tTask_tecsgen.c  $(GEN_DIR)/nTECSInfo_tTECSInfoSub_tecsgen.h  $(GEN_DIR)/nTECSInfo_tTECSInfo_tecsgen.h  $(GEN_DIR)/tJSMN_tecsgen.h  $(GEN_DIR)/tTECSUnit_tecsgen.h  $(GEN_DIR)/tTaskMain_tecsgen.h  nTECSInfo_tTECSInfo_inline.h $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/sTaskBody_tecsgen.h $(GEN_DIR)/sTaskExceptionBody_tecsgen.h $(GEN_DIR)/sTask_tecsgen.h $(GEN_DIR)/tTask_factory.h $(GEN_DIR)/tTask_tecsgen.h tTask_inline.h
+$(_TECS_OBJ_DIR)tTask_templ.o : tTask_templ.c  $(GEN_DIR)/nTECSInfo_tTECSInfoSub_tecsgen.h  $(GEN_DIR)/nTECSInfo_tTECSInfo_tecsgen.h  $(GEN_DIR)/tJSMN_tecsgen.h  $(GEN_DIR)/tTECSUnit_tecsgen.h  $(GEN_DIR)/tTaskMain_tecsgen.h  nTECSInfo_tTECSInfo_inline.h $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/sTaskBody_tecsgen.h $(GEN_DIR)/sTaskExceptionBody_tecsgen.h $(GEN_DIR)/sTask_tecsgen.h $(GEN_DIR)/tTask_factory.h $(GEN_DIR)/tTask_tecsgen.h tTask_inline.h
+$(_TECS_OBJ_DIR)tTask.o : tTask.c  $(GEN_DIR)/nTECSInfo_tTECSInfoSub_tecsgen.h  $(GEN_DIR)/nTECSInfo_tTECSInfo_tecsgen.h  $(GEN_DIR)/tJSMN_tecsgen.h  $(GEN_DIR)/tTECSUnit_tecsgen.h  $(GEN_DIR)/tTaskMain_tecsgen.h  nTECSInfo_tTECSInfo_inline.h $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/sTaskBody_tecsgen.h $(GEN_DIR)/sTaskExceptionBody_tecsgen.h $(GEN_DIR)/sTask_tecsgen.h $(GEN_DIR)/tTask_factory.h $(GEN_DIR)/tTask_tecsgen.h tTask_inline.h
+
+# Celltype: tTarget1  #_MDEP_#
+$(_TECS_OBJ_DIR)tTarget1_tecsgen.o : tTarget1_tecsgen.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/sTarget1_tecsgen.h $(GEN_DIR)/tTarget1_factory.h $(GEN_DIR)/tTarget1_tecsgen.h
+$(_TECS_OBJ_DIR)tTarget1_templ.o : tTarget1_templ.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/sTarget1_tecsgen.h $(GEN_DIR)/tTarget1_factory.h $(GEN_DIR)/tTarget1_tecsgen.h
+$(_TECS_OBJ_DIR)tTarget1.o : tTarget1.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/sTarget1_tecsgen.h $(GEN_DIR)/tTarget1_factory.h $(GEN_DIR)/tTarget1_tecsgen.h
+
+# Celltype: tTarget2  #_MDEP_#
+$(_TECS_OBJ_DIR)tTarget2_tecsgen.o : tTarget2_tecsgen.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/sTarget2_tecsgen.h $(GEN_DIR)/tTarget2_factory.h $(GEN_DIR)/tTarget2_tecsgen.h
+$(_TECS_OBJ_DIR)tTarget2_templ.o : tTarget2_templ.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/sTarget2_tecsgen.h $(GEN_DIR)/tTarget2_factory.h $(GEN_DIR)/tTarget2_tecsgen.h
+$(_TECS_OBJ_DIR)tTarget2.o : tTarget2.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/sTarget2_tecsgen.h $(GEN_DIR)/tTarget2_factory.h $(GEN_DIR)/tTarget2_tecsgen.h
+
+# Celltype: tTarget3  #_MDEP_#
+$(_TECS_OBJ_DIR)tTarget3_tecsgen.o : tTarget3_tecsgen.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/sTarget3_tecsgen.h $(GEN_DIR)/tTarget3_factory.h $(GEN_DIR)/tTarget3_tecsgen.h
+$(_TECS_OBJ_DIR)tTarget3_templ.o : tTarget3_templ.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/sTarget3_tecsgen.h $(GEN_DIR)/tTarget3_factory.h $(GEN_DIR)/tTarget3_tecsgen.h
+$(_TECS_OBJ_DIR)tTarget3.o : tTarget3.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/sTarget3_tecsgen.h $(GEN_DIR)/tTarget3_factory.h $(GEN_DIR)/tTarget3_tecsgen.h
+
+# Celltype: tTaskMain  #_MDEP_#
+$(_TECS_OBJ_DIR)tTaskMain_tecsgen.o : tTaskMain_tecsgen.c  $(GEN_DIR)/nTECSInfo_tTECSInfoSub_tecsgen.h  $(GEN_DIR)/nTECSInfo_tTECSInfo_tecsgen.h  $(GEN_DIR)/tJSMN_tecsgen.h  $(GEN_DIR)/tTECSUnit_tecsgen.h  nTECSInfo_tTECSInfo_inline.h $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sCellInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sCelltypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sEntryInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sFunctionInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sNamespaceInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sParamInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sRegionInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sSignatureInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sTECSInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sVarDeclInfo_tecsgen.h $(GEN_DIR)/sJSMN_tecsgen.h $(GEN_DIR)/sTECSUnit_tecsgen.h $(GEN_DIR)/sTaskBody_tecsgen.h $(GEN_DIR)/tTaskMain_factory.h $(GEN_DIR)/tTaskMain_tecsgen.h
+$(_TECS_OBJ_DIR)tTaskMain_templ.o : tTaskMain_templ.c  $(GEN_DIR)/nTECSInfo_tTECSInfoSub_tecsgen.h  $(GEN_DIR)/nTECSInfo_tTECSInfo_tecsgen.h  $(GEN_DIR)/tJSMN_tecsgen.h  $(GEN_DIR)/tTECSUnit_tecsgen.h  nTECSInfo_tTECSInfo_inline.h $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sCellInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sCelltypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sEntryInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sFunctionInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sNamespaceInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sParamInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sRegionInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sSignatureInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sTECSInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sVarDeclInfo_tecsgen.h $(GEN_DIR)/sJSMN_tecsgen.h $(GEN_DIR)/sTECSUnit_tecsgen.h $(GEN_DIR)/sTaskBody_tecsgen.h $(GEN_DIR)/tTaskMain_factory.h $(GEN_DIR)/tTaskMain_tecsgen.h
+$(_TECS_OBJ_DIR)tTaskMain.o : tTaskMain.c  $(GEN_DIR)/nTECSInfo_tTECSInfoSub_tecsgen.h  $(GEN_DIR)/nTECSInfo_tTECSInfo_tecsgen.h  $(GEN_DIR)/tJSMN_tecsgen.h  $(GEN_DIR)/tTECSUnit_tecsgen.h  nTECSInfo_tTECSInfo_inline.h $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sCellInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sCelltypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sEntryInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sFunctionInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sNamespaceInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sParamInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sRegionInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sSignatureInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sTECSInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sVarDeclInfo_tecsgen.h $(GEN_DIR)/sJSMN_tecsgen.h $(GEN_DIR)/sTECSUnit_tecsgen.h $(GEN_DIR)/sTaskBody_tecsgen.h $(GEN_DIR)/tTaskMain_factory.h $(GEN_DIR)/tTaskMain_tecsgen.h
+
+# Celltype: tTECSUnit  #_MDEP_#
+$(_TECS_OBJ_DIR)tTECSUnit_tecsgen.o : tTECSUnit_tecsgen.c  $(GEN_DIR)/nTECSInfo_tTECSInfoSub_tecsgen.h  $(GEN_DIR)/nTECSInfo_tTECSInfo_tecsgen.h  nTECSInfo_tTECSInfo_inline.h $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sCellInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sCelltypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sEntryInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sNamespaceInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sRawEntryDescriptorInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sRegionInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sSignatureInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sTECSInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sVarDeclInfo_tecsgen.h $(GEN_DIR)/sTECSUnit_tecsgen.h $(GEN_DIR)/sTarget1_tecsgen.h $(GEN_DIR)/sTarget2_tecsgen.h $(GEN_DIR)/sTarget3_tecsgen.h $(GEN_DIR)/tTECSUnit_factory.h $(GEN_DIR)/tTECSUnit_tecsgen.h
+$(_TECS_OBJ_DIR)tTECSUnit_templ.o : tTECSUnit_templ.c  $(GEN_DIR)/nTECSInfo_tTECSInfoSub_tecsgen.h  $(GEN_DIR)/nTECSInfo_tTECSInfo_tecsgen.h  nTECSInfo_tTECSInfo_inline.h $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sCellInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sCelltypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sEntryInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sNamespaceInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sRawEntryDescriptorInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sRegionInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sSignatureInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sTECSInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sVarDeclInfo_tecsgen.h $(GEN_DIR)/sTECSUnit_tecsgen.h $(GEN_DIR)/sTarget1_tecsgen.h $(GEN_DIR)/sTarget2_tecsgen.h $(GEN_DIR)/sTarget3_tecsgen.h $(GEN_DIR)/tTECSUnit_factory.h $(GEN_DIR)/tTECSUnit_tecsgen.h
+$(_TECS_OBJ_DIR)tTECSUnit.o : tTECSUnit.c  $(GEN_DIR)/nTECSInfo_tTECSInfoSub_tecsgen.h  $(GEN_DIR)/nTECSInfo_tTECSInfo_tecsgen.h  nTECSInfo_tTECSInfo_inline.h $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sCellInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sCelltypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sEntryInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sNamespaceInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sRawEntryDescriptorInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sRegionInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sSignatureInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sTECSInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sVarDeclInfo_tecsgen.h $(GEN_DIR)/sTECSUnit_tecsgen.h $(GEN_DIR)/sTarget1_tecsgen.h $(GEN_DIR)/sTarget2_tecsgen.h $(GEN_DIR)/sTarget3_tecsgen.h $(GEN_DIR)/tTECSUnit_factory.h $(GEN_DIR)/tTECSUnit_tecsgen.h
+
+# Celltype: tJSMN  #_MDEP_#
+$(_TECS_OBJ_DIR)tJSMN_tecsgen.o : tJSMN_tecsgen.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/sJSMN_tecsgen.h $(GEN_DIR)/tJSMN_factory.h $(GEN_DIR)/tJSMN_tecsgen.h
+$(_TECS_OBJ_DIR)tJSMN_templ.o : tJSMN_templ.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/sJSMN_tecsgen.h $(GEN_DIR)/tJSMN_factory.h $(GEN_DIR)/tJSMN_tecsgen.h
+$(_TECS_OBJ_DIR)tJSMN.o : tJSMN.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/sJSMN_tecsgen.h $(GEN_DIR)/tJSMN_factory.h $(GEN_DIR)/tJSMN_tecsgen.h
+
+# Celltype: tTECSInfo  #_MDEP_#
+$(_TECS_OBJ_DIR)nTECSInfo_tTECSInfo_tecsgen.o : nTECSInfo_tTECSInfo_tecsgen.c  $(GEN_DIR)/nTECSInfo_tTECSInfoSub_tecsgen.h $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTECSInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tTECSInfo_factory.h $(GEN_DIR)/nTECSInfo_tTECSInfo_tecsgen.h nTECSInfo_tTECSInfo_inline.h
+$(_TECS_OBJ_DIR)nTECSInfo_tTECSInfo_templ.o : nTECSInfo_tTECSInfo_templ.c  $(GEN_DIR)/nTECSInfo_tTECSInfoSub_tecsgen.h $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTECSInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tTECSInfo_factory.h $(GEN_DIR)/nTECSInfo_tTECSInfo_tecsgen.h nTECSInfo_tTECSInfo_inline.h
+$(_TECS_OBJ_DIR)nTECSInfo_tTECSInfo.o : nTECSInfo_tTECSInfo.c  $(GEN_DIR)/nTECSInfo_tTECSInfoSub_tecsgen.h $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTECSInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tTECSInfo_factory.h $(GEN_DIR)/nTECSInfo_tTECSInfo_tecsgen.h nTECSInfo_tTECSInfo_inline.h
+
+# Celltype: tTECSInfoSub  #_MDEP_#
+$(_TECS_OBJ_DIR)nTECSInfo_tTECSInfoSub_tecsgen.o : nTECSInfo_tTECSInfoSub_tecsgen.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sCellInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sCelltypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sEntryInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sNamespaceInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sRawEntryDescriptorInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sRegionInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sSignatureInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sTECSInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tTECSInfoSub_factory.h $(GEN_DIR)/nTECSInfo_tTECSInfoSub_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tTECSInfoSub_templ.o : nTECSInfo_tTECSInfoSub_templ.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sCellInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sCelltypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sEntryInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sNamespaceInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sRawEntryDescriptorInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sRegionInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sSignatureInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sTECSInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tTECSInfoSub_factory.h $(GEN_DIR)/nTECSInfo_tTECSInfoSub_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tTECSInfoSub.o : nTECSInfo_tTECSInfoSub.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sCellInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sCelltypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sEntryInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sNamespaceInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sRawEntryDescriptorInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sRegionInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sSignatureInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sTECSInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tTECSInfoSub_factory.h $(GEN_DIR)/nTECSInfo_tTECSInfoSub_tecsgen.h
+
+# Celltype: tNamespaceInfo  #_MDEP_#
+$(_TECS_OBJ_DIR)nTECSInfo_tNamespaceInfo_tecsgen.o : nTECSInfo_tNamespaceInfo_tecsgen.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sCelltypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sNamespaceInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sSignatureInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tNamespaceInfo_factory.h $(GEN_DIR)/nTECSInfo_tNamespaceInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tNamespaceInfo_templ.o : nTECSInfo_tNamespaceInfo_templ.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sCelltypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sNamespaceInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sSignatureInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tNamespaceInfo_factory.h $(GEN_DIR)/nTECSInfo_tNamespaceInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tNamespaceInfo.o : nTECSInfo_tNamespaceInfo.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sCelltypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sNamespaceInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sSignatureInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tNamespaceInfo_factory.h $(GEN_DIR)/nTECSInfo_tNamespaceInfo_tecsgen.h
+
+# Celltype: tSignatureInfo  #_MDEP_#
+$(_TECS_OBJ_DIR)nTECSInfo_tSignatureInfo_tecsgen.o : nTECSInfo_tSignatureInfo_tecsgen.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sFunctionInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sSignatureInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tSignatureInfo_factory.h $(GEN_DIR)/nTECSInfo_tSignatureInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tSignatureInfo_templ.o : nTECSInfo_tSignatureInfo_templ.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sFunctionInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sSignatureInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tSignatureInfo_factory.h $(GEN_DIR)/nTECSInfo_tSignatureInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tSignatureInfo.o : nTECSInfo_tSignatureInfo.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sFunctionInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sSignatureInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tSignatureInfo_factory.h $(GEN_DIR)/nTECSInfo_tSignatureInfo_tecsgen.h
+
+# Celltype: tFunctionInfo  #_MDEP_#
+$(_TECS_OBJ_DIR)nTECSInfo_tFunctionInfo_tecsgen.o : nTECSInfo_tFunctionInfo_tecsgen.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sFunctionInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sParamInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tFunctionInfo_factory.h $(GEN_DIR)/nTECSInfo_tFunctionInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tFunctionInfo_templ.o : nTECSInfo_tFunctionInfo_templ.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sFunctionInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sParamInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tFunctionInfo_factory.h $(GEN_DIR)/nTECSInfo_tFunctionInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tFunctionInfo.o : nTECSInfo_tFunctionInfo.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sFunctionInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sParamInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tFunctionInfo_factory.h $(GEN_DIR)/nTECSInfo_tFunctionInfo_tecsgen.h
+
+# Celltype: tParamInfo  #_MDEP_#
+$(_TECS_OBJ_DIR)nTECSInfo_tParamInfo_tecsgen.o : nTECSInfo_tParamInfo_tecsgen.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sParamInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tParamInfo_factory.h $(GEN_DIR)/nTECSInfo_tParamInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tParamInfo_templ.o : nTECSInfo_tParamInfo_templ.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sParamInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tParamInfo_factory.h $(GEN_DIR)/nTECSInfo_tParamInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tParamInfo.o : nTECSInfo_tParamInfo.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sParamInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tParamInfo_factory.h $(GEN_DIR)/nTECSInfo_tParamInfo_tecsgen.h
+
+# Celltype: tCelltypeInfo  #_MDEP_#
+$(_TECS_OBJ_DIR)nTECSInfo_tCelltypeInfo_tecsgen.o : nTECSInfo_tCelltypeInfo_tecsgen.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sCallInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sCelltypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sEntryInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sVarDeclInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tCelltypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tCelltypeInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tCelltypeInfo_templ.o : nTECSInfo_tCelltypeInfo_templ.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sCallInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sCelltypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sEntryInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sVarDeclInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tCelltypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tCelltypeInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tCelltypeInfo.o : nTECSInfo_tCelltypeInfo.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sCallInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sCelltypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sEntryInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sVarDeclInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tCelltypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tCelltypeInfo_tecsgen.h
+
+# Celltype: tCallInfo  #_MDEP_#
+$(_TECS_OBJ_DIR)nTECSInfo_tCallInfo_tecsgen.o : nTECSInfo_tCallInfo_tecsgen.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sCallInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sSignatureInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tCallInfo_factory.h $(GEN_DIR)/nTECSInfo_tCallInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tCallInfo_templ.o : nTECSInfo_tCallInfo_templ.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sCallInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sSignatureInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tCallInfo_factory.h $(GEN_DIR)/nTECSInfo_tCallInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tCallInfo.o : nTECSInfo_tCallInfo.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sCallInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sSignatureInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tCallInfo_factory.h $(GEN_DIR)/nTECSInfo_tCallInfo_tecsgen.h
+
+# Celltype: tEntryInfo  #_MDEP_#
+$(_TECS_OBJ_DIR)nTECSInfo_tEntryInfo_tecsgen.o : nTECSInfo_tEntryInfo_tecsgen.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sEntryInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sSignatureInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tEntryInfo_factory.h $(GEN_DIR)/nTECSInfo_tEntryInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tEntryInfo_templ.o : nTECSInfo_tEntryInfo_templ.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sEntryInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sSignatureInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tEntryInfo_factory.h $(GEN_DIR)/nTECSInfo_tEntryInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tEntryInfo.o : nTECSInfo_tEntryInfo.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sEntryInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sSignatureInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tEntryInfo_factory.h $(GEN_DIR)/nTECSInfo_tEntryInfo_tecsgen.h
+
+# Celltype: tVarDeclInfo  #_MDEP_#
+$(_TECS_OBJ_DIR)nTECSInfo_tVarDeclInfo_tecsgen.o : nTECSInfo_tVarDeclInfo_tecsgen.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sVarDeclInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tVarDeclInfo_factory.h $(GEN_DIR)/nTECSInfo_tVarDeclInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tVarDeclInfo_templ.o : nTECSInfo_tVarDeclInfo_templ.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sVarDeclInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tVarDeclInfo_factory.h $(GEN_DIR)/nTECSInfo_tVarDeclInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tVarDeclInfo.o : nTECSInfo_tVarDeclInfo.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sVarDeclInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tVarDeclInfo_factory.h $(GEN_DIR)/nTECSInfo_tVarDeclInfo_tecsgen.h
+
+# Celltype: tRegionInfo  #_MDEP_#
+$(_TECS_OBJ_DIR)nTECSInfo_tRegionInfo_tecsgen.o : nTECSInfo_tRegionInfo_tecsgen.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sCellInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sRegionInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tRegionInfo_factory.h $(GEN_DIR)/nTECSInfo_tRegionInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tRegionInfo_templ.o : nTECSInfo_tRegionInfo_templ.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sCellInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sRegionInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tRegionInfo_factory.h $(GEN_DIR)/nTECSInfo_tRegionInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tRegionInfo.o : nTECSInfo_tRegionInfo.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sCellInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sRegionInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tRegionInfo_factory.h $(GEN_DIR)/nTECSInfo_tRegionInfo_tecsgen.h
+
+# Celltype: tCellInfo  #_MDEP_#
+$(_TECS_OBJ_DIR)nTECSInfo_tCellInfo_tecsgen.o : nTECSInfo_tCellInfo_tecsgen.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sCellInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sCelltypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sRawEntryDescriptorInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tCellInfo_factory.h $(GEN_DIR)/nTECSInfo_tCellInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tCellInfo_templ.o : nTECSInfo_tCellInfo_templ.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sCellInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sCelltypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sRawEntryDescriptorInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tCellInfo_factory.h $(GEN_DIR)/nTECSInfo_tCellInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tCellInfo.o : nTECSInfo_tCellInfo.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sCellInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sCelltypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sRawEntryDescriptorInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tCellInfo_factory.h $(GEN_DIR)/nTECSInfo_tCellInfo_tecsgen.h
+
+# Celltype: tRawEntryDescriptorInfo  #_MDEP_#
+$(_TECS_OBJ_DIR)nTECSInfo_tRawEntryDescriptorInfo_tecsgen.o : nTECSInfo_tRawEntryDescriptorInfo_tecsgen.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sRawEntryDescriptorInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tRawEntryDescriptorInfo_factory.h $(GEN_DIR)/nTECSInfo_tRawEntryDescriptorInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tRawEntryDescriptorInfo_templ.o : nTECSInfo_tRawEntryDescriptorInfo_templ.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sRawEntryDescriptorInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tRawEntryDescriptorInfo_factory.h $(GEN_DIR)/nTECSInfo_tRawEntryDescriptorInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tRawEntryDescriptorInfo.o : nTECSInfo_tRawEntryDescriptorInfo.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sRawEntryDescriptorInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tRawEntryDescriptorInfo_factory.h $(GEN_DIR)/nTECSInfo_tRawEntryDescriptorInfo_tecsgen.h
+
+# Celltype: tVoidTypeInfo  #_MDEP_#
+$(_TECS_OBJ_DIR)nTECSInfo_tVoidTypeInfo_tecsgen.o : nTECSInfo_tVoidTypeInfo_tecsgen.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tVoidTypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tVoidTypeInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tVoidTypeInfo_templ.o : nTECSInfo_tVoidTypeInfo_templ.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tVoidTypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tVoidTypeInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tVoidTypeInfo.o : nTECSInfo_tVoidTypeInfo.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tVoidTypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tVoidTypeInfo_tecsgen.h
+
+# Celltype: tBoolTypeInfo  #_MDEP_#
+$(_TECS_OBJ_DIR)nTECSInfo_tBoolTypeInfo_tecsgen.o : nTECSInfo_tBoolTypeInfo_tecsgen.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tBoolTypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tBoolTypeInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tBoolTypeInfo_templ.o : nTECSInfo_tBoolTypeInfo_templ.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tBoolTypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tBoolTypeInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tBoolTypeInfo.o : nTECSInfo_tBoolTypeInfo.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tBoolTypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tBoolTypeInfo_tecsgen.h
+
+# Celltype: tIntTypeInfo  #_MDEP_#
+$(_TECS_OBJ_DIR)nTECSInfo_tIntTypeInfo_tecsgen.o : nTECSInfo_tIntTypeInfo_tecsgen.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tIntTypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tIntTypeInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tIntTypeInfo_templ.o : nTECSInfo_tIntTypeInfo_templ.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tIntTypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tIntTypeInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tIntTypeInfo.o : nTECSInfo_tIntTypeInfo.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tIntTypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tIntTypeInfo_tecsgen.h
+
+# Celltype: tFloatTypeInfo  #_MDEP_#
+$(_TECS_OBJ_DIR)nTECSInfo_tFloatTypeInfo_tecsgen.o : nTECSInfo_tFloatTypeInfo_tecsgen.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tFloatTypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tFloatTypeInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tFloatTypeInfo_templ.o : nTECSInfo_tFloatTypeInfo_templ.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tFloatTypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tFloatTypeInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tFloatTypeInfo.o : nTECSInfo_tFloatTypeInfo.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tFloatTypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tFloatTypeInfo_tecsgen.h
+
+# Celltype: tStructTypeInfo  #_MDEP_#
+$(_TECS_OBJ_DIR)nTECSInfo_tStructTypeInfo_tecsgen.o : nTECSInfo_tStructTypeInfo_tecsgen.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sVarDeclInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tStructTypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tStructTypeInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tStructTypeInfo_templ.o : nTECSInfo_tStructTypeInfo_templ.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sVarDeclInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tStructTypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tStructTypeInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tStructTypeInfo.o : nTECSInfo_tStructTypeInfo.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sVarDeclInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tStructTypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tStructTypeInfo_tecsgen.h
+
+# Celltype: tPtrTypeInfo  #_MDEP_#
+$(_TECS_OBJ_DIR)nTECSInfo_tPtrTypeInfo_tecsgen.o : nTECSInfo_tPtrTypeInfo_tecsgen.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tPtrTypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tPtrTypeInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tPtrTypeInfo_templ.o : nTECSInfo_tPtrTypeInfo_templ.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tPtrTypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tPtrTypeInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tPtrTypeInfo.o : nTECSInfo_tPtrTypeInfo.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tPtrTypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tPtrTypeInfo_tecsgen.h
+
+# Celltype: tArrayTypeInfo  #_MDEP_#
+$(_TECS_OBJ_DIR)nTECSInfo_tArrayTypeInfo_tecsgen.o : nTECSInfo_tArrayTypeInfo_tecsgen.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tArrayTypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tArrayTypeInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tArrayTypeInfo_templ.o : nTECSInfo_tArrayTypeInfo_templ.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tArrayTypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tArrayTypeInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tArrayTypeInfo.o : nTECSInfo_tArrayTypeInfo.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tArrayTypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tArrayTypeInfo_tecsgen.h
+
+# Celltype: tDefinedTypeInfo  #_MDEP_#
+$(_TECS_OBJ_DIR)nTECSInfo_tDefinedTypeInfo_tecsgen.o : nTECSInfo_tDefinedTypeInfo_tecsgen.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tDefinedTypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tDefinedTypeInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tDefinedTypeInfo_templ.o : nTECSInfo_tDefinedTypeInfo_templ.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tDefinedTypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tDefinedTypeInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tDefinedTypeInfo.o : nTECSInfo_tDefinedTypeInfo.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tDefinedTypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tDefinedTypeInfo_tecsgen.h
+
+# Celltype: tDescriptorTypeInfo  #_MDEP_#
+$(_TECS_OBJ_DIR)nTECSInfo_tDescriptorTypeInfo_tecsgen.o : nTECSInfo_tDescriptorTypeInfo_tecsgen.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sSignatureInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tDescriptorTypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tDescriptorTypeInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tDescriptorTypeInfo_templ.o : nTECSInfo_tDescriptorTypeInfo_templ.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sSignatureInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tDescriptorTypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tDescriptorTypeInfo_tecsgen.h
+$(_TECS_OBJ_DIR)nTECSInfo_tDescriptorTypeInfo.o : nTECSInfo_tDescriptorTypeInfo.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sSignatureInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tDescriptorTypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tDescriptorTypeInfo_tecsgen.h
+

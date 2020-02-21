@@ -1,0 +1,20 @@
+celltype tJSMN {
+  entry sJSMN eJSMN;
+  attr {
+    int16_t LEN = 1024; // jsonをまるごと読み込んだ時のサイズ
+    int16_t TMP_LEN = 32; // argの値を一時的に格納
+  /* json keywords：変更する場合はここを変える */
+    char_t *key_cell = "cell";
+    char_t *key_entry = "entry";
+    char_t *key_function = "function";
+    char_t *key_arg = "argument";
+    char_t *key_exp = "exp_val";
+  };
+  var {
+    [size_is(LEN)]
+      char_t  *json_str;
+    [size_is(TMP_LEN)]
+      char_t  *tmp_str;
+    int counter = 0; // targetの数を数える
+  };
+};

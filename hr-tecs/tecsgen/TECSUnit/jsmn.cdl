@@ -1,0 +1,17 @@
+import_C("json_struct.h");
+
+signature sJSMN{
+  ER json_open( void );
+  ER json_parse_path(
+    [out,size_is(btr)] char_t *c_path,
+    [out,size_is(btr)] char_t *e_path,
+    [out,size_is(btr)] char_t *f_path,
+    [in] int target_num,
+    [in] int btr );
+  ER json_parse_arg(
+    [inout,size_is(btr)] struct tecsunit_obj *arguments,
+    [inout,size_is(btr)] struct tecsunit_obj *exp_val,
+    [out] int *arg_num,
+    [in] int target_num,
+    [in] int btr );
+};

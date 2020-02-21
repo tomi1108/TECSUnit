@@ -1,0 +1,36 @@
+import_C("target_struct.h");
+/* TECSUnit テスト対象シグニチャ */
+signature sTarget1 {
+  int double([in] int arg);
+};
+signature sTarget2 {
+  int add([in] int arg1, [in] int arg2);
+};
+signature sTarget3 {
+  ER send( [in, size_is(len)] const int8_t *buf, [in] int8_t len );
+  ER sendMessage( [in, size_is(len)] const char_t *buf, [in] int8_t len );
+  ER sendStruct( [in] const struct target_struct *data );
+  ER receiveMessage( [out, size_is(len)] char_t *buf, [in] int8_t len );
+  ER checkER([in] ER eroor);
+};
+
+/* TECSUnit テスト対象セルタイプ */
+celltype tTarget1 {
+  entry sTarget1 eTarget1;
+};
+celltype tTarget2 {
+  entry sTarget2 eTarget2;
+};
+celltype tTarget3 {
+  entry sTarget3 eTarget3;
+};
+/* TECSUnit テスト対象セル */
+cell tTarget1 Target1 {
+
+};
+cell tTarget2 Target2 {
+
+};
+cell tTarget3 Target3 {
+
+};

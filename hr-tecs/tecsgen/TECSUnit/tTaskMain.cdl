@@ -1,0 +1,75 @@
+celltype tTaskMain {
+    entry sTaskBody            eBody;
+    call  sTECSUnit            cUnit;
+    call  sJSMN                cJSMN;
+
+    call  nTECSInfo::sTECSInfo cTECSInfo;
+    [dynamic,optional]
+        call  nTECSInfo::sNamespaceInfo cNSInfo;
+    [dynamic,optional]
+        call  nTECSInfo::sRegionInfo    cRegionInfo;
+    [dynamic,optional]
+        call  nTECSInfo::sCellInfo      cCellInfo;
+    [dynamic,optional]
+        call  nTECSInfo::sSignatureInfo cSignatureInfo;
+    [dynamic,optional]
+        call  nTECSInfo::sCelltypeInfo  cCelltypeInfo;
+    [dynamic,optional]
+        call  nTECSInfo::sVarDeclInfo   cVarDeclInfo;
+    [dynamic,optional]
+        call  nTECSInfo::sTypeInfo      cTypeInfo;
+    [dynamic,optional]
+        call  nTECSInfo::sFunctionInfo  cFunctionInfo;
+    [dynamic,optional]
+        call  nTECSInfo::sParamInfo     cParamInfo;
+    [dynamic,optional]
+        call  nTECSInfo::sEntryInfo     cEntryInfo;
+
+    attr{
+        int16_t NAME_LEN = 128;
+        int16_t ARG_NAME_LEN = 128;
+        int16_t ARG_DIM = 32;
+        int16_t TARGET_NUM = 100;
+    };
+    var{
+        [size_is(NAME_LEN)]
+            char_t  *cell_path;
+        [size_is(NAME_LEN)]
+            char_t  *celltype_path;
+        [size_is(NAME_LEN)]
+            char_t  *entry_path;
+        [size_is(NAME_LEN)]
+            char_t  *entry_path_tmp;
+        [size_is(NAME_LEN)]
+            char_t  *signature_path;
+        [size_is(NAME_LEN)]
+            char_t  *function_path;
+        [size_is(NAME_LEN)]
+            char_t  *function_path_tmp;
+        int8_t arg_num;
+        [size_is(NAME_LEN)]
+            char_t *exp_type;
+        char_t  arg[32][128];
+        char_t  arg_type[32][128];
+        int8_t find_entry;
+        int8_t find_func;
+    };
+};
+
+cell tTask Task {
+    taskAttribute = C_EXP("TA_ACT");
+    priority      = 11;
+    stackSize     = 4096;
+    cBody         = rTEMP::TaskMain.eBody;
+};
+
+[in_through()]
+region rTEMP{
+
+    cell tTaskMain TaskMain {
+        cTECSInfo  = TECSInfo.eTECSInfo;
+        cUnit = TECSUnit.eUnit;
+        // この結合は TECSUnitPlugin により自動生成される
+        cJSMN = JSMN.eJSMN;
+    };
+};

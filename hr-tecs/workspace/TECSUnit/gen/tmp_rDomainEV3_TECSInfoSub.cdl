@@ -1,0 +1,7 @@
+/* prototype declaration of TECSInfoSub */
+region rDomainEV3{
+    [in_through()]
+    region rTECSInfo {
+        cell nTECSInfo::tTECSInfoSub TECSInfoSub;
+    }; /* rTECSInfo} */
+};

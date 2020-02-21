@@ -1,0 +1,318 @@
+# generated automatically by tecsgen.
+# This file is not intended to modify.
+#
+# Makefile variables below are defined.
+#  TECS_IMPORT_CDLS          .cdl files improted by import statement
+#  SIGNATURE_HEADERS         .h files of signature
+#  CELLTYPE_TECSGEN_HEADERS  .h files of celltype
+#  CELLTYPE_FACTORY_HEADERS  .h files of celltype's factory
+#  TECS_HEADERS              summary of .h files above
+#  TECS_INLINE_HEADERS       .h files of celltype inline header
+#  PLUGIN_INLINE_HEADERS     .h files of plugin generated inline header
+#
+#  TECS_COBJS                .o files of TECS
+#                            = $(TECSGEN_COBJS)+$(PLUGIN_COBJS)+$(CELLTYPE_COBJS)
+#                            = $(TECS_KERNEL_COBJS)+$(TECS_KERNEL_COBJS)+$(TECS_OUTOFDOMAIN_COBJS)
+#                            = $(TECSGEN_domain_COBJS)+$(PLUGIN_domain_COBJS)+$(CELLTYPE_domain_COBJS) for each domain
+#
+#  TECSGEN_COBJS             .o files of celltype_tecsgen.c
+#  CELLTYPE_COBJS            .o files of celltype.c (celltype code)
+#  PLUGIN_COBJS              .o files of plugin generated .c files
+#
+#  TECSGEN_SRCS              .c files of celltype_tecsgen.c
+#  CELLTYPE_SRCS             .c files of celltype.c (celltype code)
+#  PLUGIN_SRCS               .c files of plugin generated
+#  PLUGIN_CELLTYPE_SRCS      .c files of plugin generated celltype.c (celltype code)
+#  PLUGIN_TECSGEN_SRCS       .c files of plugin generated celltype_tecsgen.c
+#
+# Variables for domain
+#  TECS_DOMAINS             domain names
+#  TECS_KERNEL_COBJS        .o files of kernel domain (tecsgen, celltype, plugin)
+#  TECS_USER_COBJS          .o files of user domain (tecsgen, celltype, plugin)
+#  TECS_OUTOFDOMAIN_COBJS   .o files of OutOfDomain (tecsgen, celltype, plugin)
+#  TECSGEN_domain_COBJS     .o files of celltype_tecsgen.c files for each domain
+#  PLUGIN_domain_COBJS      .o files of plugin generated .c files for each domain
+#  CELLTYPE_domain_COBJS    .o files of celltype.c files for each domain
+#  TECSGEN_domain_SRCS      .c files of celltype_domain_tecsgen.c
+#  PLUGIN_domain_SRCS       .c files of plugin generated .c files for each domain
+#  CELLTYPE_domain_SRCS     .c files of celltype.c files for each domain
+
+TECS_IMPORT_CDLS = TECSUnit.cdl ../test/cygwin/cygwin_kernel.cdl $(TECSPATH)/TECSInfo/TECSInfo.cdl $(TECSPATH)/TECSInfo/TECSInfoAccessor.cdl ./target//target.cdl jsmn.cdl tTaskMain.cdl gen/tmp_rTEMP_TECSInfoSub.cdl gen/tmp_TECSInfoCompoPlugin_post_code.cdl gen/tmp_TECSUnitPlugin_post_code.cdl gen/tmp_JSMNPlugin_post_code.cdl gen/tmp_TECSInfoPlugin_post_code.cdl
+TECS_IMPORT_HEADERS = ../test/cygwin/cygwin_tecs.h ../test/cygwin/t_stddef.h ../test/cygwin/t_syslog.h ./target//target_struct.h json_struct.h
+TECS_IMPORTS = $(TECS_IMPORT_CDLS) $(TECS_IMPORT_HEADERS)
+
+SIGNATURE_HEADERS = \
+	$(GEN_DIR)/sTaskBody_tecsgen.h \
+	$(GEN_DIR)/sTaskExceptionBody_tecsgen.h \
+	$(GEN_DIR)/sTask_tecsgen.h \
+	$(GEN_DIR)/sKernel_tecsgen.h \
+	$(GEN_DIR)/siKernel_tecsgen.h \
+	$(GEN_DIR)/sSemaphore_tecsgen.h \
+	$(GEN_DIR)/siSemaphore_tecsgen.h \
+	$(GEN_DIR)/sEventflag_tecsgen.h \
+	$(GEN_DIR)/siEventflag_tecsgen.h \
+	$(GEN_DIR)/sDataqueue_tecsgen.h \
+	$(GEN_DIR)/siDataqueue_tecsgen.h \
+	$(GEN_DIR)/sTarget1_tecsgen.h \
+	$(GEN_DIR)/sTarget2_tecsgen.h \
+	$(GEN_DIR)/sTarget3_tecsgen.h \
+	$(GEN_DIR)/sJSMN_tecsgen.h \
+	$(GEN_DIR)/sTECSUnit_tecsgen.h \
+# SIGNATURE_HEADERS terminator
+
+CELLTYPE_TECSGEN_HEADERS = \
+ 	$(GEN_DIR)/tTECSUnit_tecsgen.h \
+ 	$(GEN_DIR)/tJSMN_tecsgen.h \
+ 	$(GEN_DIR)/tTask_tecsgen.h \
+ 	$(GEN_DIR)/tTarget1_tecsgen.h \
+ 	$(GEN_DIR)/tTarget2_tecsgen.h \
+ 	$(GEN_DIR)/tTarget3_tecsgen.h \
+ 	$(GEN_DIR)/tTaskMain_tecsgen.h \
+ 	$(GEN_DIR)/nTECSInfo_tTECSInfo_tecsgen.h \
+ 	$(GEN_DIR)/nTECSInfo_tTECSInfoSub_tecsgen.h \
+ 	$(GEN_DIR)/nTECSInfo_tNamespaceInfo_tecsgen.h \
+ 	$(GEN_DIR)/nTECSInfo_tSignatureInfo_tecsgen.h \
+ 	$(GEN_DIR)/nTECSInfo_tFunctionInfo_tecsgen.h \
+ 	$(GEN_DIR)/nTECSInfo_tParamInfo_tecsgen.h \
+ 	$(GEN_DIR)/nTECSInfo_tCelltypeInfo_tecsgen.h \
+ 	$(GEN_DIR)/nTECSInfo_tCallInfo_tecsgen.h \
+ 	$(GEN_DIR)/nTECSInfo_tEntryInfo_tecsgen.h \
+ 	$(GEN_DIR)/nTECSInfo_tVarDeclInfo_tecsgen.h \
+ 	$(GEN_DIR)/nTECSInfo_tRegionInfo_tecsgen.h \
+ 	$(GEN_DIR)/nTECSInfo_tCellInfo_tecsgen.h \
+ 	$(GEN_DIR)/nTECSInfo_tRawEntryDescriptorInfo_tecsgen.h \
+ 	$(GEN_DIR)/nTECSInfo_tVoidTypeInfo_tecsgen.h \
+ 	$(GEN_DIR)/nTECSInfo_tBoolTypeInfo_tecsgen.h \
+ 	$(GEN_DIR)/nTECSInfo_tIntTypeInfo_tecsgen.h \
+ 	$(GEN_DIR)/nTECSInfo_tFloatTypeInfo_tecsgen.h \
+ 	$(GEN_DIR)/nTECSInfo_tStructTypeInfo_tecsgen.h \
+ 	$(GEN_DIR)/nTECSInfo_tPtrTypeInfo_tecsgen.h \
+ 	$(GEN_DIR)/nTECSInfo_tArrayTypeInfo_tecsgen.h \
+ 	$(GEN_DIR)/nTECSInfo_tDefinedTypeInfo_tecsgen.h \
+ 	$(GEN_DIR)/nTECSInfo_tDescriptorTypeInfo_tecsgen.h \
+# CELLTYPE_TECSGEN_HEADERS terminator
+
+CELLTYPE_FACTORY_HEADERS = \
+ 	$(GEN_DIR)/tTECSUnit_factory.h \
+ 	$(GEN_DIR)/tJSMN_factory.h \
+ 	$(GEN_DIR)/tTask_factory.h \
+ 	$(GEN_DIR)/tTarget1_factory.h \
+ 	$(GEN_DIR)/tTarget2_factory.h \
+ 	$(GEN_DIR)/tTarget3_factory.h \
+ 	$(GEN_DIR)/tTaskMain_factory.h \
+ 	$(GEN_DIR)/nTECSInfo_tTECSInfo_factory.h \
+ 	$(GEN_DIR)/nTECSInfo_tTECSInfoSub_factory.h \
+ 	$(GEN_DIR)/nTECSInfo_tNamespaceInfo_factory.h \
+ 	$(GEN_DIR)/nTECSInfo_tSignatureInfo_factory.h \
+ 	$(GEN_DIR)/nTECSInfo_tFunctionInfo_factory.h \
+ 	$(GEN_DIR)/nTECSInfo_tParamInfo_factory.h \
+ 	$(GEN_DIR)/nTECSInfo_tCelltypeInfo_factory.h \
+ 	$(GEN_DIR)/nTECSInfo_tCallInfo_factory.h \
+ 	$(GEN_DIR)/nTECSInfo_tEntryInfo_factory.h \
+ 	$(GEN_DIR)/nTECSInfo_tVarDeclInfo_factory.h \
+ 	$(GEN_DIR)/nTECSInfo_tRegionInfo_factory.h \
+ 	$(GEN_DIR)/nTECSInfo_tCellInfo_factory.h \
+ 	$(GEN_DIR)/nTECSInfo_tRawEntryDescriptorInfo_factory.h \
+ 	$(GEN_DIR)/nTECSInfo_tVoidTypeInfo_factory.h \
+ 	$(GEN_DIR)/nTECSInfo_tBoolTypeInfo_factory.h \
+ 	$(GEN_DIR)/nTECSInfo_tIntTypeInfo_factory.h \
+ 	$(GEN_DIR)/nTECSInfo_tFloatTypeInfo_factory.h \
+ 	$(GEN_DIR)/nTECSInfo_tStructTypeInfo_factory.h \
+ 	$(GEN_DIR)/nTECSInfo_tPtrTypeInfo_factory.h \
+ 	$(GEN_DIR)/nTECSInfo_tArrayTypeInfo_factory.h \
+ 	$(GEN_DIR)/nTECSInfo_tDefinedTypeInfo_factory.h \
+ 	$(GEN_DIR)/nTECSInfo_tDescriptorTypeInfo_factory.h \
+# CELLTYPE_FACTORY_HEADERS terminator
+
+# TECS_HEADERS:  headers generated by tecsgen
+TECS_HEADERS = $(SIGNATURE_HEADERS) $(CELLTYPE_TECSGEN_HEADERS) $(CELLTYPE_FACTORY_HEADERS)
+
+TECS_INLINE_HEADERS = \
+ 	tTask_tecsgen.h \
+ 	tTarget1_tecsgen.h \
+ 	tTarget2_tecsgen.h \
+ 	tTarget3_tecsgen.h \
+ 	tTaskMain_tecsgen.h \
+ 	nTECSInfo_tTECSInfo_tecsgen.h \
+ 	nTECSInfo_tTECSInfoSub_tecsgen.h \
+ 	nTECSInfo_tNamespaceInfo_tecsgen.h \
+ 	nTECSInfo_tSignatureInfo_tecsgen.h \
+ 	nTECSInfo_tFunctionInfo_tecsgen.h \
+ 	nTECSInfo_tParamInfo_tecsgen.h \
+ 	nTECSInfo_tCelltypeInfo_tecsgen.h \
+ 	nTECSInfo_tCallInfo_tecsgen.h \
+ 	nTECSInfo_tEntryInfo_tecsgen.h \
+ 	nTECSInfo_tVarDeclInfo_tecsgen.h \
+ 	nTECSInfo_tRegionInfo_tecsgen.h \
+ 	nTECSInfo_tCellInfo_tecsgen.h \
+ 	nTECSInfo_tRawEntryDescriptorInfo_tecsgen.h \
+ 	nTECSInfo_tVoidTypeInfo_tecsgen.h \
+ 	nTECSInfo_tBoolTypeInfo_tecsgen.h \
+ 	nTECSInfo_tIntTypeInfo_tecsgen.h \
+ 	nTECSInfo_tFloatTypeInfo_tecsgen.h \
+ 	nTECSInfo_tStructTypeInfo_tecsgen.h \
+ 	nTECSInfo_tPtrTypeInfo_tecsgen.h \
+ 	nTECSInfo_tArrayTypeInfo_tecsgen.h \
+ 	nTECSInfo_tDefinedTypeInfo_tecsgen.h \
+ 	nTECSInfo_tDescriptorTypeInfo_tecsgen.h \
+# TECS_INLINE_HEADERS terminator
+
+PLUGIN_INLINE_HEADERS = \
+ 	tTECSUnit_tecsgen.h \
+ 	tJSMN_tecsgen.h \
+# PLUGIN_INLINE_HEADERS terminator
+
+# TECS_COBJS: all objects of TECS, include both user written code and tecsgen automatically generated code
+TECS_COBJS = $(TECSGEN_COBJS) $(PLUGIN_COBJS) $(CELLTYPE_COBJS)
+
+# TECSGEN_COBJS: objects from sources which are automatically generated by tecsgen
+TECSGEN_COBJS = \
+ 	$(_TECS_OBJ_DIR)tTask_tecsgen.o \
+ 	$(_TECS_OBJ_DIR)tTarget1_tecsgen.o \
+ 	$(_TECS_OBJ_DIR)tTarget2_tecsgen.o \
+ 	$(_TECS_OBJ_DIR)tTarget3_tecsgen.o \
+ 	$(_TECS_OBJ_DIR)tTaskMain_tecsgen.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tTECSInfo_tecsgen.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tTECSInfoSub_tecsgen.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tNamespaceInfo_tecsgen.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tSignatureInfo_tecsgen.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tFunctionInfo_tecsgen.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tParamInfo_tecsgen.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tCelltypeInfo_tecsgen.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tCallInfo_tecsgen.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tEntryInfo_tecsgen.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tVarDeclInfo_tecsgen.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tRegionInfo_tecsgen.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tCellInfo_tecsgen.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tRawEntryDescriptorInfo_tecsgen.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tVoidTypeInfo_tecsgen.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tBoolTypeInfo_tecsgen.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tIntTypeInfo_tecsgen.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tFloatTypeInfo_tecsgen.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tStructTypeInfo_tecsgen.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tPtrTypeInfo_tecsgen.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tArrayTypeInfo_tecsgen.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tDefinedTypeInfo_tecsgen.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tDescriptorTypeInfo_tecsgen.o \
+# TECSGEN_COBJS terminator
+
+# PLUGIN_COBJS: objects from sources which are automatically generated by plugin(s)
+PLUGIN_COBJS = \
+ 	$(_TECS_OBJ_DIR)tTECSUnit_tecsgen.o \
+ 	$(_TECS_OBJ_DIR)tJSMN_tecsgen.o \
+ 	$(_TECS_OBJ_DIR)tTECSUnit.o \
+ 	$(_TECS_OBJ_DIR)tJSMN.o \
+# PLUGIN_COBJS terminator
+
+# CELLTYPE_COBJS: objects of celltype code written by user
+CELLTYPE_COBJS = \
+ 	$(_TECS_OBJ_DIR)tTask.o \
+ 	$(_TECS_OBJ_DIR)tTarget1.o \
+ 	$(_TECS_OBJ_DIR)tTarget2.o \
+ 	$(_TECS_OBJ_DIR)tTarget3.o \
+ 	$(_TECS_OBJ_DIR)tTaskMain.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tTECSInfoSub.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tNamespaceInfo.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tSignatureInfo.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tFunctionInfo.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tParamInfo.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tCelltypeInfo.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tCallInfo.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tEntryInfo.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tVarDeclInfo.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tRegionInfo.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tCellInfo.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tRawEntryDescriptorInfo.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tVoidTypeInfo.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tBoolTypeInfo.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tIntTypeInfo.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tFloatTypeInfo.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tStructTypeInfo.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tPtrTypeInfo.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tArrayTypeInfo.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tDefinedTypeInfo.o \
+ 	$(_TECS_OBJ_DIR)nTECSInfo_tDescriptorTypeInfo.o \
+# CELLTYPE_COBJS terminator
+
+# TECSGEN_SRCS: sources automatically generated by tecsgen
+TECSGEN_SRCS = \
+ 	$(GEN_DIR)/tTask_tecsgen.c \
+ 	$(GEN_DIR)/tTarget1_tecsgen.c \
+ 	$(GEN_DIR)/tTarget2_tecsgen.c \
+ 	$(GEN_DIR)/tTarget3_tecsgen.c \
+ 	$(GEN_DIR)/tTaskMain_tecsgen.c \
+ 	$(GEN_DIR)/nTECSInfo_tTECSInfo_tecsgen.c \
+ 	$(GEN_DIR)/nTECSInfo_tTECSInfoSub_tecsgen.c \
+ 	$(GEN_DIR)/nTECSInfo_tNamespaceInfo_tecsgen.c \
+ 	$(GEN_DIR)/nTECSInfo_tSignatureInfo_tecsgen.c \
+ 	$(GEN_DIR)/nTECSInfo_tFunctionInfo_tecsgen.c \
+ 	$(GEN_DIR)/nTECSInfo_tParamInfo_tecsgen.c \
+ 	$(GEN_DIR)/nTECSInfo_tCelltypeInfo_tecsgen.c \
+ 	$(GEN_DIR)/nTECSInfo_tCallInfo_tecsgen.c \
+ 	$(GEN_DIR)/nTECSInfo_tEntryInfo_tecsgen.c \
+ 	$(GEN_DIR)/nTECSInfo_tVarDeclInfo_tecsgen.c \
+ 	$(GEN_DIR)/nTECSInfo_tRegionInfo_tecsgen.c \
+ 	$(GEN_DIR)/nTECSInfo_tCellInfo_tecsgen.c \
+ 	$(GEN_DIR)/nTECSInfo_tRawEntryDescriptorInfo_tecsgen.c \
+ 	$(GEN_DIR)/nTECSInfo_tVoidTypeInfo_tecsgen.c \
+ 	$(GEN_DIR)/nTECSInfo_tBoolTypeInfo_tecsgen.c \
+ 	$(GEN_DIR)/nTECSInfo_tIntTypeInfo_tecsgen.c \
+ 	$(GEN_DIR)/nTECSInfo_tFloatTypeInfo_tecsgen.c \
+ 	$(GEN_DIR)/nTECSInfo_tStructTypeInfo_tecsgen.c \
+ 	$(GEN_DIR)/nTECSInfo_tPtrTypeInfo_tecsgen.c \
+ 	$(GEN_DIR)/nTECSInfo_tArrayTypeInfo_tecsgen.c \
+ 	$(GEN_DIR)/nTECSInfo_tDefinedTypeInfo_tecsgen.c \
+ 	$(GEN_DIR)/nTECSInfo_tDescriptorTypeInfo_tecsgen.c \
+# TECSGEN_SRCS terminator
+
+# PLUGIN_SRCS: sources automatically generated by plugin
+PLUGIN_CELLTYPE_SRCS = \
+  $(PLUGIN_CELLTYPE_SRCS)\
+# PLUGIN_CELLTYPE_SRCS terminator
+
+PLUGIN_TECSGEN_SRCS = \
+  $(PLUGIN_TECSGEN_SRCS)\
+# PLUGIN_TECSGEN_SRCS terminator
+
+PLUGIN_SRCS = $(PLUGIN_CELLTYPE_SRCS) $(PLUGIN_TECSGEN_SRCS)
+
+PLUGIN_CELLTYPE_SRCS = \
+ tTECSUnit.c \
+ tJSMN.c \
+# PLUGIN_CELLTYPE_SRCS terminator
+
+PLUGIN_TECSGEN_SRCS = \
+ tTECSUnit_tecsgen.c \
+ tJSMN_tecsgen.c \
+# PLUGIN_TECSGEN_SRCS terminator
+
+# CELLTYPE_SRCS: sources of celltype code written by user
+CELLTYPE_SRCS = \
+ 	tTask.c \
+ 	tTarget1.c \
+ 	tTarget2.c \
+ 	tTarget3.c \
+ 	tTaskMain.c \
+ 	nTECSInfo_tTECSInfoSub.c \
+ 	nTECSInfo_tNamespaceInfo.c \
+ 	nTECSInfo_tSignatureInfo.c \
+ 	nTECSInfo_tFunctionInfo.c \
+ 	nTECSInfo_tParamInfo.c \
+ 	nTECSInfo_tCelltypeInfo.c \
+ 	nTECSInfo_tCallInfo.c \
+ 	nTECSInfo_tEntryInfo.c \
+ 	nTECSInfo_tVarDeclInfo.c \
+ 	nTECSInfo_tRegionInfo.c \
+ 	nTECSInfo_tCellInfo.c \
+ 	nTECSInfo_tRawEntryDescriptorInfo.c \
+ 	nTECSInfo_tVoidTypeInfo.c \
+ 	nTECSInfo_tBoolTypeInfo.c \
+ 	nTECSInfo_tIntTypeInfo.c \
+ 	nTECSInfo_tFloatTypeInfo.c \
+ 	nTECSInfo_tStructTypeInfo.c \
+ 	nTECSInfo_tPtrTypeInfo.c \
+ 	nTECSInfo_tArrayTypeInfo.c \
+ 	nTECSInfo_tDefinedTypeInfo.c \
+ 	nTECSInfo_tDescriptorTypeInfo.c \
+# CELLTYPE_SRCS terminator
+

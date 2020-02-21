@@ -1,0 +1,50 @@
+
+celltype tTECSUnit {
+    entry sTECSUnit eUnit;
+    /*----- TECSInfo -----*/
+    call nTECSInfo::sTECSInfo cTECSInfo;
+    [dynamic,optional]
+      call  nTECSInfo::sNamespaceInfo cNSInfo;
+    [dynamic,optional]
+      call  nTECSInfo::sRegionInfo    cRegionInfo;
+    [dynamic,optional]
+      call  nTECSInfo::sCellInfo      cCellInfo;
+    [dynamic,optional]
+      call  nTECSInfo::sSignatureInfo cSignatureInfo;
+    [dynamic,optional]
+      call  nTECSInfo::sCelltypeInfo  cCelltypeInfo;
+    [dynamic,optional]
+      call  nTECSInfo::sVarDeclInfo   cVarDeclInfo;
+    [dynamic,optional]
+      call  nTECSInfo::sTypeInfo      cTypeInfo;
+    /*----- TECSInfo -----*/
+
+    /*----- RawEntryDescriptor -----*/
+    [dynamic,optional]
+      call  nTECSInfo::sRawEntryDescriptorInfo   cREDInfo;
+    [dynamic,optional]
+      call  nTECSInfo::sEntryInfo     cEntryInfo;
+    /*----- RawEntryDescriptor -----*/
+
+    /*----- TECSUnit test -----*/
+      /* プラグインにより自動生成される */
+    [dynamic, optional]
+      call ::sTarget1 cTarget1;
+    [dynamic, optional]
+      call ::sTarget2 cTarget2;
+    [dynamic, optional]
+      call ::sTarget3 cTarget3;
+    /*----- TECSUnit test -----*/
+
+    attr {
+      int16_t LEN = 256;
+    };
+    var {
+      int32_t out_int[16][64];
+      double64_t out_double[16][32];
+      char_t out_char[16][256];
+      [size_is(LEN)]
+        char *cell_entry;
+    };
+
+};

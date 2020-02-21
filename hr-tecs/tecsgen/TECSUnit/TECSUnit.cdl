@@ -1,0 +1,35 @@
+import( <cygwin_kernel.cdl> );
+import( <TECSInfo.cdl> );
+import( <TECSInfoAccessor.cdl> );
+/* ターゲットのインクルード */
+import( <target.cdl> );
+
+import( <jsmn.cdl> );
+
+signature sTECSUnit {
+  void main( [in,string] const char_t *cell_path,
+             [in,string] const char_t *entry_path,
+             [in,string] const char_t *signature_path,
+             [in,string] const char_t *function_path,
+             [in] const struct tecsunit_obj *arguments,
+             [in] const struct tecsunit_obj *exp_val );
+};
+
+import( <tTaskMain.cdl> );
+
+generate( TECSUnitPlugin, rTEMP::TaskMain, "" );
+generate( JSMNPlugin, rTEMP::TaskMain, "" );
+
+region rTEMP{
+
+    cell tTECSUnit TECSUnit {
+        cTECSInfo  = TECSInfo.eTECSInfo;
+    };
+    cell tJSMN JSMN {
+    };
+/******* TECSInfo cell *******/
+    cell nTECSInfo::tTECSInfo TECSInfo {
+        // cTECSInfo = rTECSInfo::TECSInfoSub.eTECSInfo;
+        //  この結合は TECSInfoPlugin により生成されるので結合不要
+    };
+};

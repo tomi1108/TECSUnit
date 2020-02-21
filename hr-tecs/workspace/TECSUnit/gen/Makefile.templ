@@ -1,0 +1,331 @@
+# このファイルは tecsgen により自動生成されました
+# Makefile.temp は gen の一つ上のディレクトリに移して使用します
+#  % mv Makefile.temp Makefile
+# 
+# clean のデフォルト動作は $(GEN_DIR)/Makefile.* を削除します
+#
+# このファイルは GNU make で gcc を用い POSIX 環境で動作するモジュールをビルドするのに適切なように生成されています
+# vpath, CFLAGS, OTHER_OBJS などを調整する必要があるかもしれません
+# 他の環境やターゲットの場合、このファイルを元に変更する必要があります
+
+# 変数 #_MVAR_#
+# fixed variable (unchangeable by config or plugin)
+TARGET_BASE = TECSUnit
+BASE_DIR = .
+GEN_DIR = $(BASE_DIR)/gen
+INCLUDES = -I $(BASE_DIR)/. -I $(BASE_DIR)/../../tecsgen/tecsgen/tecslib/plugin -I $(BASE_DIR)/. -I $(BASE_DIR)/./gen -I $(BASE_DIR)/../../tecs_kernel -I $(BASE_DIR)/./target -I $(BASE_DIR)/./jsmn -I $(BASE_DIR)/../../include -I $(BASE_DIR)/../../arch -I $(BASE_DIR)/../.. -I $(BASE_DIR)/../../target/ev3_gcc/api/src -I $(BASE_DIR)/../../../mruby/include -I $(BASE_DIR)/../../tecs_lib/mindstorms_ev3 -I $(BASE_DIR)/../../tecs_lib/common -I $(BASE_DIR)/../../tecsgen/tecsgen/tecs -I $(BASE_DIR)/../../tecsgen/tecsgen/tecs/mruby -I $(BASE_DIR)/../../tecsgen/tecsgen/tecs/TLSFMalloc -I $(BASE_DIR)/../../tecsgen/tecsgen/tecs/posix -I $(BASE_DIR)/../../tecs_lib/mindstorms_ev3/balancer -I $(BASE_DIR)/../../target/ev3_gcc/drivers -I $(BASE_DIR)/../../modules/btstack/platforms/ev3rt -I $(BASE_DIR)/../../target/ev3_gcc/drivers/soc//AM1808_StarterWare_1_00_03_03/include/hw -I $(BASE_DIR)/../../modules/usblib/usblib/include -I $(BASE_DIR)/../../target/ev3_gcc -I $(BASE_DIR)/../../target/ev3_gcc/api/include -I $(BASE_DIR)/../../target/ev3_gcc/dmloader/app/include -I $(BASE_DIR)/../../target/ev3_gcc/dmloader/include -I $(BASE_DIR)/../../target/ev3_gcc/drivers/bluetooth/btstack/include -I $(BASE_DIR)/../../target/ev3_gcc/drivers/bluetooth/include -I $(BASE_DIR)/../../target/ev3_gcc/drivers/brick/include -I $(BASE_DIR)/../../target/ev3_gcc/drivers/common/include -I $(BASE_DIR)/../../target/ev3_gcc/drivers/common/virtual-linux-kernel/arch/arm/include -I $(BASE_DIR)/../../target/ev3_gcc/drivers/common/virtual-linux-kernel/include -I $(BASE_DIR)/../../target/ev3_gcc/drivers/console/include -I $(BASE_DIR)/../../target/ev3_gcc/drivers/fatfs/include -I $(BASE_DIR)/../../target/ev3_gcc/drivers/gpio/include -I $(BASE_DIR)/../../target/ev3_gcc/drivers/lcd/include -I $(BASE_DIR)/../../target/ev3_gcc/drivers/lcd/linux/include -I $(BASE_DIR)/../../target/ev3_gcc/drivers/linux/arch/arm/include -I $(BASE_DIR)/../../target/ev3_gcc/drivers/linux/arch/arm/mach-davinci/include -I $(BASE_DIR)/../../target/ev3_gcc/drivers/linux/include -I $(BASE_DIR)/../../target/ev3_gcc/drivers/mbed/include -I $(BASE_DIR)/../../target/ev3_gcc/drivers/motor/include -I $(BASE_DIR)/../../target/ev3_gcc/drivers/newlib/include -I $(BASE_DIR)/../../target/ev3_gcc/drivers/sensor/analog/include -I $(BASE_DIR)/../../target/ev3_gcc/drivers/sensor/i2c/include -I $(BASE_DIR)/../../target/ev3_gcc/drivers/sensor/uart/d_uart/Linuxmod_AM1808/pru-firmware-05-31-2011-1423-v3.0/pru/hal/common/include -I $(BASE_DIR)/../../target/ev3_gcc/drivers/sensor/uart/d_uart/Linuxmod_AM1808/pru-firmware-05-31-2011-1423-v3.0/pru/hal/uart/include -I $(BASE_DIR)/../../target/ev3_gcc/drivers/sensor/uart/include -I $(BASE_DIR)/../../target/ev3_gcc/drivers/soc/AM1808_StarterWare_1_00_03_03/include -I $(BASE_DIR)/../../target/ev3_gcc/drivers/soc/include -I $(BASE_DIR)/../../target/ev3_gcc/drivers/sound/include -I $(BASE_DIR)/../../target/ev3_gcc/drivers/usbmsc/include -I $(BASE_DIR)/../../target/ev3_gcc/kernel_mod/include -I $(BASE_DIR)/../../target/ev3_gcc/pil/include -I $(BASE_DIR)/../../target/ev3_gcc/platform/include -I $(BASE_DIR)/../../target/ev3_gcc/TLSF-2.4.6/include -I $(BASE_DIR)/../../arch/arm_gcc/am1808 -I $(BASE_DIR)/../../arch/arm_gcc/common -I $(BASE_DIR)/../../arch/gcc -I $(BASE_DIR)/../../target/ev3_gcc/api -I $(BASE_DIR)/../../target/ev3_gcc/drivers/fatfs/ff10b/src -I $(BASE_DIR)/../../tecsgen/tecsgen/tecs/TECSInfo -I $(BASE_DIR)/../application_TECSUnit/../common -I $(BASE_DIR)/../application_TECSUnit -I $(TECSPATH) -I $(TECSPATH)/mruby -I $(TECSPATH)/posix -I $(TECSPATH)/rpc -I $(TECSPATH)/TECSInfo -I $(TECSPATH)/TLSFMalloc -I $(MRUBYPATH)/include -I $(GEN_DIR)
+DEFINES = -D TECSGEN -D TECS_CPP
+
+# end of fixed variable (unchangeable by config or plugin)
+#default C Compiler
+CC = gcc
+
+#default C Compiler options
+CFLAGS = $(INCLUDES) $(DEFINES) -D  "Inline=static inline"
+
+#default Liknker
+LD = gcc
+
+#default Liknker Options
+LDFLAGS = 
+
+#CHANGE this to suitable path
+MRUBYPATH = ..
+
+#default source directory
+SRC_DIR = $(BASE_DIR)/src
+
+#default target name
+TARGET = $(TARGET_BASE).exe
+
+#default TECS generator
+TECSGEN = tecsgen
+
+#Time Stamp
+TIMESTAMP = $(GEN_DIR)/tecsgen.timestamp
+
+#default relocatable object (.o) directory
+_TECS_OBJ_DIR = $(GEN_DIR)/
+
+
+
+# Pre-tecsgen target
+PRE_TECSGEN_TARGET =
+
+# Post-tecsgen target
+POST_TECSGEN_TARGET =
+
+# vpath for C sources and headers
+vpath %.c $(SRC_DIR) $(GEN_DIR)  ../../tecsgen/tecsgen/tecslib/plugin ./gen ../../tecs_kernel ./target ./jsmn ../../include ../../arch ../.. ../../target/ev3_gcc/api/src ../../../mruby/include ../../tecs_lib/mindstorms_ev3 ../../tecs_lib/common ../../tecsgen/tecsgen/tecs ../../tecsgen/tecsgen/tecs/mruby ../../tecsgen/tecsgen/tecs/TLSFMalloc ../../tecsgen/tecsgen/tecs/posix ../../tecs_lib/mindstorms_ev3/balancer ../../target/ev3_gcc/drivers ../../modules/btstack/platforms/ev3rt ../../target/ev3_gcc/drivers/soc//AM1808_StarterWare_1_00_03_03/include/hw ../../modules/usblib/usblib/include ../../target/ev3_gcc ../../target/ev3_gcc/api/include ../../target/ev3_gcc/dmloader/app/include ../../target/ev3_gcc/dmloader/include ../../target/ev3_gcc/drivers/bluetooth/btstack/include ../../target/ev3_gcc/drivers/bluetooth/include ../../target/ev3_gcc/drivers/brick/include ../../target/ev3_gcc/drivers/common/include ../../target/ev3_gcc/drivers/common/virtual-linux-kernel/arch/arm/include ../../target/ev3_gcc/drivers/common/virtual-linux-kernel/include ../../target/ev3_gcc/drivers/console/include ../../target/ev3_gcc/drivers/fatfs/include ../../target/ev3_gcc/drivers/gpio/include ../../target/ev3_gcc/drivers/lcd/include ../../target/ev3_gcc/drivers/lcd/linux/include ../../target/ev3_gcc/drivers/linux/arch/arm/include ../../target/ev3_gcc/drivers/linux/arch/arm/mach-davinci/include ../../target/ev3_gcc/drivers/linux/include ../../target/ev3_gcc/drivers/mbed/include ../../target/ev3_gcc/drivers/motor/include ../../target/ev3_gcc/drivers/newlib/include ../../target/ev3_gcc/drivers/sensor/analog/include ../../target/ev3_gcc/drivers/sensor/i2c/include ../../target/ev3_gcc/drivers/sensor/uart/d_uart/Linuxmod_AM1808/pru-firmware-05-31-2011-1423-v3.0/pru/hal/common/include ../../target/ev3_gcc/drivers/sensor/uart/d_uart/Linuxmod_AM1808/pru-firmware-05-31-2011-1423-v3.0/pru/hal/uart/include ../../target/ev3_gcc/drivers/sensor/uart/include ../../target/ev3_gcc/drivers/soc/AM1808_StarterWare_1_00_03_03/include ../../target/ev3_gcc/drivers/soc/include ../../target/ev3_gcc/drivers/sound/include ../../target/ev3_gcc/drivers/usbmsc/include ../../target/ev3_gcc/kernel_mod/include ../../target/ev3_gcc/pil/include ../../target/ev3_gcc/platform/include ../../target/ev3_gcc/TLSF-2.4.6/include ../../arch/arm_gcc/am1808 ../../arch/arm_gcc/common ../../arch/gcc ../../target/ev3_gcc/api ../../target/ev3_gcc/drivers/fatfs/ff10b/src ../../tecsgen/tecsgen/tecs/TECSInfo ../application_TECSUnit/../common ../application_TECSUnit $(TECSPATH) $(TECSPATH)/mruby $(TECSPATH)/posix $(TECSPATH)/rpc $(TECSPATH)/TECSInfo $(TECSPATH)/TLSFMalloc $(MRUBYPATH)/include
+vpath %.h $(SRC_DIR) $(GEN_DIR)  ../../tecsgen/tecsgen/tecslib/plugin ./gen ../../tecs_kernel ./target ./jsmn ../../include ../../arch ../.. ../../target/ev3_gcc/api/src ../../../mruby/include ../../tecs_lib/mindstorms_ev3 ../../tecs_lib/common ../../tecsgen/tecsgen/tecs ../../tecsgen/tecsgen/tecs/mruby ../../tecsgen/tecsgen/tecs/TLSFMalloc ../../tecsgen/tecsgen/tecs/posix ../../tecs_lib/mindstorms_ev3/balancer ../../target/ev3_gcc/drivers ../../modules/btstack/platforms/ev3rt ../../target/ev3_gcc/drivers/soc//AM1808_StarterWare_1_00_03_03/include/hw ../../modules/usblib/usblib/include ../../target/ev3_gcc ../../target/ev3_gcc/api/include ../../target/ev3_gcc/dmloader/app/include ../../target/ev3_gcc/dmloader/include ../../target/ev3_gcc/drivers/bluetooth/btstack/include ../../target/ev3_gcc/drivers/bluetooth/include ../../target/ev3_gcc/drivers/brick/include ../../target/ev3_gcc/drivers/common/include ../../target/ev3_gcc/drivers/common/virtual-linux-kernel/arch/arm/include ../../target/ev3_gcc/drivers/common/virtual-linux-kernel/include ../../target/ev3_gcc/drivers/console/include ../../target/ev3_gcc/drivers/fatfs/include ../../target/ev3_gcc/drivers/gpio/include ../../target/ev3_gcc/drivers/lcd/include ../../target/ev3_gcc/drivers/lcd/linux/include ../../target/ev3_gcc/drivers/linux/arch/arm/include ../../target/ev3_gcc/drivers/linux/arch/arm/mach-davinci/include ../../target/ev3_gcc/drivers/linux/include ../../target/ev3_gcc/drivers/mbed/include ../../target/ev3_gcc/drivers/motor/include ../../target/ev3_gcc/drivers/newlib/include ../../target/ev3_gcc/drivers/sensor/analog/include ../../target/ev3_gcc/drivers/sensor/i2c/include ../../target/ev3_gcc/drivers/sensor/uart/d_uart/Linuxmod_AM1808/pru-firmware-05-31-2011-1423-v3.0/pru/hal/common/include ../../target/ev3_gcc/drivers/sensor/uart/d_uart/Linuxmod_AM1808/pru-firmware-05-31-2011-1423-v3.0/pru/hal/uart/include ../../target/ev3_gcc/drivers/sensor/uart/include ../../target/ev3_gcc/drivers/soc/AM1808_StarterWare_1_00_03_03/include ../../target/ev3_gcc/drivers/soc/include ../../target/ev3_gcc/drivers/sound/include ../../target/ev3_gcc/drivers/usbmsc/include ../../target/ev3_gcc/kernel_mod/include ../../target/ev3_gcc/pil/include ../../target/ev3_gcc/platform/include ../../target/ev3_gcc/TLSF-2.4.6/include ../../arch/arm_gcc/am1808 ../../arch/arm_gcc/common ../../arch/gcc ../../target/ev3_gcc/api ../../target/ev3_gcc/drivers/fatfs/ff10b/src ../../tecsgen/tecsgen/tecs/TECSInfo ../application_TECSUnit/../common ../application_TECSUnit $(TECSPATH) $(TECSPATH)/mruby $(TECSPATH)/posix $(TECSPATH)/rpc $(TECSPATH)/TECSInfo $(TECSPATH)/TLSFMalloc $(MRUBYPATH)/include
+
+# Other objects (out of tecsgen)
+OTHER_OBJS =                      # Add objects out of tecs care.
+# OTHER_OBJS = $(_TECS_OBJ_DIR)vasyslog.o
+# ルール #_MRUL_#
+allall: tecs
+	make all     # in order to include generated Makefile.tecsgen & Makefile.depend
+
+all : $(TARGET)
+
+
+# depend を include #_MDEP_#
+-include $(GEN_DIR)/Makefile.tecsgen
+-include $(GEN_DIR)/Makefile.depend
+
+$(TARGET) : $(TIMESTAMP) $(CELLTYPE_COBJS) $(TECSGEN_COBJS) $(PLUGIN_COBJS) $(OTHER_OBJS)
+	$(LD) -o $(TARGET) $(TECSGEN_COBJS) $(CELLTYPE_COBJS) $(PLUGIN_COBJS) $(OTHER_OBJS) $(LDFLAGS)
+
+clean :
+	rm -f $(CELLTYPE_COBJS) $(TECSGEN_COBJS) $(PLUGIN_COBJS) $(OTHER_OBJS) $(TARGET)  $(TIMESTAMP)
+	rm -rf $(GEN_DIR)
+
+tecs : $(PRE_TECSGEN_TARGET) $(TIMESTAMP) $(POST_TECSGEN_TARGET)
+
+$(TIMESTAMP) : $(TECS_IMPORTS)
+	$(TECSGEN)  -L ../../tecsgen/tecsgen -k euc --cpp=arm-none-eabi-gcc -E -R -D TECSGEN -D TECS_CPP -I../../tecsgen/tecsgen/tecslib/plugin -I. -I./gen -I../../tecs_kernel -I./target -I./jsmn -I../../include -I../../arch -I../.. -I../../target/ev3_gcc/api/src -I../../../mruby/include -I../../tecs_lib/mindstorms_ev3 -I../../tecs_lib/common -I../../tecsgen/tecsgen/tecs -I../../tecsgen/tecsgen/tecs/mruby -I../../tecsgen/tecsgen/tecs/TLSFMalloc -I../../tecsgen/tecsgen/tecs/posix -I../../tecs_lib/mindstorms_ev3/balancer -I../../target/ev3_gcc/drivers -I../../modules/btstack/platforms/ev3rt -I../../target/ev3_gcc/drivers/soc//AM1808_StarterWare_1_00_03_03/include/hw -I../../modules/usblib/usblib/include -I../../target/ev3_gcc -I../../target/ev3_gcc/api/include -I../../target/ev3_gcc/dmloader/app/include -I../../target/ev3_gcc/dmloader/include -I../../target/ev3_gcc/drivers/bluetooth/btstack/include -I../../target/ev3_gcc/drivers/bluetooth/include -I../../target/ev3_gcc/drivers/brick/include -I../../target/ev3_gcc/drivers/common/include -I../../target/ev3_gcc/drivers/common/virtual-linux-kernel/arch/arm/include -I../../target/ev3_gcc/drivers/common/virtual-linux-kernel/include -I../../target/ev3_gcc/drivers/console/include -I../../target/ev3_gcc/drivers/fatfs/include -I../../target/ev3_gcc/drivers/gpio/include -I../../target/ev3_gcc/drivers/lcd/include -I../../target/ev3_gcc/drivers/lcd/linux/include -I../../target/ev3_gcc/drivers/linux/arch/arm/include -I../../target/ev3_gcc/drivers/linux/arch/arm/mach-davinci/include -I../../target/ev3_gcc/drivers/linux/include -I../../target/ev3_gcc/drivers/mbed/include -I../../target/ev3_gcc/drivers/motor/include -I../../target/ev3_gcc/drivers/newlib/include -I../../target/ev3_gcc/drivers/sensor/analog/include -I../../target/ev3_gcc/drivers/sensor/i2c/include -I../../target/ev3_gcc/drivers/sensor/uart/d_uart/Linuxmod_AM1808/pru-firmware-05-31-2011-1423-v3.0/pru/hal/common/include -I../../target/ev3_gcc/drivers/sensor/uart/d_uart/Linuxmod_AM1808/pru-firmware-05-31-2011-1423-v3.0/pru/hal/uart/include -I../../target/ev3_gcc/drivers/sensor/uart/include -I../../target/ev3_gcc/drivers/soc/AM1808_StarterWare_1_00_03_03/include -I../../target/ev3_gcc/drivers/soc/include -I../../target/ev3_gcc/drivers/sound/include -I../../target/ev3_gcc/drivers/usbmsc/include -I../../target/ev3_gcc/kernel_mod/include -I../../target/ev3_gcc/pil/include -I../../target/ev3_gcc/platform/include -I../../target/ev3_gcc/TLSF-2.4.6/include -I../../arch/arm_gcc/am1808 -I../../arch/arm_gcc/common -I../../arch/gcc -I../../target/ev3_gcc/api -I../../target/ev3_gcc/drivers/fatfs/ff10b/src -I../../tecsgen/tecsgen/tecs/TECSInfo -I../application_TECSUnit/../common -I../application_TECSUnit TECSUnit.cdl
+
+#####  TECSFlow targets  #####
+tecsflow : $(GEN_DIR)/tecsgen.rbdmp tcflow
+	tecsflow -g $(GEN_DIR)
+
+tecsflow_u : $(GEN_DIR)/tecsgen.rbdmp tcflow
+	tecsflow -g $(GEN_DIR) -U
+
+$(GEN_DIR)/tecsgen.rbdmp : tecs
+
+tcflow : tecs
+	make tcflow_exec
+
+tcflow_exec : $(GEN_DIR)/tcflow.rbdmp
+$(GEN_DIR)/tcflow.rbdmp : $(CELLTYPE_SRCS) $(PLUGIN_CELLTYPE_SRCS)
+	tcflow -g $(GEN_DIR) -c '$(CC) -E -DTECSFLOW $(CFLAGS) -I ./' $^
+	# add -DTECSGEN if many errors occur, especially in case using cygwin, linux
+#####  end TECSFlow targets  #####
+
+# generic target for objs
+$(_TECS_OBJ_DIR)%.o : %.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+
+$(_TECS_OBJ_DIR)tTask.o : tTask.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)tKernel.o : tKernel.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)tUltrasonicSensor.o : tUltrasonicSensor.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)tColorSensor.o : tColorSensor.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)tTouchSensor.o : tTouchSensor.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)tGyroSensor.o : tGyroSensor.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)tMotor.o : tMotor.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)tButton.o : tButton.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)tLCD.o : tLCD.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)tLED.o : tLED.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)tBattery.o : tBattery.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)tSpeaker.o : tSpeaker.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)tEV3Platform.o : tEV3Platform.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)tBalancer.o : tBalancer.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)tSharedMemory.o : tSharedMemory.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)tFatFile.o : tFatFile.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)tTarget.o : tTarget.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)tTaskMain.o : tTaskMain.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)tJSMN.o : tJSMN.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)tTECSUnit.o : tTECSUnit.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nMruby_tTECSInitializer.o : nMruby_tTECSInitializer.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nMruby_tCharPointer.o : nMruby_tCharPointer.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nMruby_tInt8Pointer.o : nMruby_tInt8Pointer.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nMruby_tInt32Pointer.o : nMruby_tInt32Pointer.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nMruby_tUInt16Pointer.o : nMruby_tUInt16Pointer.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nMruby_tIntPointer.o : nMruby_tIntPointer.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nMruby_tULongPointer.o : nMruby_tULongPointer.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nMruby_tsKernel.o : nMruby_tsKernel.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nMruby_tsKernel_Initializer.o : nMruby_tsKernel_Initializer.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nMruby_tsMotor.o : nMruby_tsMotor.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nMruby_tsMotor_Initializer.o : nMruby_tsMotor_Initializer.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nMruby_tsLCD.o : nMruby_tsLCD.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nMruby_tsLCD_Initializer.o : nMruby_tsLCD_Initializer.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nMruby_tsLED.o : nMruby_tsLED.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nMruby_tsLED_Initializer.o : nMruby_tsLED_Initializer.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nMruby_tsButton.o : nMruby_tsButton.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nMruby_tsButton_Initializer.o : nMruby_tsButton_Initializer.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nMruby_tsBattery.o : nMruby_tsBattery.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nMruby_tsBattery_Initializer.o : nMruby_tsBattery_Initializer.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nMruby_tsSpeaker.o : nMruby_tsSpeaker.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nMruby_tsSpeaker_Initializer.o : nMruby_tsSpeaker_Initializer.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nMruby_tsUltrasonicSensor.o : nMruby_tsUltrasonicSensor.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nMruby_tsUltrasonicSensor_Initializer.o : nMruby_tsUltrasonicSensor_Initializer.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nMruby_tsGyroSensor.o : nMruby_tsGyroSensor.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nMruby_tsGyroSensor_Initializer.o : nMruby_tsGyroSensor_Initializer.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nMruby_tsColorSensor.o : nMruby_tsColorSensor.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nMruby_tsColorSensor_Initializer.o : nMruby_tsColorSensor_Initializer.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nMruby_tsTouchSensor.o : nMruby_tsTouchSensor.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nMruby_tsTouchSensor_Initializer.o : nMruby_tsTouchSensor_Initializer.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nMruby_tsBalancer.o : nMruby_tsBalancer.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nMruby_tsBalancer_Initializer.o : nMruby_tsBalancer_Initializer.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nMruby_tsSharedMemory.o : nMruby_tsSharedMemory.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nMruby_tsSharedMemory_Initializer.o : nMruby_tsSharedMemory_Initializer.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tTECSInfo.o : nTECSInfo_tTECSInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tTECSInfoSub.o : nTECSInfo_tTECSInfoSub.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tNamespaceInfo.o : nTECSInfo_tNamespaceInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tSignatureInfo.o : nTECSInfo_tSignatureInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tFunctionInfo.o : nTECSInfo_tFunctionInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tParamInfo.o : nTECSInfo_tParamInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tCelltypeInfo.o : nTECSInfo_tCelltypeInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tCallInfo.o : nTECSInfo_tCallInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tEntryInfo.o : nTECSInfo_tEntryInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tVarDeclInfo.o : nTECSInfo_tVarDeclInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tRegionInfo.o : nTECSInfo_tRegionInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tCellInfo.o : nTECSInfo_tCellInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tRawEntryDescriptorInfo.o : nTECSInfo_tRawEntryDescriptorInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tVoidTypeInfo.o : nTECSInfo_tVoidTypeInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tIntTypeInfo.o : nTECSInfo_tIntTypeInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tFloatTypeInfo.o : nTECSInfo_tFloatTypeInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tStructTypeInfo.o : nTECSInfo_tStructTypeInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tPtrTypeInfo.o : nTECSInfo_tPtrTypeInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tArrayTypeInfo.o : nTECSInfo_tArrayTypeInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tDefinedTypeInfo.o : nTECSInfo_tDefinedTypeInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tDescriptorTypeInfo.o : nTECSInfo_tDescriptorTypeInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 

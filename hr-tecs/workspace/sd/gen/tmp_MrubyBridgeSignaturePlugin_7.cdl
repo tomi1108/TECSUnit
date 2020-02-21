@@ -1,0 +1,32 @@
+/*
+ * MrubyBridgeSignaturePlugin:
+ *     signature=::sUltrasonicSensor
+ *
+ *   => celltype=nMruby::tsUltrasonicSensor
+ *      (bridge cell's celltype; generated in this file)
+ *      cell nMruby::tsUltrasonicSensor BridgeCellName { cTECS = CellName.eEntry; };
+ *        where eEntry's signature must be ::sUltrasonicSensor.
+ *      => class=TECS::TsUltrasonicSensor
+ *         (mruby's class; accessible from your script)
+ *          bridge = TECS::TsUltrasonicSensor.new("BridgeCellName")
+ */
+import( <mruby.cdl> );
+
+/****  Ruby => TECS Bridge Celltype (MBP500) ****/
+namespace nMruby{
+    // bridge celltype
+    [idx_is_id,active]   // not actually active, to avoid warning W1002, W1007
+    celltype tsUltrasonicSensor {
+        call ::sUltrasonicSensor cTECS;
+        attr {
+            [omit]
+            char_t *VMname = "VM";
+            [omit]
+            char_t *bridgeName = C_EXP( "$cell$" );
+        };
+    };
+    // bridge initializer celltype
+    celltype tsUltrasonicSensor_Initializer {
+        entry sInitializeTECSBridge eInitialize;
+    };
+};

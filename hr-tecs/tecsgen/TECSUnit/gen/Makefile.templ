@@ -1,0 +1,193 @@
+# このファイルは tecsgen により自動生成されました
+# Makefile.temp は gen の一つ上のディレクトリに移して使用します
+#  % mv Makefile.temp Makefile
+# 
+# clean のデフォルト動作は $(GEN_DIR)/Makefile.* を削除します
+#
+# このファイルは GNU make で gcc を用い POSIX 環境で動作するモジュールをビルドするのに適切なように生成されています
+# vpath, CFLAGS, OTHER_OBJS などを調整する必要があるかもしれません
+# 他の環境やターゲットの場合、このファイルを元に変更する必要があります
+
+# 変数 #_MVAR_#
+# fixed variable (unchangeable by config or plugin)
+TARGET_BASE = TECSUnit
+BASE_DIR = .
+GEN_DIR = $(BASE_DIR)/gen
+INCLUDES = -I $(BASE_DIR)/. -I $(BASE_DIR)/../test/cygwin -I $(BASE_DIR)/./target/ -I $(TECSPATH) -I $(TECSPATH)/mruby -I $(TECSPATH)/posix -I $(TECSPATH)/rpc -I $(TECSPATH)/TECSInfo -I $(TECSPATH)/TLSFMalloc -I $(GEN_DIR)
+DEFINES =
+
+# end of fixed variable (unchangeable by config or plugin)
+#default C Compiler
+CC = gcc
+
+#default C Compiler options
+CFLAGS = $(INCLUDES) $(DEFINES) -D  "Inline=static inline"
+
+#default Liknker
+LD = gcc
+
+#default Liknker Options
+LDFLAGS = 
+
+#default source directory
+SRC_DIR = $(BASE_DIR)/src
+
+#default target name
+TARGET = $(TARGET_BASE).exe
+
+#default TECS generator
+TECSGEN = tecsgen
+
+#Time Stamp
+TIMESTAMP = $(GEN_DIR)/tecsgen.timestamp
+
+#default relocatable object (.o) directory
+_TECS_OBJ_DIR = $(GEN_DIR)/
+
+
+
+# Pre-tecsgen target
+PRE_TECSGEN_TARGET =
+
+# Post-tecsgen target
+POST_TECSGEN_TARGET =
+
+# vpath for C sources and headers
+vpath %.c $(SRC_DIR) $(GEN_DIR)  ../test/cygwin ./target/ $(TECSPATH) $(TECSPATH)/mruby $(TECSPATH)/posix $(TECSPATH)/rpc $(TECSPATH)/TECSInfo $(TECSPATH)/TLSFMalloc
+vpath %.h $(SRC_DIR) $(GEN_DIR)  ../test/cygwin ./target/ $(TECSPATH) $(TECSPATH)/mruby $(TECSPATH)/posix $(TECSPATH)/rpc $(TECSPATH)/TECSInfo $(TECSPATH)/TLSFMalloc
+
+# Other objects (out of tecsgen)
+OTHER_OBJS =                      # Add objects out of tecs care.
+# OTHER_OBJS = $(_TECS_OBJ_DIR)vasyslog.o
+# ルール #_MRUL_#
+allall: tecs
+	make all     # in order to include generated Makefile.tecsgen & Makefile.depend
+
+all : $(TARGET)
+
+
+# depend を include #_MDEP_#
+-include $(GEN_DIR)/Makefile.tecsgen
+-include $(GEN_DIR)/Makefile.depend
+
+$(TARGET) : $(TIMESTAMP) $(CELLTYPE_COBJS) $(TECSGEN_COBJS) $(PLUGIN_COBJS) $(OTHER_OBJS)
+	$(LD) -o $(TARGET) $(TECSGEN_COBJS) $(CELLTYPE_COBJS) $(PLUGIN_COBJS) $(OTHER_OBJS) $(LDFLAGS)
+
+clean :
+	rm -f $(CELLTYPE_COBJS) $(TECSGEN_COBJS) $(PLUGIN_COBJS) $(OTHER_OBJS) $(TARGET)  $(TIMESTAMP)
+	rm -rf $(GEN_DIR)
+
+tecs : $(PRE_TECSGEN_TARGET) $(TIMESTAMP) $(POST_TECSGEN_TARGET)
+
+$(TIMESTAMP) : $(TECS_IMPORTS)
+	$(TECSGEN)  -I ../test/cygwin -I ./target/ TECSUnit.cdl
+
+#####  TECSFlow targets  #####
+tecsflow : $(GEN_DIR)/tecsgen.rbdmp tcflow
+	tecsflow -g $(GEN_DIR)
+
+tecsflow_u : $(GEN_DIR)/tecsgen.rbdmp tcflow
+	tecsflow -g $(GEN_DIR) -U
+
+$(GEN_DIR)/tecsgen.rbdmp : tecs
+
+tcflow : tecs
+	make tcflow_exec
+
+tcflow_exec : $(GEN_DIR)/tcflow.rbdmp
+$(GEN_DIR)/tcflow.rbdmp : $(CELLTYPE_SRCS) $(PLUGIN_CELLTYPE_SRCS)
+	tcflow -g $(GEN_DIR) -c '$(CC) -E -DTECSFLOW $(CFLAGS) -I ./' $^
+	# add -DTECSGEN if many errors occur, especially in case using cygwin, linux
+#####  end TECSFlow targets  #####
+
+# generic target for objs
+$(_TECS_OBJ_DIR)%.o : %.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+
+$(_TECS_OBJ_DIR)tTask.o : tTask.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)tTarget1.o : tTarget1.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)tTarget2.o : tTarget2.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)tTarget3.o : tTarget3.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)tTaskMain.o : tTaskMain.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)tTECSUnit.o : tTECSUnit.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)tJSMN.o : tJSMN.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tTECSInfo.o : nTECSInfo_tTECSInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tTECSInfoSub.o : nTECSInfo_tTECSInfoSub.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tNamespaceInfo.o : nTECSInfo_tNamespaceInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tSignatureInfo.o : nTECSInfo_tSignatureInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tFunctionInfo.o : nTECSInfo_tFunctionInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tParamInfo.o : nTECSInfo_tParamInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tCelltypeInfo.o : nTECSInfo_tCelltypeInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tCallInfo.o : nTECSInfo_tCallInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tEntryInfo.o : nTECSInfo_tEntryInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tVarDeclInfo.o : nTECSInfo_tVarDeclInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tRegionInfo.o : nTECSInfo_tRegionInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tCellInfo.o : nTECSInfo_tCellInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tRawEntryDescriptorInfo.o : nTECSInfo_tRawEntryDescriptorInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tVoidTypeInfo.o : nTECSInfo_tVoidTypeInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tBoolTypeInfo.o : nTECSInfo_tBoolTypeInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tIntTypeInfo.o : nTECSInfo_tIntTypeInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tFloatTypeInfo.o : nTECSInfo_tFloatTypeInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tStructTypeInfo.o : nTECSInfo_tStructTypeInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tPtrTypeInfo.o : nTECSInfo_tPtrTypeInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tArrayTypeInfo.o : nTECSInfo_tArrayTypeInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tDefinedTypeInfo.o : nTECSInfo_tDefinedTypeInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+$(_TECS_OBJ_DIR)nTECSInfo_tDescriptorTypeInfo.o : nTECSInfo_tDescriptorTypeInfo.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+ 

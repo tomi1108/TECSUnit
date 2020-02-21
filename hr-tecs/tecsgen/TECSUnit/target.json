@@ -1,0 +1,37 @@
+{
+  "target1":{
+    "cell":"Target1",
+    "entry":"eTarget1",
+    "function":"double",
+    "argument":[2],
+    "exp_val":4
+  },
+  "target2":{ /* in指定子のテスト */
+    "cell":"Target3",
+    "entry":"eTarget3",
+    "function":"sendMessage",
+    "argument":["hi!",7],
+    "exp_val":1
+  },
+  "target3":{ /* out指定子のテスト */
+    "cell":"Target3",
+    "entry":"eTarget3",
+    "function":"receiveMessage",
+    "argument":["[out]",6], // out 指定子には"[out]"を与える
+    "exp_val":1
+  },
+  "target4":{ /* 配列のテスト */
+    "cell":"Target3",
+    "entry":"eTarget3",
+    "function":"send",
+    "argument":[[1,2],2],
+    "exp_val":1
+  },
+  "target5":{ /* 構造体のテスト */
+    "cell":"Target3",
+    "entry":"eTarget3",
+    "function":"sendStruct",
+    "argument":[{"number":1,"name":"aoki"}], // 理想の形。tag名を入れるのも
+    "exp_val":0// TODO E_OKは入れれない
+  }
+}

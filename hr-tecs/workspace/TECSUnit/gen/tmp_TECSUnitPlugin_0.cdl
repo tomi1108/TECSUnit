@@ -1,0 +1,75 @@
+
+celltype tTECSUnit {
+    entry sTECSUnit eUnit;
+    call  sLCD      cLCD_tmp;
+    call  sButton   cButton_tmp;
+    call  sKernel   cKernel_tmp;
+    call  sFatFile  cFatFile_tmp;
+
+    /*----- TECSInfo -----*/
+    call nTECSInfo::sTECSInfo cTECSInfo;
+    [dynamic,optional]
+      call  nTECSInfo::sNamespaceInfo cNSInfo;
+    [dynamic,optional]
+      call  nTECSInfo::sRegionInfo    cRegionInfo;
+    [dynamic,optional]
+      call  nTECSInfo::sCellInfo      cCellInfo;
+    [dynamic,optional]
+      call  nTECSInfo::sSignatureInfo cSignatureInfo;
+    [dynamic,optional]
+      call  nTECSInfo::sCelltypeInfo  cCelltypeInfo;
+    [dynamic,optional]
+      call  nTECSInfo::sVarDeclInfo   cVarDeclInfo;
+    [dynamic,optional]
+      call  nTECSInfo::sTypeInfo      cTypeInfo;
+    /*----- TECSInfo -----*/
+
+    /*----- RawEntryDescriptor -----*/
+    [dynamic,optional]
+      call  nTECSInfo::sRawEntryDescriptorInfo   cREDInfo;
+    [dynamic,optional]
+      call  nTECSInfo::sEntryInfo     cEntryInfo;
+    /*----- RawEntryDescriptor -----*/
+
+    /*----- TECSUnit test -----*/
+      /* プラグインにより自動生成される */
+    [dynamic, optional]
+      call ::sUltrasonicSensor cUltrasonicSensor;
+    [dynamic, optional]
+      call ::sColorSensor cColorSensor;
+    [dynamic, optional]
+      call ::sTouchSensor cTouchSensor;
+    [dynamic, optional]
+      call ::sGyroSensor cGyroSensor;
+    [dynamic, optional]
+      call ::sMotor cMotor;
+    [dynamic, optional]
+      call ::sButton cButton;
+    [dynamic, optional]
+      call ::sLCD cLCD;
+    [dynamic, optional]
+      call ::sLED cLED;
+    [dynamic, optional]
+      call ::sBattery cBattery;
+    [dynamic, optional]
+      call ::sSpeaker cSpeaker;
+    [dynamic, optional]
+      call ::sBalancer cBalancer;
+    [dynamic, optional]
+      call ::sSharedMemory cSharedMemory;
+    [dynamic, optional]
+      call ::sFatFile cFatFile;
+    [dynamic, optional]
+      call ::sTarget cTarget;
+    /*----- TECSUnit test -----*/
+
+    attr {
+      int16_t LEN = 256;
+    };
+    var {
+      void *data;
+      [size_is(LEN)]
+        char *cell_entry;
+    };
+
+};

@@ -1,0 +1,17 @@
+signature sTarget {
+  int main([in] int8_t a, [in] int8_t b);
+};
+
+celltype tTarget {
+  entry sTarget eTarget;
+
+  var {
+    int8_t data1 = 0;
+    int8_t data2 = 0;
+  };
+};
+
+region rDomainEV3 {
+  cell tTarget Target {
+  };
+};

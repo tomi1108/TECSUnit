@@ -1,0 +1,193 @@
+const int32_t MRUBY_VM_STACK_SIZE = 81920;
+
+import( <EV3_common.cdl> );
+import( "tFatFile.cdl" );
+import( <TECSInfo.cdl> );
+
+// import( <TECSInfoAccessor.cdl> );
+
+/* ターゲットのインクルード */
+import( "target.cdl" );
+
+/* TECSUnit用 (引数・条件) 構造体 */
+import_C("src/unit_struct.h");
+
+/* セルタイプ"tJSMN"はプラグインにより自動生成される */
+signature sJSMN{
+  ER json_open( void );
+  ER json_parse_path(
+    [out,size_is(btr)] char_t *r_path,
+    [out,size_is(btr)] char_t *c_path,
+    [out,size_is(btr)] char_t *e_path,
+    [out,size_is(btr)] char_t *f_path,
+    [in] int16_t target_num,
+    [in] int16_t btr );
+  ER json_parse_arg(
+    [inout,size_is(btr)] struct tecsunit_obj *arguments,
+    [inout,size_is(btr)] struct tecsunit_obj *exp_val,
+    [out] int8_t *arg_num,
+    [in] int16_t target_num,
+    [in] int16_t btr );
+  ER json_parse_cond(
+    [inout,size_is(btr)] struct cond_obj *pre_cond,
+    [inout,size_is(btr)] struct cond_obj *post_cond,
+    [out] int16_t *pre_cond_num,
+    [out] int16_t *post_cond_num,
+    [in] int16_t target_num,
+    [in] int16_t btr );
+};
+
+/* セルタイプ"tTECSUnit"はプラグインにより自動生成される */
+signature sTECSUnit {
+  ER main( [in,string] const char_t *cell_path,
+             [in,string] const char_t *entry_path,
+             [in,string] const char_t *signature_path,
+             [in,string] const char_t *function_path,
+             [in] const struct tecsunit_obj *arguments,
+             [in] const struct tecsunit_obj *exp_val,
+             [out] void* data);
+};
+
+/* TECSUnit tTaskMainセルタイプ */
+celltype tTaskMain {
+    entry sTaskBody            eBody;
+    call  sTECSUnit            cUnit;
+    call  sJSMN                cJSMN;
+
+    /* EV3RT+TECS */
+    call sKernel cKernel;
+    call sLCD cLCD;
+    call sButton cButton;
+    call sFatFile cFatFile;
+
+    /* TECSInfo */
+    call  nTECSInfo::sTECSInfo cTECSInfo;
+    [dynamic,optional]
+        call  nTECSInfo::sNamespaceInfo cNSInfo;
+    [dynamic,optional]
+        call  nTECSInfo::sRegionInfo    cRegionInfo;
+    [dynamic,optional]
+        call  nTECSInfo::sCellInfo      cCellInfo;
+    [dynamic,optional]
+        call  nTECSInfo::sSignatureInfo cSignatureInfo;
+    [dynamic,optional]
+        call  nTECSInfo::sCelltypeInfo  cCelltypeInfo;
+    [dynamic,optional]
+        call  nTECSInfo::sVarDeclInfo   cVarDeclInfo;
+    [dynamic,optional]
+        call  nTECSInfo::sTypeInfo      cTypeInfo;
+    [dynamic,optional]
+        call  nTECSInfo::sFunctionInfo  cFunctionInfo;
+    [dynamic,optional]
+        call  nTECSInfo::sParamInfo     cParamInfo;
+    [dynamic,optional]
+        call  nTECSInfo::sEntryInfo     cEntryInfo;
+
+    attr{
+        int16_t NAME_LEN = 64;
+        int16_t DIM = 8; /* Dimension of Struct */
+        int16_t N_TARGET = 100; /* The Number of Target in .json */
+    };
+    var{
+        void* data;
+    /* Target Info */
+        [size_is(NAME_LEN)]
+            char_t  *target_path;
+        [size_is(NAME_LEN)]
+            char_t  *cell_path;
+        bool_t flag_find_cell;
+        [size_is(NAME_LEN)]
+            char_t  *region_path;
+        [size_is(NAME_LEN)]
+            char_t  *region_cell_path;
+        [size_is(NAME_LEN)]
+            char_t  *celltype_path;
+        [size_is(NAME_LEN)]
+            char_t  *var_path;
+        [size_is(NAME_LEN)]
+            char_t  *entry_path;
+        [size_is(NAME_LEN)]
+            char_t  *entry_path_tmp; /* from TECSInfo */
+        bool_t flag_find_entry;
+        [size_is(NAME_LEN)]
+            char_t  *signature_path;
+        [size_is(NAME_LEN)]
+            char_t  *function_path;
+        [size_is(NAME_LEN)]
+            char_t  *function_path_tmp; /* from TECSInfo */
+        bool_t flag_find_func;
+
+        char_t  arg_name[8][64]; // これはでかい
+        char_t  arg_type[8][64];
+        [size_is(NAME_LEN)]
+            char_t *return_type;
+
+        uint8_t n_arg; /* from TECSInfo */
+        uint8_t n_arg_json; /* from json */
+
+    /* Arguments & Expectation */
+        [size_is(DIM)]
+            struct tecsunit_obj *arg_struct;
+        struct tecsunit_obj exp_struct;
+
+    /* Pre & Post Conditions */
+        [size_is(DIM)]
+            struct cond_obj *pre_cond;
+        [size_is(DIM)]
+            struct cond_obj *post_cond;
+        int16_t n_pre_cond;
+        int16_t n_post_cond;
+
+    /* For File Systems */
+        // uint16_t bw;
+    };
+};
+
+
+region rDomainEV3{
+    cell tTask Task {
+        taskAttribute   = C_EXP("TA_ACT");
+        priority        = C_EXP("EV3_MRUBY_VM_PRIORITY");
+        systemStackSize = C_EXP("MRUBY_VM_STACK_SIZE");
+        //userStackSize = C_EXP("STACK_SIZE");
+        cBody         = TaskMain.eBody;
+    };
+    cell tTaskMain TaskMain {
+        cTECSInfo  = TECSInfo.eTECSInfo;
+        cUnit = TECSUnit.eUnit;
+        cJSMN = JSMN.eJSMN;
+        cFatFile = FatFile.eFatFile;
+
+        cKernel = HRP2Kernel.eKernel;
+        cButton = Button.eButton;
+        cLCD = LCD.eLCD;
+    };
+};
+
+/* TaskMainを生成した後にプラグインを適応 */
+generate( JSMNPlugin, rDomainEV3::TaskMain, "" );
+generate( TECSUnitPlugin, rDomainEV3::TaskMain, "" );
+
+region rDomainEV3{
+    cell tJSMN JSMN {
+      cLCD = LCD.eLCD;
+      cButton = Button.eButton;
+      cKernel = HRP2Kernel.eKernel;
+      cFatFile = FatFile.eFatFile;
+    };
+    cell tTECSUnit TECSUnit {
+        cTECSInfo  = TECSInfo.eTECSInfo;
+        cLCD_tmp = LCD.eLCD;
+        cButton_tmp = Button.eButton;
+        cKernel_tmp = HRP2Kernel.eKernel;
+        cFatFile_tmp = FatFile.eFatFile;
+    };
+
+    cell tFatFile FatFile{};
+
+/****** TECSInfo cell ******/
+    cell nTECSInfo::tTECSInfo TECSInfo {
+        // cTECSInfo = rTECSInfo::TECSInfoSub.eTECSInfo;
+        //  この結合は TECSInfoPlugin により生成されるので結合不要
+    };
+};

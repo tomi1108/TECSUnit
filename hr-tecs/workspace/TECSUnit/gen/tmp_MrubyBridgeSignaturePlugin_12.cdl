@@ -1,0 +1,32 @@
+/*
+ * MrubyBridgeSignaturePlugin:
+ *     signature=::sSharedMemory
+ *
+ *   => celltype=nMruby::tsSharedMemory
+ *      (bridge cell's celltype; generated in this file)
+ *      cell nMruby::tsSharedMemory BridgeCellName { cTECS = CellName.eEntry; };
+ *        where eEntry's signature must be ::sSharedMemory.
+ *      => class=TECS::TsSharedMemory
+ *         (mruby's class; accessible from your script)
+ *          bridge = TECS::TsSharedMemory.new("BridgeCellName")
+ */
+import( <mruby.cdl> );
+
+/****  Ruby => TECS Bridge Celltype (MBP500) ****/
+namespace nMruby{
+    // bridge celltype
+    [idx_is_id,active]   // not actually active, to avoid warning W1002, W1007
+    celltype tsSharedMemory {
+        call ::sSharedMemory cTECS;
+        attr {
+            [omit]
+            char_t *VMname = "VM";
+            [omit]
+            char_t *bridgeName = C_EXP( "$cell$" );
+        };
+    };
+    // bridge initializer celltype
+    celltype tsSharedMemory_Initializer {
+        entry sInitializeTECSBridge eInitialize;
+    };
+};
