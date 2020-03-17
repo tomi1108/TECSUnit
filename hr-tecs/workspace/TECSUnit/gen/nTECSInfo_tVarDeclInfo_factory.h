@@ -1669,8 +1669,6 @@
 #define PLACE_OF_tTaskMain_DIM                   VARDECL_PLACE_INIB
 #define OFFSET_OF_tTaskMain_N_TARGET              ((uint32_t)(intptr_t)&(((tTaskMain_INIB*)0)->N_TARGET))
 #define PLACE_OF_tTaskMain_N_TARGET              VARDECL_PLACE_INIB
-#define OFFSET_OF_tTaskMain_data                  ((uint32_t)(intptr_t)&(((tTaskMain_CB*)0)->data))
-#define PLACE_OF_tTaskMain_data                  VARDECL_PLACE_CB
 #define OFFSET_OF_tTaskMain_target_path           ((uint32_t)(intptr_t)&(((tTaskMain_INIB*)0)->target_path))
 #define PLACE_OF_tTaskMain_target_path           VARDECL_PLACE_INIB
 #define OFFSET_OF_tTaskMain_cell_path             ((uint32_t)(intptr_t)&(((tTaskMain_INIB*)0)->cell_path))

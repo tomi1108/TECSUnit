@@ -20,7 +20,7 @@ struct tag_sTECSUnit_VDES {
 
 /* シグニチャ関数テーブル #_SFT_# */
 struct tag_sTECSUnit_VMT {
-    ER             (*main__T)( const struct tag_sTECSUnit_VDES *edp, const char_t* cell_path, const char_t* entry_path, const char_t* signature_path, const char_t* function_path, const struct tecsunit_obj* arguments, const struct tecsunit_obj* exp_val, void* data );
+    ER             (*main__T)( const struct tag_sTECSUnit_VDES *edp, const char_t* cell_path, const char_t* entry_path, const char_t* signature_path, const char_t* function_path, const struct tecsunit_obj* arguments, const struct tecsunit_obj* exp_val );
 };
 
 /* シグニチャディスクリプタ(動的結合用) #_SDES_# */

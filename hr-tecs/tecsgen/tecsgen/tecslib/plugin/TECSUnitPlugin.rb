@@ -292,16 +292,17 @@ EOT
           if param.include?("int") || param.include?("INT") ||\
              param.include?("short") || param.include?("SHORT") ||\
              param.include?("long") || param.include?("LONG") then
-            paramSet.concat("VAR_out_int[#{int_count}]")
+            # voidポインタのインクリメントは１になるのでこの実装でOK
+            paramSet.concat("(int *) ( VAR_data + sizeof(int)*#{int_count} + sizeof(double)*#{double_count} + sizeof(char)*#{char_count} )")
             int_count += 1
           elsif param.include?("double") || param.include?("float") then
-            paramSet.concat("VAR_out_double[#{double_count}]")
+            paramSet.concat("(double *) ( VAR_data + sizeof(int)*#{int_count} + sizeof(double)*#{double_count} + sizeof(char)*#{char_count} )")
             double_count += 1
           elsif param.include?("char") || param.include?("CHAR") then
-            paramSet.concat("VAR_out_char[#{char_count}]")
+            paramSet.concat("(char *) ( VAR_data + sizeof(int)*#{int_count} + sizeof(double)*#{double_count} + sizeof(char)*#{char_count} )")
             char_count += 1
-      # ここまで
           end
+      # ここまで
         else #[in]指定子の場合
           if param.include?("struct") then
             paramSet.concat("&arguments[#{idx}].data.mem_#{param.sub(/\*/, '_buf').sub('const ', '').sub('struct ', '')}")
@@ -334,6 +335,13 @@ EOT
       else if( !strcmp( function_path, "#{f_name}" ) ){
 EOT
     end
+
+    if int_count + double_count + char_count > 0 then
+      file.print <<EOT
+        VAR_data = malloc( sizeof(int)*#{int_count} + sizeof(double)*#{double_count} + sizeof(char)*#{char_count} );
+EOT
+    end
+
     if exp_val == "" then
       file.print <<EOT
         c#{signature.get_name[1..-1]}_#{f_name}( #{paramSet} );
@@ -348,6 +356,12 @@ EOT
         }
 EOT
     end
+
+    if int_count + double_count + char_count > 0 then
+      file.print <<EOT
+        free( VAR_data );
+EOT
+    end
     out_check( file, int_count, double_count, char_count )
     file.print <<EOT
       }
@@ -356,26 +370,26 @@ EOT
 
   # TODO:out指定子の確認を行いたい
   def out_check( file, int_count, double_count, char_count )
-    for i in 1..int_count
-      file.print <<EOT
-        printf("[out]：#{i}番目の整数型の値：");
-        printf("%d\\n", VAR_out_int[#{i-1}]);
-EOT
-    end
+#     for i in 1..int_count
+#       file.print <<EOT
+#         printf("[out]：#{i}番目の整数型の値：");
+#         printf("%d\\n", VAR_out_int[#{i-1}]);
+# EOT
+#     end
 
-    for i in 1..double_count
-      file.print <<EOT
-        printf("[out]：#{i}番目の浮動小数点型の値：");
-        printf("%f\\n", VAR_out_double[#{i-1}]);
-EOT
-    end
+#     for i in 1..double_count
+#       file.print <<EOT
+#         printf("[out]：#{i}番目の浮動小数点型の値：");
+#         printf("%f\\n", VAR_out_double[#{i-1}]);
+# EOT
+#     end
 
-    for i in 1..char_count
-      file.print <<EOT
-        printf("[out]：#{i}番目のchar型の値：");
-        printf("%s\\n", VAR_out_char[#{i-1}]);
-EOT
-    end
+#     for i in 1..char_count
+#       file.print <<EOT
+#         printf("[out]：#{i}番目のchar型の値：");
+#         printf("%s\\n", VAR_out_char[#{i-1}]);
+# EOT
+#     end
 
   end
   #=== 後ろの CDL コードを生成

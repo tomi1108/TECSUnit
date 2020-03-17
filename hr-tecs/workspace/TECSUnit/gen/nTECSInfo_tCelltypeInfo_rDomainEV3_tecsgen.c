@@ -204,7 +204,6 @@ extern struct tag_nTECSInfo_sCallInfo_VDES rDomainEV3_rTECSInfo_tTaskMain_cEntry
 extern struct tag_nTECSInfo_sVarDeclInfo_VDES rDomainEV3_rTECSInfo_tTaskMain_NAME_LENVarDeclInfo_eVarDeclInfo_des;
 extern struct tag_nTECSInfo_sVarDeclInfo_VDES rDomainEV3_rTECSInfo_tTaskMain_DIMVarDeclInfo_eVarDeclInfo_des;
 extern struct tag_nTECSInfo_sVarDeclInfo_VDES rDomainEV3_rTECSInfo_tTaskMain_N_TARGETVarDeclInfo_eVarDeclInfo_des;
-extern struct tag_nTECSInfo_sVarDeclInfo_VDES rDomainEV3_rTECSInfo_tTaskMain_dataVarDeclInfo_eVarDeclInfo_des;
 extern struct tag_nTECSInfo_sVarDeclInfo_VDES rDomainEV3_rTECSInfo_tTaskMain_target_pathVarDeclInfo_eVarDeclInfo_des;
 extern struct tag_nTECSInfo_sVarDeclInfo_VDES rDomainEV3_rTECSInfo_tTaskMain_cell_pathVarDeclInfo_eVarDeclInfo_des;
 extern struct tag_nTECSInfo_sVarDeclInfo_VDES rDomainEV3_rTECSInfo_tTaskMain_flag_find_cellVarDeclInfo_eVarDeclInfo_des;
@@ -538,7 +537,6 @@ struct tag_nTECSInfo_sVarDeclInfo_VDES * const rDomainEV3_rTECSInfo_tTaskMainCel
     &rDomainEV3_rTECSInfo_tTaskMain_N_TARGETVarDeclInfo_eVarDeclInfo_des,
 };
 struct tag_nTECSInfo_sVarDeclInfo_VDES * const rDomainEV3_rTECSInfo_tTaskMainCelltypeInfo_cVarInfo[] = {
-    &rDomainEV3_rTECSInfo_tTaskMain_dataVarDeclInfo_eVarDeclInfo_des,
     &rDomainEV3_rTECSInfo_tTaskMain_target_pathVarDeclInfo_eVarDeclInfo_des,
     &rDomainEV3_rTECSInfo_tTaskMain_cell_pathVarDeclInfo_eVarDeclInfo_des,
     &rDomainEV3_rTECSInfo_tTaskMain_flag_find_cellVarDeclInfo_eVarDeclInfo_des,
@@ -1202,7 +1200,7 @@ nTECSInfo_tCelltypeInfo_INIB nTECSInfo_tCelltypeInfo_INIB_tab[] = {
         rDomainEV3_rTECSInfo_tTaskMainCelltypeInfo_cAttrInfo, /* #_CCP3B_# */
         3,                                       /* length of cAttrInfo (n_cAttrInfo) #_CCP4_# */
         rDomainEV3_rTECSInfo_tTaskMainCelltypeInfo_cVarInfo, /* #_CCP3B_# */
-        26,                                      /* length of cVarInfo (n_cVarInfo) #_CCP4_# */
+        25,                                      /* length of cVarInfo (n_cVarInfo) #_CCP4_# */
         /* entry port #_EP_# */ 
         /* attribute(RO) */ 
         "tTaskMain",                             /* name */

@@ -223,8 +223,6 @@
 #define E_ID    (-18)   /* illegal ID */
 #endif
 
-int8_t
-mem_cal();
 static void
 find_cell_by_path( CELLCB *p_cellcb, char_t *path );
 static void
@@ -274,7 +272,6 @@ eBody_main(CELLIDX idx)
 
     /* ここに処理本体を記述します #_TEFB_# */
     int8_t i, j, k;
-    int8_t mem_size;
     // int8_t bw;
     FRESULT res;
     // FATFS fatfs;
@@ -381,7 +378,6 @@ eBody_main(CELLIDX idx)
             cLCD_drawString( VAR_arg_type[i], 15, 3 + i );
             strcpy( VAR_arg_struct[i].type, VAR_arg_type[i] );
         }
-        mem_size = mem_cal();
         strcpy( VAR_exp_struct.type, VAR_return_type );
         cLCD_drawString( "- Return Type:", 0, 3 + i );
         cLCD_drawString( VAR_return_type, 15, 3 + i );
@@ -433,11 +429,7 @@ eBody_main(CELLIDX idx)
 
 
 /* Unit Test */
-        if( mem_size > 0 ){
-            VAR_data = malloc(mem_size);
-        }
-        ercd2 = cUnit_main( VAR_region_cell_path, VAR_entry_path, VAR_signature_path, VAR_function_path, &VAR_arg_struct, &VAR_exp_struct, VAR_data );
-        free(VAR_data);
+        ercd2 = cUnit_main( VAR_region_cell_path, VAR_entry_path, VAR_signature_path, VAR_function_path, &VAR_arg_struct, &VAR_exp_struct );
 
         /* Wait until Enter is pressed */
         while(1){
@@ -526,29 +518,6 @@ eBody_main(CELLIDX idx)
 /* #[<POSTAMBLE>]#
  *   ?????겼????????ؿ?????ޤ?
  * #[</POSTAMBLE>]#*/
-int8_t
-mem_cal()
-{
-    int8_t i, result = 0;
-    for( i = 0; i < VAR_n_arg; i++ ){
-        if( strstr( VAR_arg_struct[i].type, "*") != NULL && strstr( VAR_arg_struct[i].type, "const") == NULL ){
-            if( strstr(VAR_arg_struct[i].type, "int") != NULL || strstr(VAR_arg_struct[i].type, "INT") != NULL){
-                result += sizeof(int);
-            }else if( strstr(VAR_arg_struct[i].type, "short") != NULL || strstr(VAR_arg_struct[i].type, "SHORT") != NULL ){
-                result += sizeof(short);
-            }else if( strstr(VAR_arg_struct[i].type, "long") != NULL || strstr(VAR_arg_struct[i].type, "LONG") != NULL ){
-                result += sizeof(long);
-            }else if( strstr(VAR_arg_struct[i].type, "double") != NULL ){
-                result += sizeof(double);
-            }else if( strstr(VAR_arg_struct[i].type, "float") != NULL ){
-                result += sizeof(float);
-            }else if( strstr(VAR_arg_struct[i].type, "char") != NULL || strstr(VAR_arg_struct[i].type, "CHAR") != NULL ){
-                result += sizeof(char);
-            }
-        }
-    }
-    return result;
-};
 
 static void
 find_cell_by_path( CELLCB *p_cellcb, char_t *path )

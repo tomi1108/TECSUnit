@@ -44,8 +44,8 @@ signature sTECSUnit {
              [in,string] const char_t *signature_path,
              [in,string] const char_t *function_path,
              [in] const struct tecsunit_obj *arguments,
-             [in] const struct tecsunit_obj *exp_val,
-             [out] void* data);
+             [in] const struct tecsunit_obj *exp_val
+             );
 };
 
 /* TECSUnit tTaskMainセルタイプ */
@@ -89,7 +89,6 @@ celltype tTaskMain {
         int16_t N_TARGET = 100; /* The Number of Target in .json */
     };
     var{
-        void* data;
     /* Target Info */
         [size_is(NAME_LEN)]
             char_t  *target_path;

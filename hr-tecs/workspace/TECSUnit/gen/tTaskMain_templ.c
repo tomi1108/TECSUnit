@@ -13,7 +13,6 @@
  * NAME_LEN         int16_t          ATTR_NAME_LEN   
  * DIM              int16_t          ATTR_DIM        
  * N_TARGET         int16_t          ATTR_N_TARGET   
- * data             void*            VAR_data        
  * target_path      char_t*          VAR_target_path 
  * cell_path        char_t*          VAR_cell_path   
  * flag_find_cell   bool_t           VAR_flag_find_cell
@@ -42,7 +41,7 @@
  *
  * 呼び口関数 #_TCPF_#
  * call port: cUnit signature: sTECSUnit context:task
- *   ER             cUnit_main( const char_t* cell_path, const char_t* entry_path, const char_t* signature_path, const char_t* function_path, const struct tecsunit_obj* arguments, const struct tecsunit_obj* exp_val, void* data );
+ *   ER             cUnit_main( const char_t* cell_path, const char_t* entry_path, const char_t* signature_path, const char_t* function_path, const struct tecsunit_obj* arguments, const struct tecsunit_obj* exp_val );
  * call port: cJSMN signature: sJSMN context:task
  *   ER             cJSMN_json_open( );
  *   ER             cJSMN_json_parse_path( char_t* r_path, char_t* c_path, char_t* e_path, char_t* f_path, int16_t target_num, int16_t btr );

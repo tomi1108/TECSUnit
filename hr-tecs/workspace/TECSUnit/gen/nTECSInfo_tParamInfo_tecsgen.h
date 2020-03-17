@@ -67,7 +67,7 @@ ER           nTECSInfo_tParamInfo_eParamInfo_getDir(nTECSInfo_tParamInfo_IDX idx
 #ifndef TOPPERS_CB_TYPE_ONLY
 
 #define nTECSInfo_tParamInfo_ID_BASE        (1)  /* ID のベース  #_NIDB_# */
-#define nTECSInfo_tParamInfo_N_CELL      (281)  /* セルの個数  #_NCEL_# */
+#define nTECSInfo_tParamInfo_N_CELL      (280)  /* セルの個数  #_NCEL_# */
 
 /* IDXの正当性チェックマクロ #_CVI_# */
 #define nTECSInfo_tParamInfo_VALID_IDX(IDX) (1)

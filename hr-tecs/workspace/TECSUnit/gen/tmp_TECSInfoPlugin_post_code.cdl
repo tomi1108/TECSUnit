@@ -3302,7 +3302,6 @@ region rDomainEV3{
             cParamInfo[]    = sTECSUnit_main_function_pathParamInfo.eParamInfo;
             cParamInfo[]    = sTECSUnit_main_argumentsParamInfo.eParamInfo;
             cParamInfo[]    = sTECSUnit_main_exp_valParamInfo.eParamInfo;
-            cParamInfo[]    = sTECSUnit_main_dataParamInfo.eParamInfo;
             cReturnTypeInfo = ERTypeInfo.eTypeInfo;
         };
         cell nTECSInfo::tParamInfo sTECSUnit_main_cell_pathParamInfo {
@@ -3352,14 +3351,6 @@ region rDomainEV3{
             countIsExpr     = (char_t*)0;
             stringExpr      = (char_t*)0;
             cTypeInfo       = struct__tecsunit_obj_Ptr_TypeInfo.eTypeInfo;
-        };
-        cell nTECSInfo::tParamInfo sTECSUnit_main_dataParamInfo {
-            name            = "data";
-            dir             = PARAM_DIR_OUT;
-            sizeIsExpr      = (char_t*)0;
-            countIsExpr     = (char_t*)0;
-            stringExpr      = (char_t*)0;
-            cTypeInfo       = void_Ptr_TypeInfo.eTypeInfo;
         };
         cell nTECSInfo::tCelltypeInfo tTaskCelltypeInfo {
             name             = "tTask";
@@ -4221,7 +4212,6 @@ region rDomainEV3{
             cAttrInfo[]     = tTaskMain_NAME_LENVarDeclInfo.eVarDeclInfo;
             cAttrInfo[]     = tTaskMain_DIMVarDeclInfo.eVarDeclInfo;
             cAttrInfo[]     = tTaskMain_N_TARGETVarDeclInfo.eVarDeclInfo;
-            cVarInfo[]      = tTaskMain_dataVarDeclInfo.eVarDeclInfo;
             cVarInfo[]      = tTaskMain_target_pathVarDeclInfo.eVarDeclInfo;
             cVarInfo[]      = tTaskMain_cell_pathVarDeclInfo.eVarDeclInfo;
             cVarInfo[]      = tTaskMain_flag_find_cellVarDeclInfo.eVarDeclInfo;
@@ -4566,14 +4556,6 @@ region rDomainEV3{
             offset          = C_EXP( "OFFSET_OF_tTaskMain_N_TARGET" );
             place           = C_EXP( "PLACE_OF_tTaskMain_N_TARGET" );
             cTypeInfo       = int16_tTypeInfo.eTypeInfo;
-        };
-        cell nTECSInfo::tVarDeclInfo tTaskMain_dataVarDeclInfo {
-            name            = "data";
-            sizeIsExpr      = (char_t*)0;
-            declType        = DECLTYPE_VAR;
-            offset          = C_EXP( "OFFSET_OF_tTaskMain_data" );
-            place           = C_EXP( "PLACE_OF_tTaskMain_data" );
-            cTypeInfo       = void_Ptr_TypeInfo.eTypeInfo;
         };
         cell nTECSInfo::tVarDeclInfo tTaskMain_target_pathVarDeclInfo {
             name            = "target_path";

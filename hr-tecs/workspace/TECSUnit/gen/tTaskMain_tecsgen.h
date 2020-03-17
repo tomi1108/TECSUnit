@@ -95,7 +95,6 @@ typedef struct tag_tTaskMain_CB {
     struct tag_nTECSInfo_sEntryInfo_VDES *cEntryInfo;
     /* call port #_NEP_# */ 
     /* var #_VA_# */ 
-    void*          data;
     bool_t         flag_find_cell;
     bool_t         flag_find_entry;
     bool_t         flag_find_func;
@@ -180,7 +179,6 @@ void         tTaskMain_eBody_main(tTaskMain_IDX idx);
 
 
 /* var アクセスマクロ #_VAM_# */
-#define tTaskMain_VAR_data(p_that)	((p_that)->data)
 #define tTaskMain_VAR_target_path(p_that)	((p_that)->_inib->target_path)
 #define tTaskMain_VAR_cell_path(p_that)	((p_that)->_inib->cell_path)
 #define tTaskMain_VAR_flag_find_cell(p_that)	((p_that)->flag_find_cell)
@@ -207,8 +205,6 @@ void         tTaskMain_eBody_main(tTaskMain_IDX idx);
 #define tTaskMain_VAR_n_pre_cond(p_that)	((p_that)->n_pre_cond)
 #define tTaskMain_VAR_n_post_cond(p_that)	((p_that)->n_post_cond)
 
-#define tTaskMain_GET_data(p_that)	((p_that)->data)
-#define tTaskMain_SET_data(p_that,val)	((p_that)->data=(val))
 #define tTaskMain_GET_target_path(p_that)	((p_that)->target_path)
 #define tTaskMain_SET_target_path(p_that,val)	((p_that)->target_path=(val))
 #define tTaskMain_GET_cell_path(p_that)	((p_that)->cell_path)
@@ -262,9 +258,9 @@ void         tTaskMain_eBody_main(tTaskMain_IDX idx);
 
 #ifndef TECSFLOW
  /* 呼び口関数マクロ #_CPM_# */
-#define tTaskMain_cUnit_main( p_that, cell_path, entry_path, signature_path, function_path, arguments, exp_val, data ) \
+#define tTaskMain_cUnit_main( p_that, cell_path, entry_path, signature_path, function_path, arguments, exp_val ) \
 	  tTECSUnit_eUnit_main( \
-	   &tTECSUnit_CB_tab[0], (cell_path), (entry_path), (signature_path), (function_path), (arguments), (exp_val), (data) )
+	   &tTECSUnit_CB_tab[0], (cell_path), (entry_path), (signature_path), (function_path), (arguments), (exp_val) )
 #define tTaskMain_cJSMN_json_open( p_that ) \
 	  tJSMN_eJSMN_json_open( \
 	   &tJSMN_CB_tab[0] )
@@ -618,9 +614,9 @@ void         tTaskMain_eBody_main(tTaskMain_IDX idx);
 	   (p_that)->cEntryInfo )
 
 #else  /* TECSFLOW */
-#define tTaskMain_cUnit_main( p_that, cell_path, entry_path, signature_path, function_path, arguments, exp_val, data ) \
+#define tTaskMain_cUnit_main( p_that, cell_path, entry_path, signature_path, function_path, arguments, exp_val ) \
 	  (p_that)->cUnit.main__T( \
- (cell_path), (entry_path), (signature_path), (function_path), (arguments), (exp_val), (data) )
+ (cell_path), (entry_path), (signature_path), (function_path), (arguments), (exp_val) )
 #define tTaskMain_cJSMN_json_open( p_that ) \
 	  (p_that)->cJSMN.json_open__T( \
  )
@@ -1189,7 +1185,6 @@ tTaskMain_cEntryInfo_unjoin( tTaskMain_CB  *p_that  )
 
 
 /* var アクセスマクロ(短縮形) #_VAMA_# */
-#define VAR_data             tTaskMain_VAR_data( p_cellcb )
 #define VAR_target_path      tTaskMain_VAR_target_path( p_cellcb )
 #define VAR_cell_path        tTaskMain_VAR_cell_path( p_cellcb )
 #define VAR_flag_find_cell   tTaskMain_VAR_flag_find_cell( p_cellcb )
@@ -1217,8 +1212,8 @@ tTaskMain_cEntryInfo_unjoin( tTaskMain_CB  *p_that  )
 #define VAR_n_post_cond      tTaskMain_VAR_n_post_cond( p_cellcb )
 
 /* 呼び口関数マクロ（短縮形）#_CPMA_# */
-#define cUnit_main( cell_path, entry_path, signature_path, function_path, arguments, exp_val, data ) \
-          ((void)p_cellcb, tTaskMain_cUnit_main( p_cellcb, cell_path, entry_path, signature_path, function_path, arguments, exp_val, data ))
+#define cUnit_main( cell_path, entry_path, signature_path, function_path, arguments, exp_val ) \
+          ((void)p_cellcb, tTaskMain_cUnit_main( p_cellcb, cell_path, entry_path, signature_path, function_path, arguments, exp_val ))
 #define cJSMN_json_open( ) \
           ((void)p_cellcb, tTaskMain_cJSMN_json_open( p_cellcb ))
 #define cJSMN_json_parse_path( r_path, c_path, e_path, f_path, target_num, btr ) \

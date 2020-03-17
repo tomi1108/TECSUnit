@@ -69,7 +69,7 @@ ER           nTECSInfo_tVarDeclInfo_eVarDeclInfo_getSizeIs(nTECSInfo_tVarDeclInf
 #ifndef TOPPERS_CB_TYPE_ONLY
 
 #define nTECSInfo_tVarDeclInfo_ID_BASE        (1)  /* ID のベース  #_NIDB_# */
-#define nTECSInfo_tVarDeclInfo_N_CELL      (168)  /* セルの個数  #_NCEL_# */
+#define nTECSInfo_tVarDeclInfo_N_CELL      (167)  /* セルの個数  #_NCEL_# */
 
 /* IDXの正当性チェックマクロ #_CVI_# */
 #define nTECSInfo_tVarDeclInfo_VALID_IDX(IDX) (1)

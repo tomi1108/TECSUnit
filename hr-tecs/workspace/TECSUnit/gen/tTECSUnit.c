@@ -316,7 +316,7 @@ ER getRawEntryDescriptor( CELLCB *p_cellcb, char_t *entry_path, void **rawEntryD
  * oneway:       false
  * #[</ENTRY_FUNC>]# */
 ER
-eUnit_main(CELLIDX idx, const char_t* cell_path, const char_t* entry_path, const char_t* signature_path, const char_t* function_path, const struct tecsunit_obj* arguments, const struct tecsunit_obj* exp_val, void* data)
+eUnit_main(CELLIDX idx, const char_t* cell_path, const char_t* entry_path, const char_t* signature_path, const char_t* function_path, const struct tecsunit_obj* arguments, const struct tecsunit_obj* exp_val)
 {
   CELLCB  *p_cellcb;
   if (VALID_IDX(idx)) {
@@ -394,14 +394,10 @@ eUnit_main(CELLIDX idx, const char_t* cell_path, const char_t* entry_path, const
         return 0;
       }
       else if( !strcmp( function_path, "getRGBRaw" ) ){
-        cColorSensor_getRGBRaw( VAR_out_int[0], VAR_out_int[1], VAR_out_int[2] );
+        VAR_data = malloc( sizeof(int)*3 + sizeof(double)*0 + sizeof(char)*0 );
+        cColorSensor_getRGBRaw( (int *) ( VAR_data + sizeof(int)*0 + sizeof(double)*0 + sizeof(char)*0 ), (int *) ( VAR_data + sizeof(int)*1 + sizeof(double)*0 + sizeof(char)*0 ), (int *) ( VAR_data + sizeof(int)*2 + sizeof(double)*0 + sizeof(char)*0 ) );
         return 0;
-        printf("[out]：1番目の整数型の値：");
-        printf("%d\n", VAR_out_int[0]);
-        printf("[out]：2番目の整数型の値：");
-        printf("%d\n", VAR_out_int[1]);
-        printf("[out]：3番目の整数型の値：");
-        printf("%d\n", VAR_out_int[2]);
+        free( VAR_data );
       }
   }
   else if( !strcmp(signature_path, "sTouchSensor" ) ){
@@ -534,15 +530,13 @@ eUnit_main(CELLIDX idx, const char_t* cell_path, const char_t* entry_path, const
         }
       }
       else if( !strcmp( function_path, "getFontSize" ) ){
-        if( exp_val->data.mem_ER == cLCD_getFontSize( arguments[0].data.mem_lcdfont_t, VAR_out_int[0], VAR_out_int[1] ) ){
+        VAR_data = malloc( sizeof(int)*2 + sizeof(double)*0 + sizeof(char)*0 );
+        if( exp_val->data.mem_ER == cLCD_getFontSize( arguments[0].data.mem_lcdfont_t, (int *) ( VAR_data + sizeof(int)*0 + sizeof(double)*0 + sizeof(char)*0 ), (int *) ( VAR_data + sizeof(int)*1 + sizeof(double)*0 + sizeof(char)*0 ) ) ){
             return 0;
         }else{
             return -1;
         }
-        printf("[out]：1番目の整数型の値：");
-        printf("%d\n", VAR_out_int[0]);
-        printf("[out]：2番目の整数型の値：");
-        printf("%d\n", VAR_out_int[1]);
+        free( VAR_data );
       }
       else if( !strcmp( function_path, "drawString" ) ){
         if( exp_val->data.mem_ER == cLCD_drawString( arguments[0].data.mem_char_buf, arguments[1].data.mem_int32_t, arguments[2].data.mem_int32_t ) ){
@@ -647,12 +641,10 @@ eUnit_main(CELLIDX idx, const char_t* cell_path, const char_t* entry_path, const
     setRawEntryDescriptor( BalancerDesc, sBalancer, rawDesc );
     cBalancer_set_descriptor( BalancerDesc );
       if( !strcmp( function_path, "control" ) ){
-        cBalancer_control( arguments[0].data.mem_int16_t, arguments[1].data.mem_int16_t, arguments[2].data.mem_int16_t, arguments[3].data.mem_int16_t, arguments[4].data.mem_int32_t, arguments[5].data.mem_int32_t, arguments[6].data.mem_int16_t, VAR_out_int[0], VAR_out_int[1], arguments[9].data.mem_int32_t );
+        VAR_data = malloc( sizeof(int)*2 + sizeof(double)*0 + sizeof(char)*0 );
+        cBalancer_control( arguments[0].data.mem_int16_t, arguments[1].data.mem_int16_t, arguments[2].data.mem_int16_t, arguments[3].data.mem_int16_t, arguments[4].data.mem_int32_t, arguments[5].data.mem_int32_t, arguments[6].data.mem_int16_t, (int *) ( VAR_data + sizeof(int)*0 + sizeof(double)*0 + sizeof(char)*0 ), (int *) ( VAR_data + sizeof(int)*1 + sizeof(double)*0 + sizeof(char)*0 ), arguments[9].data.mem_int32_t );
         return 0;
-        printf("[out]：1番目の整数型の値：");
-        printf("%d\n", VAR_out_int[0]);
-        printf("[out]：2番目の整数型の値：");
-        printf("%d\n", VAR_out_int[1]);
+        free( VAR_data );
       }
       else if( !strcmp( function_path, "init" ) ){
         cBalancer_init(  );
@@ -699,31 +691,31 @@ eUnit_main(CELLIDX idx, const char_t* cell_path, const char_t* entry_path, const
         }
       }
       else if( !strcmp( function_path, "fread" ) ){
-        if( exp_val->data.mem_FRESULT == cFatFile_fread( VAR_out_char[0], arguments[1].data.mem_UINT ) ){
+        VAR_data = malloc( sizeof(int)*0 + sizeof(double)*0 + sizeof(char)*1 );
+        if( exp_val->data.mem_FRESULT == cFatFile_fread( (char *) ( VAR_data + sizeof(int)*0 + sizeof(double)*0 + sizeof(char)*0 ), arguments[1].data.mem_UINT ) ){
             return 0;
         }else{
             return -1;
         }
-        printf("[out]：1番目のchar型の値：");
-        printf("%s\n", VAR_out_char[0]);
+        free( VAR_data );
       }
       else if( !strcmp( function_path, "fwrite" ) ){
-        if( exp_val->data.mem_FRESULT == cFatFile_fwrite( arguments[0].data.mem_TCHAR_buf, arguments[1].data.mem_UINT, VAR_out_int[0] ) ){
+        VAR_data = malloc( sizeof(int)*1 + sizeof(double)*0 + sizeof(char)*0 );
+        if( exp_val->data.mem_FRESULT == cFatFile_fwrite( arguments[0].data.mem_TCHAR_buf, arguments[1].data.mem_UINT, (int *) ( VAR_data + sizeof(int)*0 + sizeof(double)*0 + sizeof(char)*0 ) ) ){
             return 0;
         }else{
             return -1;
         }
-        printf("[out]：1番目の整数型の値：");
-        printf("%d\n", VAR_out_int[0]);
+        free( VAR_data );
       }
       else if( !strcmp( function_path, "fgets" ) ){
-        if( exp_val->data.mem_TCHAR_buf == cFatFile_fgets( VAR_out_char[0], arguments[1].data.mem_uint_t ) ){
+        VAR_data = malloc( sizeof(int)*0 + sizeof(double)*0 + sizeof(char)*1 );
+        if( exp_val->data.mem_TCHAR_buf == cFatFile_fgets( (char *) ( VAR_data + sizeof(int)*0 + sizeof(double)*0 + sizeof(char)*0 ), arguments[1].data.mem_uint_t ) ){
             return 0;
         }else{
             return -1;
         }
-        printf("[out]：1番目のchar型の値：");
-        printf("%s\n", VAR_out_char[0]);
+        free( VAR_data );
       }
       else if( !strcmp( function_path, "unlink" ) ){
         if( exp_val->data.mem_FRESULT == cFatFile_unlink( arguments[0].data.mem_TCHAR_buf ) ){

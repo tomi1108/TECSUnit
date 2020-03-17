@@ -425,7 +425,7 @@
 #define nTECSInfo_tParamInfo__IDX_is_ID_act                (false)
 #define nTECSInfo_tParamInfo__sizeOfCB                     ((0))
 #define nTECSInfo_tParamInfo__sizeOfINIB                   ((sizeof(nTECSInfo_tParamInfo_INIB)))
-#define nTECSInfo_tParamInfo__NCELLINLINKUNIT (281)
+#define nTECSInfo_tParamInfo__NCELLINLINKUNIT (280)
 
 #include "nTECSInfo_tCelltypeInfo_tecsgen.h"
 #define nTECSInfo_tCelltypeInfo__IDX_is_ID_act             (false)
@@ -449,7 +449,7 @@
 #define nTECSInfo_tVarDeclInfo__IDX_is_ID_act              (false)
 #define nTECSInfo_tVarDeclInfo__sizeOfCB                   ((0))
 #define nTECSInfo_tVarDeclInfo__sizeOfINIB                 ((sizeof(nTECSInfo_tVarDeclInfo_INIB)))
-#define nTECSInfo_tVarDeclInfo__NCELLINLINKUNIT (168)
+#define nTECSInfo_tVarDeclInfo__NCELLINLINKUNIT (167)
 
 #include "nTECSInfo_tRegionInfo_tecsgen.h"
 #define nTECSInfo_tRegionInfo__IDX_is_ID_act               (false)

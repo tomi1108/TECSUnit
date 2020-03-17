@@ -14,11 +14,11 @@ struct tag_tTECSUnit_eUnit_DES {
 
 /* 受け口スケルトン関数 #_EPSF_# */
 /* eUnit */
-ER             tTECSUnit_eUnit_main_skel( const struct tag_sTECSUnit_VDES *epd, const char_t* cell_path, const char_t* entry_path, const char_t* signature_path, const char_t* function_path, const struct tecsunit_obj* arguments, const struct tecsunit_obj* exp_val, void* data)
+ER             tTECSUnit_eUnit_main_skel( const struct tag_sTECSUnit_VDES *epd, const char_t* cell_path, const char_t* entry_path, const char_t* signature_path, const char_t* function_path, const struct tecsunit_obj* arguments, const struct tecsunit_obj* exp_val)
 {
     struct tag_tTECSUnit_eUnit_DES *lepd
         = (struct tag_tTECSUnit_eUnit_DES *)epd;
-    return tTECSUnit_eUnit_main( lepd->idx, cell_path, entry_path, signature_path, function_path, arguments, exp_val, data );
+    return tTECSUnit_eUnit_main( lepd->idx, cell_path, entry_path, signature_path, function_path, arguments, exp_val );
 }
 
 /* 受け口スケルトン関数テーブル #_EPSFT_# */

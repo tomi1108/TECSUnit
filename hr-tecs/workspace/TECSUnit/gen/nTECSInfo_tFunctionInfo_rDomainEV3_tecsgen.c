@@ -609,7 +609,6 @@ extern struct tag_nTECSInfo_sParamInfo_VDES rDomainEV3_rTECSInfo_sTECSUnit_main_
 extern struct tag_nTECSInfo_sParamInfo_VDES rDomainEV3_rTECSInfo_sTECSUnit_main_function_pathParamInfo_eParamInfo_des;
 extern struct tag_nTECSInfo_sParamInfo_VDES rDomainEV3_rTECSInfo_sTECSUnit_main_argumentsParamInfo_eParamInfo_des;
 extern struct tag_nTECSInfo_sParamInfo_VDES rDomainEV3_rTECSInfo_sTECSUnit_main_exp_valParamInfo_eParamInfo_des;
-extern struct tag_nTECSInfo_sParamInfo_VDES rDomainEV3_rTECSInfo_sTECSUnit_main_dataParamInfo_eParamInfo_des;
 extern struct tag_nTECSInfo_sTypeInfo_VDES rDomainEV3_rTECSInfo_ERTypeInfo_eTypeInfo_des;
 
 extern struct tag_nTECSInfo_sParamInfo_VDES rDomainEV3_rTECSInfo_nMruby_sInitializeBridge_initializeBridge_mrbParamInfo_eParamInfo_des;
@@ -1464,7 +1463,6 @@ struct tag_nTECSInfo_sParamInfo_VDES * const rDomainEV3_rTECSInfo_sTECSUnit_main
     &rDomainEV3_rTECSInfo_sTECSUnit_main_function_pathParamInfo_eParamInfo_des,
     &rDomainEV3_rTECSInfo_sTECSUnit_main_argumentsParamInfo_eParamInfo_des,
     &rDomainEV3_rTECSInfo_sTECSUnit_main_exp_valParamInfo_eParamInfo_des,
-    &rDomainEV3_rTECSInfo_sTECSUnit_main_dataParamInfo_eParamInfo_des,
 };
 
 struct tag_nTECSInfo_sParamInfo_VDES * const rDomainEV3_rTECSInfo_nMruby_sInitializeBridge_initializeBridgeFunctionInfo_cParamInfo[] = {
@@ -3816,7 +3814,7 @@ nTECSInfo_tFunctionInfo_INIB nTECSInfo_tFunctionInfo_INIB_tab[] = {
     {
         /* call port (INIB) #_CP_# */ 
         rDomainEV3_rTECSInfo_sTECSUnit_mainFunctionInfo_cParamInfo, /* #_CCP3B_# */
-        7,                                       /* length of cParamInfo (n_cParamInfo) #_CCP4_# */
+        6,                                       /* length of cParamInfo (n_cParamInfo) #_CCP4_# */
         &rDomainEV3_rTECSInfo_ERTypeInfo_eTypeInfo_des, /* cReturnTypeInfo #_CCP1_# */
         /* entry port #_EP_# */ 
         /* attribute(RO) */ 

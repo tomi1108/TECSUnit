@@ -123,7 +123,7 @@ typedef struct tag_tTECSUnit_CB *tTECSUnit_IDX;
 
 /* 受け口関数プロトタイプ宣言 #_EPP_# */
 /* sTECSUnit */
-ER           tTECSUnit_eUnit_main(tTECSUnit_IDX idx, const char_t* cell_path, const char_t* entry_path, const char_t* signature_path, const char_t* function_path, const struct tecsunit_obj* arguments, const struct tecsunit_obj* exp_val, void* data);
+ER           tTECSUnit_eUnit_main(tTECSUnit_IDX idx, const char_t* cell_path, const char_t* entry_path, const char_t* signature_path, const char_t* function_path, const struct tecsunit_obj* arguments, const struct tecsunit_obj* exp_val);
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */
@@ -1186,7 +1186,7 @@ extern "C" {
 
 /* 受け口スケルトン関数プロトタイプ宣言（VMT不要最適化により参照するもの） #_EPSP_# */
 /* eUnit */
-ER             tTECSUnit_eUnit_main_skel( const struct tag_sTECSUnit_VDES *epd, const char_t* cell_path, const char_t* entry_path, const char_t* signature_path, const char_t* function_path, const struct tecsunit_obj* arguments, const struct tecsunit_obj* exp_val, void* data);
+ER             tTECSUnit_eUnit_main_skel( const struct tag_sTECSUnit_VDES *epd, const char_t* cell_path, const char_t* entry_path, const char_t* signature_path, const char_t* function_path, const struct tecsunit_obj* arguments, const struct tecsunit_obj* exp_val);
 
 #ifndef TOPPERS_CB_TYPE_ONLY
 
