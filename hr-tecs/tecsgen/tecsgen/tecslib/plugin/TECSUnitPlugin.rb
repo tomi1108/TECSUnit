@@ -287,6 +287,7 @@ EOT
       n = func.get_paramlist.get_items.length
       func.get_paramlist.get_items.each_with_index { |paramDecl, idx|
         param = paramDecl.get_type.get_type_str
+      # TODO:ここから
         if param.include?("*") && !param.include?("const") then # paramが[out]指定子付きと判断
           if param.include?("int") || param.include?("INT") ||\
              param.include?("short") || param.include?("SHORT") ||\
@@ -299,6 +300,7 @@ EOT
           elsif param.include?("char") || param.include?("CHAR") then
             paramSet.concat("VAR_out_char[#{char_count}]")
             char_count += 1
+      # ここまで
           end
         else #[in]指定子の場合
           if param.include?("struct") then
@@ -323,30 +325,21 @@ EOT
   end
 
   def print_call_desc( file, f_name, exp_val, signature, paramSet, int_count, double_count, char_count, flag )
-    if exp_val == "" then
-      if flag then
-        file.print <<EOT
+    if flag then
+      file.print <<EOT
       if( !strcmp( function_path, "#{f_name}" ) ){
 EOT
-      else
-        file.print <<EOT
+    else
+      file.print <<EOT
       else if( !strcmp( function_path, "#{f_name}" ) ){
 EOT
-      end
+    end
+    if exp_val == "" then
       file.print <<EOT
         c#{signature.get_name[1..-1]}_#{f_name}( #{paramSet} );
         return 0;
 EOT
     else
-      if flag then
-        file.print <<EOT
-      if( !strcmp( function_path, "#{f_name}" ) ){
-EOT
-      else
-        file.print <<EOT
-      else if( !strcmp( function_path, "#{f_name}" ) ){
-EOT
-      end
       file.print <<EOT
         if( #{exp_val} == c#{signature.get_name[1..-1]}_#{f_name}( #{paramSet} ) ){
             return 0;
@@ -361,9 +354,8 @@ EOT
 EOT
   end
 
-
+  # TODO:out指定子の確認を行いたい
   def out_check( file, int_count, double_count, char_count )
-
     for i in 1..int_count
       file.print <<EOT
         printf("[out]：#{i}番目の整数型の値：");
