@@ -59,7 +59,7 @@ class TECSUnitPlugin < CellPlugin
     @plugin_arg_list = {}
   end
 
-  def gen_cdl_file file
+  def gen_cdl_file file # celltype"tTECSUnit"を定義。呼び口の定義がテストターゲットによる
     # tTECSUnit の定義を生成する
     file.print <<EOT
 
@@ -98,7 +98,7 @@ celltype tTECSUnit {
     /*----- TECSUnit test -----*/
       /* プラグインにより自動生成される */
 EOT
-    # callの記述を行う
+    # 必要な呼び口記述を行う
     print_all_call_port( file, Namespace.get_root )
 
     file.print <<EOT
@@ -152,6 +152,7 @@ EOT
     }
   end
 
+#########################################################################################
   #===  受け口関数の本体コードを生成（頭部と末尾は別途出力）
   #ct_name:: Symbol    (プラグインで生成された) セルタイプ名 ．Symbol として送られてくる
   def gen_ep_func_body( file, b_singleton, ct_name, global_ct_name, sig_name, ep_name, func_name, func_global_name, func_type, paramSet )
@@ -166,16 +167,18 @@ EOT
   } /* end if VALID_IDX(idx) */
   void *rawDesc;
 EOT
-
+    # 1.descriptorの記述
     print_desc( file, Namespace.get_root )
 
     file.print <<EOT
   sprintf( VAR_cell_entry, "%s.%s", cell_path, entry_path );
   getRawEntryDescriptor( p_cellcb, VAR_cell_entry, &rawDesc, signature_path );
 EOT
+    # 2.本体コードの記述
     print_branch_sig( file, Namespace.get_root )
   end
 
+  # 1.descriptorの記述
   def print_desc( file, namespace )
     namespace.travers_all_signature{ |sig|
       if  sig.get_namespace_path.to_s =~ /nTECSInfo::/ || \
@@ -207,6 +210,7 @@ EOT
     }
   end
 
+  # 2.本体コードの記述
   def print_branch_sig( file, namespace )
     flag = true
     namespace.travers_all_signature{ |sig|
@@ -399,12 +403,14 @@ EOT
 
   end
 
+# プロトタイプ宣言をしています
   def gen_preamble( file, b_singleton, ct_name, global_ct_name )
     file.print <<EOT
 ER getRawEntryDescriptor( CELLCB *p_cellcb, char_t *entry_path, void **rawEntryDesc, const char_t *expected_signature );
 EOT
   end
-  # 非受け口関数の生成
+
+# 非受け口関数の生成
   def gen_postamble( file, b_singleton, ct_name, global_ct_name )
     file.print <<EOT
 ER getRawEntryDescriptor( CELLCB *p_cellcb, char_t *entry_path, void **rawEntryDesc, const char_t *expected_signature )

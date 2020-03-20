@@ -59,7 +59,7 @@ class JSMNPlugin < CellPlugin
     @plugin_arg_list = {}
   end
 
-  def gen_cdl_file file
+  def gen_cdl_file file # celltype"tJSMN"を定義。プラグインでやる必要はない
     file.print <<EOT
 celltype tJSMN {
   entry sJSMN eJSMN;
@@ -93,10 +93,12 @@ celltype tJSMN {
 };
 EOT
   end
+
+#########################################################################################
   #===  受け口関数の本体コードを生成（頭部と末尾は別途出力）
   #ct_name:: Symbol    (プラグインで生成された) セルタイプ名 ．Symbol として送られてくる
   def gen_ep_func_body( file, b_singleton, ct_name, global_ct_name, sig_name, ep_name, func_name, func_global_name, func_type, paramSet )
-    # tJSMN の受け口関数のセルタイプコード (C言語) を生成する
+    # tJSMN の受け口関数のセルタイプコード (C言語) を生成する以下の４つの関数
     if func_name.to_s == "json_open" then
       print_json_open( file, Namespace.get_root )
     end
@@ -111,7 +113,7 @@ EOT
     end
   end
 
-#entry function : json_open の出力
+# entry function : json_open の出力
   def print_json_open( file, namespace )
     file.print <<EOT
   CELLCB  *p_cellcb;
@@ -164,7 +166,7 @@ EOT
 EOT
   end
 
-#entry function : json_parse_path の出力
+# entry function : json_parse_path の出力
   def print_parse_path( file, namespace )
     file.print <<EOT
   CELLCB  *p_cellcb;
@@ -270,7 +272,7 @@ EOT
 EOT
   end
 
-#entry function : json_parse_arg の出力
+# entry function : json_parse_arg の出力
   def print_parse_arg( file, namespace )
     char_list = []
 
@@ -733,7 +735,7 @@ EOT
 EOT
   end
 
-#entry function : json_parse_cond の出力
+# entry function : json_parse_cond の出力
   def print_parse_cond( file, namespace )
     char_list = []
 
@@ -1045,6 +1047,7 @@ EOT
 
   end
 
+# プロトタイプ宣言などを定義
   def gen_preamble( file, b_singleton, ct_name, global_ct_name )
     file.print <<EOT
 #include "tJSMN_tecsgen.h"
@@ -1061,6 +1064,7 @@ strcpy_n( char_t *str1, int num, const char *str2 );
 EOT
   end
 
+# 非受け口関数
   def gen_postamble( file, b_singleton, ct_name, global_ct_name )
     file.print <<EOT
 static int

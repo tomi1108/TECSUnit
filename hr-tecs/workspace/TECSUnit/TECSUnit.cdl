@@ -116,7 +116,7 @@ celltype tTaskMain {
             char_t  *function_path_tmp; /* from TECSInfo */
         bool_t flag_find_func;
 
-        char_t  arg_name[8][64]; // これはでかい
+        char_t  arg_name[8][64]; // これはメモリ的にでかいと思う
         char_t  arg_type[8][64];
         [size_is(NAME_LEN)]
             char_t *return_type;
