@@ -63,10 +63,7 @@ class JSMNPlugin < CellPlugin
     file.print <<EOT
 celltype tJSMN {
   entry sJSMN eJSMN;
-  call  sLCD  cLCD;
-  call  sFatFile cFatFile;
-  call  sButton  cButton;
-  call  sKernel  cKernel;
+
   attr {
     int16_t LEN = 1024; // jsonをまるごと読み込んだ時のサイズ
     int16_t TMP_LEN = 128; // argの値を一時的に格納
@@ -1052,9 +1049,9 @@ EOT
     file.print <<EOT
 #include "tJSMN_tecsgen.h"
 #include <stdio.h>
-#include <stdlib.h>
+/*#include <stdlib.h>*/
 #include <jsmn.h>
-#include <ff.h>
+/*#include <ff.h>*/
 #define N 128
 
 static int
