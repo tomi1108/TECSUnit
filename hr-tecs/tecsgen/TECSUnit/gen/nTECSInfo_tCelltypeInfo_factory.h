@@ -173,7 +173,7 @@
 #define nTECSInfo_tVarDeclInfo__IDX_is_ID_act              (false)
 #define nTECSInfo_tVarDeclInfo__sizeOfCB                   ((0))
 #define nTECSInfo_tVarDeclInfo__sizeOfINIB                 ((sizeof(nTECSInfo_tVarDeclInfo_INIB)))
-#define nTECSInfo_tVarDeclInfo__NCELLINLINKUNIT (52)
+#define nTECSInfo_tVarDeclInfo__NCELLINLINKUNIT (54)
 
 #include "nTECSInfo_tRegionInfo_tecsgen.h"
 #define nTECSInfo_tRegionInfo__IDX_is_ID_act               (false)
@@ -211,12 +211,6 @@
 #define nTECSInfo_tIntTypeInfo__sizeOfINIB                 ((sizeof(nTECSInfo_tIntTypeInfo_INIB)))
 #define nTECSInfo_tIntTypeInfo__NCELLINLINKUNIT (13)
 
-#include "nTECSInfo_tFloatTypeInfo_tecsgen.h"
-#define nTECSInfo_tFloatTypeInfo__IDX_is_ID_act            (false)
-#define nTECSInfo_tFloatTypeInfo__sizeOfCB                 ((0))
-#define nTECSInfo_tFloatTypeInfo__sizeOfINIB               ((sizeof(nTECSInfo_tFloatTypeInfo_INIB)))
-#define nTECSInfo_tFloatTypeInfo__NCELLINLINKUNIT (1)
-
 #include "nTECSInfo_tStructTypeInfo_tecsgen.h"
 #define nTECSInfo_tStructTypeInfo__IDX_is_ID_act           (false)
 #define nTECSInfo_tStructTypeInfo__sizeOfCB                ((0))
@@ -233,7 +227,7 @@
 #define nTECSInfo_tArrayTypeInfo__IDX_is_ID_act            (false)
 #define nTECSInfo_tArrayTypeInfo__sizeOfCB                 ((0))
 #define nTECSInfo_tArrayTypeInfo__sizeOfINIB               ((sizeof(nTECSInfo_tArrayTypeInfo_INIB)))
-#define nTECSInfo_tArrayTypeInfo__NCELLINLINKUNIT (10)
+#define nTECSInfo_tArrayTypeInfo__NCELLINLINKUNIT (4)
 
 #include "nTECSInfo_tDefinedTypeInfo_tecsgen.h"
 #define nTECSInfo_tDefinedTypeInfo__IDX_is_ID_act          (false)
@@ -246,13 +240,13 @@
 #define nTECSInfo_tDescriptorTypeInfo__sizeOfCB            ((0))
 #define nTECSInfo_tDescriptorTypeInfo__sizeOfINIB          ((sizeof(nTECSInfo_tDescriptorTypeInfo_INIB)))
 #define nTECSInfo_tDescriptorTypeInfo__NCELLINLINKUNIT (12)
-/* イテレータコード (FOREACH_CELL)の生成 #_FEC_# */
+/* iteration code (FOREACH_CELL) #_FEC_# */
 #define FOREACH_CELL(i,p_cb)   \
     for( (i) = 0; (i) < nTECSInfo_tCelltypeInfo_N_CELL; (i)++ ){ \
        //(p_cb) = &nTECSInfo_tCelltypeInfo_CB_tab[i];
 
 #define END_FOREACH_CELL   }
 
-/* CB 初期化マクロ #_CIM_# */
+/* CB initialize macro #_CIM_# */
 
 #endif /* tCelltypeInfo_FACTORY_H */

@@ -192,12 +192,8 @@
 #include "tTECSUnit_tecsgen.h"
 #define OFFSET_OF_tTECSUnit_LEN                   ((uint32_t)(intptr_t)&(((tTECSUnit_INIB*)0)->LEN))
 #define PLACE_OF_tTECSUnit_LEN                   VARDECL_PLACE_INIB
-#define OFFSET_OF_tTECSUnit_out_int               ((uint32_t)(intptr_t)&(((tTECSUnit_CB*)0)->out_int))
-#define PLACE_OF_tTECSUnit_out_int               VARDECL_PLACE_CB
-#define OFFSET_OF_tTECSUnit_out_double            ((uint32_t)(intptr_t)&(((tTECSUnit_CB*)0)->out_double))
-#define PLACE_OF_tTECSUnit_out_double            VARDECL_PLACE_CB
-#define OFFSET_OF_tTECSUnit_out_char              ((uint32_t)(intptr_t)&(((tTECSUnit_CB*)0)->out_char))
-#define PLACE_OF_tTECSUnit_out_char              VARDECL_PLACE_CB
+#define OFFSET_OF_tTECSUnit_data                  ((uint32_t)(intptr_t)&(((tTECSUnit_CB*)0)->data))
+#define PLACE_OF_tTECSUnit_data                  VARDECL_PLACE_CB
 #define OFFSET_OF_tTECSUnit_cell_entry            ((uint32_t)(intptr_t)&(((tTECSUnit_INIB*)0)->cell_entry))
 #define PLACE_OF_tTECSUnit_cell_entry            VARDECL_PLACE_INIB
 
@@ -206,6 +202,8 @@
 #define PLACE_OF_tJSMN_LEN                       VARDECL_PLACE_INIB
 #define OFFSET_OF_tJSMN_TMP_LEN                   ((uint32_t)(intptr_t)&(((tJSMN_INIB*)0)->TMP_LEN))
 #define PLACE_OF_tJSMN_TMP_LEN                   VARDECL_PLACE_INIB
+#define OFFSET_OF_tJSMN_key_region                ((uint32_t)(intptr_t)&(((tJSMN_INIB*)0)->key_region))
+#define PLACE_OF_tJSMN_key_region                VARDECL_PLACE_INIB
 #define OFFSET_OF_tJSMN_key_cell                  ((uint32_t)(intptr_t)&(((tJSMN_INIB*)0)->key_cell))
 #define PLACE_OF_tJSMN_key_cell                  VARDECL_PLACE_INIB
 #define OFFSET_OF_tJSMN_key_entry                 ((uint32_t)(intptr_t)&(((tJSMN_INIB*)0)->key_entry))
@@ -216,10 +214,16 @@
 #define PLACE_OF_tJSMN_key_arg                   VARDECL_PLACE_INIB
 #define OFFSET_OF_tJSMN_key_exp                   ((uint32_t)(intptr_t)&(((tJSMN_INIB*)0)->key_exp))
 #define PLACE_OF_tJSMN_key_exp                   VARDECL_PLACE_INIB
+#define OFFSET_OF_tJSMN_key_pre_cond              ((uint32_t)(intptr_t)&(((tJSMN_INIB*)0)->key_pre_cond))
+#define PLACE_OF_tJSMN_key_pre_cond              VARDECL_PLACE_INIB
+#define OFFSET_OF_tJSMN_key_post_cond             ((uint32_t)(intptr_t)&(((tJSMN_INIB*)0)->key_post_cond))
+#define PLACE_OF_tJSMN_key_post_cond             VARDECL_PLACE_INIB
 #define OFFSET_OF_tJSMN_json_str                  ((uint32_t)(intptr_t)&(((tJSMN_INIB*)0)->json_str))
 #define PLACE_OF_tJSMN_json_str                  VARDECL_PLACE_INIB
 #define OFFSET_OF_tJSMN_tmp_str                   ((uint32_t)(intptr_t)&(((tJSMN_INIB*)0)->tmp_str))
 #define PLACE_OF_tJSMN_tmp_str                   VARDECL_PLACE_INIB
+#define OFFSET_OF_tJSMN_target_path               ((uint32_t)(intptr_t)&(((tJSMN_INIB*)0)->target_path))
+#define PLACE_OF_tJSMN_target_path               VARDECL_PLACE_INIB
 #define OFFSET_OF_tJSMN_counter                   ((uint32_t)(intptr_t)&(((tJSMN_CB*)0)->counter))
 #define PLACE_OF_tJSMN_counter                   VARDECL_PLACE_CB
 
@@ -380,18 +384,6 @@
 #define PLACE_OF_nTECSInfo_tIntTypeInfo_b_const  VARDECL_PLACE_INIB
 #define OFFSET_OF_nTECSInfo_tIntTypeInfo_b_volatile  ((uint32_t)(intptr_t)&(((nTECSInfo_tIntTypeInfo_INIB*)0)->b_volatile))
 #define PLACE_OF_nTECSInfo_tIntTypeInfo_b_volatile  VARDECL_PLACE_INIB
-
-#include "nTECSInfo_tFloatTypeInfo_tecsgen.h"
-#define OFFSET_OF_nTECSInfo_tFloatTypeInfo_name   ((uint32_t)(intptr_t)&(((nTECSInfo_tFloatTypeInfo_INIB*)0)->name))
-#define PLACE_OF_nTECSInfo_tFloatTypeInfo_name   VARDECL_PLACE_INIB
-#define OFFSET_OF_nTECSInfo_tFloatTypeInfo_typeKind  ((uint32_t)(intptr_t)&(((nTECSInfo_tFloatTypeInfo_INIB*)0)->typeKind))
-#define PLACE_OF_nTECSInfo_tFloatTypeInfo_typeKind  VARDECL_PLACE_INIB
-#define OFFSET_OF_nTECSInfo_tFloatTypeInfo_size   ((uint32_t)(intptr_t)&(((nTECSInfo_tFloatTypeInfo_INIB*)0)->size))
-#define PLACE_OF_nTECSInfo_tFloatTypeInfo_size   VARDECL_PLACE_INIB
-#define OFFSET_OF_nTECSInfo_tFloatTypeInfo_b_const  ((uint32_t)(intptr_t)&(((nTECSInfo_tFloatTypeInfo_INIB*)0)->b_const))
-#define PLACE_OF_nTECSInfo_tFloatTypeInfo_b_const  VARDECL_PLACE_INIB
-#define OFFSET_OF_nTECSInfo_tFloatTypeInfo_b_volatile  ((uint32_t)(intptr_t)&(((nTECSInfo_tFloatTypeInfo_INIB*)0)->b_volatile))
-#define PLACE_OF_nTECSInfo_tFloatTypeInfo_b_volatile  VARDECL_PLACE_INIB
 
 #include "nTECSInfo_tStructTypeInfo_tecsgen.h"
 #define OFFSET_OF_nTECSInfo_tStructTypeInfo_name  ((uint32_t)(intptr_t)&(((nTECSInfo_tStructTypeInfo_INIB*)0)->name))

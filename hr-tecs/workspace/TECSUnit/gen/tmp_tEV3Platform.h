@@ -6,4 +6,4 @@
 typedef struct { int dummy; } va_list;
 
 /*  1 "../../tecs_lib/mindstorms_ev3/tEV3Platform.h" 1 */
-/*  36 "gen/tmp_C_src.c" 2 */
+/*  37 "gen/tmp_C_src.c" 2 */

@@ -32,7 +32,7 @@ celltype tTECSUnit {
     /*----- RawEntryDescriptor -----*/
 
     /*----- TECSUnit test -----*/
-      /* ¥×¥é¥°¥¤¥ó¤Ë¤è¤ê¼«Æ°À¸À®¤µ¤ì¤ë */
+      /* ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã«ã‚ˆã‚Šè‡ªå‹•ç”Ÿæˆã•ã‚Œã‚‹ */
     [dynamic, optional]
       call ::sUltrasonicSensor cUltrasonicSensor;
     [dynamic, optional]
@@ -60,7 +60,7 @@ celltype tTECSUnit {
     [dynamic, optional]
       call ::sFatFile cFatFile;
     [dynamic, optional]
-      call ::sTarget cTarget;
+      call ::sSample cSample;
     /*----- TECSUnit test -----*/
 
     attr {

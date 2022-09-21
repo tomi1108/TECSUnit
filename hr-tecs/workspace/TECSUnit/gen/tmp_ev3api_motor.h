@@ -8,4 +8,4 @@ typedef struct { int dummy; } va_list;
 /*  1 "../../target/ev3_gcc/api/src/ev3api_motor.h" 1 */
 /*  20 "../../target/ev3_gcc/api/src/ev3api_motor.h" */
        
-/*  36 "gen/tmp_C_src.c" 2 */
+/*  37 "gen/tmp_C_src.c" 2 */

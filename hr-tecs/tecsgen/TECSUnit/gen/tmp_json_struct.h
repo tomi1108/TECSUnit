@@ -1,6 +1,6 @@
-/*  1 "gen/tmp_C_src.c" */
-/*  1 "<組み込み>" */
-/*  1 "<コマンドライン>" */
+/*  0 "gen/tmp_C_src.c" */
+/*  0 "<built-in>" */
+/*  0 "<command-line>" */
 /*  1 "gen/tmp_C_src.c" */
 /*  34 "gen/tmp_C_src.c" */
 typedef struct { int dummy; } va_list;
@@ -10,7 +10,7 @@ struct tecsunit_obj{
   char type[32];
   union{
 
-    ER mem_er;
+    ER mem_ER;
     struct target_struct mem_target_struct_buf;
 
 
@@ -69,4 +69,4 @@ struct tecsunit_obj{
 
   } data;
 };
-/*  36 "gen/tmp_C_src.c" 2 */
+/*  37 "gen/tmp_C_src.c" 2 */

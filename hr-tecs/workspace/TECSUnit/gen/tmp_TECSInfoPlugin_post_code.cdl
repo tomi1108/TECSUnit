@@ -45,7 +45,7 @@ region rDomainEV3{
             cSignatureInfo[] = sBalancerSignatureInfo.eSignatureInfo;
             cSignatureInfo[] = sSharedMemorySignatureInfo.eSignatureInfo;
             cSignatureInfo[] = sFatFileSignatureInfo.eSignatureInfo;
-            cSignatureInfo[] = sTargetSignatureInfo.eSignatureInfo;
+            cSignatureInfo[] = sSampleSignatureInfo.eSignatureInfo;
             cSignatureInfo[] = sJSMNSignatureInfo.eSignatureInfo;
             cSignatureInfo[] = sTECSUnitSignatureInfo.eSignatureInfo;
 
@@ -66,7 +66,8 @@ region rDomainEV3{
             cCelltypeInfo[] = tBalancerCelltypeInfo.eCelltypeInfo;
             cCelltypeInfo[] = tSharedMemoryCelltypeInfo.eCelltypeInfo;
             cCelltypeInfo[] = tFatFileCelltypeInfo.eCelltypeInfo;
-            cCelltypeInfo[] = tTargetCelltypeInfo.eCelltypeInfo;
+            cCelltypeInfo[] = tSampleCelltypeInfo.eCelltypeInfo;
+            cCelltypeInfo[] = tSimpleCelltypeInfo.eCelltypeInfo;
             cCelltypeInfo[] = tTaskMainCelltypeInfo.eCelltypeInfo;
             cCelltypeInfo[] = tJSMNCelltypeInfo.eCelltypeInfo;
             cCelltypeInfo[] = tTECSUnitCelltypeInfo.eCelltypeInfo;
@@ -3037,33 +3038,48 @@ region rDomainEV3{
             cTypeInfo       = BYTETypeInfo.eTypeInfo;
         };
 
-        /*** sTarget signature information ****/
-        cell nTECSInfo::tSignatureInfo sTargetSignatureInfo {
-            name            = "sTarget";
-            cFunctionInfo[] = sTarget_mainFunctionInfo.eFunctionInfo;
+        /*** sSample signature information ****/
+        cell nTECSInfo::tSignatureInfo sSampleSignatureInfo {
+            name            = "sSample";
+            cFunctionInfo[] = sSample_sayHelloFunctionInfo.eFunctionInfo;
+            cFunctionInfo[] = sSample_howAreYouFunctionInfo.eFunctionInfo;
         };
-        cell nTECSInfo::tFunctionInfo sTarget_mainFunctionInfo {
-            name            = "main";
+        cell nTECSInfo::tFunctionInfo sSample_sayHelloFunctionInfo {
+            name            = "sayHello";
             bOneway         = false;
-            cParamInfo[]    = sTarget_main_aParamInfo.eParamInfo;
-            cParamInfo[]    = sTarget_main_bParamInfo.eParamInfo;
-            cReturnTypeInfo = intTypeInfo.eTypeInfo;
+            cParamInfo[]    = sSample_sayHello_timesParamInfo.eParamInfo;
+            cReturnTypeInfo = ERTypeInfo.eTypeInfo;
         };
-        cell nTECSInfo::tParamInfo sTarget_main_aParamInfo {
-            name            = "a";
+        cell nTECSInfo::tParamInfo sSample_sayHello_timesParamInfo {
+            name            = "times";
             dir             = PARAM_DIR_IN;
             sizeIsExpr      = (char_t*)0;
             countIsExpr     = (char_t*)0;
             stringExpr      = (char_t*)0;
-            cTypeInfo       = int8_tTypeInfo.eTypeInfo;
+            cTypeInfo       = int32_tTypeInfo.eTypeInfo;
         };
-        cell nTECSInfo::tParamInfo sTarget_main_bParamInfo {
-            name            = "b";
+        cell nTECSInfo::tFunctionInfo sSample_howAreYouFunctionInfo {
+            name            = "howAreYou";
+            bOneway         = false;
+            cParamInfo[]    = sSample_howAreYou_bufParamInfo.eParamInfo;
+            cParamInfo[]    = sSample_howAreYou_lenParamInfo.eParamInfo;
+            cReturnTypeInfo = ERTypeInfo.eTypeInfo;
+        };
+        cell nTECSInfo::tParamInfo sSample_howAreYou_bufParamInfo {
+            name            = "buf";
+            dir             = PARAM_DIR_OUT;
+            sizeIsExpr      = (char_t*)0;
+            countIsExpr     = (char_t*)0;
+            stringExpr      = " $1";
+            cTypeInfo       = char_t_Ptr_TypeInfo.eTypeInfo;
+        };
+        cell nTECSInfo::tParamInfo sSample_howAreYou_lenParamInfo {
+            name            = "len";
             dir             = PARAM_DIR_IN;
             sizeIsExpr      = (char_t*)0;
             countIsExpr     = (char_t*)0;
             stringExpr      = (char_t*)0;
-            cTypeInfo       = int8_tTypeInfo.eTypeInfo;
+            cTypeInfo       = int32_tTypeInfo.eTypeInfo;
         };
 
         /*** sJSMN signature information ****/
@@ -3359,7 +3375,7 @@ region rDomainEV3{
             sizeOfCB         = C_EXP( "tTask__sizeOfCB" );
             sizeOfINIB       = C_EXP( "tTask__sizeOfINIB" );
             n_cellInLinkUnit = C_EXP( "tTask__NCELLINLINKUNIT" );
-            n_cellInSystem   = 2;
+            n_cellInSystem   = 3;
             cEntryInfo[]    = tTask_eTaskEntryInfo.eEntryInfo;
             cEntryInfo[]    = tTask_eiTaskEntryInfo.eEntryInfo;
             cCallInfo[]     = tTask_cBodyCallInfo.eCallInfo;
@@ -4149,39 +4165,55 @@ region rDomainEV3{
             place           = C_EXP( "PLACE_OF_tFatFile_fatfs" );
             cTypeInfo       = FATFSTypeInfo.eTypeInfo;
         };
-        cell nTECSInfo::tCelltypeInfo tTargetCelltypeInfo {
-            name             = "tTarget";
+        cell nTECSInfo::tCelltypeInfo tSampleCelltypeInfo {
+            name             = "tSample";
             b_singleton      = false;
-            b_IDX_is_ID_act  = C_EXP( "tTarget__IDX_is_ID_act" );
-            sizeOfCB         = C_EXP( "tTarget__sizeOfCB" );
-            sizeOfINIB       = C_EXP( "tTarget__sizeOfINIB" );
-            n_cellInLinkUnit = C_EXP( "tTarget__NCELLINLINKUNIT" );
+            b_IDX_is_ID_act  = C_EXP( "tSample__IDX_is_ID_act" );
+            sizeOfCB         = C_EXP( "tSample__sizeOfCB" );
+            sizeOfINIB       = C_EXP( "tSample__sizeOfINIB" );
+            n_cellInLinkUnit = C_EXP( "tSample__NCELLINLINKUNIT" );
             n_cellInSystem   = 1;
-            cEntryInfo[]    = tTarget_eTargetEntryInfo.eEntryInfo;
-            cVarInfo[]      = tTarget_data1VarDeclInfo.eVarDeclInfo;
-            cVarInfo[]      = tTarget_data2VarDeclInfo.eVarDeclInfo;
+            cEntryInfo[]    = tSample_eEntEntryInfo.eEntryInfo;
         };
-        cell nTECSInfo::tEntryInfo tTarget_eTargetEntryInfo{
-            name            = "eTarget";
-            cSignatureInfo  = sTargetSignatureInfo.eSignatureInfo;
+        cell nTECSInfo::tEntryInfo tSample_eEntEntryInfo{
+            name            = "eEnt";
+            cSignatureInfo  = sSampleSignatureInfo.eSignatureInfo;
             b_inline        = false;
-            array_size      = C_EXP( "tTarget_eTarget__array_size" );
+            array_size      = C_EXP( "tSample_eEnt__array_size" );
         };
-        cell nTECSInfo::tVarDeclInfo tTarget_data1VarDeclInfo {
-            name            = "data1";
-            sizeIsExpr      = (char_t*)0;
-            declType        = DECLTYPE_VAR;
-            offset          = C_EXP( "OFFSET_OF_tTarget_data1" );
-            place           = C_EXP( "PLACE_OF_tTarget_data1" );
-            cTypeInfo       = int8_tTypeInfo.eTypeInfo;
+        cell nTECSInfo::tCelltypeInfo tSimpleCelltypeInfo {
+            name             = "tSimple";
+            b_singleton      = false;
+            b_IDX_is_ID_act  = C_EXP( "tSimple__IDX_is_ID_act" );
+            sizeOfCB         = C_EXP( "tSimple__sizeOfCB" );
+            sizeOfINIB       = C_EXP( "tSimple__sizeOfINIB" );
+            n_cellInLinkUnit = C_EXP( "tSimple__NCELLINLINKUNIT" );
+            n_cellInSystem   = 1;
+            cEntryInfo[]    = tSimple_eBodyEntryInfo.eEntryInfo;
+            cCallInfo[]     = tSimple_cCallCallInfo.eCallInfo;
         };
-        cell nTECSInfo::tVarDeclInfo tTarget_data2VarDeclInfo {
-            name            = "data2";
-            sizeIsExpr      = (char_t*)0;
-            declType        = DECLTYPE_VAR;
-            offset          = C_EXP( "OFFSET_OF_tTarget_data2" );
-            place           = C_EXP( "PLACE_OF_tTarget_data2" );
-            cTypeInfo       = int8_tTypeInfo.eTypeInfo;
+        cell nTECSInfo::tEntryInfo tSimple_eBodyEntryInfo{
+            name            = "eBody";
+            cSignatureInfo  = sTaskBodySignatureInfo.eSignatureInfo;
+            b_inline        = false;
+            array_size      = C_EXP( "tSimple_eBody__array_size" );
+        };
+        cell nTECSInfo::tCallInfo tSimple_cCallCallInfo{
+            name            = "cCall";
+            cSignatureInfo  = sSampleSignatureInfo.eSignatureInfo;
+            offset            = C_EXP( "tSimple_cCall__offset" );
+            array_size        = C_EXP( "tSimple_cCall__array_size" );
+            b_optional        = false;
+            b_omit            = false;
+            b_dynamic         = false;
+            b_ref_desc        = false;
+            b_allocator_port  = false;
+            b_require_port    = false;
+            place             = C_EXP( "tSimple_cCall__place" );
+            b_VMT_useless     = C_EXP( "tSimple_cCall__b_VMT_useless" );
+            b_skelton_useless = C_EXP( "tSimple_cCall__b_skelton_useless" );
+            b_cell_unique     = C_EXP( "tSimple_cCall__b_cell_unique" );
+
         };
         cell nTECSInfo::tCelltypeInfo tTaskMainCelltypeInfo {
             name             = "tTaskMain";
@@ -5007,7 +5039,7 @@ region rDomainEV3{
             cCallInfo[]     = tTECSUnit_cBalancerCallInfo.eCallInfo;
             cCallInfo[]     = tTECSUnit_cSharedMemoryCallInfo.eCallInfo;
             cCallInfo[]     = tTECSUnit_cFatFileCallInfo.eCallInfo;
-            cCallInfo[]     = tTECSUnit_cTargetCallInfo.eCallInfo;
+            cCallInfo[]     = tTECSUnit_cSampleCallInfo.eCallInfo;
             cAttrInfo[]     = tTECSUnit_LENVarDeclInfo.eVarDeclInfo;
             cVarInfo[]      = tTECSUnit_dataVarDeclInfo.eVarDeclInfo;
             cVarInfo[]      = tTECSUnit_cell_entryVarDeclInfo.eVarDeclInfo;
@@ -5477,21 +5509,21 @@ region rDomainEV3{
             b_cell_unique     = C_EXP( "tTECSUnit_cFatFile__b_cell_unique" );
 
         };
-        cell nTECSInfo::tCallInfo tTECSUnit_cTargetCallInfo{
-            name            = "cTarget";
-            cSignatureInfo  = sTargetSignatureInfo.eSignatureInfo;
-            offset            = C_EXP( "tTECSUnit_cTarget__offset" );
-            array_size        = C_EXP( "tTECSUnit_cTarget__array_size" );
+        cell nTECSInfo::tCallInfo tTECSUnit_cSampleCallInfo{
+            name            = "cSample";
+            cSignatureInfo  = sSampleSignatureInfo.eSignatureInfo;
+            offset            = C_EXP( "tTECSUnit_cSample__offset" );
+            array_size        = C_EXP( "tTECSUnit_cSample__array_size" );
             b_optional        = true;
             b_omit            = false;
             b_dynamic         = true;
             b_ref_desc        = false;
             b_allocator_port  = false;
             b_require_port    = false;
-            place             = C_EXP( "tTECSUnit_cTarget__place" );
-            b_VMT_useless     = C_EXP( "tTECSUnit_cTarget__b_VMT_useless" );
-            b_skelton_useless = C_EXP( "tTECSUnit_cTarget__b_skelton_useless" );
-            b_cell_unique     = C_EXP( "tTECSUnit_cTarget__b_cell_unique" );
+            place             = C_EXP( "tTECSUnit_cSample__place" );
+            b_VMT_useless     = C_EXP( "tTECSUnit_cSample__b_VMT_useless" );
+            b_skelton_useless = C_EXP( "tTECSUnit_cSample__b_skelton_useless" );
+            b_cell_unique     = C_EXP( "tTECSUnit_cSample__b_cell_unique" );
 
         };
         cell nTECSInfo::tVarDeclInfo tTECSUnit_LENVarDeclInfo {
@@ -8094,7 +8126,54 @@ region rDomainEV3{
         /*** :: region information cell ***/
         cell nTECSInfo::tRegionInfo _LinkRootRegionInfo{
             name = "::";
+            cCellInfo[] = SampleCellInfo.eCellInfo;
+            cCellInfo[] = SimpleCellInfo.eCellInfo;
+            cCellInfo[] = TaskCellInfo.eCellInfo;
             cRegionInfo[] = rDomainEV3RegionInfo.eRegionInfo;
+        };
+
+        /*** Sample cell information ****/
+        cell nTECSInfo::tCellInfo SampleCellInfo {
+            name            = "Sample";
+            cbp             = C_EXP( "Sample__CBP" );
+            inibp           = C_EXP( "Sample__INIBP" );
+            cCelltypeInfo   = tSampleCelltypeInfo.eCelltypeInfo;
+            cRawEntryDescriptor[] = Sample_eEntRawEntryDescriptorInfo.eRawEntryDescriptor;
+        };
+        cell nTECSInfo::tRawEntryDescriptorInfo Sample_eEntRawEntryDescriptorInfo {
+           size = 1;
+           rawEntryDescriptor = { C_EXP( "&Sample_eEnt_des" ) };
+        };
+
+        /*** Simple cell information ****/
+        cell nTECSInfo::tCellInfo SimpleCellInfo {
+            name            = "Simple";
+            cbp             = C_EXP( "Simple__CBP" );
+            inibp           = C_EXP( "Simple__INIBP" );
+            cCelltypeInfo   = tSimpleCelltypeInfo.eCelltypeInfo;
+            cRawEntryDescriptor[] = Simple_eBodyRawEntryDescriptorInfo.eRawEntryDescriptor;
+        };
+        cell nTECSInfo::tRawEntryDescriptorInfo Simple_eBodyRawEntryDescriptorInfo {
+           size = 1;
+           rawEntryDescriptor = { C_EXP( "&Simple_eBody_des" ) };
+        };
+
+        /*** Task cell information ****/
+        cell nTECSInfo::tCellInfo TaskCellInfo {
+            name            = "Task";
+            cbp             = C_EXP( "Task__CBP" );
+            inibp           = C_EXP( "Task__INIBP" );
+            cCelltypeInfo   = tTaskCelltypeInfo.eCelltypeInfo;
+            cRawEntryDescriptor[] = Task_eTaskRawEntryDescriptorInfo.eRawEntryDescriptor;
+            cRawEntryDescriptor[] = Task_eiTaskRawEntryDescriptorInfo.eRawEntryDescriptor;
+        };
+        cell nTECSInfo::tRawEntryDescriptorInfo Task_eTaskRawEntryDescriptorInfo {
+           size = 1;
+           rawEntryDescriptor = { C_EXP( "&Task_eTask_des" ) };
+        };
+        cell nTECSInfo::tRawEntryDescriptorInfo Task_eiTaskRawEntryDescriptorInfo {
+           size = 1;
+           rawEntryDescriptor = { C_EXP( "&Task_eiTask_des" ) };
         };
 
         /*** ::rDomainEV3 region information cell ***/
@@ -8158,7 +8237,6 @@ region rDomainEV3{
             cCellInfo[] = rDomainEV3_SharedMemoryCellInfo.eCellInfo;
             cCellInfo[] = rDomainEV3_EV3PlatformCellInfo.eCellInfo;
             cCellInfo[] = rDomainEV3_EV3TaskCellInfo.eCellInfo;
-            cCellInfo[] = rDomainEV3_TargetCellInfo.eCellInfo;
             cCellInfo[] = rDomainEV3_TaskCellInfo.eCellInfo;
             cCellInfo[] = rDomainEV3_TaskMainCellInfo.eCellInfo;
             cCellInfo[] = rDomainEV3_JSMNCellInfo.eCellInfo;
@@ -8790,19 +8868,6 @@ region rDomainEV3{
         cell nTECSInfo::tRawEntryDescriptorInfo rDomainEV3_EV3Task_eiTaskRawEntryDescriptorInfo {
            size = 1;
            rawEntryDescriptor = { C_EXP( "&rDomainEV3_EV3Task_eiTask_des" ) };
-        };
-
-        /*** rDomainEV3_Target cell information ****/
-        cell nTECSInfo::tCellInfo rDomainEV3_TargetCellInfo {
-            name            = "Target";
-            cbp             = C_EXP( "rDomainEV3_Target__CBP" );
-            inibp           = C_EXP( "rDomainEV3_Target__INIBP" );
-            cCelltypeInfo   = tTargetCelltypeInfo.eCelltypeInfo;
-            cRawEntryDescriptor[] = rDomainEV3_Target_eTargetRawEntryDescriptorInfo.eRawEntryDescriptor;
-        };
-        cell nTECSInfo::tRawEntryDescriptorInfo rDomainEV3_Target_eTargetRawEntryDescriptorInfo {
-           size = 1;
-           rawEntryDescriptor = { C_EXP( "&rDomainEV3_Target_eTarget_des" ) };
         };
 
         /*** rDomainEV3_Task cell information ****/

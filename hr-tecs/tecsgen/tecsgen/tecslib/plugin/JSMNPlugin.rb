@@ -122,43 +122,43 @@ EOT
   } /* end if VALID_IDX(idx) */
 
   /* ここに処理本体を記述します #_TEFB_# */
+    char str_tmp[N];
     int co_flag = 0, co_start, i, j;
-    FRESULT res;
+    FILE *fp;
 
-    cFatFile_fmount( "", 0 );
-    res = cFatFile_fopen( "json/target.json", "r");
-    if( res != FR_OK ){
-        return -1; // failed to open
+    if( ( fp = fopen("target.json", "r") ) == NULL ) {
+        printf( "Failed to open" );
+        return -1;
     }
-    while( cFatFile_fgets( VAR_tmp_str , N ) != NULL ) {
+    while( fgets( str_tmp , N, fp ) != NULL ) {
         co_start = 0;
         for( i = 0; i < N -1; i++ ){
-            if( VAR_tmp_str[i] == '/' && VAR_tmp_str[i+1] == '/' && !co_flag ){
-                VAR_tmp_str[i] = '\\0';
+            if( str_tmp[i] == '/' && str_tmp[i+1] == '/' && !co_flag ){
+                str_tmp[i] = '\\0';
                 break;
             }
-            if( VAR_tmp_str[i] == '/' && VAR_tmp_str[i+1] == '*' && !co_flag ){
+            if( str_tmp[i] == '/' && str_tmp[i+1] == '*' && !co_flag ){
                 co_start = i;
                 co_flag = 1;
             }
-            if( VAR_tmp_str[i] == '*' && VAR_tmp_str[i+1] == '/' && co_flag ){
-                for(j = 0; VAR_tmp_str[(i+2)+j] != '\\0'; j++ ){
-                    VAR_tmp_str[co_start + j] = VAR_tmp_str[(i+2)+j];
+            if( str_tmp[i] == '*' && str_tmp[i+1] == '/' && co_flag ){
+                for(j = 0; str_tmp[(i+2)+j] != '\\0'; j++ ){
+                    str_tmp[co_start + j] = str_tmp[(i+2)+j];
                 }
-                VAR_tmp_str[co_start + j] = '\\0';
+                str_tmp[co_start + j] = '\\0';
                 i = co_start;
                 co_flag = 0;
             }
         }
         if( co_flag && co_start > 0 ){
-            VAR_tmp_str[co_start] = '\\0';
-            strcat( VAR_json_str, VAR_tmp_str );
+            str_tmp[co_start] = '\\0';
+            strcat( VAR_json_str, str_tmp );
         }
-        if( VAR_tmp_str[0] != '\\0' && VAR_tmp_str[0] != '\\n' && !co_flag ){
-            strcat( VAR_json_str, VAR_tmp_str );
+        if( str_tmp[0] != '\\0' && str_tmp[0] != '\\n' && !co_flag ){
+            strcat( VAR_json_str, str_tmp );
         }
     }
-    cFatFile_fclose();
+    fclose( fp );
     return 0;
 EOT
   end
@@ -166,6 +166,7 @@ EOT
 # entry function : json_parse_path の出力
   def print_parse_path( file, namespace )
     file.print <<EOT
+ER    ercd = E_OK;
   CELLCB  *p_cellcb;
   if (VALID_IDX(idx)) {
     p_cellcb = GET_CELLCB(idx);
@@ -175,35 +176,36 @@ EOT
   } /* end if VALID_IDX(idx) */
 
   /* ここに処理本体を記述します #_TEFB_# */
-    int r, i, j, k, l, m, array_size, arg_size, cond_size;
+    int r, i, j, k, l, m, array_size, arg_size;
     jsmn_parser p;
     jsmntok_t t[128]; /* We expect no more than 128 tokens */
+    char target_path[10];
+    char str_tmp[8];
 
-    sprintf( VAR_target_path, "target%d", target_num );
+    sprintf( target_path, "target%d", target_num );
 
     jsmn_init(&p);
     r = jsmn_parse( &p, VAR_json_str, strlen(VAR_json_str), t, sizeof(t)/sizeof(t[0]) );
     if(r < 0){
-        /* Failed to parse */
+        printf( "Failed to parse JSON: %d", r );
         return -1;
     }
   /* Assume the top-level element is an object */
     if( r < 1 || t[0].type != JSMN_OBJECT ){
+        printf( "Object expectd" );
         return -1;
     }
 
   /* Loop over all keys of the root object */
     for( l = 1; l < r; l++ ){
-        if( jsoneq( VAR_json_str, &t[l], VAR_target_path ) == 0 ){
+        if( jsoneq( VAR_json_str, &t[l], target_path ) == 0 ){
             if( t[l+1].type != JSMN_OBJECT ){
+                printf("Object expected for target");
                 return -1;
             }
             i = l + 2;
             for( k = 0; k < t[l+1].size; k++ ){
-                if( jsoneq( VAR_json_str, &t[i], ATTR_key_region ) == 0 ){
-                    strcpy_n( r_path, t[i+1].end-t[i+1].start, VAR_json_str + t[i+1].start );
-                    i += 2;
-                }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_cell ) == 0 ){
+                if( jsoneq( VAR_json_str, &t[i], ATTR_key_cell ) == 0 ){
                     strcpy_n( c_path, t[i+1].end-t[i+1].start, VAR_json_str + t[i+1].start );
                     i += 2;
                 }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_entry ) == 0 ){
@@ -239,26 +241,8 @@ EOT
                     i += 1; // 最後には配列を抜ける
                 }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_exp ) == 0 ){
                     i += 2; /* ignore */
-                }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_pre_cond ) == 0 ){
-                    i += 1; // t[i] はOBJECTを想定
-                    if( t[i].type != JSMN_OBJECT ) return -1;
-                    cond_size = t[i].size;
-                    for( j = 0; j < cond_size; j++ ){
-                      i += 1; // t[i] は変数名
-                      i += 1; // t[i] は変数値
-                    }
-                    i += 1; // 最後にはOBJECTを抜ける
-                }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_post_cond ) == 0 ){
-                    i += 1; // t[i] はOBJECTを想定
-                    if( t[i].type != JSMN_OBJECT ) return -1;
-                    cond_size = t[i].size;
-                    for( j = 0; j < cond_size; j++ ){
-                      i += 1; // t[i] は変数名
-                      i += 1; // t[i] は変数値
-                    }
-                    i += 1; // 最後にはOBJECTを抜ける
-                }else{
-                  //  printf( "Unexpected key: %.*s\\n", t[i].end-t[i].start, VAR_json_str + t[i].start );
+                } else {
+                    printf( "Unexpected key: %.*s\\n", t[i].end-t[i].start, VAR_json_str + t[i].start );
                     return -1;
                 }
             }
@@ -355,6 +339,7 @@ EOT
 
     # 出力開始
     file.print <<EOT
+  ER ercd = E_OK;
   CELLCB  *p_cellcb;
   if (VALID_IDX(idx)) {
     p_cellcb = GET_CELLCB(idx);
@@ -364,34 +349,35 @@ EOT
   } /* end if VALID_IDX(idx) */
 
   /* ここに処理本体を記述します #_TEFB_# */
-    int r, i, j, k, l, m, arg_size, array_size, cond_size;
+    int r, i, j, k, l, m, arg_size, array_size;
     jsmn_parser p;
     jsmntok_t t[128]; /* We expect no more than 128 tokens */
+    char target_path[10];
 
-    sprintf( VAR_target_path, "target%d", target_num );
+    sprintf( target_path, "target%d", target_num );
 
     jsmn_init(&p);
     r = jsmn_parse( &p, VAR_json_str, strlen(VAR_json_str), t, sizeof(t)/sizeof(t[0]) );
     if(r < 0){
-        /* Failed to parse JSON */
+        printf( "Failed to parse JSON: %d", r );
         return -1;
     }
   /* Assume the top-level element is an object */
     if( r < 1 || t[0].type != JSMN_OBJECT ){
+        printf( "Object expected" );
         return -1;
     }
 
   /* Loop over all keys of the root object */
     for( l = 1; l < r; l++ ){
-        if( jsoneq( VAR_json_str, &t[l], VAR_target_path ) == 0 ){
+        if( jsoneq( VAR_json_str, &t[l], target_path ) == 0 ){
             if( t[l+1].type != JSMN_OBJECT ){
+                printf("Object expected for target");
                 return -1;
             }
             i = l + 2;
             for( k = 0; k < t[l+1].size; k++ ){
-                if( jsoneq( VAR_json_str, &t[i], ATTR_key_region ) == 0 ){
-                    i += 2; /* ignore */
-                }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_cell ) == 0 ){
+                if( jsoneq( VAR_json_str, &t[i], ATTR_key_cell ) == 0 ){
                     i += 2; /* ignore */
                 }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_entry ) == 0 ){
                     i += 2; /* ignore */
@@ -408,7 +394,7 @@ EOT
                         i += 1; // iは各要素を指す
                         if( t[i].type == JSMN_OBJECT ){
                             if( strstr( arguments[j].type, "const struct" ) == NULL ){
-                              /* not struct type */
+                              printf("Arg %d is not struct type", j+1 );
                               return -1;
                             }
                             array_size =  t[i].size;
@@ -442,19 +428,19 @@ EOT
     print_num_list( file, num_list )
     file.print <<EOT
                         }else if( t[i].type == JSMN_UNDEFINED ){
-                            /* Unexpected value */
+                            printf( "Unexpected value: %.*s", t[i].end - t[i].start, VAR_json_str + t[i].start );
                         }else{
-                            /* Wrong Type */
+                            printf( "Wrong Type: %.*s", t[i].end - t[i].start, VAR_json_str + t[i].start );
                         }
                     }
                     i += 1; // 最後には配列を抜ける
                 /* 期待値 */
                 }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_exp ) == 0 ){
                     if( t[i+1].type == JSMN_ARRAY ){
-                        /* Return type not support char */
+                        printf("Return type is not support 'char' ", j+1 );
                         return -1;
                     }else if( t[i+1].type == JSMN_STRING ){
-                        /* Return type not support char */
+                        printf("Return type is not support 'char' ", j+1 );
                         return -1;
                     }else if( t[i+1].type == JSMN_PRIMITIVE ){
                         strcpy_n( VAR_tmp_str, t[i+1].end - t[i+1].start, VAR_json_str + t[i+1].start );
@@ -463,31 +449,13 @@ EOT
     print_ret_type_list( file, ret_type_list )
     file.print <<EOT
                     }else if( t[i+1].type == JSMN_UNDEFINED ){
-                        /* Unexpected Value */
+                        printf( "Unexpected value: %.*s", t[i+1].end - t[i+1].start, VAR_json_str + t[i+1].start );
                     }else{
-                        /* Wrong Type */
+                        printf( "Wrong Type: %.*s", t[i+1].end - t[i+1].start, VAR_json_str + t[i+1].start );
                     }
                     i += 2;
-                }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_pre_cond ) == 0 ){
-                    i += 1; // t[i] はOBJECTを想定
-                    if( t[i].type != JSMN_OBJECT ) return -1;
-                    cond_size = t[i].size;
-                    for( j = 0; j < cond_size; j++ ){
-                      i += 1; // t[i] は変数名
-                      i += 1; // t[i] は変数値
-                    }
-                    i += 1; // 最後にはOBJECTを抜ける
-                }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_post_cond ) == 0 ){
-                    i += 1; // t[i] はOBJECTを想定
-                    if( t[i].type != JSMN_OBJECT ) return -1;
-                    cond_size = t[i].size;
-                    for( j = 0; j < cond_size; j++ ){
-                      i += 1; // t[i] は変数名
-                      i += 1; // t[i] は変数値
-                    }
-                    i += 1; // 最後にはOBJECTを抜ける
-                }else{
-                    /* Unexpected Key */
+                } else {
+                    printf( "Unexpected key: %.*s", t[i].end-t[i].start, VAR_json_str + t[i].start );
                     return -1;
                 }
             }
@@ -619,7 +587,7 @@ EOT
                             strcpy_n( VAR_tmp_str, t[i].end - t[i].start, VAR_json_str + t[i].start );
                             if( !strcmp(VAR_tmp_str, "[out]") ){
                                 if( strstr(arguments[j].type,"const") != NULL ){
-                                    // printf("Arg %d is not out arguments\\n", j+1 );
+                                    printf("Arg %d is not out arguments\\n", j+1 );
                                     return -1;
                                 }
 EOT
@@ -678,7 +646,7 @@ EOT
     if !num_list.empty? then
       file.print <<EOT
                             }else{
-                                /* Arg is not primitive type */
+                                printf("Arg %d is not numeric type", j+1 );
                                 return -1;
                             }
 EOT
@@ -1101,7 +1069,6 @@ static jsmntok_t *jsmn_alloc_token(jsmn_parser *parser,
 #endif
     return tok;
 }
-
 /**
  * Fills token type and boundaries.
  */
@@ -1112,7 +1079,6 @@ static void jsmn_fill_token(jsmntok_t *token, jsmntype_t type,
     token->end = end;
     token->size = 0;
 }
-
 /**
  * Fills next available token with JSON primitive.
  */
@@ -1120,9 +1086,7 @@ static int jsmn_parse_primitive(jsmn_parser *parser, const char *js,
         size_t len, jsmntok_t *tokens, size_t num_tokens) {
     jsmntok_t *token;
     int start;
-
     start = parser->pos;
-
     for (; parser->pos < len && js[parser->pos] != '\\0'; parser->pos++) {
         switch (js[parser->pos]) {
 #ifndef JSMN_STRICT
@@ -1143,7 +1107,6 @@ static int jsmn_parse_primitive(jsmn_parser *parser, const char *js,
     parser->pos = start;
     return JSMN_ERROR_PART;
 #endif
-
 found:
     if (tokens == NULL) {
         parser->pos--;
@@ -1161,22 +1124,17 @@ found:
     parser->pos--;
     return 0;
 }
-
 /**
  * Fills next token with JSON string.
  */
 static int jsmn_parse_string(jsmn_parser *parser, const char *js,
         size_t len, jsmntok_t *tokens, size_t num_tokens) {
     jsmntok_t *token;
-
     int start = parser->pos;
-
     parser->pos++;
-
     /* Skip starting quote */
     for (; parser->pos < len && js[parser->pos] != '\\0'; parser->pos++) {
         char c = js[parser->pos];
-
         /* Quote: end of string */
         if (c == '\\"') {
             if (tokens == NULL) {
@@ -1193,7 +1151,6 @@ static int jsmn_parse_string(jsmn_parser *parser, const char *js,
 #endif
             return 0;
         }
-
         /* Backslash: Quoted symbol expected */
         if (c == '\\\\' && parser->pos + 1 < len) {
             int i;
@@ -1228,7 +1185,6 @@ static int jsmn_parse_string(jsmn_parser *parser, const char *js,
     parser->pos = start;
     return JSMN_ERROR_PART;
 }
-
 /**
  * Parse JSON string and fill tokens.
  */
@@ -1238,11 +1194,9 @@ int jsmn_parse(jsmn_parser *parser, const char *js, size_t len,
     int i;
     jsmntok_t *token;
     int count = parser->toknext;
-
     for (; parser->pos < len && js[parser->pos] != '\\0'; parser->pos++) {
         char c;
         jsmntype_t type;
-
         c = js[parser->pos];
         switch (c) {
             case '{': case '[':
@@ -1365,7 +1319,6 @@ int jsmn_parse(jsmn_parser *parser, const char *js, size_t len,
                 if (parser->toksuper != -1 && tokens != NULL)
                     tokens[parser->toksuper].size++;
                 break;
-
 #ifdef JSMN_STRICT
             /* Unexpected char in strict mode */
             default:
@@ -1373,7 +1326,6 @@ int jsmn_parse(jsmn_parser *parser, const char *js, size_t len,
 #endif
         }
     }
-
     if (tokens != NULL) {
         for (i = parser->toknext - 1; i >= 0; i--) {
             /* Unmatched opened object or array */
@@ -1382,10 +1334,8 @@ int jsmn_parse(jsmn_parser *parser, const char *js, size_t len,
             }
         }
     }
-
     return count;
 }
-
 /**
  * Creates a new parser based over a given  buffer with an array of tokens
  * available.
@@ -1395,10 +1345,7 @@ void jsmn_init(jsmn_parser *parser) {
     parser->toknext = 0;
     parser->toksuper = -1;
 }
-
-
 EOT
   end
 
 end
-

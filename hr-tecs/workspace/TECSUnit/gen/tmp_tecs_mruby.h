@@ -22,4 +22,4 @@ typedef int CELLCB;
 /*  79 "../../tecsgen/tecsgen/tecs/mruby/tecs_mruby.h" 2 */
 /*  1 "../../tecsgen/tecsgen/tecs/mruby/TECSStruct.h" 1 */
 /*  80 "../../tecsgen/tecsgen/tecs/mruby/tecs_mruby.h" 2 */
-/*  36 "gen/tmp_C_src.c" 2 */
+/*  37 "gen/tmp_C_src.c" 2 */

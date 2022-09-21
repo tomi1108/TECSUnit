@@ -50,7 +50,7 @@ class TECSUnitPlugin < CellPlugin
   # この段階では意味解析が終わっていない
   def initialize( cell, option )
     dbgPrint "  #{self.class.name}: initialzie=#{cell.get_name} option=#{option}\n"
-    super
+    super #/おそらく親クラスのinitialize関数を呼び出している/
     @cell = cell
 
     @plugin_arg_str = CDLString.remove_dquote option
@@ -65,10 +65,6 @@ class TECSUnitPlugin < CellPlugin
 
 celltype tTECSUnit {
     entry sTECSUnit eUnit;
-    call  sLCD      cLCD_tmp;
-    call  sButton   cButton_tmp;
-    call  sKernel   cKernel_tmp;
-    call  sFatFile  cFatFile_tmp;
 
     /*----- TECSInfo -----*/
     call nTECSInfo::sTECSInfo cTECSInfo;
@@ -165,6 +161,9 @@ EOT
   else {
     /* エラー処理コードをここに記述します */
   } /* end if VALID_IDX(idx) */
+  puts("");
+  printf( "--- TECSUnit ---" );
+  puts("");
   void *rawDesc;
 EOT
     # 1.descriptorの記述
@@ -406,21 +405,23 @@ EOT
 # プロトタイプ宣言をしています
   def gen_preamble( file, b_singleton, ct_name, global_ct_name )
     file.print <<EOT
-ER getRawEntryDescriptor( CELLCB *p_cellcb, char_t *entry_path, void **rawEntryDesc, const char_t *expected_signature );
+ER getRawEntryDescriptor( CELLCB *p_cellcb, char_t *entry_path, void **rawEntryDesc, char_t *expected_signature );
 EOT
   end
 
 # 非受け口関数の生成
   def gen_postamble( file, b_singleton, ct_name, global_ct_name )
     file.print <<EOT
-ER getRawEntryDescriptor( CELLCB *p_cellcb, char_t *entry_path, void **rawEntryDesc, const char_t *expected_signature )
+ER getRawEntryDescriptor( CELLCB *p_cellcb, char_t *entry_path, void **rawEntryDesc, char_t *expected_signature )
 {
     Descriptor( nTECSInfo_sRawEntryDescriptorInfo ) rawEntryDescDesc;
     Descriptor( nTECSInfo_sEntryInfo )              entryDesc;
     ER     ercd;
+    void *rawDesc;
 
     ercd = cTECSInfo_findRawEntryDescriptor( entry_path, &rawEntryDescDesc, &entryDesc );
     if( ercd != E_OK ){
+      printf( "call_sTask: error cTECSInfo_findRawEntryDescriptor( entry_path=%s ) = %d", entry_path, ercd );
     }
     else {
 #define NAME_LEN  (256)
@@ -432,9 +433,11 @@ ER getRawEntryDescriptor( CELLCB *p_cellcb, char_t *entry_path, void **rawEntryD
         cEntryInfo_getSignatureInfo( &signatureDesc );
         cSignatureInfo_set_descriptor( signatureDesc );
         ercd = cSignatureInfo_getName( name, NAME_LEN );
-        if( ercd != E_OK ){
+        if( ercd != E_OK ) {
+            printf( "getRawEntryDescriptor: error cannot get signature name. expected: '%s'", expected_signature );
         }
         if( strcmp( name, expected_signature ) != 0 ){
+            printf( "getRawEntryDescriptor: error signature name '%s' mismatch expecting '%s'", name, expected_signature );
             ercd = E_NOEXS;
         }
         cREDInfo_getRawDescriptor( 0, rawEntryDesc );

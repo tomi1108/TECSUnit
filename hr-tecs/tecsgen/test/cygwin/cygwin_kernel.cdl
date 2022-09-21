@@ -3,13 +3,17 @@ import_C( "cygwin_tecs.h" );
 /*
  *  タスク本体を呼び出すためのシグニチャ
  */
+
+
 signature sTaskBody {
 	void	main(void);
 };
 
+
 /*
  *  タスク例外処理ルーチン本体を呼び出すシグニチャ
  */
+
 signature sTaskExceptionBody {
 	void	main([in] TEXPTN pattern);
 };

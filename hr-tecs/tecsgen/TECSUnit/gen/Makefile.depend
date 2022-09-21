@@ -113,11 +113,6 @@ $(_TECS_OBJ_DIR)nTECSInfo_tIntTypeInfo_tecsgen.o : nTECSInfo_tIntTypeInfo_tecsge
 $(_TECS_OBJ_DIR)nTECSInfo_tIntTypeInfo_templ.o : nTECSInfo_tIntTypeInfo_templ.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tIntTypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tIntTypeInfo_tecsgen.h
 $(_TECS_OBJ_DIR)nTECSInfo_tIntTypeInfo.o : nTECSInfo_tIntTypeInfo.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tIntTypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tIntTypeInfo_tecsgen.h
 
-# Celltype: tFloatTypeInfo  #_MDEP_#
-$(_TECS_OBJ_DIR)nTECSInfo_tFloatTypeInfo_tecsgen.o : nTECSInfo_tFloatTypeInfo_tecsgen.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tFloatTypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tFloatTypeInfo_tecsgen.h
-$(_TECS_OBJ_DIR)nTECSInfo_tFloatTypeInfo_templ.o : nTECSInfo_tFloatTypeInfo_templ.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tFloatTypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tFloatTypeInfo_tecsgen.h
-$(_TECS_OBJ_DIR)nTECSInfo_tFloatTypeInfo.o : nTECSInfo_tFloatTypeInfo.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tFloatTypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tFloatTypeInfo_tecsgen.h
-
 # Celltype: tStructTypeInfo  #_MDEP_#
 $(_TECS_OBJ_DIR)nTECSInfo_tStructTypeInfo_tecsgen.o : nTECSInfo_tStructTypeInfo_tecsgen.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sVarDeclInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tStructTypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tStructTypeInfo_tecsgen.h
 $(_TECS_OBJ_DIR)nTECSInfo_tStructTypeInfo_templ.o : nTECSInfo_tStructTypeInfo_templ.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/nTECSInfo_sTypeInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_sVarDeclInfo_tecsgen.h $(GEN_DIR)/nTECSInfo_tStructTypeInfo_factory.h $(GEN_DIR)/nTECSInfo_tStructTypeInfo_tecsgen.h

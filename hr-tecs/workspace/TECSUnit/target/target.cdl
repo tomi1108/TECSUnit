@@ -1,17 +1,29 @@
-signature sTarget {
-  int main([in] int8_t a, [in] int8_t b);
+import_C( "cygwin_tecs.h" );
+
+signature sSample {
+  ER  sayHello( [in]int32_t times );
+  ER  howAreYou( [out, string(len)]char_t *buf, [in]int32_t len );
 };
 
-celltype tTarget {
-  entry sTarget eTarget;
-
-  var {
-    int8_t data1 = 0;
-    int8_t data2 = 0;
-  };
+celltype tSample {
+  entry sSample eEnt;
 };
 
-region rDomainEV3 {
-  cell tTarget Target {
-  };
+celltype tSimple {
+  call sSample cCall;
+  entry sTaskBody eBody;
+};
+
+cell tSample Sample {
+};
+
+cell tSimple Simple {
+  cCall = Sample.eEnt;
+};
+
+cell tTask Task {
+  cBody = Simple.eBody;
+  priority = 11;
+  stackSize = 1024;
+  taskAttribute = C_EXP( "TA_AcT" );
 };

@@ -5,9 +5,9 @@ celltype tJSMN {
   call  sButton  cButton;
   call  sKernel  cKernel;
   attr {
-    int16_t LEN = 1024; // json¤ò¤Ş¤ë¤´¤ÈÆÉ¤ß¹ş¤ó¤À»ş¤Î¥µ¥¤¥º
-    int16_t TMP_LEN = 128; // arg¤ÎÃÍ¤ò°ì»şÅª¤Ë³ÊÇ¼
-  /* json keywords¡§ÊÑ¹¹¤¹¤ë¾ì¹ç¤Ï¤³¤³¤òÊÑ¤¨¤ë */
+    int16_t LEN = 1024; // jsonã‚’ã¾ã‚‹ã”ã¨èª­ã¿è¾¼ã‚“ã æ™‚ã®ã‚µã‚¤ã‚º
+    int16_t TMP_LEN = 128; // argã®å€¤ã‚’ä¸€æ™‚çš„ã«æ ¼ç´
+  /* json keywordsï¼šå¤‰æ›´ã™ã‚‹å ´åˆã¯ã“ã“ã‚’å¤‰ãˆã‚‹ */
     char_t *key_region = "region";
     char_t *key_cell = "cell";
     char_t *key_entry = "entry";
@@ -25,6 +25,6 @@ celltype tJSMN {
     [size_is(TMP_LEN)]
       char_t  *target_path;
 
-    int counter = 0; // target¤Î¿ô¤ò¿ô¤¨¤ë
+    int counter = 0; // targetã®æ•°ã‚’æ•°ãˆã‚‹
   };
 };

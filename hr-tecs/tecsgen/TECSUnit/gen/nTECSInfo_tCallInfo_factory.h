@@ -426,8 +426,6 @@
 
 #include "nTECSInfo_tIntTypeInfo_tecsgen.h"
 
-#include "nTECSInfo_tFloatTypeInfo_tecsgen.h"
-
 #include "nTECSInfo_tStructTypeInfo_tecsgen.h"
 #define nTECSInfo_tStructTypeInfo_cVarDeclInfo__offset     ((uint32_t)(intptr_t)&((nTECSInfo_tStructTypeInfo_INIB*)0)->cVarDeclInfo)
 #define nTECSInfo_tStructTypeInfo_cVarDeclInfo__array_size (0xffffffff)

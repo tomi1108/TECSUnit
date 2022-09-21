@@ -39,4 +39,4 @@ ER ev3_lcd_draw_line(int32_t x0, int32_t y0, int32_t x1, int32_t y1);
 ER ev3_lcd_fill_rect(int32_t x, int32_t y, int32_t w, int32_t h, lcdcolor_t color);
 /*  190 "../../target/ev3_gcc/api/src/ev3api_lcd.h" */
 ER ev3_lcd_draw_image(const image_t *p_image, int32_t x, int32_t y);
-/*  36 "gen/tmp_C_src.c" 2 */
+/*  37 "gen/tmp_C_src.c" 2 */

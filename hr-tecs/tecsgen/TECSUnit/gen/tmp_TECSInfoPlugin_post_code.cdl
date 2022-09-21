@@ -1639,9 +1639,7 @@ region rTEMP{
             cCallInfo[]     = tTECSUnit_cTarget2CallInfo.eCallInfo;
             cCallInfo[]     = tTECSUnit_cTarget3CallInfo.eCallInfo;
             cAttrInfo[]     = tTECSUnit_LENVarDeclInfo.eVarDeclInfo;
-            cVarInfo[]      = tTECSUnit_out_intVarDeclInfo.eVarDeclInfo;
-            cVarInfo[]      = tTECSUnit_out_doubleVarDeclInfo.eVarDeclInfo;
-            cVarInfo[]      = tTECSUnit_out_charVarDeclInfo.eVarDeclInfo;
+            cVarInfo[]      = tTECSUnit_dataVarDeclInfo.eVarDeclInfo;
             cVarInfo[]      = tTECSUnit_cell_entryVarDeclInfo.eVarDeclInfo;
         };
         cell nTECSInfo::tEntryInfo tTECSUnit_eUnitEntryInfo{
@@ -1879,29 +1877,13 @@ region rTEMP{
             place           = C_EXP( "PLACE_OF_tTECSUnit_LEN" );
             cTypeInfo       = int16_tTypeInfo.eTypeInfo;
         };
-        cell nTECSInfo::tVarDeclInfo tTECSUnit_out_intVarDeclInfo {
-            name            = "out_int";
+        cell nTECSInfo::tVarDeclInfo tTECSUnit_dataVarDeclInfo {
+            name            = "data";
             sizeIsExpr      = (char_t*)0;
             declType        = DECLTYPE_VAR;
-            offset          = C_EXP( "OFFSET_OF_tTECSUnit_out_int" );
-            place           = C_EXP( "PLACE_OF_tTECSUnit_out_int" );
-            cTypeInfo       = int32_t_Array64__Array16_TypeInfo.eTypeInfo;
-        };
-        cell nTECSInfo::tVarDeclInfo tTECSUnit_out_doubleVarDeclInfo {
-            name            = "out_double";
-            sizeIsExpr      = (char_t*)0;
-            declType        = DECLTYPE_VAR;
-            offset          = C_EXP( "OFFSET_OF_tTECSUnit_out_double" );
-            place           = C_EXP( "PLACE_OF_tTECSUnit_out_double" );
-            cTypeInfo       = double64_t_Array32__Array16_TypeInfo.eTypeInfo;
-        };
-        cell nTECSInfo::tVarDeclInfo tTECSUnit_out_charVarDeclInfo {
-            name            = "out_char";
-            sizeIsExpr      = (char_t*)0;
-            declType        = DECLTYPE_VAR;
-            offset          = C_EXP( "OFFSET_OF_tTECSUnit_out_char" );
-            place           = C_EXP( "PLACE_OF_tTECSUnit_out_char" );
-            cTypeInfo       = char_t_Array256__Array16_TypeInfo.eTypeInfo;
+            offset          = C_EXP( "OFFSET_OF_tTECSUnit_data" );
+            place           = C_EXP( "PLACE_OF_tTECSUnit_data" );
+            cTypeInfo       = void_Ptr_TypeInfo.eTypeInfo;
         };
         cell nTECSInfo::tVarDeclInfo tTECSUnit_cell_entryVarDeclInfo {
             name            = "cell_entry";
@@ -1922,13 +1904,17 @@ region rTEMP{
             cEntryInfo[]    = tJSMN_eJSMNEntryInfo.eEntryInfo;
             cAttrInfo[]     = tJSMN_LENVarDeclInfo.eVarDeclInfo;
             cAttrInfo[]     = tJSMN_TMP_LENVarDeclInfo.eVarDeclInfo;
+            cAttrInfo[]     = tJSMN_key_regionVarDeclInfo.eVarDeclInfo;
             cAttrInfo[]     = tJSMN_key_cellVarDeclInfo.eVarDeclInfo;
             cAttrInfo[]     = tJSMN_key_entryVarDeclInfo.eVarDeclInfo;
             cAttrInfo[]     = tJSMN_key_functionVarDeclInfo.eVarDeclInfo;
             cAttrInfo[]     = tJSMN_key_argVarDeclInfo.eVarDeclInfo;
             cAttrInfo[]     = tJSMN_key_expVarDeclInfo.eVarDeclInfo;
+            cAttrInfo[]     = tJSMN_key_pre_condVarDeclInfo.eVarDeclInfo;
+            cAttrInfo[]     = tJSMN_key_post_condVarDeclInfo.eVarDeclInfo;
             cVarInfo[]      = tJSMN_json_strVarDeclInfo.eVarDeclInfo;
             cVarInfo[]      = tJSMN_tmp_strVarDeclInfo.eVarDeclInfo;
+            cVarInfo[]      = tJSMN_target_pathVarDeclInfo.eVarDeclInfo;
             cVarInfo[]      = tJSMN_counterVarDeclInfo.eVarDeclInfo;
         };
         cell nTECSInfo::tEntryInfo tJSMN_eJSMNEntryInfo{
@@ -1952,6 +1938,14 @@ region rTEMP{
             offset          = C_EXP( "OFFSET_OF_tJSMN_TMP_LEN" );
             place           = C_EXP( "PLACE_OF_tJSMN_TMP_LEN" );
             cTypeInfo       = int16_tTypeInfo.eTypeInfo;
+        };
+        cell nTECSInfo::tVarDeclInfo tJSMN_key_regionVarDeclInfo {
+            name            = "key_region";
+            sizeIsExpr      = (char_t*)0;
+            declType        = DECLTYPE_ATTR;
+            offset          = C_EXP( "OFFSET_OF_tJSMN_key_region" );
+            place           = C_EXP( "PLACE_OF_tJSMN_key_region" );
+            cTypeInfo       = char_t_Ptr_TypeInfo.eTypeInfo;
         };
         cell nTECSInfo::tVarDeclInfo tJSMN_key_cellVarDeclInfo {
             name            = "key_cell";
@@ -1993,6 +1987,22 @@ region rTEMP{
             place           = C_EXP( "PLACE_OF_tJSMN_key_exp" );
             cTypeInfo       = char_t_Ptr_TypeInfo.eTypeInfo;
         };
+        cell nTECSInfo::tVarDeclInfo tJSMN_key_pre_condVarDeclInfo {
+            name            = "key_pre_cond";
+            sizeIsExpr      = (char_t*)0;
+            declType        = DECLTYPE_ATTR;
+            offset          = C_EXP( "OFFSET_OF_tJSMN_key_pre_cond" );
+            place           = C_EXP( "PLACE_OF_tJSMN_key_pre_cond" );
+            cTypeInfo       = char_t_Ptr_TypeInfo.eTypeInfo;
+        };
+        cell nTECSInfo::tVarDeclInfo tJSMN_key_post_condVarDeclInfo {
+            name            = "key_post_cond";
+            sizeIsExpr      = (char_t*)0;
+            declType        = DECLTYPE_ATTR;
+            offset          = C_EXP( "OFFSET_OF_tJSMN_key_post_cond" );
+            place           = C_EXP( "PLACE_OF_tJSMN_key_post_cond" );
+            cTypeInfo       = char_t_Ptr_TypeInfo.eTypeInfo;
+        };
         cell nTECSInfo::tVarDeclInfo tJSMN_json_strVarDeclInfo {
             name            = "json_str";
             sizeIsExpr      = "mikan";
@@ -2007,6 +2017,14 @@ region rTEMP{
             declType        = DECLTYPE_VAR;
             offset          = C_EXP( "OFFSET_OF_tJSMN_tmp_str" );
             place           = C_EXP( "PLACE_OF_tJSMN_tmp_str" );
+            cTypeInfo       = char_t_Ptr_TypeInfo.eTypeInfo;
+        };
+        cell nTECSInfo::tVarDeclInfo tJSMN_target_pathVarDeclInfo {
+            name            = "target_path";
+            sizeIsExpr      = "mikan";
+            declType        = DECLTYPE_VAR;
+            offset          = C_EXP( "OFFSET_OF_tJSMN_target_path" );
+            place           = C_EXP( "PLACE_OF_tJSMN_target_path" );
             cTypeInfo       = char_t_Ptr_TypeInfo.eTypeInfo;
         };
         cell nTECSInfo::tVarDeclInfo tJSMN_counterVarDeclInfo {
@@ -5074,67 +5092,13 @@ region rTEMP{
             b_volatile     = false;
             cTypeInfo        = char_tTypeInfo.eTypeInfo;
         };
-        cell nTECSInfo::tArrayTypeInfo int32_t_Array64__Array16_TypeInfo{
-            name           = "int32_t[16][64]";
-            typeKind       = TECSTypeKind_ArrayType;
-            size           = C_EXP( "sizeof(int32_t[16][64])" );
+        cell nTECSInfo::tPtrTypeInfo void_Ptr_TypeInfo{
+            name           = "void*";
+            typeKind       = TECSTypeKind_PtrType;
+            size           = C_EXP( "sizeof(void*)" );
             b_const        = false;
             b_volatile     = false;
-            cTypeInfo        = int32_t_Array64_TypeInfo.eTypeInfo;
-        };
-        cell nTECSInfo::tArrayTypeInfo int32_t_Array64_TypeInfo{
-            name           = "int32_t[64]";
-            typeKind       = TECSTypeKind_ArrayType;
-            size           = C_EXP( "sizeof(int32_t[64])" );
-            b_const        = false;
-            b_volatile     = false;
-            cTypeInfo        = int32_tTypeInfo.eTypeInfo;
-        };
-        cell nTECSInfo::tIntTypeInfo int32_tTypeInfo{
-            name           = "int32_t";
-            typeKind       = TECSTypeKind_IntType;
-            size           = C_EXP( "sizeof(int32_t)" );
-            b_const        = false;
-            b_volatile     = false;
-        };
-        cell nTECSInfo::tArrayTypeInfo double64_t_Array32__Array16_TypeInfo{
-            name           = "double64_t[16][32]";
-            typeKind       = TECSTypeKind_ArrayType;
-            size           = C_EXP( "sizeof(double64_t[16][32])" );
-            b_const        = false;
-            b_volatile     = false;
-            cTypeInfo        = double64_t_Array32_TypeInfo.eTypeInfo;
-        };
-        cell nTECSInfo::tArrayTypeInfo double64_t_Array32_TypeInfo{
-            name           = "double64_t[32]";
-            typeKind       = TECSTypeKind_ArrayType;
-            size           = C_EXP( "sizeof(double64_t[32])" );
-            b_const        = false;
-            b_volatile     = false;
-            cTypeInfo        = double64_tTypeInfo.eTypeInfo;
-        };
-        cell nTECSInfo::tFloatTypeInfo double64_tTypeInfo{
-            name           = "double64_t";
-            typeKind       = TECSTypeKind_FloatType;
-            size           = C_EXP( "sizeof(double64_t)" );
-            b_const        = false;
-            b_volatile     = false;
-        };
-        cell nTECSInfo::tArrayTypeInfo char_t_Array256__Array16_TypeInfo{
-            name           = "char_t[16][256]";
-            typeKind       = TECSTypeKind_ArrayType;
-            size           = C_EXP( "sizeof(char_t[16][256])" );
-            b_const        = false;
-            b_volatile     = false;
-            cTypeInfo        = char_t_Array256_TypeInfo.eTypeInfo;
-        };
-        cell nTECSInfo::tArrayTypeInfo char_t_Array256_TypeInfo{
-            name           = "char_t[256]";
-            typeKind       = TECSTypeKind_ArrayType;
-            size           = C_EXP( "sizeof(char_t[256])" );
-            b_const        = false;
-            b_volatile     = false;
-            cTypeInfo        = char_tTypeInfo.eTypeInfo;
+            cTypeInfo        = voidTypeInfo.eTypeInfo;
         };
         cell nTECSInfo::tPtrTypeInfo char_Ptr_TypeInfo{
             name           = "char*";
@@ -5205,6 +5169,13 @@ region rTEMP{
             b_const        = false;
             b_volatile     = false;
             cTypeInfo        = int8_tTypeInfo.eTypeInfo;
+        };
+        cell nTECSInfo::tIntTypeInfo int32_tTypeInfo{
+            name           = "int32_t";
+            typeKind       = TECSTypeKind_IntType;
+            size           = C_EXP( "sizeof(int32_t)" );
+            b_const        = false;
+            b_volatile     = false;
         };
         cell nTECSInfo::tPtrTypeInfo const__void_Ptr_TypeInfo{
             name           = "const void*";
@@ -5355,14 +5326,6 @@ region rTEMP{
             b_const        = false;
             b_volatile     = false;
             cTypeInfo        = void_Ptr_TypeInfo.eTypeInfo;
-        };
-        cell nTECSInfo::tPtrTypeInfo void_Ptr_TypeInfo{
-            name           = "void*";
-            typeKind       = TECSTypeKind_PtrType;
-            size           = C_EXP( "sizeof(void*)" );
-            b_const        = false;
-            b_volatile     = false;
-            cTypeInfo        = voidTypeInfo.eTypeInfo;
         };
         cell nTECSInfo::tPtrTypeInfo Descriptor_of_nTECSInfo_sNamespaceInfo_Ptr_TypeInfo{
             name           = "Descriptor( nTECSInfo_sNamespaceInfo )*";

@@ -1,6 +1,7 @@
 
 celltype tTECSUnit {
     entry sTECSUnit eUnit;
+
     /*----- TECSInfo -----*/
     call nTECSInfo::sTECSInfo cTECSInfo;
     [dynamic,optional]
@@ -40,9 +41,7 @@ celltype tTECSUnit {
       int16_t LEN = 256;
     };
     var {
-      int32_t out_int[16][64];
-      double64_t out_double[16][32];
-      char_t out_char[16][256];
+      void *data;
       [size_is(LEN)]
         char *cell_entry;
     };

@@ -1,19 +1,19 @@
-/*  1 "gen/tmp_C_src.c" */
-/*  1 "<組み込み>" */
-/*  1 "<コマンドライン>" */
+/*  0 "gen/tmp_C_src.c" */
+/*  0 "<built-in>" */
+/*  0 "<command-line>" */
 /*  1 "gen/tmp_C_src.c" */
 /*  34 "gen/tmp_C_src.c" */
 typedef struct { int dummy; } va_list;
 
-/*  1 "../test/cygwin/cygwin_tecs.h" 1 */
-/*  13 "../test/cygwin/cygwin_tecs.h" */
+/*  1 "./cygwin_tecs.h" 1 */
+/*  13 "./cygwin_tecs.h" */
 /*  1 "../test/cygwin/kernel.h" 1 */
 /*  67 "../test/cygwin/kernel.h" */
 /*  1 "../test/cygwin/t_stddef.h" 1 */
 /*  68 "../test/cygwin/t_stddef.h" */
 /*  1 "../test/cygwin/target_stddef.h" 1 */
-/*  1 "/usr/lib/gcc/x86_64-pc-cygwin/6.4.0/include/stdint.h" 1 3 4 */
-/*  9 "/usr/lib/gcc/x86_64-pc-cygwin/6.4.0/include/stdint.h" 3 4 */
+/*  1 "/usr/lib/gcc/x86_64-pc-cygwin/11/include/stdint.h" 1 3 4 */
+/*  9 "/usr/lib/gcc/x86_64-pc-cygwin/11/include/stdint.h" 3 4 */
 /*  1 "/usr/include/stdint.h" 1 3 4 */
 /*  12 "/usr/include/stdint.h" 3 4 */
 /*  1 "/usr/include/machine/_default_types.h" 1 3 4 */
@@ -93,7 +93,9 @@ typedef long unsigned int __uintptr_t;
        
        
        
-/*  187 "/usr/include/sys/_intsup.h" 3 4 */
+       
+/*  190 "/usr/include/sys/_intsup.h" 3 4 */
+       
        
        
        
@@ -206,7 +208,7 @@ typedef __uint_least64_t uint_least64_t;
 /*  81 "/usr/include/stdint.h" 3 4 */
   typedef long int int_fast64_t;
   typedef long unsigned int uint_fast64_t;
-/*  10 "/usr/lib/gcc/x86_64-pc-cygwin/6.4.0/include/stdint.h" 2 3 4 */
+/*  10 "/usr/lib/gcc/x86_64-pc-cygwin/11/include/stdint.h" 2 3 4 */
 /*  2 "../test/cygwin/target_stddef.h" 2 */
 
 
@@ -527,9 +529,9 @@ extern ER get_ipm(PRI *p_intpri) ;
 
 extern bool_t xsns_dpn(void *p_excinf) ;
 extern bool_t xsns_xpn(void *p_excinf) ;
-/*  14 "../test/cygwin/cygwin_tecs.h" 2 */
-/*  1 "/home/Shirata/shirata_tecsgen/tecsgen/tecs/tecs.h" 1 */
-/*  46 "/home/Shirata/shirata_tecsgen/tecsgen/tecs/tecs.h" */
+/*  14 "./cygwin_tecs.h" 2 */
+/*  1 "/home/hnt11/work/TECSUnit/hr-tecs/tecsgen/tecsgen/tecs/tecs.h" 1 */
+/*  46 "/home/hnt11/work/TECSUnit/hr-tecs/tecsgen/tecsgen/tecs/tecs.h" */
 typedef struct tag_int128_t { int64_t hi; int64_t lo; } int128_t;
 typedef struct tag_uint128_t { int64_t hi; int64_t lo; } uint128_t;
 
@@ -547,7 +549,7 @@ typedef char char_t;
 
 typedef signed char schar_t;
 typedef unsigned char uchar_t;
-/*  15 "../test/cygwin/cygwin_tecs.h" 2 */
+/*  15 "./cygwin_tecs.h" 2 */
 /*  1 "../test/cygwin/tecs_pthread_adaptor.h" 1 */
 /*  12 "../test/cygwin/tecs_pthread_adaptor.h" */
 typedef intptr_t pthread_t;
@@ -555,5 +557,5 @@ typedef intptr_t pthread_mutex_t;
 
 typedef intptr_t pthread_once_t;
 typedef intptr_t pthread_cond_t;
-/*  16 "../test/cygwin/cygwin_tecs.h" 2 */
-/*  36 "gen/tmp_C_src.c" 2 */
+/*  16 "./cygwin_tecs.h" 2 */
+/*  37 "gen/tmp_C_src.c" 2 */

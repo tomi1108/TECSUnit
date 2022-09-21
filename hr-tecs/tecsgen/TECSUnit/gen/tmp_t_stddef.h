@@ -1,6 +1,6 @@
-/*  1 "gen/tmp_C_src.c" */
-/*  1 "<組み込み>" */
-/*  1 "<コマンドライン>" */
+/*  0 "gen/tmp_C_src.c" */
+/*  0 "<built-in>" */
+/*  0 "<command-line>" */
 /*  1 "gen/tmp_C_src.c" */
 /*  34 "gen/tmp_C_src.c" */
 typedef struct { int dummy; } va_list;
@@ -8,8 +8,8 @@ typedef struct { int dummy; } va_list;
 /*  1 "../test/cygwin/t_stddef.h" 1 */
 /*  68 "../test/cygwin/t_stddef.h" */
 /*  1 "../test/cygwin/target_stddef.h" 1 */
-/*  1 "/usr/lib/gcc/x86_64-pc-cygwin/6.4.0/include/stdint.h" 1 3 4 */
-/*  9 "/usr/lib/gcc/x86_64-pc-cygwin/6.4.0/include/stdint.h" 3 4 */
+/*  1 "/usr/lib/gcc/x86_64-pc-cygwin/11/include/stdint.h" 1 3 4 */
+/*  9 "/usr/lib/gcc/x86_64-pc-cygwin/11/include/stdint.h" 3 4 */
 /*  1 "/usr/include/stdint.h" 1 3 4 */
 /*  12 "/usr/include/stdint.h" 3 4 */
 /*  1 "/usr/include/machine/_default_types.h" 1 3 4 */
@@ -89,7 +89,9 @@ typedef long unsigned int __uintptr_t;
        
        
        
-/*  187 "/usr/include/sys/_intsup.h" 3 4 */
+       
+/*  190 "/usr/include/sys/_intsup.h" 3 4 */
+       
        
        
        
@@ -202,7 +204,7 @@ typedef __uint_least64_t uint_least64_t;
 /*  81 "/usr/include/stdint.h" 3 4 */
   typedef long int int_fast64_t;
   typedef long unsigned int uint_fast64_t;
-/*  10 "/usr/lib/gcc/x86_64-pc-cygwin/6.4.0/include/stdint.h" 2 3 4 */
+/*  10 "/usr/lib/gcc/x86_64-pc-cygwin/11/include/stdint.h" 2 3 4 */
 /*  2 "../test/cygwin/target_stddef.h" 2 */
 
 
@@ -257,4 +259,4 @@ typedef struct acvct {
  ACPTN acptn3;
  ACPTN acptn4;
 } ACVCT;
-/*  36 "gen/tmp_C_src.c" 2 */
+/*  37 "gen/tmp_C_src.c" 2 */

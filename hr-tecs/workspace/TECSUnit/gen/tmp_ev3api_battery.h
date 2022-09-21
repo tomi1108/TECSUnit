@@ -12,4 +12,4 @@ typedef struct { int dummy; } va_list;
 int ev3_battery_current_mA();
 /*  51 "../../target/ev3_gcc/api/src/ev3api_battery.h" */
 int ev3_battery_voltage_mV();
-/*  36 "gen/tmp_C_src.c" 2 */
+/*  37 "gen/tmp_C_src.c" 2 */

@@ -12,4 +12,4 @@ typedef struct { int dummy; } va_list;
 typedef int32_t ledcolor_t;
 /*  61 "../../target/ev3_gcc/api/src/ev3api_led.h" */
 ER ev3_led_set_color(ledcolor_t color);
-/*  36 "gen/tmp_C_src.c" 2 */
+/*  37 "gen/tmp_C_src.c" 2 */

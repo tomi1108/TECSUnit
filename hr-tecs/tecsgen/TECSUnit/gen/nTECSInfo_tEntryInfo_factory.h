@@ -24,7 +24,6 @@
 #define nTECSInfo_tVoidTypeInfo_eTypeInfo__array_size      (0)
 #define nTECSInfo_tBoolTypeInfo_eTypeInfo__array_size      (0)
 #define nTECSInfo_tIntTypeInfo_eTypeInfo__array_size       (0)
-#define nTECSInfo_tFloatTypeInfo_eTypeInfo__array_size     (0)
 #define nTECSInfo_tStructTypeInfo_eTypeInfo__array_size    (0)
 #define nTECSInfo_tPtrTypeInfo_eTypeInfo__array_size       (0)
 #define nTECSInfo_tArrayTypeInfo_eTypeInfo__array_size     (0)

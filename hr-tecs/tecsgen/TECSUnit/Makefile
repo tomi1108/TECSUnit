@@ -39,7 +39,7 @@ SRC_DIR = $(BASE_DIR)/src
 TARGET = $(TARGET_BASE).exe
 
 #default TECS generator
-TECSGEN = tecsgen
+TECSGEN = ../tecsgen/tecsgen.rb
 
 #Time Stamp
 TIMESTAMP = $(GEN_DIR)/tecsgen.timestamp

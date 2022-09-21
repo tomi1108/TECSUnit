@@ -46,4 +46,4 @@ typedef int32_t serial_port_t;
 FILE* ev3_serial_open_file(serial_port_t port);
 /*  200 "../../target/ev3_gcc/api/src/ev3api_fs.h" */
 bool_t ev3_bluetooth_is_connected();
-/*  36 "gen/tmp_C_src.c" 2 */
+/*  37 "gen/tmp_C_src.c" 2 */

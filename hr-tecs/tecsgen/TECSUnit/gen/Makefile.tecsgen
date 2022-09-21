@@ -37,8 +37,8 @@
 #  PLUGIN_domain_SRCS       .c files of plugin generated .c files for each domain
 #  CELLTYPE_domain_SRCS     .c files of celltype.c files for each domain
 
-TECS_IMPORT_CDLS = TECSUnit.cdl ../test/cygwin/cygwin_kernel.cdl $(TECSPATH)/TECSInfo/TECSInfo.cdl $(TECSPATH)/TECSInfo/TECSInfoAccessor.cdl ./target//target.cdl jsmn.cdl tTaskMain.cdl gen/tmp_rTEMP_TECSInfoSub.cdl gen/tmp_TECSInfoCompoPlugin_post_code.cdl gen/tmp_TECSUnitPlugin_post_code.cdl gen/tmp_JSMNPlugin_post_code.cdl gen/tmp_TECSInfoPlugin_post_code.cdl
-TECS_IMPORT_HEADERS = ../test/cygwin/cygwin_tecs.h ../test/cygwin/t_stddef.h ../test/cygwin/t_syslog.h ./target//target_struct.h json_struct.h
+TECS_IMPORT_CDLS = TECSUnit.cdl cygwin_kernel.cdl $(TECSPATH)/TECSInfo/TECSInfo.cdl $(TECSPATH)/TECSInfo/TECSInfoAccessor.cdl ./target//target.cdl jsmn.cdl tTaskMain.cdl gen/tmp_rTEMP_TECSInfoSub.cdl gen/tmp_TECSInfoCompoPlugin_post_code.cdl gen/tmp_TECSUnitPlugin_post_code.cdl gen/tmp_JSMNPlugin_post_code.cdl gen/tmp_TECSInfoPlugin_post_code.cdl
+TECS_IMPORT_HEADERS = cygwin_tecs.h ../test/cygwin/t_stddef.h ../test/cygwin/t_syslog.h ./target//target_struct.h json_struct.h
 TECS_IMPORTS = $(TECS_IMPORT_CDLS) $(TECS_IMPORT_HEADERS)
 
 SIGNATURE_HEADERS = \
@@ -84,7 +84,6 @@ CELLTYPE_TECSGEN_HEADERS = \
  	$(GEN_DIR)/nTECSInfo_tVoidTypeInfo_tecsgen.h \
  	$(GEN_DIR)/nTECSInfo_tBoolTypeInfo_tecsgen.h \
  	$(GEN_DIR)/nTECSInfo_tIntTypeInfo_tecsgen.h \
- 	$(GEN_DIR)/nTECSInfo_tFloatTypeInfo_tecsgen.h \
  	$(GEN_DIR)/nTECSInfo_tStructTypeInfo_tecsgen.h \
  	$(GEN_DIR)/nTECSInfo_tPtrTypeInfo_tecsgen.h \
  	$(GEN_DIR)/nTECSInfo_tArrayTypeInfo_tecsgen.h \
@@ -116,7 +115,6 @@ CELLTYPE_FACTORY_HEADERS = \
  	$(GEN_DIR)/nTECSInfo_tVoidTypeInfo_factory.h \
  	$(GEN_DIR)/nTECSInfo_tBoolTypeInfo_factory.h \
  	$(GEN_DIR)/nTECSInfo_tIntTypeInfo_factory.h \
- 	$(GEN_DIR)/nTECSInfo_tFloatTypeInfo_factory.h \
  	$(GEN_DIR)/nTECSInfo_tStructTypeInfo_factory.h \
  	$(GEN_DIR)/nTECSInfo_tPtrTypeInfo_factory.h \
  	$(GEN_DIR)/nTECSInfo_tArrayTypeInfo_factory.h \
@@ -149,7 +147,6 @@ TECS_INLINE_HEADERS = \
  	nTECSInfo_tVoidTypeInfo_tecsgen.h \
  	nTECSInfo_tBoolTypeInfo_tecsgen.h \
  	nTECSInfo_tIntTypeInfo_tecsgen.h \
- 	nTECSInfo_tFloatTypeInfo_tecsgen.h \
  	nTECSInfo_tStructTypeInfo_tecsgen.h \
  	nTECSInfo_tPtrTypeInfo_tecsgen.h \
  	nTECSInfo_tArrayTypeInfo_tecsgen.h \
@@ -188,7 +185,6 @@ TECSGEN_COBJS = \
  	$(_TECS_OBJ_DIR)nTECSInfo_tVoidTypeInfo_tecsgen.o \
  	$(_TECS_OBJ_DIR)nTECSInfo_tBoolTypeInfo_tecsgen.o \
  	$(_TECS_OBJ_DIR)nTECSInfo_tIntTypeInfo_tecsgen.o \
- 	$(_TECS_OBJ_DIR)nTECSInfo_tFloatTypeInfo_tecsgen.o \
  	$(_TECS_OBJ_DIR)nTECSInfo_tStructTypeInfo_tecsgen.o \
  	$(_TECS_OBJ_DIR)nTECSInfo_tPtrTypeInfo_tecsgen.o \
  	$(_TECS_OBJ_DIR)nTECSInfo_tArrayTypeInfo_tecsgen.o \
@@ -226,7 +222,6 @@ CELLTYPE_COBJS = \
  	$(_TECS_OBJ_DIR)nTECSInfo_tVoidTypeInfo.o \
  	$(_TECS_OBJ_DIR)nTECSInfo_tBoolTypeInfo.o \
  	$(_TECS_OBJ_DIR)nTECSInfo_tIntTypeInfo.o \
- 	$(_TECS_OBJ_DIR)nTECSInfo_tFloatTypeInfo.o \
  	$(_TECS_OBJ_DIR)nTECSInfo_tStructTypeInfo.o \
  	$(_TECS_OBJ_DIR)nTECSInfo_tPtrTypeInfo.o \
  	$(_TECS_OBJ_DIR)nTECSInfo_tArrayTypeInfo.o \
@@ -257,7 +252,6 @@ TECSGEN_SRCS = \
  	$(GEN_DIR)/nTECSInfo_tVoidTypeInfo_tecsgen.c \
  	$(GEN_DIR)/nTECSInfo_tBoolTypeInfo_tecsgen.c \
  	$(GEN_DIR)/nTECSInfo_tIntTypeInfo_tecsgen.c \
- 	$(GEN_DIR)/nTECSInfo_tFloatTypeInfo_tecsgen.c \
  	$(GEN_DIR)/nTECSInfo_tStructTypeInfo_tecsgen.c \
  	$(GEN_DIR)/nTECSInfo_tPtrTypeInfo_tecsgen.c \
  	$(GEN_DIR)/nTECSInfo_tArrayTypeInfo_tecsgen.c \
@@ -308,7 +302,6 @@ CELLTYPE_SRCS = \
  	nTECSInfo_tVoidTypeInfo.c \
  	nTECSInfo_tBoolTypeInfo.c \
  	nTECSInfo_tIntTypeInfo.c \
- 	nTECSInfo_tFloatTypeInfo.c \
  	nTECSInfo_tStructTypeInfo.c \
  	nTECSInfo_tPtrTypeInfo.c \
  	nTECSInfo_tArrayTypeInfo.c \
