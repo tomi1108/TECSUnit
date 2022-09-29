@@ -70,7 +70,7 @@ ER           nTECSInfo_tPtrTypeInfo_eTypeInfo_getMemberInfo(nTECSInfo_tPtrTypeIn
 #ifndef TOPPERS_CB_TYPE_ONLY
 
 #define nTECSInfo_tPtrTypeInfo_ID_BASE        (1)  /* ID Base  #_NIDB_# */
-#define nTECSInfo_tPtrTypeInfo_N_CELL       (33)  /*  number of cells  #_NCEL_# */
+#define nTECSInfo_tPtrTypeInfo_N_CELL       (31)  /*  number of cells  #_NCEL_# */
 
 /* IDX validation macro #_CVI_# */
 #define nTECSInfo_tPtrTypeInfo_VALID_IDX(IDX) (1)

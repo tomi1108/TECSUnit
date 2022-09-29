@@ -63,9 +63,8 @@ const struct tag_nTECSInfo_sRegionInfo_VMT nTECSInfo_tRegionInfo_eRegionInfo_MT_
 };
 
 /* entry port descriptor referenced by call port (differ from actual definition) #_CPEPD_# */
-extern struct tag_nTECSInfo_sCellInfo_VDES rTEMP_rTECSInfo_Target1CellInfo_eCellInfo_des;
-extern struct tag_nTECSInfo_sCellInfo_VDES rTEMP_rTECSInfo_Target2CellInfo_eCellInfo_des;
-extern struct tag_nTECSInfo_sCellInfo_VDES rTEMP_rTECSInfo_Target3CellInfo_eCellInfo_des;
+extern struct tag_nTECSInfo_sCellInfo_VDES rTEMP_rTECSInfo_SampleCellInfo_eCellInfo_des;
+extern struct tag_nTECSInfo_sCellInfo_VDES rTEMP_rTECSInfo_SimpleCellInfo_eCellInfo_des;
 extern struct tag_nTECSInfo_sCellInfo_VDES rTEMP_rTECSInfo_TaskCellInfo_eCellInfo_des;
 extern const struct tag_nTECSInfo_tRegionInfo_eRegionInfo_DES rTEMP_rTECSInfo_rTEMPRegionInfo_eRegionInfo_des;
 
@@ -78,9 +77,8 @@ extern const struct tag_nTECSInfo_tRegionInfo_eRegionInfo_DES rTEMP_rTECSInfo_rT
 
 /* call port array #_CPA_# */
 struct tag_nTECSInfo_sCellInfo_VDES * const rTEMP_rTECSInfo__LinkRootRegionInfo_cCellInfo[] = {
-    &rTEMP_rTECSInfo_Target1CellInfo_eCellInfo_des,
-    &rTEMP_rTECSInfo_Target2CellInfo_eCellInfo_des,
-    &rTEMP_rTECSInfo_Target3CellInfo_eCellInfo_des,
+    &rTEMP_rTECSInfo_SampleCellInfo_eCellInfo_des,
+    &rTEMP_rTECSInfo_SimpleCellInfo_eCellInfo_des,
     &rTEMP_rTECSInfo_TaskCellInfo_eCellInfo_des,
 };
 struct tag_nTECSInfo_sRegionInfo_VDES * const rTEMP_rTECSInfo__LinkRootRegionInfo_cRegionInfo[] = {
@@ -105,7 +103,7 @@ nTECSInfo_tRegionInfo_INIB nTECSInfo_tRegionInfo_INIB_tab[] = {
     {
         /* call port (INIB) #_CP_# */ 
         rTEMP_rTECSInfo__LinkRootRegionInfo_cCellInfo, /* #_CCP3B_# */
-        4,                                       /* length of cCellInfo (n_cCellInfo) #_CCP4_# */
+        3,                                       /* length of cCellInfo (n_cCellInfo) #_CCP4_# */
         rTEMP_rTECSInfo__LinkRootRegionInfo_cRegionInfo, /* #_CCP3B_# */
         1,                                       /* length of cRegionInfo (n_cRegionInfo) #_CCP4_# */
         /* entry port #_EP_# */ 

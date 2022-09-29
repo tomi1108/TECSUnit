@@ -87,9 +87,6 @@ extern struct tag_nTECSInfo_sVarDeclInfo_VDES rTEMP_rTECSInfo_struct__t_rdtq_sts
 extern struct tag_nTECSInfo_sVarDeclInfo_VDES rTEMP_rTECSInfo_struct__t_rdtq_rtskidVarDeclInfo_eVarDeclInfo_des;
 extern struct tag_nTECSInfo_sVarDeclInfo_VDES rTEMP_rTECSInfo_struct__t_rdtq_sdtqcntVarDeclInfo_eVarDeclInfo_des;
 
-extern struct tag_nTECSInfo_sVarDeclInfo_VDES rTEMP_rTECSInfo_struct__target_struct_numberVarDeclInfo_eVarDeclInfo_des;
-extern struct tag_nTECSInfo_sVarDeclInfo_VDES rTEMP_rTECSInfo_struct__target_struct_nameVarDeclInfo_eVarDeclInfo_des;
-
 extern struct tag_nTECSInfo_sVarDeclInfo_VDES rTEMP_rTECSInfo_struct__tecsunit_obj_typeVarDeclInfo_eVarDeclInfo_des;
 extern struct tag_nTECSInfo_sVarDeclInfo_VDES rTEMP_rTECSInfo_struct__tecsunit_obj_dataVarDeclInfo_eVarDeclInfo_des;
 
@@ -108,11 +105,6 @@ struct tag_nTECSInfo_sVarDeclInfo_VDES * const rTEMP_rTECSInfo_struct__t_rdtqTyp
     &rTEMP_rTECSInfo_struct__t_rdtq_stskidVarDeclInfo_eVarDeclInfo_des,
     &rTEMP_rTECSInfo_struct__t_rdtq_rtskidVarDeclInfo_eVarDeclInfo_des,
     &rTEMP_rTECSInfo_struct__t_rdtq_sdtqcntVarDeclInfo_eVarDeclInfo_des,
-};
-
-struct tag_nTECSInfo_sVarDeclInfo_VDES * const rTEMP_rTECSInfo_struct__target_structTypeInfo_cVarDeclInfo[] = {
-    &rTEMP_rTECSInfo_struct__target_struct_numberVarDeclInfo_eVarDeclInfo_des,
-    &rTEMP_rTECSInfo_struct__target_struct_nameVarDeclInfo_eVarDeclInfo_des,
 };
 
 struct tag_nTECSInfo_sVarDeclInfo_VDES * const rTEMP_rTECSInfo_struct__tecsunit_objTypeInfo_cVarDeclInfo[] = {
@@ -162,20 +154,7 @@ nTECSInfo_tStructTypeInfo_INIB nTECSInfo_tStructTypeInfo_INIB_tab[] = {
         false,                                   /* b_const */
         false,                                   /* b_volatile */
     },
-    /* cell: nTECSInfo_tStructTypeInfo_CB_tab[3]:  struct__target_structTypeInfo id=4 */
-    {
-        /* call port (INIB) #_CP_# */ 
-        rTEMP_rTECSInfo_struct__target_structTypeInfo_cVarDeclInfo, /* #_CCP3B_# */
-        2,                                       /* length of cVarDeclInfo (n_cVarDeclInfo) #_CCP4_# */
-        /* entry port #_EP_# */ 
-        /* attribute(RO) */ 
-        "const struct target_struct",            /* name */
-        7,                                       /* typeKind */
-        sizeof(const struct target_struct),      /* size */
-        true,                                    /* b_const */
-        false,                                   /* b_volatile */
-    },
-    /* cell: nTECSInfo_tStructTypeInfo_CB_tab[4]:  struct__tecsunit_objTypeInfo id=5 */
+    /* cell: nTECSInfo_tStructTypeInfo_CB_tab[3]:  struct__tecsunit_objTypeInfo id=4 */
     {
         /* call port (INIB) #_CP_# */ 
         rTEMP_rTECSInfo_struct__tecsunit_objTypeInfo_cVarDeclInfo, /* #_CCP3B_# */
@@ -206,13 +185,8 @@ const struct tag_nTECSInfo_tStructTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_struct_
     &nTECSInfo_tStructTypeInfo_eTypeInfo_MT_,
     &nTECSInfo_tStructTypeInfo_INIB_tab[2],      /* INIB 3 */
 };
-extern const struct tag_nTECSInfo_tStructTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_struct__target_structTypeInfo_eTypeInfo_des;
-const struct tag_nTECSInfo_tStructTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_struct__target_structTypeInfo_eTypeInfo_des = {
-    &nTECSInfo_tStructTypeInfo_eTypeInfo_MT_,
-    &nTECSInfo_tStructTypeInfo_INIB_tab[3],      /* INIB 3 */
-};
 extern const struct tag_nTECSInfo_tStructTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_struct__tecsunit_objTypeInfo_eTypeInfo_des;
 const struct tag_nTECSInfo_tStructTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_struct__tecsunit_objTypeInfo_eTypeInfo_des = {
     &nTECSInfo_tStructTypeInfo_eTypeInfo_MT_,
-    &nTECSInfo_tStructTypeInfo_INIB_tab[4],      /* INIB 3 */
+    &nTECSInfo_tStructTypeInfo_INIB_tab[3],      /* INIB 3 */
 };

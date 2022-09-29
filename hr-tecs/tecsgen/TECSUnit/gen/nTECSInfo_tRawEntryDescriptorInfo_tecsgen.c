@@ -42,7 +42,6 @@ const struct tag_nTECSInfo_sRawEntryDescriptorInfo_VMT nTECSInfo_tRawEntryDescri
 
 
 
-
 /* call port array #_CPA_# */
 
 
@@ -51,11 +50,9 @@ const struct tag_nTECSInfo_sRawEntryDescriptorInfo_VMT nTECSInfo_tRawEntryDescri
 
 
 
-
 /* array of attr/var #_AVAI_# */
-const void* nTECSInfo_tRawEntryDescriptorInfo_Target1_eTarget1RawEntryDescriptorInfo_CB_rawEntryDescriptor_INIT[1] = { &Target1_eTarget1_des, };
-const void* nTECSInfo_tRawEntryDescriptorInfo_Target2_eTarget2RawEntryDescriptorInfo_CB_rawEntryDescriptor_INIT[1] = { &Target2_eTarget2_des, };
-const void* nTECSInfo_tRawEntryDescriptorInfo_Target3_eTarget3RawEntryDescriptorInfo_CB_rawEntryDescriptor_INIT[1] = { &Target3_eTarget3_des, };
+const void* nTECSInfo_tRawEntryDescriptorInfo_Sample_eEntRawEntryDescriptorInfo_CB_rawEntryDescriptor_INIT[1] = { &Sample_eEnt_des, };
+const void* nTECSInfo_tRawEntryDescriptorInfo_Simple_eBodyRawEntryDescriptorInfo_CB_rawEntryDescriptor_INIT[1] = { &Simple_eBody_des, };
 const void* nTECSInfo_tRawEntryDescriptorInfo_Task_eTaskRawEntryDescriptorInfo_CB_rawEntryDescriptor_INIT[1] = { &Task_eTask_des, };
 const void* nTECSInfo_tRawEntryDescriptorInfo_rTEMP_TaskMain_eBodyRawEntryDescriptorInfo_CB_rawEntryDescriptor_INIT[1] = { &rTEMP_TaskMain_eBody_des, };
 const void* nTECSInfo_tRawEntryDescriptorInfo_rTEMP_TECSUnit_eUnitRawEntryDescriptorInfo_CB_rawEntryDescriptor_INIT[1] = { &rTEMP_TECSUnit_eUnit_des, };
@@ -63,56 +60,49 @@ const void* nTECSInfo_tRawEntryDescriptorInfo_rTEMP_JSMN_eJSMNRawEntryDescriptor
 const void* nTECSInfo_tRawEntryDescriptorInfo_rTEMP_TECSInfo_eTECSInfoRawEntryDescriptorInfo_CB_rawEntryDescriptor_INIT[1] = { &rTEMP_TECSInfo_eTECSInfo_des, };
 /* cell INIB #_INIB_# */
 nTECSInfo_tRawEntryDescriptorInfo_INIB nTECSInfo_tRawEntryDescriptorInfo_INIB_tab[] = {
-    /* cell: nTECSInfo_tRawEntryDescriptorInfo_CB_tab[0]:  Target1_eTarget1RawEntryDescriptorInfo id=1 */
+    /* cell: nTECSInfo_tRawEntryDescriptorInfo_CB_tab[0]:  Sample_eEntRawEntryDescriptorInfo id=1 */
     {
         /* entry port #_EP_# */ 
         /* attribute(RO) */ 
         1,                                       /* size */
-        nTECSInfo_tRawEntryDescriptorInfo_Target1_eTarget1RawEntryDescriptorInfo_CB_rawEntryDescriptor_INIT, /* rawEntryDescriptor */
+        nTECSInfo_tRawEntryDescriptorInfo_Sample_eEntRawEntryDescriptorInfo_CB_rawEntryDescriptor_INIT, /* rawEntryDescriptor */
     },
-    /* cell: nTECSInfo_tRawEntryDescriptorInfo_CB_tab[1]:  Target2_eTarget2RawEntryDescriptorInfo id=2 */
+    /* cell: nTECSInfo_tRawEntryDescriptorInfo_CB_tab[1]:  Simple_eBodyRawEntryDescriptorInfo id=2 */
     {
         /* entry port #_EP_# */ 
         /* attribute(RO) */ 
         1,                                       /* size */
-        nTECSInfo_tRawEntryDescriptorInfo_Target2_eTarget2RawEntryDescriptorInfo_CB_rawEntryDescriptor_INIT, /* rawEntryDescriptor */
+        nTECSInfo_tRawEntryDescriptorInfo_Simple_eBodyRawEntryDescriptorInfo_CB_rawEntryDescriptor_INIT, /* rawEntryDescriptor */
     },
-    /* cell: nTECSInfo_tRawEntryDescriptorInfo_CB_tab[2]:  Target3_eTarget3RawEntryDescriptorInfo id=3 */
-    {
-        /* entry port #_EP_# */ 
-        /* attribute(RO) */ 
-        1,                                       /* size */
-        nTECSInfo_tRawEntryDescriptorInfo_Target3_eTarget3RawEntryDescriptorInfo_CB_rawEntryDescriptor_INIT, /* rawEntryDescriptor */
-    },
-    /* cell: nTECSInfo_tRawEntryDescriptorInfo_CB_tab[3]:  Task_eTaskRawEntryDescriptorInfo id=4 */
+    /* cell: nTECSInfo_tRawEntryDescriptorInfo_CB_tab[2]:  Task_eTaskRawEntryDescriptorInfo id=3 */
     {
         /* entry port #_EP_# */ 
         /* attribute(RO) */ 
         1,                                       /* size */
         nTECSInfo_tRawEntryDescriptorInfo_Task_eTaskRawEntryDescriptorInfo_CB_rawEntryDescriptor_INIT, /* rawEntryDescriptor */
     },
-    /* cell: nTECSInfo_tRawEntryDescriptorInfo_CB_tab[4]:  rTEMP_TaskMain_eBodyRawEntryDescriptorInfo id=5 */
+    /* cell: nTECSInfo_tRawEntryDescriptorInfo_CB_tab[3]:  rTEMP_TaskMain_eBodyRawEntryDescriptorInfo id=4 */
     {
         /* entry port #_EP_# */ 
         /* attribute(RO) */ 
         1,                                       /* size */
         nTECSInfo_tRawEntryDescriptorInfo_rTEMP_TaskMain_eBodyRawEntryDescriptorInfo_CB_rawEntryDescriptor_INIT, /* rawEntryDescriptor */
     },
-    /* cell: nTECSInfo_tRawEntryDescriptorInfo_CB_tab[5]:  rTEMP_TECSUnit_eUnitRawEntryDescriptorInfo id=6 */
+    /* cell: nTECSInfo_tRawEntryDescriptorInfo_CB_tab[4]:  rTEMP_TECSUnit_eUnitRawEntryDescriptorInfo id=5 */
     {
         /* entry port #_EP_# */ 
         /* attribute(RO) */ 
         1,                                       /* size */
         nTECSInfo_tRawEntryDescriptorInfo_rTEMP_TECSUnit_eUnitRawEntryDescriptorInfo_CB_rawEntryDescriptor_INIT, /* rawEntryDescriptor */
     },
-    /* cell: nTECSInfo_tRawEntryDescriptorInfo_CB_tab[6]:  rTEMP_JSMN_eJSMNRawEntryDescriptorInfo id=7 */
+    /* cell: nTECSInfo_tRawEntryDescriptorInfo_CB_tab[5]:  rTEMP_JSMN_eJSMNRawEntryDescriptorInfo id=6 */
     {
         /* entry port #_EP_# */ 
         /* attribute(RO) */ 
         1,                                       /* size */
         nTECSInfo_tRawEntryDescriptorInfo_rTEMP_JSMN_eJSMNRawEntryDescriptorInfo_CB_rawEntryDescriptor_INIT, /* rawEntryDescriptor */
     },
-    /* cell: nTECSInfo_tRawEntryDescriptorInfo_CB_tab[7]:  rTEMP_TECSInfo_eTECSInfoRawEntryDescriptorInfo id=8 */
+    /* cell: nTECSInfo_tRawEntryDescriptorInfo_CB_tab[6]:  rTEMP_TECSInfo_eTECSInfoRawEntryDescriptorInfo id=7 */
     {
         /* entry port #_EP_# */ 
         /* attribute(RO) */ 
@@ -122,43 +112,38 @@ nTECSInfo_tRawEntryDescriptorInfo_INIB nTECSInfo_tRawEntryDescriptorInfo_INIB_ta
 };
 
 /* entry port descriptor #_EPD_# */
-extern const struct tag_nTECSInfo_tRawEntryDescriptorInfo_eRawEntryDescriptor_DES rTEMP_rTECSInfo_Target1_eTarget1RawEntryDescriptorInfo_eRawEntryDescriptor_des;
-const struct tag_nTECSInfo_tRawEntryDescriptorInfo_eRawEntryDescriptor_DES rTEMP_rTECSInfo_Target1_eTarget1RawEntryDescriptorInfo_eRawEntryDescriptor_des = {
+extern const struct tag_nTECSInfo_tRawEntryDescriptorInfo_eRawEntryDescriptor_DES rTEMP_rTECSInfo_Sample_eEntRawEntryDescriptorInfo_eRawEntryDescriptor_des;
+const struct tag_nTECSInfo_tRawEntryDescriptorInfo_eRawEntryDescriptor_DES rTEMP_rTECSInfo_Sample_eEntRawEntryDescriptorInfo_eRawEntryDescriptor_des = {
     &nTECSInfo_tRawEntryDescriptorInfo_eRawEntryDescriptor_MT_,
     &nTECSInfo_tRawEntryDescriptorInfo_INIB_tab[0],      /* INIB 3 */
 };
-extern const struct tag_nTECSInfo_tRawEntryDescriptorInfo_eRawEntryDescriptor_DES rTEMP_rTECSInfo_Target2_eTarget2RawEntryDescriptorInfo_eRawEntryDescriptor_des;
-const struct tag_nTECSInfo_tRawEntryDescriptorInfo_eRawEntryDescriptor_DES rTEMP_rTECSInfo_Target2_eTarget2RawEntryDescriptorInfo_eRawEntryDescriptor_des = {
+extern const struct tag_nTECSInfo_tRawEntryDescriptorInfo_eRawEntryDescriptor_DES rTEMP_rTECSInfo_Simple_eBodyRawEntryDescriptorInfo_eRawEntryDescriptor_des;
+const struct tag_nTECSInfo_tRawEntryDescriptorInfo_eRawEntryDescriptor_DES rTEMP_rTECSInfo_Simple_eBodyRawEntryDescriptorInfo_eRawEntryDescriptor_des = {
     &nTECSInfo_tRawEntryDescriptorInfo_eRawEntryDescriptor_MT_,
     &nTECSInfo_tRawEntryDescriptorInfo_INIB_tab[1],      /* INIB 3 */
-};
-extern const struct tag_nTECSInfo_tRawEntryDescriptorInfo_eRawEntryDescriptor_DES rTEMP_rTECSInfo_Target3_eTarget3RawEntryDescriptorInfo_eRawEntryDescriptor_des;
-const struct tag_nTECSInfo_tRawEntryDescriptorInfo_eRawEntryDescriptor_DES rTEMP_rTECSInfo_Target3_eTarget3RawEntryDescriptorInfo_eRawEntryDescriptor_des = {
-    &nTECSInfo_tRawEntryDescriptorInfo_eRawEntryDescriptor_MT_,
-    &nTECSInfo_tRawEntryDescriptorInfo_INIB_tab[2],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tRawEntryDescriptorInfo_eRawEntryDescriptor_DES rTEMP_rTECSInfo_Task_eTaskRawEntryDescriptorInfo_eRawEntryDescriptor_des;
 const struct tag_nTECSInfo_tRawEntryDescriptorInfo_eRawEntryDescriptor_DES rTEMP_rTECSInfo_Task_eTaskRawEntryDescriptorInfo_eRawEntryDescriptor_des = {
     &nTECSInfo_tRawEntryDescriptorInfo_eRawEntryDescriptor_MT_,
-    &nTECSInfo_tRawEntryDescriptorInfo_INIB_tab[3],      /* INIB 3 */
+    &nTECSInfo_tRawEntryDescriptorInfo_INIB_tab[2],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tRawEntryDescriptorInfo_eRawEntryDescriptor_DES rTEMP_rTECSInfo_rTEMP_TaskMain_eBodyRawEntryDescriptorInfo_eRawEntryDescriptor_des;
 const struct tag_nTECSInfo_tRawEntryDescriptorInfo_eRawEntryDescriptor_DES rTEMP_rTECSInfo_rTEMP_TaskMain_eBodyRawEntryDescriptorInfo_eRawEntryDescriptor_des = {
     &nTECSInfo_tRawEntryDescriptorInfo_eRawEntryDescriptor_MT_,
-    &nTECSInfo_tRawEntryDescriptorInfo_INIB_tab[4],      /* INIB 3 */
+    &nTECSInfo_tRawEntryDescriptorInfo_INIB_tab[3],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tRawEntryDescriptorInfo_eRawEntryDescriptor_DES rTEMP_rTECSInfo_rTEMP_TECSUnit_eUnitRawEntryDescriptorInfo_eRawEntryDescriptor_des;
 const struct tag_nTECSInfo_tRawEntryDescriptorInfo_eRawEntryDescriptor_DES rTEMP_rTECSInfo_rTEMP_TECSUnit_eUnitRawEntryDescriptorInfo_eRawEntryDescriptor_des = {
     &nTECSInfo_tRawEntryDescriptorInfo_eRawEntryDescriptor_MT_,
-    &nTECSInfo_tRawEntryDescriptorInfo_INIB_tab[5],      /* INIB 3 */
+    &nTECSInfo_tRawEntryDescriptorInfo_INIB_tab[4],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tRawEntryDescriptorInfo_eRawEntryDescriptor_DES rTEMP_rTECSInfo_rTEMP_JSMN_eJSMNRawEntryDescriptorInfo_eRawEntryDescriptor_des;
 const struct tag_nTECSInfo_tRawEntryDescriptorInfo_eRawEntryDescriptor_DES rTEMP_rTECSInfo_rTEMP_JSMN_eJSMNRawEntryDescriptorInfo_eRawEntryDescriptor_des = {
     &nTECSInfo_tRawEntryDescriptorInfo_eRawEntryDescriptor_MT_,
-    &nTECSInfo_tRawEntryDescriptorInfo_INIB_tab[6],      /* INIB 3 */
+    &nTECSInfo_tRawEntryDescriptorInfo_INIB_tab[5],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tRawEntryDescriptorInfo_eRawEntryDescriptor_DES rTEMP_rTECSInfo_rTEMP_TECSInfo_eTECSInfoRawEntryDescriptorInfo_eRawEntryDescriptor_des;
 const struct tag_nTECSInfo_tRawEntryDescriptorInfo_eRawEntryDescriptor_DES rTEMP_rTECSInfo_rTEMP_TECSInfo_eTECSInfoRawEntryDescriptorInfo_eRawEntryDescriptor_des = {
     &nTECSInfo_tRawEntryDescriptorInfo_eRawEntryDescriptor_MT_,
-    &nTECSInfo_tRawEntryDescriptorInfo_INIB_tab[7],      /* INIB 3 */
+    &nTECSInfo_tRawEntryDescriptorInfo_INIB_tab[6],      /* INIB 3 */
 };

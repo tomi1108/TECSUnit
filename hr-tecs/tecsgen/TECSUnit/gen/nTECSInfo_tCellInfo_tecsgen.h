@@ -71,7 +71,7 @@ void         nTECSInfo_tCellInfo_eCellInfo_getINIBP(nTECSInfo_tCellInfo_IDX idx,
 #ifndef TOPPERS_CB_TYPE_ONLY
 
 #define nTECSInfo_tCellInfo_ID_BASE        (1)  /* ID Base  #_NIDB_# */
-#define nTECSInfo_tCellInfo_N_CELL        (8)  /*  number of cells  #_NCEL_# */
+#define nTECSInfo_tCellInfo_N_CELL        (7)  /*  number of cells  #_NCEL_# */
 
 /* IDX validation macro #_CVI_# */
 #define nTECSInfo_tCellInfo_VALID_IDX(IDX) (1)

@@ -147,11 +147,9 @@
 #define OFFSET_OF_tTask_state                     ((uint32_t)(intptr_t)&(((tTask_CB*)0)->state))
 #define PLACE_OF_tTask_state                     VARDECL_PLACE_CB
 
-#include "tTarget1_tecsgen.h"
+#include "tSample_tecsgen.h"
 
-#include "tTarget2_tecsgen.h"
-
-#include "tTarget3_tecsgen.h"
+#include "tSimple_tecsgen.h"
 
 #include "tTaskMain_tecsgen.h"
 #define OFFSET_OF_tTaskMain_NAME_LEN              ((uint32_t)(intptr_t)&(((tTaskMain_INIB*)0)->NAME_LEN))

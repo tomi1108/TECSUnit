@@ -271,34 +271,12 @@ eJSMN_json_parse_arg(CELLIDX idx, struct tecsunit_obj* arguments, struct tecsuni
                             for( m = 0; m < array_size; m++ ){
                                 i += 1; // objの中身Tag名に注目
                                 strcpy_n( VAR_tmp_str, t[i].end - t[i].start, VAR_json_str + t[i].start );
-                                if( !strcmp(arguments[j].type,"const struct target_struct*") ){
-                                    if( !strcmp( VAR_tmp_str, "number" ) ){
-                                        i += 1;
-                                        strcpy_n( VAR_tmp_str, t[i].end - t[i].start, VAR_json_str + t[i].start );
-                                        arguments[j].data.mem_target_struct_buf.number = atoi( VAR_tmp_str );
-                                    }else if( !strcmp( VAR_tmp_str, "name" ) ){
-                                        i += 1;
-                                        strcpy_n( arguments[j].data.mem_target_struct_buf.name, t[i].end - t[i].start, VAR_json_str + t[i].start );
-                                    }else{
-                                       /* Cannot found */
-                                       return -1;
-                                    }
-                                }else{
-                                  /* Cannot found */
-                                  return -1;
-                                }
                             }
                         }else if( t[i].type == JSMN_ARRAY ){
                             array_size =  t[i].size;
                             for( m = 0; m < array_size; m++ ){
                                 i += 1; // 配列の中身に注目
                                 strcpy_n( VAR_tmp_str, t[i].end - t[i].start, VAR_json_str + t[i].start );
-                                if( !strcmp(arguments[j].type,"const int8_t*") ){
-                                    arguments[j].data.mem_int8_t_buf[m] = atoi( VAR_tmp_str );
-                                }else{
-                                    /* Arg %d is not array type */
-                                    return -1;
-                                }
                             }
                         }else if( t[i].type == JSMN_STRING ){
                             strcpy_n( VAR_tmp_str, t[i].end - t[i].start, VAR_json_str + t[i].start );
@@ -307,20 +285,11 @@ eJSMN_json_parse_arg(CELLIDX idx, struct tecsunit_obj* arguments, struct tecsuni
                                     printf("Arg %d is not out arguments\n", j+1 );
                                     return -1;
                                 }
-                            }else if( !strcmp(arguments[j].type,"const char_t*") ){
-                                strcpy_n( arguments[j].data.mem_char_buf, t[i].end - t[i].start, VAR_json_str + t[i].start );
-                            }else{
-                                /* Arg is not char type */
-                                return -1;
                             }
                         }else if( t[i].type == JSMN_PRIMITIVE ){
                             strcpy_n( VAR_tmp_str, t[i].end - t[i].start, VAR_json_str + t[i].start );
-                            if( !strcmp(arguments[j].type,"int") ){
-                                arguments[j].data.mem_int = atoi( VAR_tmp_str );
-                            }else if( !strcmp(arguments[j].type,"int8_t") ){
-                                arguments[j].data.mem_int8_t = atoi( VAR_tmp_str );
-                            }else if( !strcmp(arguments[j].type,"ER") ){
-                                arguments[j].data.mem_ER = atoi( VAR_tmp_str );
+                            if( !strcmp(arguments[j].type,"int32_t") ){
+                                arguments[j].data.mem_int32_t = atoi( VAR_tmp_str );
                             }else{
                                 printf("Arg %d is not numeric type", j+1 );
                                 return -1;
@@ -342,9 +311,7 @@ eJSMN_json_parse_arg(CELLIDX idx, struct tecsunit_obj* arguments, struct tecsuni
                         return -1;
                     }else if( t[i+1].type == JSMN_PRIMITIVE ){
                         strcpy_n( VAR_tmp_str, t[i+1].end - t[i+1].start, VAR_json_str + t[i+1].start );
-                        if( !strcmp( exp_val->type, "int") ){
-                            exp_val->data.mem_int = atoi( VAR_tmp_str );
-                        }else if( !strcmp( exp_val->type, "ER") ){
+                        if( !strcmp( exp_val->type, "ER") ){
                             exp_val->data.mem_ER = atoi( VAR_tmp_str );
                         }
                     }else if( t[i+1].type == JSMN_UNDEFINED ){

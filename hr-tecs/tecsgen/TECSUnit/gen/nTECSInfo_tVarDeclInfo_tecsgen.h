@@ -69,7 +69,7 @@ ER           nTECSInfo_tVarDeclInfo_eVarDeclInfo_getSizeIs(nTECSInfo_tVarDeclInf
 #ifndef TOPPERS_CB_TYPE_ONLY
 
 #define nTECSInfo_tVarDeclInfo_ID_BASE        (1)  /* ID Base  #_NIDB_# */
-#define nTECSInfo_tVarDeclInfo_N_CELL       (54)  /*  number of cells  #_NCEL_# */
+#define nTECSInfo_tVarDeclInfo_N_CELL       (52)  /*  number of cells  #_NCEL_# */
 
 /* IDX validation macro #_CVI_# */
 #define nTECSInfo_tVarDeclInfo_VALID_IDX(IDX) (1)

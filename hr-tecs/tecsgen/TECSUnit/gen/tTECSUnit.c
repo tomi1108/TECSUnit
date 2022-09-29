@@ -125,28 +125,13 @@
  *   [dynamic, optional]
  *      void           cEntryInfo_set_descriptor( Descriptor( nTECSInfo_sEntryInfo ) desc );
  *      void           cEntryInfo_unjoin(  );
- * call port: cTarget1 signature: sTarget1 context:task optional:true
- *   bool_t     is_cTarget1_joined()                     check if joined
- *   int            cTarget1_double( int arg );
+ * call port: cSample signature: sSample context:task optional:true
+ *   bool_t     is_cSample_joined()                     check if joined
+ *   ER             cSample_sayHello( int32_t times );
+ *   ER             cSample_howAreYou( char_t* buf, int32_t len );
  *   [dynamic, optional]
- *      void           cTarget1_set_descriptor( Descriptor( sTarget1 ) desc );
- *      void           cTarget1_unjoin(  );
- * call port: cTarget2 signature: sTarget2 context:task optional:true
- *   bool_t     is_cTarget2_joined()                     check if joined
- *   int            cTarget2_add( int arg1, int arg2 );
- *   [dynamic, optional]
- *      void           cTarget2_set_descriptor( Descriptor( sTarget2 ) desc );
- *      void           cTarget2_unjoin(  );
- * call port: cTarget3 signature: sTarget3 context:task optional:true
- *   bool_t     is_cTarget3_joined()                     check if joined
- *   ER             cTarget3_send( const int8_t* buf, int8_t len );
- *   ER             cTarget3_sendMessage( const char_t* buf, int8_t len );
- *   ER             cTarget3_sendStruct( const struct target_struct* data );
- *   ER             cTarget3_receiveMessage( char_t* buf, int8_t len );
- *   ER             cTarget3_checkER( ER eroor );
- *   [dynamic, optional]
- *      void           cTarget3_set_descriptor( Descriptor( sTarget3 ) desc );
- *      void           cTarget3_unjoin(  );
+ *      void           cSample_set_descriptor( Descriptor( sSample ) desc );
+ *      void           cSample_unjoin(  );
  *
  * #[</PREAMBLE>]# */
 
@@ -185,73 +170,44 @@ eUnit_main(CELLIDX idx, const char_t* cell_path, const char_t* entry_path, const
   printf( "--- TECSUnit ---" );
   puts("");
   void *rawDesc;
-  Descriptor( sTarget1 ) Target1Desc;
-  Descriptor( sTarget2 ) Target2Desc;
-  Descriptor( sTarget3 ) Target3Desc;
+  Descriptor( sSample ) SampleDesc; //変数の宣言
   sprintf( VAR_cell_entry, "%s.%s", cell_path, entry_path );
   getRawEntryDescriptor( p_cellcb, VAR_cell_entry, &rawDesc, signature_path );
 
-  if( !strcmp(signature_path, "sTarget1" ) ){
-    setRawEntryDescriptor( Target1Desc, sTarget1, rawDesc );
-    cTarget1_set_descriptor( Target1Desc );
-      if( !strcmp( function_path, "double" ) ){
-        if( exp_val->data.mem_int == cTarget1_double( arguments[0].data.mem_int ) ){
-            return 0;
+  if( !strcmp(signature_path, "sSample" ) ){
+    setRawEntryDescriptor( SampleDesc, sSample, rawDesc ); //型変換
+    cSample_set_descriptor( SampleDesc ); //動的結合
+      if( !strcmp( function_path, "sayHello" ) ){
+        printf("Call sayHello");
+        puts("");
+        if( exp_val->data.mem_ER == cSample_sayHello( arguments[0].data.mem_int32_t ) ){
+/*            return 0; */
+            puts("");
+            printf("Result：OK");
+            puts("");
         }else{
-            return -1;
+/*            return -1; */
+            puts("");
+            printf("Result：NG");
+            puts("");
         }
       }
-  }
-  else if( !strcmp(signature_path, "sTarget2" ) ){
-    setRawEntryDescriptor( Target2Desc, sTarget2, rawDesc );
-    cTarget2_set_descriptor( Target2Desc );
-      if( !strcmp( function_path, "add" ) ){
-        if( exp_val->data.mem_int == cTarget2_add( arguments[0].data.mem_int, arguments[1].data.mem_int ) ){
-            return 0;
-        }else{
-            return -1;
-        }
-      }
-  }
-  else if( !strcmp(signature_path, "sTarget3" ) ){
-    setRawEntryDescriptor( Target3Desc, sTarget3, rawDesc );
-    cTarget3_set_descriptor( Target3Desc );
-      if( !strcmp( function_path, "send" ) ){
-        if( exp_val->data.mem_ER == cTarget3_send( arguments[0].data.mem_int8_t_buf, arguments[1].data.mem_int8_t ) ){
-            return 0;
-        }else{
-            return -1;
-        }
-      }
-      else if( !strcmp( function_path, "sendMessage" ) ){
-        if( exp_val->data.mem_ER == cTarget3_sendMessage( arguments[0].data.mem_char_buf, arguments[1].data.mem_int8_t ) ){
-            return 0;
-        }else{
-            return -1;
-        }
-      }
-      else if( !strcmp( function_path, "sendStruct" ) ){
-        if( exp_val->data.mem_ER == cTarget3_sendStruct( &arguments[0].data.mem_target_struct_buf ) ){
-            return 0;
-        }else{
-            return -1;
-        }
-      }
-      else if( !strcmp( function_path, "receiveMessage" ) ){
+      else if( !strcmp( function_path, "howAreYou" ) ){
+        printf("Call howAreYou");
+        puts("");
         VAR_data = malloc( sizeof(int)*0 + sizeof(double)*0 + sizeof(char)*1 );
-        if( exp_val->data.mem_ER == cTarget3_receiveMessage( (char *) ( VAR_data + sizeof(int)*0 + sizeof(double)*0 + sizeof(char)*0 ), arguments[1].data.mem_int8_t ) ){
-            return 0;
+        if( exp_val->data.mem_ER == cSample_howAreYou( (char *) ( VAR_data + sizeof(int)*0 + sizeof(double)*0 + sizeof(char)*0 ), arguments[1].data.mem_int32_t ) ){
+/*            return 0; */
+            puts("");
+            printf("Result：OK");
+            puts("");
         }else{
-            return -1;
+/*            return -1; */
+            puts("");
+            printf("Result：NG");
+            puts("");
         }
         free( VAR_data );
-      }
-      else if( !strcmp( function_path, "checkER" ) ){
-        if( exp_val->data.mem_ER == cTarget3_checkER( arguments[0].data.mem_ER ) ){
-            return 0;
-        }else{
-            return -1;
-        }
       }
   }
 }

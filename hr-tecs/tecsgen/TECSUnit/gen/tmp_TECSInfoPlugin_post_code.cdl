@@ -18,17 +18,14 @@ region rTEMP{
             cSignatureInfo[] = siEventflagSignatureInfo.eSignatureInfo;
             cSignatureInfo[] = sDataqueueSignatureInfo.eSignatureInfo;
             cSignatureInfo[] = siDataqueueSignatureInfo.eSignatureInfo;
-            cSignatureInfo[] = sTarget1SignatureInfo.eSignatureInfo;
-            cSignatureInfo[] = sTarget2SignatureInfo.eSignatureInfo;
-            cSignatureInfo[] = sTarget3SignatureInfo.eSignatureInfo;
+            cSignatureInfo[] = sSampleSignatureInfo.eSignatureInfo;
             cSignatureInfo[] = sJSMNSignatureInfo.eSignatureInfo;
             cSignatureInfo[] = sTECSUnitSignatureInfo.eSignatureInfo;
 
             /* CELLTYPE info */
             cCelltypeInfo[] = tTaskCelltypeInfo.eCelltypeInfo;
-            cCelltypeInfo[] = tTarget1CelltypeInfo.eCelltypeInfo;
-            cCelltypeInfo[] = tTarget2CelltypeInfo.eCelltypeInfo;
-            cCelltypeInfo[] = tTarget3CelltypeInfo.eCelltypeInfo;
+            cCelltypeInfo[] = tSampleCelltypeInfo.eCelltypeInfo;
+            cCelltypeInfo[] = tSimpleCelltypeInfo.eCelltypeInfo;
             cCelltypeInfo[] = tTaskMainCelltypeInfo.eCelltypeInfo;
             cCelltypeInfo[] = tTECSUnitCelltypeInfo.eCelltypeInfo;
             cCelltypeInfo[] = tJSMNCelltypeInfo.eCelltypeInfo;
@@ -667,176 +664,48 @@ region rTEMP{
             cTypeInfo       = intptr_tTypeInfo.eTypeInfo;
         };
 
-        /*** sTarget1 signature information ****/
-        cell nTECSInfo::tSignatureInfo sTarget1SignatureInfo {
-            name            = "sTarget1";
-            cFunctionInfo[] = sTarget1_doubleFunctionInfo.eFunctionInfo;
+        /*** sSample signature information ****/
+        cell nTECSInfo::tSignatureInfo sSampleSignatureInfo {
+            name            = "sSample";
+            cFunctionInfo[] = sSample_sayHelloFunctionInfo.eFunctionInfo;
+            cFunctionInfo[] = sSample_howAreYouFunctionInfo.eFunctionInfo;
         };
-        cell nTECSInfo::tFunctionInfo sTarget1_doubleFunctionInfo {
-            name            = "double";
+        cell nTECSInfo::tFunctionInfo sSample_sayHelloFunctionInfo {
+            name            = "sayHello";
             bOneway         = false;
-            cParamInfo[]    = sTarget1_double_argParamInfo.eParamInfo;
-            cReturnTypeInfo = intTypeInfo.eTypeInfo;
-        };
-        cell nTECSInfo::tParamInfo sTarget1_double_argParamInfo {
-            name            = "arg";
-            dir             = PARAM_DIR_IN;
-            sizeIsExpr      = (char_t*)0;
-            countIsExpr     = (char_t*)0;
-            stringExpr      = (char_t*)0;
-            cTypeInfo       = intTypeInfo.eTypeInfo;
-        };
-
-        /*** sTarget2 signature information ****/
-        cell nTECSInfo::tSignatureInfo sTarget2SignatureInfo {
-            name            = "sTarget2";
-            cFunctionInfo[] = sTarget2_addFunctionInfo.eFunctionInfo;
-        };
-        cell nTECSInfo::tFunctionInfo sTarget2_addFunctionInfo {
-            name            = "add";
-            bOneway         = false;
-            cParamInfo[]    = sTarget2_add_arg1ParamInfo.eParamInfo;
-            cParamInfo[]    = sTarget2_add_arg2ParamInfo.eParamInfo;
-            cReturnTypeInfo = intTypeInfo.eTypeInfo;
-        };
-        cell nTECSInfo::tParamInfo sTarget2_add_arg1ParamInfo {
-            name            = "arg1";
-            dir             = PARAM_DIR_IN;
-            sizeIsExpr      = (char_t*)0;
-            countIsExpr     = (char_t*)0;
-            stringExpr      = (char_t*)0;
-            cTypeInfo       = intTypeInfo.eTypeInfo;
-        };
-        cell nTECSInfo::tParamInfo sTarget2_add_arg2ParamInfo {
-            name            = "arg2";
-            dir             = PARAM_DIR_IN;
-            sizeIsExpr      = (char_t*)0;
-            countIsExpr     = (char_t*)0;
-            stringExpr      = (char_t*)0;
-            cTypeInfo       = intTypeInfo.eTypeInfo;
-        };
-
-        /*** sTarget3 signature information ****/
-        cell nTECSInfo::tSignatureInfo sTarget3SignatureInfo {
-            name            = "sTarget3";
-            cFunctionInfo[] = sTarget3_sendFunctionInfo.eFunctionInfo;
-            cFunctionInfo[] = sTarget3_sendMessageFunctionInfo.eFunctionInfo;
-            cFunctionInfo[] = sTarget3_sendStructFunctionInfo.eFunctionInfo;
-            cFunctionInfo[] = sTarget3_receiveMessageFunctionInfo.eFunctionInfo;
-            cFunctionInfo[] = sTarget3_checkERFunctionInfo.eFunctionInfo;
-        };
-        cell nTECSInfo::tFunctionInfo sTarget3_sendFunctionInfo {
-            name            = "send";
-            bOneway         = false;
-            cParamInfo[]    = sTarget3_send_bufParamInfo.eParamInfo;
-            cParamInfo[]    = sTarget3_send_lenParamInfo.eParamInfo;
+            cParamInfo[]    = sSample_sayHello_timesParamInfo.eParamInfo;
             cReturnTypeInfo = ERTypeInfo.eTypeInfo;
         };
-        cell nTECSInfo::tParamInfo sTarget3_send_bufParamInfo {
-            name            = "buf";
-            dir             = PARAM_DIR_IN;
-            sizeIsExpr      = " $1";
-            countIsExpr     = (char_t*)0;
-            stringExpr      = (char_t*)0;
-            cTypeInfo       = const__int8_t_Ptr_TypeInfo.eTypeInfo;
-        };
-        cell nTECSInfo::tParamInfo sTarget3_send_lenParamInfo {
-            name            = "len";
+        cell nTECSInfo::tParamInfo sSample_sayHello_timesParamInfo {
+            name            = "times";
             dir             = PARAM_DIR_IN;
             sizeIsExpr      = (char_t*)0;
             countIsExpr     = (char_t*)0;
             stringExpr      = (char_t*)0;
-            cTypeInfo       = int8_tTypeInfo.eTypeInfo;
+            cTypeInfo       = int32_tTypeInfo.eTypeInfo;
         };
-        cell nTECSInfo::tFunctionInfo sTarget3_sendMessageFunctionInfo {
-            name            = "sendMessage";
+        cell nTECSInfo::tFunctionInfo sSample_howAreYouFunctionInfo {
+            name            = "howAreYou";
             bOneway         = false;
-            cParamInfo[]    = sTarget3_sendMessage_bufParamInfo.eParamInfo;
-            cParamInfo[]    = sTarget3_sendMessage_lenParamInfo.eParamInfo;
+            cParamInfo[]    = sSample_howAreYou_bufParamInfo.eParamInfo;
+            cParamInfo[]    = sSample_howAreYou_lenParamInfo.eParamInfo;
             cReturnTypeInfo = ERTypeInfo.eTypeInfo;
         };
-        cell nTECSInfo::tParamInfo sTarget3_sendMessage_bufParamInfo {
-            name            = "buf";
-            dir             = PARAM_DIR_IN;
-            sizeIsExpr      = " $1";
-            countIsExpr     = (char_t*)0;
-            stringExpr      = (char_t*)0;
-            cTypeInfo       = const__char_t_Ptr_TypeInfo.eTypeInfo;
-        };
-        cell nTECSInfo::tParamInfo sTarget3_sendMessage_lenParamInfo {
-            name            = "len";
-            dir             = PARAM_DIR_IN;
-            sizeIsExpr      = (char_t*)0;
-            countIsExpr     = (char_t*)0;
-            stringExpr      = (char_t*)0;
-            cTypeInfo       = int8_tTypeInfo.eTypeInfo;
-        };
-        cell nTECSInfo::tFunctionInfo sTarget3_sendStructFunctionInfo {
-            name            = "sendStruct";
-            bOneway         = false;
-            cParamInfo[]    = sTarget3_sendStruct_dataParamInfo.eParamInfo;
-            cReturnTypeInfo = ERTypeInfo.eTypeInfo;
-        };
-        cell nTECSInfo::tParamInfo sTarget3_sendStruct_dataParamInfo {
-            name            = "data";
-            dir             = PARAM_DIR_IN;
-            sizeIsExpr      = (char_t*)0;
-            countIsExpr     = (char_t*)0;
-            stringExpr      = (char_t*)0;
-            cTypeInfo       = struct__target_struct_Ptr_TypeInfo.eTypeInfo;
-        };
-        cell nTECSInfo::tVarDeclInfo struct__target_struct_numberVarDeclInfo {
-            name            = "number";
-            sizeIsExpr      = (char_t*)0;
-            declType        = DECLTYPE_STMEMBER;
-            offset          = C_EXP( "OFFSET_OF_struct__target_struct_number" );
-            place           = C_EXP( "PLACE_OF_struct__target_struct_number" );
-            cTypeInfo       = int8_tTypeInfo.eTypeInfo;
-        };
-        cell nTECSInfo::tVarDeclInfo struct__target_struct_nameVarDeclInfo {
-            name            = "name";
-            sizeIsExpr      = (char_t*)0;
-            declType        = DECLTYPE_STMEMBER;
-            offset          = C_EXP( "OFFSET_OF_struct__target_struct_name" );
-            place           = C_EXP( "PLACE_OF_struct__target_struct_name" );
-            cTypeInfo       = char_t_Array8_TypeInfo.eTypeInfo;
-        };
-        cell nTECSInfo::tFunctionInfo sTarget3_receiveMessageFunctionInfo {
-            name            = "receiveMessage";
-            bOneway         = false;
-            cParamInfo[]    = sTarget3_receiveMessage_bufParamInfo.eParamInfo;
-            cParamInfo[]    = sTarget3_receiveMessage_lenParamInfo.eParamInfo;
-            cReturnTypeInfo = ERTypeInfo.eTypeInfo;
-        };
-        cell nTECSInfo::tParamInfo sTarget3_receiveMessage_bufParamInfo {
+        cell nTECSInfo::tParamInfo sSample_howAreYou_bufParamInfo {
             name            = "buf";
             dir             = PARAM_DIR_OUT;
-            sizeIsExpr      = " $1";
+            sizeIsExpr      = (char_t*)0;
             countIsExpr     = (char_t*)0;
-            stringExpr      = (char_t*)0;
+            stringExpr      = " $1";
             cTypeInfo       = char_t_Ptr_TypeInfo.eTypeInfo;
         };
-        cell nTECSInfo::tParamInfo sTarget3_receiveMessage_lenParamInfo {
+        cell nTECSInfo::tParamInfo sSample_howAreYou_lenParamInfo {
             name            = "len";
             dir             = PARAM_DIR_IN;
             sizeIsExpr      = (char_t*)0;
             countIsExpr     = (char_t*)0;
             stringExpr      = (char_t*)0;
-            cTypeInfo       = int8_tTypeInfo.eTypeInfo;
-        };
-        cell nTECSInfo::tFunctionInfo sTarget3_checkERFunctionInfo {
-            name            = "checkER";
-            bOneway         = false;
-            cParamInfo[]    = sTarget3_checkER_eroorParamInfo.eParamInfo;
-            cReturnTypeInfo = ERTypeInfo.eTypeInfo;
-        };
-        cell nTECSInfo::tParamInfo sTarget3_checkER_eroorParamInfo {
-            name            = "eroor";
-            dir             = PARAM_DIR_IN;
-            sizeIsExpr      = (char_t*)0;
-            countIsExpr     = (char_t*)0;
-            stringExpr      = (char_t*)0;
-            cTypeInfo       = ERTypeInfo.eTypeInfo;
+            cTypeInfo       = int32_tTypeInfo.eTypeInfo;
         };
 
         /*** sJSMN signature information ****/
@@ -1165,53 +1034,55 @@ region rTEMP{
             place           = C_EXP( "PLACE_OF_tTask_state" );
             cTypeInfo       = int_tTypeInfo.eTypeInfo;
         };
-        cell nTECSInfo::tCelltypeInfo tTarget1CelltypeInfo {
-            name             = "tTarget1";
+        cell nTECSInfo::tCelltypeInfo tSampleCelltypeInfo {
+            name             = "tSample";
             b_singleton      = false;
-            b_IDX_is_ID_act  = C_EXP( "tTarget1__IDX_is_ID_act" );
-            sizeOfCB         = C_EXP( "tTarget1__sizeOfCB" );
-            sizeOfINIB       = C_EXP( "tTarget1__sizeOfINIB" );
-            n_cellInLinkUnit = C_EXP( "tTarget1__NCELLINLINKUNIT" );
+            b_IDX_is_ID_act  = C_EXP( "tSample__IDX_is_ID_act" );
+            sizeOfCB         = C_EXP( "tSample__sizeOfCB" );
+            sizeOfINIB       = C_EXP( "tSample__sizeOfINIB" );
+            n_cellInLinkUnit = C_EXP( "tSample__NCELLINLINKUNIT" );
             n_cellInSystem   = 1;
-            cEntryInfo[]    = tTarget1_eTarget1EntryInfo.eEntryInfo;
+            cEntryInfo[]    = tSample_eEntEntryInfo.eEntryInfo;
         };
-        cell nTECSInfo::tEntryInfo tTarget1_eTarget1EntryInfo{
-            name            = "eTarget1";
-            cSignatureInfo  = sTarget1SignatureInfo.eSignatureInfo;
+        cell nTECSInfo::tEntryInfo tSample_eEntEntryInfo{
+            name            = "eEnt";
+            cSignatureInfo  = sSampleSignatureInfo.eSignatureInfo;
             b_inline        = false;
-            array_size      = C_EXP( "tTarget1_eTarget1__array_size" );
+            array_size      = C_EXP( "tSample_eEnt__array_size" );
         };
-        cell nTECSInfo::tCelltypeInfo tTarget2CelltypeInfo {
-            name             = "tTarget2";
+        cell nTECSInfo::tCelltypeInfo tSimpleCelltypeInfo {
+            name             = "tSimple";
             b_singleton      = false;
-            b_IDX_is_ID_act  = C_EXP( "tTarget2__IDX_is_ID_act" );
-            sizeOfCB         = C_EXP( "tTarget2__sizeOfCB" );
-            sizeOfINIB       = C_EXP( "tTarget2__sizeOfINIB" );
-            n_cellInLinkUnit = C_EXP( "tTarget2__NCELLINLINKUNIT" );
+            b_IDX_is_ID_act  = C_EXP( "tSimple__IDX_is_ID_act" );
+            sizeOfCB         = C_EXP( "tSimple__sizeOfCB" );
+            sizeOfINIB       = C_EXP( "tSimple__sizeOfINIB" );
+            n_cellInLinkUnit = C_EXP( "tSimple__NCELLINLINKUNIT" );
             n_cellInSystem   = 1;
-            cEntryInfo[]    = tTarget2_eTarget2EntryInfo.eEntryInfo;
+            cEntryInfo[]    = tSimple_eBodyEntryInfo.eEntryInfo;
+            cCallInfo[]     = tSimple_cCallCallInfo.eCallInfo;
         };
-        cell nTECSInfo::tEntryInfo tTarget2_eTarget2EntryInfo{
-            name            = "eTarget2";
-            cSignatureInfo  = sTarget2SignatureInfo.eSignatureInfo;
+        cell nTECSInfo::tEntryInfo tSimple_eBodyEntryInfo{
+            name            = "eBody";
+            cSignatureInfo  = sTaskBodySignatureInfo.eSignatureInfo;
             b_inline        = false;
-            array_size      = C_EXP( "tTarget2_eTarget2__array_size" );
+            array_size      = C_EXP( "tSimple_eBody__array_size" );
         };
-        cell nTECSInfo::tCelltypeInfo tTarget3CelltypeInfo {
-            name             = "tTarget3";
-            b_singleton      = false;
-            b_IDX_is_ID_act  = C_EXP( "tTarget3__IDX_is_ID_act" );
-            sizeOfCB         = C_EXP( "tTarget3__sizeOfCB" );
-            sizeOfINIB       = C_EXP( "tTarget3__sizeOfINIB" );
-            n_cellInLinkUnit = C_EXP( "tTarget3__NCELLINLINKUNIT" );
-            n_cellInSystem   = 1;
-            cEntryInfo[]    = tTarget3_eTarget3EntryInfo.eEntryInfo;
-        };
-        cell nTECSInfo::tEntryInfo tTarget3_eTarget3EntryInfo{
-            name            = "eTarget3";
-            cSignatureInfo  = sTarget3SignatureInfo.eSignatureInfo;
-            b_inline        = false;
-            array_size      = C_EXP( "tTarget3_eTarget3__array_size" );
+        cell nTECSInfo::tCallInfo tSimple_cCallCallInfo{
+            name            = "cCall";
+            cSignatureInfo  = sSampleSignatureInfo.eSignatureInfo;
+            offset            = C_EXP( "tSimple_cCall__offset" );
+            array_size        = C_EXP( "tSimple_cCall__array_size" );
+            b_optional        = false;
+            b_omit            = false;
+            b_dynamic         = false;
+            b_ref_desc        = false;
+            b_allocator_port  = false;
+            b_require_port    = false;
+            place             = C_EXP( "tSimple_cCall__place" );
+            b_VMT_useless     = C_EXP( "tSimple_cCall__b_VMT_useless" );
+            b_skelton_useless = C_EXP( "tSimple_cCall__b_skelton_useless" );
+            b_cell_unique     = C_EXP( "tSimple_cCall__b_cell_unique" );
+
         };
         cell nTECSInfo::tCelltypeInfo tTaskMainCelltypeInfo {
             name             = "tTaskMain";
@@ -1635,9 +1506,7 @@ region rTEMP{
             cCallInfo[]     = tTECSUnit_cTypeInfoCallInfo.eCallInfo;
             cCallInfo[]     = tTECSUnit_cREDInfoCallInfo.eCallInfo;
             cCallInfo[]     = tTECSUnit_cEntryInfoCallInfo.eCallInfo;
-            cCallInfo[]     = tTECSUnit_cTarget1CallInfo.eCallInfo;
-            cCallInfo[]     = tTECSUnit_cTarget2CallInfo.eCallInfo;
-            cCallInfo[]     = tTECSUnit_cTarget3CallInfo.eCallInfo;
+            cCallInfo[]     = tTECSUnit_cSampleCallInfo.eCallInfo;
             cAttrInfo[]     = tTECSUnit_LENVarDeclInfo.eVarDeclInfo;
             cVarInfo[]      = tTECSUnit_dataVarDeclInfo.eVarDeclInfo;
             cVarInfo[]      = tTECSUnit_cell_entryVarDeclInfo.eVarDeclInfo;
@@ -1818,55 +1687,21 @@ region rTEMP{
             b_cell_unique     = C_EXP( "tTECSUnit_cEntryInfo__b_cell_unique" );
 
         };
-        cell nTECSInfo::tCallInfo tTECSUnit_cTarget1CallInfo{
-            name            = "cTarget1";
-            cSignatureInfo  = sTarget1SignatureInfo.eSignatureInfo;
-            offset            = C_EXP( "tTECSUnit_cTarget1__offset" );
-            array_size        = C_EXP( "tTECSUnit_cTarget1__array_size" );
+        cell nTECSInfo::tCallInfo tTECSUnit_cSampleCallInfo{
+            name            = "cSample";
+            cSignatureInfo  = sSampleSignatureInfo.eSignatureInfo;
+            offset            = C_EXP( "tTECSUnit_cSample__offset" );
+            array_size        = C_EXP( "tTECSUnit_cSample__array_size" );
             b_optional        = true;
             b_omit            = false;
             b_dynamic         = true;
             b_ref_desc        = false;
             b_allocator_port  = false;
             b_require_port    = false;
-            place             = C_EXP( "tTECSUnit_cTarget1__place" );
-            b_VMT_useless     = C_EXP( "tTECSUnit_cTarget1__b_VMT_useless" );
-            b_skelton_useless = C_EXP( "tTECSUnit_cTarget1__b_skelton_useless" );
-            b_cell_unique     = C_EXP( "tTECSUnit_cTarget1__b_cell_unique" );
-
-        };
-        cell nTECSInfo::tCallInfo tTECSUnit_cTarget2CallInfo{
-            name            = "cTarget2";
-            cSignatureInfo  = sTarget2SignatureInfo.eSignatureInfo;
-            offset            = C_EXP( "tTECSUnit_cTarget2__offset" );
-            array_size        = C_EXP( "tTECSUnit_cTarget2__array_size" );
-            b_optional        = true;
-            b_omit            = false;
-            b_dynamic         = true;
-            b_ref_desc        = false;
-            b_allocator_port  = false;
-            b_require_port    = false;
-            place             = C_EXP( "tTECSUnit_cTarget2__place" );
-            b_VMT_useless     = C_EXP( "tTECSUnit_cTarget2__b_VMT_useless" );
-            b_skelton_useless = C_EXP( "tTECSUnit_cTarget2__b_skelton_useless" );
-            b_cell_unique     = C_EXP( "tTECSUnit_cTarget2__b_cell_unique" );
-
-        };
-        cell nTECSInfo::tCallInfo tTECSUnit_cTarget3CallInfo{
-            name            = "cTarget3";
-            cSignatureInfo  = sTarget3SignatureInfo.eSignatureInfo;
-            offset            = C_EXP( "tTECSUnit_cTarget3__offset" );
-            array_size        = C_EXP( "tTECSUnit_cTarget3__array_size" );
-            b_optional        = true;
-            b_omit            = false;
-            b_dynamic         = true;
-            b_ref_desc        = false;
-            b_allocator_port  = false;
-            b_require_port    = false;
-            place             = C_EXP( "tTECSUnit_cTarget3__place" );
-            b_VMT_useless     = C_EXP( "tTECSUnit_cTarget3__b_VMT_useless" );
-            b_skelton_useless = C_EXP( "tTECSUnit_cTarget3__b_skelton_useless" );
-            b_cell_unique     = C_EXP( "tTECSUnit_cTarget3__b_cell_unique" );
+            place             = C_EXP( "tTECSUnit_cSample__place" );
+            b_VMT_useless     = C_EXP( "tTECSUnit_cSample__b_VMT_useless" );
+            b_skelton_useless = C_EXP( "tTECSUnit_cSample__b_skelton_useless" );
+            b_cell_unique     = C_EXP( "tTECSUnit_cSample__b_cell_unique" );
 
         };
         cell nTECSInfo::tVarDeclInfo tTECSUnit_LENVarDeclInfo {
@@ -4498,50 +4333,36 @@ region rTEMP{
         /*** :: region information cell ***/
         cell nTECSInfo::tRegionInfo _LinkRootRegionInfo{
             name = "::";
-            cCellInfo[] = Target1CellInfo.eCellInfo;
-            cCellInfo[] = Target2CellInfo.eCellInfo;
-            cCellInfo[] = Target3CellInfo.eCellInfo;
+            cCellInfo[] = SampleCellInfo.eCellInfo;
+            cCellInfo[] = SimpleCellInfo.eCellInfo;
             cCellInfo[] = TaskCellInfo.eCellInfo;
             cRegionInfo[] = rTEMPRegionInfo.eRegionInfo;
         };
 
-        /*** Target1 cell information ****/
-        cell nTECSInfo::tCellInfo Target1CellInfo {
-            name            = "Target1";
-            cbp             = C_EXP( "Target1__CBP" );
-            inibp           = C_EXP( "Target1__INIBP" );
-            cCelltypeInfo   = tTarget1CelltypeInfo.eCelltypeInfo;
-            cRawEntryDescriptor[] = Target1_eTarget1RawEntryDescriptorInfo.eRawEntryDescriptor;
+        /*** Sample cell information ****/
+        cell nTECSInfo::tCellInfo SampleCellInfo {
+            name            = "Sample";
+            cbp             = C_EXP( "Sample__CBP" );
+            inibp           = C_EXP( "Sample__INIBP" );
+            cCelltypeInfo   = tSampleCelltypeInfo.eCelltypeInfo;
+            cRawEntryDescriptor[] = Sample_eEntRawEntryDescriptorInfo.eRawEntryDescriptor;
         };
-        cell nTECSInfo::tRawEntryDescriptorInfo Target1_eTarget1RawEntryDescriptorInfo {
+        cell nTECSInfo::tRawEntryDescriptorInfo Sample_eEntRawEntryDescriptorInfo {
            size = 1;
-           rawEntryDescriptor = { C_EXP( "&Target1_eTarget1_des" ) };
+           rawEntryDescriptor = { C_EXP( "&Sample_eEnt_des" ) };
         };
 
-        /*** Target2 cell information ****/
-        cell nTECSInfo::tCellInfo Target2CellInfo {
-            name            = "Target2";
-            cbp             = C_EXP( "Target2__CBP" );
-            inibp           = C_EXP( "Target2__INIBP" );
-            cCelltypeInfo   = tTarget2CelltypeInfo.eCelltypeInfo;
-            cRawEntryDescriptor[] = Target2_eTarget2RawEntryDescriptorInfo.eRawEntryDescriptor;
+        /*** Simple cell information ****/
+        cell nTECSInfo::tCellInfo SimpleCellInfo {
+            name            = "Simple";
+            cbp             = C_EXP( "Simple__CBP" );
+            inibp           = C_EXP( "Simple__INIBP" );
+            cCelltypeInfo   = tSimpleCelltypeInfo.eCelltypeInfo;
+            cRawEntryDescriptor[] = Simple_eBodyRawEntryDescriptorInfo.eRawEntryDescriptor;
         };
-        cell nTECSInfo::tRawEntryDescriptorInfo Target2_eTarget2RawEntryDescriptorInfo {
+        cell nTECSInfo::tRawEntryDescriptorInfo Simple_eBodyRawEntryDescriptorInfo {
            size = 1;
-           rawEntryDescriptor = { C_EXP( "&Target2_eTarget2_des" ) };
-        };
-
-        /*** Target3 cell information ****/
-        cell nTECSInfo::tCellInfo Target3CellInfo {
-            name            = "Target3";
-            cbp             = C_EXP( "Target3__CBP" );
-            inibp           = C_EXP( "Target3__INIBP" );
-            cCelltypeInfo   = tTarget3CelltypeInfo.eCelltypeInfo;
-            cRawEntryDescriptor[] = Target3_eTarget3RawEntryDescriptorInfo.eRawEntryDescriptor;
-        };
-        cell nTECSInfo::tRawEntryDescriptorInfo Target3_eTarget3RawEntryDescriptorInfo {
-           size = 1;
-           rawEntryDescriptor = { C_EXP( "&Target3_eTarget3_des" ) };
+           rawEntryDescriptor = { C_EXP( "&Simple_eBody_des" ) };
         };
 
         /*** Task cell information ****/
@@ -4880,87 +4701,10 @@ region rTEMP{
             cVarDeclInfo[] = struct__t_rdtq_rtskidVarDeclInfo.eVarDeclInfo;
             cVarDeclInfo[] = struct__t_rdtq_sdtqcntVarDeclInfo.eVarDeclInfo;
         };
-        cell nTECSInfo::tIntTypeInfo intTypeInfo{
-            name           = "int";
+        cell nTECSInfo::tIntTypeInfo int32_tTypeInfo{
+            name           = "int32_t";
             typeKind       = TECSTypeKind_IntType;
-            size           = C_EXP( "sizeof(int)" );
-            b_const        = false;
-            b_volatile     = false;
-        };
-        cell nTECSInfo::tPtrTypeInfo const__int8_t_Ptr_TypeInfo{
-            name           = "const int8_t*";
-            typeKind       = TECSTypeKind_PtrType;
-            size           = C_EXP( "sizeof(const int8_t*)" );
-            b_const        = false;
-            b_volatile     = false;
-            cTypeInfo        = const__int8_tTypeInfo.eTypeInfo;
-        };
-        cell nTECSInfo::tIntTypeInfo const__int8_tTypeInfo{
-            name           = "const int8_t";
-            typeKind       = TECSTypeKind_IntType;
-            size           = C_EXP( "sizeof(const int8_t)" );
-            b_const        = true;
-            b_volatile     = false;
-        };
-        cell nTECSInfo::tIntTypeInfo int8_tTypeInfo{
-            name           = "int8_t";
-            typeKind       = TECSTypeKind_IntType;
-            size           = C_EXP( "sizeof(int8_t)" );
-            b_const        = false;
-            b_volatile     = false;
-        };
-        cell nTECSInfo::tPtrTypeInfo const__char_t_Ptr_TypeInfo{
-            name           = "const char_t*";
-            typeKind       = TECSTypeKind_PtrType;
-            size           = C_EXP( "sizeof(const char_t*)" );
-            b_const        = false;
-            b_volatile     = false;
-            cTypeInfo        = const__char_tTypeInfo.eTypeInfo;
-        };
-        cell nTECSInfo::tIntTypeInfo const__char_tTypeInfo{
-            name           = "const char_t";
-            typeKind       = TECSTypeKind_IntType;
-            size           = C_EXP( "sizeof(const char_t)" );
-            b_const        = true;
-            b_volatile     = false;
-        };
-        cell nTECSInfo::tPtrTypeInfo struct__target_struct_Ptr_TypeInfo{
-            name           = "const struct target_struct*";
-            typeKind       = TECSTypeKind_PtrType;
-            size           = C_EXP( "sizeof(const struct target_struct*)" );
-            b_const        = false;
-            b_volatile     = false;
-            cTypeInfo        = struct__target_structTypeInfo.eTypeInfo;
-        };
-        cell nTECSInfo::tStructTypeInfo struct__target_structTypeInfo{
-            name           = "const struct target_struct";
-            typeKind       = TECSTypeKind_StructType;
-            size           = C_EXP( "sizeof(const struct target_struct)" );
-            b_const        = true;
-            b_volatile     = false;
-            cVarDeclInfo[] = struct__target_struct_numberVarDeclInfo.eVarDeclInfo;
-            cVarDeclInfo[] = struct__target_struct_nameVarDeclInfo.eVarDeclInfo;
-        };
-        cell nTECSInfo::tArrayTypeInfo char_t_Array8_TypeInfo{
-            name           = "char_t[8]";
-            typeKind       = TECSTypeKind_ArrayType;
-            size           = C_EXP( "sizeof(char_t[8])" );
-            b_const        = false;
-            b_volatile     = false;
-            cTypeInfo        = char_tTypeInfo.eTypeInfo;
-        };
-        cell nTECSInfo::tDefinedTypeInfo char_tTypeInfo{
-            name           = "char_t";
-            typeKind       = TECSTypeKind_DefinedType;
-            size           = C_EXP( "sizeof(char_t)" );
-            b_const        = false;
-            b_volatile     = false;
-            cTypeInfo        = charTypeInfo.eTypeInfo;
-        };
-        cell nTECSInfo::tIntTypeInfo charTypeInfo{
-            name           = "char";
-            typeKind       = TECSTypeKind_IntType;
-            size           = C_EXP( "sizeof(char)" );
+            size           = C_EXP( "sizeof(int32_t)" );
             b_const        = false;
             b_volatile     = false;
         };
@@ -4971,6 +4715,20 @@ region rTEMP{
             b_const        = false;
             b_volatile     = false;
             cTypeInfo        = char_tTypeInfo.eTypeInfo;
+        };
+        cell nTECSInfo::tIntTypeInfo char_tTypeInfo{
+            name           = "char_t";
+            typeKind       = TECSTypeKind_IntType;
+            size           = C_EXP( "sizeof(char_t)" );
+            b_const        = false;
+            b_volatile     = false;
+        };
+        cell nTECSInfo::tIntTypeInfo intTypeInfo{
+            name           = "int";
+            typeKind       = TECSTypeKind_IntType;
+            size           = C_EXP( "sizeof(int)" );
+            b_const        = false;
+            b_volatile     = false;
         };
         cell nTECSInfo::tPtrTypeInfo struct__tecsunit_obj_Ptr_TypeInfo{
             name           = "struct tecsunit_obj*";
@@ -4997,6 +4755,13 @@ region rTEMP{
             b_volatile     = false;
             cTypeInfo        = charTypeInfo.eTypeInfo;
         };
+        cell nTECSInfo::tIntTypeInfo charTypeInfo{
+            name           = "char";
+            typeKind       = TECSTypeKind_IntType;
+            size           = C_EXP( "sizeof(char)" );
+            b_const        = false;
+            b_volatile     = false;
+        };
         cell nTECSInfo::tPtrTypeInfo int_Ptr_TypeInfo{
             name           = "int*";
             typeKind       = TECSTypeKind_PtrType;
@@ -5004,6 +4769,21 @@ region rTEMP{
             b_const        = false;
             b_volatile     = false;
             cTypeInfo        = intTypeInfo.eTypeInfo;
+        };
+        cell nTECSInfo::tPtrTypeInfo const__char_t_Ptr_TypeInfo{
+            name           = "const char_t*";
+            typeKind       = TECSTypeKind_PtrType;
+            size           = C_EXP( "sizeof(const char_t*)" );
+            b_const        = false;
+            b_volatile     = false;
+            cTypeInfo        = const__char_tTypeInfo.eTypeInfo;
+        };
+        cell nTECSInfo::tIntTypeInfo const__char_tTypeInfo{
+            name           = "const char_t";
+            typeKind       = TECSTypeKind_IntType;
+            size           = C_EXP( "sizeof(const char_t)" );
+            b_const        = true;
+            b_volatile     = false;
         };
         cell nTECSInfo::tDefinedTypeInfo ATRTypeInfo{
             name           = "ATR";
@@ -5073,6 +4853,13 @@ region rTEMP{
             name           = "int16_t";
             typeKind       = TECSTypeKind_IntType;
             size           = C_EXP( "sizeof(int16_t)" );
+            b_const        = false;
+            b_volatile     = false;
+        };
+        cell nTECSInfo::tIntTypeInfo int8_tTypeInfo{
+            name           = "int8_t";
+            typeKind       = TECSTypeKind_IntType;
+            size           = C_EXP( "sizeof(int8_t)" );
             b_const        = false;
             b_volatile     = false;
         };
@@ -5169,13 +4956,6 @@ region rTEMP{
             b_const        = false;
             b_volatile     = false;
             cTypeInfo        = int8_tTypeInfo.eTypeInfo;
-        };
-        cell nTECSInfo::tIntTypeInfo int32_tTypeInfo{
-            name           = "int32_t";
-            typeKind       = TECSTypeKind_IntType;
-            size           = C_EXP( "sizeof(int32_t)" );
-            b_const        = false;
-            b_volatile     = false;
         };
         cell nTECSInfo::tPtrTypeInfo const__void_Ptr_TypeInfo{
             name           = "const void*";

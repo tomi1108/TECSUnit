@@ -70,14 +70,11 @@ const struct tag_nTECSInfo_sCellInfo_VMT nTECSInfo_tCellInfo_eCellInfo_MT_ = {
 };
 
 /* entry port descriptor referenced by call port (differ from actual definition) #_CPEPD_# */
-extern struct tag_nTECSInfo_sCelltypeInfo_VDES rTEMP_rTECSInfo_tTarget1CelltypeInfo_eCelltypeInfo_des;
-extern struct tag_nTECSInfo_sRawEntryDescriptorInfo_VDES rTEMP_rTECSInfo_Target1_eTarget1RawEntryDescriptorInfo_eRawEntryDescriptor_des;
+extern struct tag_nTECSInfo_sCelltypeInfo_VDES rTEMP_rTECSInfo_tSampleCelltypeInfo_eCelltypeInfo_des;
+extern struct tag_nTECSInfo_sRawEntryDescriptorInfo_VDES rTEMP_rTECSInfo_Sample_eEntRawEntryDescriptorInfo_eRawEntryDescriptor_des;
 
-extern struct tag_nTECSInfo_sCelltypeInfo_VDES rTEMP_rTECSInfo_tTarget2CelltypeInfo_eCelltypeInfo_des;
-extern struct tag_nTECSInfo_sRawEntryDescriptorInfo_VDES rTEMP_rTECSInfo_Target2_eTarget2RawEntryDescriptorInfo_eRawEntryDescriptor_des;
-
-extern struct tag_nTECSInfo_sCelltypeInfo_VDES rTEMP_rTECSInfo_tTarget3CelltypeInfo_eCelltypeInfo_des;
-extern struct tag_nTECSInfo_sRawEntryDescriptorInfo_VDES rTEMP_rTECSInfo_Target3_eTarget3RawEntryDescriptorInfo_eRawEntryDescriptor_des;
+extern struct tag_nTECSInfo_sCelltypeInfo_VDES rTEMP_rTECSInfo_tSimpleCelltypeInfo_eCelltypeInfo_des;
+extern struct tag_nTECSInfo_sRawEntryDescriptorInfo_VDES rTEMP_rTECSInfo_Simple_eBodyRawEntryDescriptorInfo_eRawEntryDescriptor_des;
 
 extern struct tag_nTECSInfo_sCelltypeInfo_VDES rTEMP_rTECSInfo_tTaskCelltypeInfo_eCelltypeInfo_des;
 extern struct tag_nTECSInfo_sRawEntryDescriptorInfo_VDES rTEMP_rTECSInfo_Task_eTaskRawEntryDescriptorInfo_eRawEntryDescriptor_des;
@@ -95,16 +92,12 @@ extern struct tag_nTECSInfo_sCelltypeInfo_VDES rTEMP_rTECSInfo_nTECSInfo_tTECSIn
 extern struct tag_nTECSInfo_sRawEntryDescriptorInfo_VDES rTEMP_rTECSInfo_rTEMP_TECSInfo_eTECSInfoRawEntryDescriptorInfo_eRawEntryDescriptor_des;
 
 /* call port array #_CPA_# */
-struct tag_nTECSInfo_sRawEntryDescriptorInfo_VDES * const rTEMP_rTECSInfo_Target1CellInfo_cRawEntryDescriptor[] = {
-    &rTEMP_rTECSInfo_Target1_eTarget1RawEntryDescriptorInfo_eRawEntryDescriptor_des,
+struct tag_nTECSInfo_sRawEntryDescriptorInfo_VDES * const rTEMP_rTECSInfo_SampleCellInfo_cRawEntryDescriptor[] = {
+    &rTEMP_rTECSInfo_Sample_eEntRawEntryDescriptorInfo_eRawEntryDescriptor_des,
 };
 
-struct tag_nTECSInfo_sRawEntryDescriptorInfo_VDES * const rTEMP_rTECSInfo_Target2CellInfo_cRawEntryDescriptor[] = {
-    &rTEMP_rTECSInfo_Target2_eTarget2RawEntryDescriptorInfo_eRawEntryDescriptor_des,
-};
-
-struct tag_nTECSInfo_sRawEntryDescriptorInfo_VDES * const rTEMP_rTECSInfo_Target3CellInfo_cRawEntryDescriptor[] = {
-    &rTEMP_rTECSInfo_Target3_eTarget3RawEntryDescriptorInfo_eRawEntryDescriptor_des,
+struct tag_nTECSInfo_sRawEntryDescriptorInfo_VDES * const rTEMP_rTECSInfo_SimpleCellInfo_cRawEntryDescriptor[] = {
+    &rTEMP_rTECSInfo_Simple_eBodyRawEntryDescriptorInfo_eRawEntryDescriptor_des,
 };
 
 struct tag_nTECSInfo_sRawEntryDescriptorInfo_VDES * const rTEMP_rTECSInfo_TaskCellInfo_cRawEntryDescriptor[] = {
@@ -130,43 +123,31 @@ struct tag_nTECSInfo_sRawEntryDescriptorInfo_VDES * const rTEMP_rTECSInfo_rTEMP_
 /* array of attr/var #_AVAI_# */
 /* cell INIB #_INIB_# */
 nTECSInfo_tCellInfo_INIB nTECSInfo_tCellInfo_INIB_tab[] = {
-    /* cell: nTECSInfo_tCellInfo_CB_tab[0]:  Target1CellInfo id=1 */
+    /* cell: nTECSInfo_tCellInfo_CB_tab[0]:  SampleCellInfo id=1 */
     {
         /* call port (INIB) #_CP_# */ 
-        &rTEMP_rTECSInfo_tTarget1CelltypeInfo_eCelltypeInfo_des, /* cCelltypeInfo #_CCP1_# */
-        rTEMP_rTECSInfo_Target1CellInfo_cRawEntryDescriptor, /* #_CCP3B_# */
+        &rTEMP_rTECSInfo_tSampleCelltypeInfo_eCelltypeInfo_des, /* cCelltypeInfo #_CCP1_# */
+        rTEMP_rTECSInfo_SampleCellInfo_cRawEntryDescriptor, /* #_CCP3B_# */
         1,                                       /* length of cRawEntryDescriptor (n_cRawEntryDescriptor) #_CCP4_# */
         /* entry port #_EP_# */ 
         /* attribute(RO) */ 
-        "Target1",                               /* name */
-        Target1__CBP,                            /* cbp */
-        Target1__INIBP,                          /* inibp */
+        "Sample",                                /* name */
+        Sample__CBP,                             /* cbp */
+        Sample__INIBP,                           /* inibp */
     },
-    /* cell: nTECSInfo_tCellInfo_CB_tab[1]:  Target2CellInfo id=2 */
+    /* cell: nTECSInfo_tCellInfo_CB_tab[1]:  SimpleCellInfo id=2 */
     {
         /* call port (INIB) #_CP_# */ 
-        &rTEMP_rTECSInfo_tTarget2CelltypeInfo_eCelltypeInfo_des, /* cCelltypeInfo #_CCP1_# */
-        rTEMP_rTECSInfo_Target2CellInfo_cRawEntryDescriptor, /* #_CCP3B_# */
+        &rTEMP_rTECSInfo_tSimpleCelltypeInfo_eCelltypeInfo_des, /* cCelltypeInfo #_CCP1_# */
+        rTEMP_rTECSInfo_SimpleCellInfo_cRawEntryDescriptor, /* #_CCP3B_# */
         1,                                       /* length of cRawEntryDescriptor (n_cRawEntryDescriptor) #_CCP4_# */
         /* entry port #_EP_# */ 
         /* attribute(RO) */ 
-        "Target2",                               /* name */
-        Target2__CBP,                            /* cbp */
-        Target2__INIBP,                          /* inibp */
+        "Simple",                                /* name */
+        Simple__CBP,                             /* cbp */
+        Simple__INIBP,                           /* inibp */
     },
-    /* cell: nTECSInfo_tCellInfo_CB_tab[2]:  Target3CellInfo id=3 */
-    {
-        /* call port (INIB) #_CP_# */ 
-        &rTEMP_rTECSInfo_tTarget3CelltypeInfo_eCelltypeInfo_des, /* cCelltypeInfo #_CCP1_# */
-        rTEMP_rTECSInfo_Target3CellInfo_cRawEntryDescriptor, /* #_CCP3B_# */
-        1,                                       /* length of cRawEntryDescriptor (n_cRawEntryDescriptor) #_CCP4_# */
-        /* entry port #_EP_# */ 
-        /* attribute(RO) */ 
-        "Target3",                               /* name */
-        Target3__CBP,                            /* cbp */
-        Target3__INIBP,                          /* inibp */
-    },
-    /* cell: nTECSInfo_tCellInfo_CB_tab[3]:  TaskCellInfo id=4 */
+    /* cell: nTECSInfo_tCellInfo_CB_tab[2]:  TaskCellInfo id=3 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_tTaskCelltypeInfo_eCelltypeInfo_des, /* cCelltypeInfo #_CCP1_# */
@@ -178,7 +159,7 @@ nTECSInfo_tCellInfo_INIB nTECSInfo_tCellInfo_INIB_tab[] = {
         Task__CBP,                               /* cbp */
         Task__INIBP,                             /* inibp */
     },
-    /* cell: nTECSInfo_tCellInfo_CB_tab[4]:  rTEMP_TaskMainCellInfo id=5 */
+    /* cell: nTECSInfo_tCellInfo_CB_tab[3]:  rTEMP_TaskMainCellInfo id=4 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_tTaskMainCelltypeInfo_eCelltypeInfo_des, /* cCelltypeInfo #_CCP1_# */
@@ -190,7 +171,7 @@ nTECSInfo_tCellInfo_INIB nTECSInfo_tCellInfo_INIB_tab[] = {
         rTEMP_TaskMain__CBP,                     /* cbp */
         rTEMP_TaskMain__INIBP,                   /* inibp */
     },
-    /* cell: nTECSInfo_tCellInfo_CB_tab[5]:  rTEMP_TECSUnitCellInfo id=6 */
+    /* cell: nTECSInfo_tCellInfo_CB_tab[4]:  rTEMP_TECSUnitCellInfo id=5 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_tTECSUnitCelltypeInfo_eCelltypeInfo_des, /* cCelltypeInfo #_CCP1_# */
@@ -202,7 +183,7 @@ nTECSInfo_tCellInfo_INIB nTECSInfo_tCellInfo_INIB_tab[] = {
         rTEMP_TECSUnit__CBP,                     /* cbp */
         rTEMP_TECSUnit__INIBP,                   /* inibp */
     },
-    /* cell: nTECSInfo_tCellInfo_CB_tab[6]:  rTEMP_JSMNCellInfo id=7 */
+    /* cell: nTECSInfo_tCellInfo_CB_tab[5]:  rTEMP_JSMNCellInfo id=6 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_tJSMNCelltypeInfo_eCelltypeInfo_des, /* cCelltypeInfo #_CCP1_# */
@@ -214,7 +195,7 @@ nTECSInfo_tCellInfo_INIB nTECSInfo_tCellInfo_INIB_tab[] = {
         rTEMP_JSMN__CBP,                         /* cbp */
         rTEMP_JSMN__INIBP,                       /* inibp */
     },
-    /* cell: nTECSInfo_tCellInfo_CB_tab[7]:  rTEMP_TECSInfoCellInfo id=8 */
+    /* cell: nTECSInfo_tCellInfo_CB_tab[6]:  rTEMP_TECSInfoCellInfo id=7 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_nTECSInfo_tTECSInfoCelltypeInfo_eCelltypeInfo_des, /* cCelltypeInfo #_CCP1_# */
@@ -229,43 +210,38 @@ nTECSInfo_tCellInfo_INIB nTECSInfo_tCellInfo_INIB_tab[] = {
 };
 
 /* entry port descriptor #_EPD_# */
-extern const struct tag_nTECSInfo_tCellInfo_eCellInfo_DES rTEMP_rTECSInfo_Target1CellInfo_eCellInfo_des;
-const struct tag_nTECSInfo_tCellInfo_eCellInfo_DES rTEMP_rTECSInfo_Target1CellInfo_eCellInfo_des = {
+extern const struct tag_nTECSInfo_tCellInfo_eCellInfo_DES rTEMP_rTECSInfo_SampleCellInfo_eCellInfo_des;
+const struct tag_nTECSInfo_tCellInfo_eCellInfo_DES rTEMP_rTECSInfo_SampleCellInfo_eCellInfo_des = {
     &nTECSInfo_tCellInfo_eCellInfo_MT_,
     &nTECSInfo_tCellInfo_INIB_tab[0],      /* INIB 3 */
 };
-extern const struct tag_nTECSInfo_tCellInfo_eCellInfo_DES rTEMP_rTECSInfo_Target2CellInfo_eCellInfo_des;
-const struct tag_nTECSInfo_tCellInfo_eCellInfo_DES rTEMP_rTECSInfo_Target2CellInfo_eCellInfo_des = {
+extern const struct tag_nTECSInfo_tCellInfo_eCellInfo_DES rTEMP_rTECSInfo_SimpleCellInfo_eCellInfo_des;
+const struct tag_nTECSInfo_tCellInfo_eCellInfo_DES rTEMP_rTECSInfo_SimpleCellInfo_eCellInfo_des = {
     &nTECSInfo_tCellInfo_eCellInfo_MT_,
     &nTECSInfo_tCellInfo_INIB_tab[1],      /* INIB 3 */
-};
-extern const struct tag_nTECSInfo_tCellInfo_eCellInfo_DES rTEMP_rTECSInfo_Target3CellInfo_eCellInfo_des;
-const struct tag_nTECSInfo_tCellInfo_eCellInfo_DES rTEMP_rTECSInfo_Target3CellInfo_eCellInfo_des = {
-    &nTECSInfo_tCellInfo_eCellInfo_MT_,
-    &nTECSInfo_tCellInfo_INIB_tab[2],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tCellInfo_eCellInfo_DES rTEMP_rTECSInfo_TaskCellInfo_eCellInfo_des;
 const struct tag_nTECSInfo_tCellInfo_eCellInfo_DES rTEMP_rTECSInfo_TaskCellInfo_eCellInfo_des = {
     &nTECSInfo_tCellInfo_eCellInfo_MT_,
-    &nTECSInfo_tCellInfo_INIB_tab[3],      /* INIB 3 */
+    &nTECSInfo_tCellInfo_INIB_tab[2],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tCellInfo_eCellInfo_DES rTEMP_rTECSInfo_rTEMP_TaskMainCellInfo_eCellInfo_des;
 const struct tag_nTECSInfo_tCellInfo_eCellInfo_DES rTEMP_rTECSInfo_rTEMP_TaskMainCellInfo_eCellInfo_des = {
     &nTECSInfo_tCellInfo_eCellInfo_MT_,
-    &nTECSInfo_tCellInfo_INIB_tab[4],      /* INIB 3 */
+    &nTECSInfo_tCellInfo_INIB_tab[3],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tCellInfo_eCellInfo_DES rTEMP_rTECSInfo_rTEMP_TECSUnitCellInfo_eCellInfo_des;
 const struct tag_nTECSInfo_tCellInfo_eCellInfo_DES rTEMP_rTECSInfo_rTEMP_TECSUnitCellInfo_eCellInfo_des = {
     &nTECSInfo_tCellInfo_eCellInfo_MT_,
-    &nTECSInfo_tCellInfo_INIB_tab[5],      /* INIB 3 */
+    &nTECSInfo_tCellInfo_INIB_tab[4],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tCellInfo_eCellInfo_DES rTEMP_rTECSInfo_rTEMP_JSMNCellInfo_eCellInfo_des;
 const struct tag_nTECSInfo_tCellInfo_eCellInfo_DES rTEMP_rTECSInfo_rTEMP_JSMNCellInfo_eCellInfo_des = {
     &nTECSInfo_tCellInfo_eCellInfo_MT_,
-    &nTECSInfo_tCellInfo_INIB_tab[6],      /* INIB 3 */
+    &nTECSInfo_tCellInfo_INIB_tab[5],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tCellInfo_eCellInfo_DES rTEMP_rTECSInfo_rTEMP_TECSInfoCellInfo_eCellInfo_des;
 const struct tag_nTECSInfo_tCellInfo_eCellInfo_DES rTEMP_rTECSInfo_rTEMP_TECSInfoCellInfo_eCellInfo_des = {
     &nTECSInfo_tCellInfo_eCellInfo_MT_,
-    &nTECSInfo_tCellInfo_INIB_tab[7],      /* INIB 3 */
+    &nTECSInfo_tCellInfo_INIB_tab[6],      /* INIB 3 */
 };

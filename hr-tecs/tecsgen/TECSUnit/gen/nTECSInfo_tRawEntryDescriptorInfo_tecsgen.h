@@ -59,7 +59,7 @@ ER           nTECSInfo_tRawEntryDescriptorInfo_eRawEntryDescriptor_getRawDescrip
 #ifndef TOPPERS_CB_TYPE_ONLY
 
 #define nTECSInfo_tRawEntryDescriptorInfo_ID_BASE        (1)  /* ID Base  #_NIDB_# */
-#define nTECSInfo_tRawEntryDescriptorInfo_N_CELL        (8)  /*  number of cells  #_NCEL_# */
+#define nTECSInfo_tRawEntryDescriptorInfo_N_CELL        (7)  /*  number of cells  #_NCEL_# */
 
 /* IDX validation macro #_CVI_# */
 #define nTECSInfo_tRawEntryDescriptorInfo_VALID_IDX(IDX) (1)

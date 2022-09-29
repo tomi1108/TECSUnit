@@ -77,8 +77,6 @@ const struct tag_nTECSInfo_sTypeInfo_VMT nTECSInfo_tArrayTypeInfo_eTypeInfo_MT_ 
 };
 
 /* entry port descriptor referenced by call port (differ from actual definition) #_CPEPD_# */
-extern struct tag_nTECSInfo_sTypeInfo_VDES rTEMP_rTECSInfo_char_tTypeInfo_eTypeInfo_des;
-
 extern struct tag_nTECSInfo_sTypeInfo_VDES rTEMP_rTECSInfo_charTypeInfo_eTypeInfo_des;
 
 extern const struct tag_nTECSInfo_tArrayTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_char_t_Array128_TypeInfo_eTypeInfo_des;
@@ -89,23 +87,10 @@ extern struct tag_nTECSInfo_sTypeInfo_VDES rTEMP_rTECSInfo_char_tTypeInfo_eTypeI
 
 
 
-
 /* array of attr/var #_AVAI_# */
 /* cell INIB #_INIB_# */
 nTECSInfo_tArrayTypeInfo_INIB nTECSInfo_tArrayTypeInfo_INIB_tab[] = {
-    /* cell: nTECSInfo_tArrayTypeInfo_CB_tab[0]:  char_t_Array8_TypeInfo id=1 */
-    {
-        /* call port (INIB) #_CP_# */ 
-        &rTEMP_rTECSInfo_char_tTypeInfo_eTypeInfo_des, /* cTypeInfo #_CCP1_# */
-        /* entry port #_EP_# */ 
-        /* attribute(RO) */ 
-        "char_t[8]",                             /* name */
-        5,                                       /* typeKind */
-        sizeof(char_t[8]),                       /* size */
-        false,                                   /* b_const */
-        false,                                   /* b_volatile */
-    },
-    /* cell: nTECSInfo_tArrayTypeInfo_CB_tab[1]:  char_Array32_TypeInfo id=2 */
+    /* cell: nTECSInfo_tArrayTypeInfo_CB_tab[0]:  char_Array32_TypeInfo id=1 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_charTypeInfo_eTypeInfo_des, /* cTypeInfo #_CCP1_# */
@@ -117,7 +102,7 @@ nTECSInfo_tArrayTypeInfo_INIB nTECSInfo_tArrayTypeInfo_INIB_tab[] = {
         false,                                   /* b_const */
         false,                                   /* b_volatile */
     },
-    /* cell: nTECSInfo_tArrayTypeInfo_CB_tab[2]:  char_t_Array128__Array32_TypeInfo id=3 */
+    /* cell: nTECSInfo_tArrayTypeInfo_CB_tab[1]:  char_t_Array128__Array32_TypeInfo id=2 */
     {
         /* call port (INIB) #_CP_# */ 
         (struct tag_nTECSInfo_sTypeInfo_VDES *)&rTEMP_rTECSInfo_char_t_Array128_TypeInfo_eTypeInfo_des, /* cTypeInfo #_CCP1_# */
@@ -129,7 +114,7 @@ nTECSInfo_tArrayTypeInfo_INIB nTECSInfo_tArrayTypeInfo_INIB_tab[] = {
         false,                                   /* b_const */
         false,                                   /* b_volatile */
     },
-    /* cell: nTECSInfo_tArrayTypeInfo_CB_tab[3]:  char_t_Array128_TypeInfo id=4 */
+    /* cell: nTECSInfo_tArrayTypeInfo_CB_tab[2]:  char_t_Array128_TypeInfo id=3 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_char_tTypeInfo_eTypeInfo_des, /* cTypeInfo #_CCP1_# */
@@ -144,23 +129,18 @@ nTECSInfo_tArrayTypeInfo_INIB nTECSInfo_tArrayTypeInfo_INIB_tab[] = {
 };
 
 /* entry port descriptor #_EPD_# */
-extern const struct tag_nTECSInfo_tArrayTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_char_t_Array8_TypeInfo_eTypeInfo_des;
-const struct tag_nTECSInfo_tArrayTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_char_t_Array8_TypeInfo_eTypeInfo_des = {
-    &nTECSInfo_tArrayTypeInfo_eTypeInfo_MT_,
-    &nTECSInfo_tArrayTypeInfo_INIB_tab[0],      /* INIB 3 */
-};
 extern const struct tag_nTECSInfo_tArrayTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_char_Array32_TypeInfo_eTypeInfo_des;
 const struct tag_nTECSInfo_tArrayTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_char_Array32_TypeInfo_eTypeInfo_des = {
     &nTECSInfo_tArrayTypeInfo_eTypeInfo_MT_,
-    &nTECSInfo_tArrayTypeInfo_INIB_tab[1],      /* INIB 3 */
+    &nTECSInfo_tArrayTypeInfo_INIB_tab[0],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tArrayTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_char_t_Array128__Array32_TypeInfo_eTypeInfo_des;
 const struct tag_nTECSInfo_tArrayTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_char_t_Array128__Array32_TypeInfo_eTypeInfo_des = {
     &nTECSInfo_tArrayTypeInfo_eTypeInfo_MT_,
-    &nTECSInfo_tArrayTypeInfo_INIB_tab[2],      /* INIB 3 */
+    &nTECSInfo_tArrayTypeInfo_INIB_tab[1],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tArrayTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_char_t_Array128_TypeInfo_eTypeInfo_des;
 const struct tag_nTECSInfo_tArrayTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_char_t_Array128_TypeInfo_eTypeInfo_des = {
     &nTECSInfo_tArrayTypeInfo_eTypeInfo_MT_,
-    &nTECSInfo_tArrayTypeInfo_INIB_tab[3],      /* INIB 3 */
+    &nTECSInfo_tArrayTypeInfo_INIB_tab[2],      /* INIB 3 */
 };

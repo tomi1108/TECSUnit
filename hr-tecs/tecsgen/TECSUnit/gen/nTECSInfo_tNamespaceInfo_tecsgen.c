@@ -88,15 +88,12 @@ extern struct tag_nTECSInfo_sSignatureInfo_VDES rTEMP_rTECSInfo_sEventflagSignat
 extern struct tag_nTECSInfo_sSignatureInfo_VDES rTEMP_rTECSInfo_siEventflagSignatureInfo_eSignatureInfo_des;
 extern struct tag_nTECSInfo_sSignatureInfo_VDES rTEMP_rTECSInfo_sDataqueueSignatureInfo_eSignatureInfo_des;
 extern struct tag_nTECSInfo_sSignatureInfo_VDES rTEMP_rTECSInfo_siDataqueueSignatureInfo_eSignatureInfo_des;
-extern struct tag_nTECSInfo_sSignatureInfo_VDES rTEMP_rTECSInfo_sTarget1SignatureInfo_eSignatureInfo_des;
-extern struct tag_nTECSInfo_sSignatureInfo_VDES rTEMP_rTECSInfo_sTarget2SignatureInfo_eSignatureInfo_des;
-extern struct tag_nTECSInfo_sSignatureInfo_VDES rTEMP_rTECSInfo_sTarget3SignatureInfo_eSignatureInfo_des;
+extern struct tag_nTECSInfo_sSignatureInfo_VDES rTEMP_rTECSInfo_sSampleSignatureInfo_eSignatureInfo_des;
 extern struct tag_nTECSInfo_sSignatureInfo_VDES rTEMP_rTECSInfo_sJSMNSignatureInfo_eSignatureInfo_des;
 extern struct tag_nTECSInfo_sSignatureInfo_VDES rTEMP_rTECSInfo_sTECSUnitSignatureInfo_eSignatureInfo_des;
 extern struct tag_nTECSInfo_sCelltypeInfo_VDES rTEMP_rTECSInfo_tTaskCelltypeInfo_eCelltypeInfo_des;
-extern struct tag_nTECSInfo_sCelltypeInfo_VDES rTEMP_rTECSInfo_tTarget1CelltypeInfo_eCelltypeInfo_des;
-extern struct tag_nTECSInfo_sCelltypeInfo_VDES rTEMP_rTECSInfo_tTarget2CelltypeInfo_eCelltypeInfo_des;
-extern struct tag_nTECSInfo_sCelltypeInfo_VDES rTEMP_rTECSInfo_tTarget3CelltypeInfo_eCelltypeInfo_des;
+extern struct tag_nTECSInfo_sCelltypeInfo_VDES rTEMP_rTECSInfo_tSampleCelltypeInfo_eCelltypeInfo_des;
+extern struct tag_nTECSInfo_sCelltypeInfo_VDES rTEMP_rTECSInfo_tSimpleCelltypeInfo_eCelltypeInfo_des;
 extern struct tag_nTECSInfo_sCelltypeInfo_VDES rTEMP_rTECSInfo_tTaskMainCelltypeInfo_eCelltypeInfo_des;
 extern struct tag_nTECSInfo_sCelltypeInfo_VDES rTEMP_rTECSInfo_tTECSUnitCelltypeInfo_eCelltypeInfo_des;
 extern struct tag_nTECSInfo_sCelltypeInfo_VDES rTEMP_rTECSInfo_tJSMNCelltypeInfo_eCelltypeInfo_des;
@@ -131,17 +128,14 @@ struct tag_nTECSInfo_sSignatureInfo_VDES * const rTEMP_rTECSInfo__RootNamespaceI
     &rTEMP_rTECSInfo_siEventflagSignatureInfo_eSignatureInfo_des,
     &rTEMP_rTECSInfo_sDataqueueSignatureInfo_eSignatureInfo_des,
     &rTEMP_rTECSInfo_siDataqueueSignatureInfo_eSignatureInfo_des,
-    &rTEMP_rTECSInfo_sTarget1SignatureInfo_eSignatureInfo_des,
-    &rTEMP_rTECSInfo_sTarget2SignatureInfo_eSignatureInfo_des,
-    &rTEMP_rTECSInfo_sTarget3SignatureInfo_eSignatureInfo_des,
+    &rTEMP_rTECSInfo_sSampleSignatureInfo_eSignatureInfo_des,
     &rTEMP_rTECSInfo_sJSMNSignatureInfo_eSignatureInfo_des,
     &rTEMP_rTECSInfo_sTECSUnitSignatureInfo_eSignatureInfo_des,
 };
 struct tag_nTECSInfo_sCelltypeInfo_VDES * const rTEMP_rTECSInfo__RootNamespaceInfo_cCelltypeInfo[] = {
     &rTEMP_rTECSInfo_tTaskCelltypeInfo_eCelltypeInfo_des,
-    &rTEMP_rTECSInfo_tTarget1CelltypeInfo_eCelltypeInfo_des,
-    &rTEMP_rTECSInfo_tTarget2CelltypeInfo_eCelltypeInfo_des,
-    &rTEMP_rTECSInfo_tTarget3CelltypeInfo_eCelltypeInfo_des,
+    &rTEMP_rTECSInfo_tSampleCelltypeInfo_eCelltypeInfo_des,
+    &rTEMP_rTECSInfo_tSimpleCelltypeInfo_eCelltypeInfo_des,
     &rTEMP_rTECSInfo_tTaskMainCelltypeInfo_eCelltypeInfo_des,
     &rTEMP_rTECSInfo_tTECSUnitCelltypeInfo_eCelltypeInfo_des,
     &rTEMP_rTECSInfo_tJSMNCelltypeInfo_eCelltypeInfo_des,
@@ -177,9 +171,9 @@ nTECSInfo_tNamespaceInfo_INIB nTECSInfo_tNamespaceInfo_INIB_tab[] = {
     {
         /* call port (INIB) #_CP_# */ 
         rTEMP_rTECSInfo__RootNamespaceInfo_cSignatureInfo, /* #_CCP3B_# */
-        16,                                      /* length of cSignatureInfo (n_cSignatureInfo) #_CCP4_# */
+        14,                                      /* length of cSignatureInfo (n_cSignatureInfo) #_CCP4_# */
         rTEMP_rTECSInfo__RootNamespaceInfo_cCelltypeInfo, /* #_CCP3B_# */
-        7,                                       /* length of cCelltypeInfo (n_cCelltypeInfo) #_CCP4_# */
+        6,                                       /* length of cCelltypeInfo (n_cCelltypeInfo) #_CCP4_# */
         rTEMP_rTECSInfo__RootNamespaceInfo_cNamespaceInfo, /* #_CCP3B_# */
         1,                                       /* length of cNamespaceInfo (n_cNamespaceInfo) #_CCP4_# */
         /* entry port #_EP_# */ 

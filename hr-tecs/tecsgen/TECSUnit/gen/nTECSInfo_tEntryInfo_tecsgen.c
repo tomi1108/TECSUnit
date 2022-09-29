@@ -58,11 +58,9 @@ const struct tag_nTECSInfo_sEntryInfo_VMT nTECSInfo_tEntryInfo_eEntryInfo_MT_ = 
 /* entry port descriptor referenced by call port (differ from actual definition) #_CPEPD_# */
 extern struct tag_nTECSInfo_sSignatureInfo_VDES rTEMP_rTECSInfo_sTaskSignatureInfo_eSignatureInfo_des;
 
-extern struct tag_nTECSInfo_sSignatureInfo_VDES rTEMP_rTECSInfo_sTarget1SignatureInfo_eSignatureInfo_des;
+extern struct tag_nTECSInfo_sSignatureInfo_VDES rTEMP_rTECSInfo_sSampleSignatureInfo_eSignatureInfo_des;
 
-extern struct tag_nTECSInfo_sSignatureInfo_VDES rTEMP_rTECSInfo_sTarget2SignatureInfo_eSignatureInfo_des;
-
-extern struct tag_nTECSInfo_sSignatureInfo_VDES rTEMP_rTECSInfo_sTarget3SignatureInfo_eSignatureInfo_des;
+extern struct tag_nTECSInfo_sSignatureInfo_VDES rTEMP_rTECSInfo_sTaskBodySignatureInfo_eSignatureInfo_des;
 
 extern struct tag_nTECSInfo_sSignatureInfo_VDES rTEMP_rTECSInfo_sTaskBodySignatureInfo_eSignatureInfo_des;
 
@@ -73,7 +71,6 @@ extern struct tag_nTECSInfo_sSignatureInfo_VDES rTEMP_rTECSInfo_sJSMNSignatureIn
 extern struct tag_nTECSInfo_sSignatureInfo_VDES rTEMP_rTECSInfo_nTECSInfo_sTECSInfoSignatureInfo_eSignatureInfo_des;
 
 /* call port array #_CPA_# */
-
 
 
 
@@ -94,37 +91,27 @@ nTECSInfo_tEntryInfo_INIB nTECSInfo_tEntryInfo_INIB_tab[] = {
         true,                                    /* b_inline */
         tTask_eTask__array_size,                 /* array_size */
     },
-    /* cell: nTECSInfo_tEntryInfo_CB_tab[1]:  tTarget1_eTarget1EntryInfo id=2 */
+    /* cell: nTECSInfo_tEntryInfo_CB_tab[1]:  tSample_eEntEntryInfo id=2 */
     {
         /* call port (INIB) #_CP_# */ 
-        &rTEMP_rTECSInfo_sTarget1SignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
+        &rTEMP_rTECSInfo_sSampleSignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
         /* entry port #_EP_# */ 
         /* attribute(RO) */ 
-        "eTarget1",                              /* name */
+        "eEnt",                                  /* name */
         false,                                   /* b_inline */
-        tTarget1_eTarget1__array_size,           /* array_size */
+        tSample_eEnt__array_size,                /* array_size */
     },
-    /* cell: nTECSInfo_tEntryInfo_CB_tab[2]:  tTarget2_eTarget2EntryInfo id=3 */
+    /* cell: nTECSInfo_tEntryInfo_CB_tab[2]:  tSimple_eBodyEntryInfo id=3 */
     {
         /* call port (INIB) #_CP_# */ 
-        &rTEMP_rTECSInfo_sTarget2SignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
+        &rTEMP_rTECSInfo_sTaskBodySignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
         /* entry port #_EP_# */ 
         /* attribute(RO) */ 
-        "eTarget2",                              /* name */
+        "eBody",                                 /* name */
         false,                                   /* b_inline */
-        tTarget2_eTarget2__array_size,           /* array_size */
+        tSimple_eBody__array_size,               /* array_size */
     },
-    /* cell: nTECSInfo_tEntryInfo_CB_tab[3]:  tTarget3_eTarget3EntryInfo id=4 */
-    {
-        /* call port (INIB) #_CP_# */ 
-        &rTEMP_rTECSInfo_sTarget3SignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
-        /* entry port #_EP_# */ 
-        /* attribute(RO) */ 
-        "eTarget3",                              /* name */
-        false,                                   /* b_inline */
-        tTarget3_eTarget3__array_size,           /* array_size */
-    },
-    /* cell: nTECSInfo_tEntryInfo_CB_tab[4]:  tTaskMain_eBodyEntryInfo id=5 */
+    /* cell: nTECSInfo_tEntryInfo_CB_tab[3]:  tTaskMain_eBodyEntryInfo id=4 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_sTaskBodySignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
@@ -134,7 +121,7 @@ nTECSInfo_tEntryInfo_INIB nTECSInfo_tEntryInfo_INIB_tab[] = {
         false,                                   /* b_inline */
         tTaskMain_eBody__array_size,             /* array_size */
     },
-    /* cell: nTECSInfo_tEntryInfo_CB_tab[5]:  tTECSUnit_eUnitEntryInfo id=6 */
+    /* cell: nTECSInfo_tEntryInfo_CB_tab[4]:  tTECSUnit_eUnitEntryInfo id=5 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_sTECSUnitSignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
@@ -144,7 +131,7 @@ nTECSInfo_tEntryInfo_INIB nTECSInfo_tEntryInfo_INIB_tab[] = {
         false,                                   /* b_inline */
         tTECSUnit_eUnit__array_size,             /* array_size */
     },
-    /* cell: nTECSInfo_tEntryInfo_CB_tab[6]:  tJSMN_eJSMNEntryInfo id=7 */
+    /* cell: nTECSInfo_tEntryInfo_CB_tab[5]:  tJSMN_eJSMNEntryInfo id=6 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_sJSMNSignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
@@ -154,7 +141,7 @@ nTECSInfo_tEntryInfo_INIB nTECSInfo_tEntryInfo_INIB_tab[] = {
         false,                                   /* b_inline */
         tJSMN_eJSMN__array_size,                 /* array_size */
     },
-    /* cell: nTECSInfo_tEntryInfo_CB_tab[7]:  nTECSInfo_tTECSInfo_eTECSInfoEntryInfo id=8 */
+    /* cell: nTECSInfo_tEntryInfo_CB_tab[6]:  nTECSInfo_tTECSInfo_eTECSInfoEntryInfo id=7 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_nTECSInfo_sTECSInfoSignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
@@ -172,38 +159,33 @@ const struct tag_nTECSInfo_tEntryInfo_eEntryInfo_DES rTEMP_rTECSInfo_tTask_eTask
     &nTECSInfo_tEntryInfo_eEntryInfo_MT_,
     &nTECSInfo_tEntryInfo_INIB_tab[0],      /* INIB 3 */
 };
-extern const struct tag_nTECSInfo_tEntryInfo_eEntryInfo_DES rTEMP_rTECSInfo_tTarget1_eTarget1EntryInfo_eEntryInfo_des;
-const struct tag_nTECSInfo_tEntryInfo_eEntryInfo_DES rTEMP_rTECSInfo_tTarget1_eTarget1EntryInfo_eEntryInfo_des = {
+extern const struct tag_nTECSInfo_tEntryInfo_eEntryInfo_DES rTEMP_rTECSInfo_tSample_eEntEntryInfo_eEntryInfo_des;
+const struct tag_nTECSInfo_tEntryInfo_eEntryInfo_DES rTEMP_rTECSInfo_tSample_eEntEntryInfo_eEntryInfo_des = {
     &nTECSInfo_tEntryInfo_eEntryInfo_MT_,
     &nTECSInfo_tEntryInfo_INIB_tab[1],      /* INIB 3 */
 };
-extern const struct tag_nTECSInfo_tEntryInfo_eEntryInfo_DES rTEMP_rTECSInfo_tTarget2_eTarget2EntryInfo_eEntryInfo_des;
-const struct tag_nTECSInfo_tEntryInfo_eEntryInfo_DES rTEMP_rTECSInfo_tTarget2_eTarget2EntryInfo_eEntryInfo_des = {
+extern const struct tag_nTECSInfo_tEntryInfo_eEntryInfo_DES rTEMP_rTECSInfo_tSimple_eBodyEntryInfo_eEntryInfo_des;
+const struct tag_nTECSInfo_tEntryInfo_eEntryInfo_DES rTEMP_rTECSInfo_tSimple_eBodyEntryInfo_eEntryInfo_des = {
     &nTECSInfo_tEntryInfo_eEntryInfo_MT_,
     &nTECSInfo_tEntryInfo_INIB_tab[2],      /* INIB 3 */
-};
-extern const struct tag_nTECSInfo_tEntryInfo_eEntryInfo_DES rTEMP_rTECSInfo_tTarget3_eTarget3EntryInfo_eEntryInfo_des;
-const struct tag_nTECSInfo_tEntryInfo_eEntryInfo_DES rTEMP_rTECSInfo_tTarget3_eTarget3EntryInfo_eEntryInfo_des = {
-    &nTECSInfo_tEntryInfo_eEntryInfo_MT_,
-    &nTECSInfo_tEntryInfo_INIB_tab[3],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tEntryInfo_eEntryInfo_DES rTEMP_rTECSInfo_tTaskMain_eBodyEntryInfo_eEntryInfo_des;
 const struct tag_nTECSInfo_tEntryInfo_eEntryInfo_DES rTEMP_rTECSInfo_tTaskMain_eBodyEntryInfo_eEntryInfo_des = {
     &nTECSInfo_tEntryInfo_eEntryInfo_MT_,
-    &nTECSInfo_tEntryInfo_INIB_tab[4],      /* INIB 3 */
+    &nTECSInfo_tEntryInfo_INIB_tab[3],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tEntryInfo_eEntryInfo_DES rTEMP_rTECSInfo_tTECSUnit_eUnitEntryInfo_eEntryInfo_des;
 const struct tag_nTECSInfo_tEntryInfo_eEntryInfo_DES rTEMP_rTECSInfo_tTECSUnit_eUnitEntryInfo_eEntryInfo_des = {
     &nTECSInfo_tEntryInfo_eEntryInfo_MT_,
-    &nTECSInfo_tEntryInfo_INIB_tab[5],      /* INIB 3 */
+    &nTECSInfo_tEntryInfo_INIB_tab[4],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tEntryInfo_eEntryInfo_DES rTEMP_rTECSInfo_tJSMN_eJSMNEntryInfo_eEntryInfo_des;
 const struct tag_nTECSInfo_tEntryInfo_eEntryInfo_DES rTEMP_rTECSInfo_tJSMN_eJSMNEntryInfo_eEntryInfo_des = {
     &nTECSInfo_tEntryInfo_eEntryInfo_MT_,
-    &nTECSInfo_tEntryInfo_INIB_tab[6],      /* INIB 3 */
+    &nTECSInfo_tEntryInfo_INIB_tab[5],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tEntryInfo_eEntryInfo_DES rTEMP_rTECSInfo_nTECSInfo_tTECSInfo_eTECSInfoEntryInfo_eEntryInfo_des;
 const struct tag_nTECSInfo_tEntryInfo_eEntryInfo_DES rTEMP_rTECSInfo_nTECSInfo_tTECSInfo_eTECSInfoEntryInfo_eEntryInfo_des = {
     &nTECSInfo_tEntryInfo_eEntryInfo_MT_,
-    &nTECSInfo_tEntryInfo_INIB_tab[7],      /* INIB 3 */
+    &nTECSInfo_tEntryInfo_INIB_tab[6],      /* INIB 3 */
 };

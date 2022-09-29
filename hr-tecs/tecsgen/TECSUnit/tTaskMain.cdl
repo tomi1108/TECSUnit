@@ -56,12 +56,15 @@ celltype tTaskMain {
     };
 };
 
+
 cell tTask Task {
     taskAttribute = C_EXP("TA_ACT");
     priority      = 11;
     stackSize     = 4096;
     cBody         = rTEMP::TaskMain.eBody;
+//    cBody = Simple.eBody;
 };
+
 
 [in_through()]
 region rTEMP{

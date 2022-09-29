@@ -64,7 +64,7 @@ ER           nTECSInfo_tSignatureInfo_eSignatureInfo_getFunctionInfo(nTECSInfo_t
 #ifndef TOPPERS_CB_TYPE_ONLY
 
 #define nTECSInfo_tSignatureInfo_ID_BASE        (1)  /* ID Base  #_NIDB_# */
-#define nTECSInfo_tSignatureInfo_N_CELL       (30)  /*  number of cells  #_NCEL_# */
+#define nTECSInfo_tSignatureInfo_N_CELL       (28)  /*  number of cells  #_NCEL_# */
 
 /* IDX validation macro #_CVI_# */
 #define nTECSInfo_tSignatureInfo_VALID_IDX(IDX) (1)

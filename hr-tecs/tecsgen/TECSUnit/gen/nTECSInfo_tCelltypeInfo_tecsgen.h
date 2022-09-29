@@ -88,7 +88,7 @@ uint32_t     nTECSInfo_tCelltypeInfo_eCelltypeInfo_sizeOfINIB(nTECSInfo_tCelltyp
 #ifndef TOPPERS_CB_TYPE_ONLY
 
 #define nTECSInfo_tCelltypeInfo_ID_BASE        (1)  /* ID Base  #_NIDB_# */
-#define nTECSInfo_tCelltypeInfo_N_CELL        (8)  /*  number of cells  #_NCEL_# */
+#define nTECSInfo_tCelltypeInfo_N_CELL        (7)  /*  number of cells  #_NCEL_# */
 
 /* IDX validation macro #_CVI_# */
 #define nTECSInfo_tCelltypeInfo_VALID_IDX(IDX) (1)

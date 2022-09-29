@@ -332,10 +332,14 @@ EOT
     if flag then
       file.print <<EOT
       if( !strcmp( function_path, "#{f_name}" ) ){
+        printf("Call #{f_name}");
+        puts("");
 EOT
     else
       file.print <<EOT
       else if( !strcmp( function_path, "#{f_name}" ) ){
+        printf("Call #{f_name}");
+        puts("");
 EOT
     end
 
@@ -353,9 +357,15 @@ EOT
     else
       file.print <<EOT
         if( #{exp_val} == c#{signature.get_name[1..-1]}_#{f_name}( #{paramSet} ) ){
-            return 0;
+/*            return 0; */
+            puts("");
+            printf("Result：OK");
+            puts("");
         }else{
-            return -1;
+/*            return -1; */
+            puts("");
+            printf("Result：NG");
+            puts("");
         }
 EOT
     end

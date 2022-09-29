@@ -147,7 +147,27 @@ nTECSInfo_tIntTypeInfo_INIB nTECSInfo_tIntTypeInfo_INIB_tab[] = {
         false,                                   /* b_const */
         false,                                   /* b_volatile */
     },
-    /* cell: nTECSInfo_tIntTypeInfo_CB_tab[4]:  intTypeInfo id=5 */
+    /* cell: nTECSInfo_tIntTypeInfo_CB_tab[4]:  int32_tTypeInfo id=5 */
+    {
+        /* entry port #_EP_# */ 
+        /* attribute(RO) */ 
+        "int32_t",                               /* name */
+        2,                                       /* typeKind */
+        sizeof(int32_t),                         /* size */
+        false,                                   /* b_const */
+        false,                                   /* b_volatile */
+    },
+    /* cell: nTECSInfo_tIntTypeInfo_CB_tab[5]:  char_tTypeInfo id=6 */
+    {
+        /* entry port #_EP_# */ 
+        /* attribute(RO) */ 
+        "char_t",                                /* name */
+        2,                                       /* typeKind */
+        sizeof(char_t),                          /* size */
+        false,                                   /* b_const */
+        false,                                   /* b_volatile */
+    },
+    /* cell: nTECSInfo_tIntTypeInfo_CB_tab[6]:  intTypeInfo id=7 */
     {
         /* entry port #_EP_# */ 
         /* attribute(RO) */ 
@@ -157,37 +177,7 @@ nTECSInfo_tIntTypeInfo_INIB nTECSInfo_tIntTypeInfo_INIB_tab[] = {
         false,                                   /* b_const */
         false,                                   /* b_volatile */
     },
-    /* cell: nTECSInfo_tIntTypeInfo_CB_tab[5]:  const__int8_tTypeInfo id=6 */
-    {
-        /* entry port #_EP_# */ 
-        /* attribute(RO) */ 
-        "const int8_t",                          /* name */
-        2,                                       /* typeKind */
-        sizeof(const int8_t),                    /* size */
-        true,                                    /* b_const */
-        false,                                   /* b_volatile */
-    },
-    /* cell: nTECSInfo_tIntTypeInfo_CB_tab[6]:  int8_tTypeInfo id=7 */
-    {
-        /* entry port #_EP_# */ 
-        /* attribute(RO) */ 
-        "int8_t",                                /* name */
-        2,                                       /* typeKind */
-        sizeof(int8_t),                          /* size */
-        false,                                   /* b_const */
-        false,                                   /* b_volatile */
-    },
-    /* cell: nTECSInfo_tIntTypeInfo_CB_tab[7]:  const__char_tTypeInfo id=8 */
-    {
-        /* entry port #_EP_# */ 
-        /* attribute(RO) */ 
-        "const char_t",                          /* name */
-        2,                                       /* typeKind */
-        sizeof(const char_t),                    /* size */
-        true,                                    /* b_const */
-        false,                                   /* b_volatile */
-    },
-    /* cell: nTECSInfo_tIntTypeInfo_CB_tab[8]:  charTypeInfo id=9 */
+    /* cell: nTECSInfo_tIntTypeInfo_CB_tab[7]:  charTypeInfo id=8 */
     {
         /* entry port #_EP_# */ 
         /* attribute(RO) */ 
@@ -195,6 +185,16 @@ nTECSInfo_tIntTypeInfo_INIB nTECSInfo_tIntTypeInfo_INIB_tab[] = {
         2,                                       /* typeKind */
         sizeof(char),                            /* size */
         false,                                   /* b_const */
+        false,                                   /* b_volatile */
+    },
+    /* cell: nTECSInfo_tIntTypeInfo_CB_tab[8]:  const__char_tTypeInfo id=9 */
+    {
+        /* entry port #_EP_# */ 
+        /* attribute(RO) */ 
+        "const char_t",                          /* name */
+        2,                                       /* typeKind */
+        sizeof(const char_t),                    /* size */
+        true,                                    /* b_const */
         false,                                   /* b_volatile */
     },
     /* cell: nTECSInfo_tIntTypeInfo_CB_tab[9]:  int16_tTypeInfo id=10 */
@@ -207,7 +207,17 @@ nTECSInfo_tIntTypeInfo_INIB nTECSInfo_tIntTypeInfo_INIB_tab[] = {
         false,                                   /* b_const */
         false,                                   /* b_volatile */
     },
-    /* cell: nTECSInfo_tIntTypeInfo_CB_tab[10]:  uint16_tTypeInfo id=11 */
+    /* cell: nTECSInfo_tIntTypeInfo_CB_tab[10]:  int8_tTypeInfo id=11 */
+    {
+        /* entry port #_EP_# */ 
+        /* attribute(RO) */ 
+        "int8_t",                                /* name */
+        2,                                       /* typeKind */
+        sizeof(int8_t),                          /* size */
+        false,                                   /* b_const */
+        false,                                   /* b_volatile */
+    },
+    /* cell: nTECSInfo_tIntTypeInfo_CB_tab[11]:  uint16_tTypeInfo id=12 */
     {
         /* entry port #_EP_# */ 
         /* attribute(RO) */ 
@@ -217,23 +227,13 @@ nTECSInfo_tIntTypeInfo_INIB nTECSInfo_tIntTypeInfo_INIB_tab[] = {
         false,                                   /* b_const */
         false,                                   /* b_volatile */
     },
-    /* cell: nTECSInfo_tIntTypeInfo_CB_tab[11]:  uint32_tTypeInfo id=12 */
+    /* cell: nTECSInfo_tIntTypeInfo_CB_tab[12]:  uint32_tTypeInfo id=13 */
     {
         /* entry port #_EP_# */ 
         /* attribute(RO) */ 
         "uint32_t",                              /* name */
         2,                                       /* typeKind */
         sizeof(uint32_t),                        /* size */
-        false,                                   /* b_const */
-        false,                                   /* b_volatile */
-    },
-    /* cell: nTECSInfo_tIntTypeInfo_CB_tab[12]:  int32_tTypeInfo id=13 */
-    {
-        /* entry port #_EP_# */ 
-        /* attribute(RO) */ 
-        "int32_t",                               /* name */
-        2,                                       /* typeKind */
-        sizeof(int32_t),                         /* size */
         false,                                   /* b_const */
         false,                                   /* b_volatile */
     },
@@ -260,28 +260,28 @@ const struct tag_nTECSInfo_tIntTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_longTypeIn
     &nTECSInfo_tIntTypeInfo_eTypeInfo_MT_,
     &nTECSInfo_tIntTypeInfo_INIB_tab[3],      /* INIB 3 */
 };
-extern const struct tag_nTECSInfo_tIntTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_intTypeInfo_eTypeInfo_des;
-const struct tag_nTECSInfo_tIntTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_intTypeInfo_eTypeInfo_des = {
+extern const struct tag_nTECSInfo_tIntTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_int32_tTypeInfo_eTypeInfo_des;
+const struct tag_nTECSInfo_tIntTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_int32_tTypeInfo_eTypeInfo_des = {
     &nTECSInfo_tIntTypeInfo_eTypeInfo_MT_,
     &nTECSInfo_tIntTypeInfo_INIB_tab[4],      /* INIB 3 */
 };
-extern const struct tag_nTECSInfo_tIntTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_const__int8_tTypeInfo_eTypeInfo_des;
-const struct tag_nTECSInfo_tIntTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_const__int8_tTypeInfo_eTypeInfo_des = {
+extern const struct tag_nTECSInfo_tIntTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_char_tTypeInfo_eTypeInfo_des;
+const struct tag_nTECSInfo_tIntTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_char_tTypeInfo_eTypeInfo_des = {
     &nTECSInfo_tIntTypeInfo_eTypeInfo_MT_,
     &nTECSInfo_tIntTypeInfo_INIB_tab[5],      /* INIB 3 */
 };
-extern const struct tag_nTECSInfo_tIntTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_int8_tTypeInfo_eTypeInfo_des;
-const struct tag_nTECSInfo_tIntTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_int8_tTypeInfo_eTypeInfo_des = {
+extern const struct tag_nTECSInfo_tIntTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_intTypeInfo_eTypeInfo_des;
+const struct tag_nTECSInfo_tIntTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_intTypeInfo_eTypeInfo_des = {
     &nTECSInfo_tIntTypeInfo_eTypeInfo_MT_,
     &nTECSInfo_tIntTypeInfo_INIB_tab[6],      /* INIB 3 */
 };
-extern const struct tag_nTECSInfo_tIntTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_const__char_tTypeInfo_eTypeInfo_des;
-const struct tag_nTECSInfo_tIntTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_const__char_tTypeInfo_eTypeInfo_des = {
+extern const struct tag_nTECSInfo_tIntTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_charTypeInfo_eTypeInfo_des;
+const struct tag_nTECSInfo_tIntTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_charTypeInfo_eTypeInfo_des = {
     &nTECSInfo_tIntTypeInfo_eTypeInfo_MT_,
     &nTECSInfo_tIntTypeInfo_INIB_tab[7],      /* INIB 3 */
 };
-extern const struct tag_nTECSInfo_tIntTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_charTypeInfo_eTypeInfo_des;
-const struct tag_nTECSInfo_tIntTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_charTypeInfo_eTypeInfo_des = {
+extern const struct tag_nTECSInfo_tIntTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_const__char_tTypeInfo_eTypeInfo_des;
+const struct tag_nTECSInfo_tIntTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_const__char_tTypeInfo_eTypeInfo_des = {
     &nTECSInfo_tIntTypeInfo_eTypeInfo_MT_,
     &nTECSInfo_tIntTypeInfo_INIB_tab[8],      /* INIB 3 */
 };
@@ -290,18 +290,18 @@ const struct tag_nTECSInfo_tIntTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_int16_tTyp
     &nTECSInfo_tIntTypeInfo_eTypeInfo_MT_,
     &nTECSInfo_tIntTypeInfo_INIB_tab[9],      /* INIB 3 */
 };
-extern const struct tag_nTECSInfo_tIntTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_uint16_tTypeInfo_eTypeInfo_des;
-const struct tag_nTECSInfo_tIntTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_uint16_tTypeInfo_eTypeInfo_des = {
+extern const struct tag_nTECSInfo_tIntTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_int8_tTypeInfo_eTypeInfo_des;
+const struct tag_nTECSInfo_tIntTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_int8_tTypeInfo_eTypeInfo_des = {
     &nTECSInfo_tIntTypeInfo_eTypeInfo_MT_,
     &nTECSInfo_tIntTypeInfo_INIB_tab[10],      /* INIB 3 */
 };
-extern const struct tag_nTECSInfo_tIntTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_uint32_tTypeInfo_eTypeInfo_des;
-const struct tag_nTECSInfo_tIntTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_uint32_tTypeInfo_eTypeInfo_des = {
+extern const struct tag_nTECSInfo_tIntTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_uint16_tTypeInfo_eTypeInfo_des;
+const struct tag_nTECSInfo_tIntTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_uint16_tTypeInfo_eTypeInfo_des = {
     &nTECSInfo_tIntTypeInfo_eTypeInfo_MT_,
     &nTECSInfo_tIntTypeInfo_INIB_tab[11],      /* INIB 3 */
 };
-extern const struct tag_nTECSInfo_tIntTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_int32_tTypeInfo_eTypeInfo_des;
-const struct tag_nTECSInfo_tIntTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_int32_tTypeInfo_eTypeInfo_des = {
+extern const struct tag_nTECSInfo_tIntTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_uint32_tTypeInfo_eTypeInfo_des;
+const struct tag_nTECSInfo_tIntTypeInfo_eTypeInfo_DES rTEMP_rTECSInfo_uint32_tTypeInfo_eTypeInfo_des = {
     &nTECSInfo_tIntTypeInfo_eTypeInfo_MT_,
     &nTECSInfo_tIntTypeInfo_INIB_tab[12],      /* INIB 3 */
 };

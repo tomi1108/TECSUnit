@@ -421,6 +421,7 @@ EOT
     # 3.文字列リストの出力
     print_char_list( file, char_list )
     file.print <<EOT
+                            }
                         }else if( t[i].type == JSMN_PRIMITIVE ){
                             strcpy_n( VAR_tmp_str, t[i].end - t[i].start, VAR_json_str + t[i].start );
 EOT
@@ -609,7 +610,7 @@ EOT
                             }else{
                                 /* Arg is not char type */
                                 return -1;
-                            }
+/*                            } */
 EOT
     end
   end

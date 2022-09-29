@@ -32,9 +32,7 @@
 #include "nTECSInfo_sTypeInfo_tecsgen.h"
 #include "nTECSInfo_sRawEntryDescriptorInfo_tecsgen.h"
 #include "nTECSInfo_sEntryInfo_tecsgen.h"
-#include "sTarget1_tecsgen.h"
-#include "sTarget2_tecsgen.h"
-#include "sTarget3_tecsgen.h"
+#include "sSample_tecsgen.h"
 
 #ifndef TOPPERS_MACRO_ONLY
 
@@ -62,9 +60,7 @@ typedef struct tag_tTECSUnit_CB {
     struct tag_nTECSInfo_sTypeInfo_VDES *cTypeInfo;
     struct tag_nTECSInfo_sRawEntryDescriptorInfo_VDES *cREDInfo;
     struct tag_nTECSInfo_sEntryInfo_VDES *cEntryInfo;
-    struct tag_sTarget1_VDES *cTarget1;
-    struct tag_sTarget2_VDES *cTarget2;
-    struct tag_sTarget3_VDES *cTarget3;
+    struct tag_sSample_VDES *cSample;
     /* call port #_NEP_# */ 
     /* var #_VA_# */ 
     void*          data;
@@ -119,12 +115,8 @@ void         tTECSUnit_eUnit_main(tTECSUnit_IDX idx, const char_t* cell_path, co
 	  ((p_that)->cREDInfo!=0)
 #define tTECSUnit_is_cEntryInfo_joined(p_that) \
 	  ((p_that)->cEntryInfo!=0)
-#define tTECSUnit_is_cTarget1_joined(p_that) \
-	  ((p_that)->cTarget1!=0)
-#define tTECSUnit_is_cTarget2_joined(p_that) \
-	  ((p_that)->cTarget2!=0)
-#define tTECSUnit_is_cTarget3_joined(p_that) \
-	  ((p_that)->cTarget3!=0)
+#define tTECSUnit_is_cSample_joined(p_that) \
+	  ((p_that)->cSample!=0)
 
 /* celll CB macro #_GCB_# */
 #define tTECSUnit_GET_CELLCB(idx) (idx)
@@ -347,27 +339,12 @@ void         tTECSUnit_eUnit_main(tTECSUnit_IDX idx, const char_t* cell_path, co
 #define tTECSUnit_cEntryInfo_isInline( p_that ) \
 	  (p_that)->cEntryInfo->VMT->isInline__T( \
 	   (p_that)->cEntryInfo )
-#define tTECSUnit_cTarget1_double( p_that, arg ) \
-	  (p_that)->cTarget1->VMT->double__T( \
-	   (p_that)->cTarget1, (arg) )
-#define tTECSUnit_cTarget2_add( p_that, arg1, arg2 ) \
-	  (p_that)->cTarget2->VMT->add__T( \
-	   (p_that)->cTarget2, (arg1), (arg2) )
-#define tTECSUnit_cTarget3_send( p_that, buf, len ) \
-	  (p_that)->cTarget3->VMT->send__T( \
-	   (p_that)->cTarget3, (buf), (len) )
-#define tTECSUnit_cTarget3_sendMessage( p_that, buf, len ) \
-	  (p_that)->cTarget3->VMT->sendMessage__T( \
-	   (p_that)->cTarget3, (buf), (len) )
-#define tTECSUnit_cTarget3_sendStruct( p_that, data ) \
-	  (p_that)->cTarget3->VMT->sendStruct__T( \
-	   (p_that)->cTarget3, (data) )
-#define tTECSUnit_cTarget3_receiveMessage( p_that, buf, len ) \
-	  (p_that)->cTarget3->VMT->receiveMessage__T( \
-	   (p_that)->cTarget3, (buf), (len) )
-#define tTECSUnit_cTarget3_checkER( p_that, eroor ) \
-	  (p_that)->cTarget3->VMT->checkER__T( \
-	   (p_that)->cTarget3, (eroor) )
+#define tTECSUnit_cSample_sayHello( p_that, times ) \
+	  (p_that)->cSample->VMT->sayHello__T( \
+	   (p_that)->cSample, (times) )
+#define tTECSUnit_cSample_howAreYou( p_that, buf, len ) \
+	  (p_that)->cSample->VMT->howAreYou__T( \
+	   (p_that)->cSample, (buf), (len) )
 
 #else  /* TECSFLOW */
 #define tTECSUnit_cTECSInfo_findNamespace( p_that, namespace_path, nsDesc ) \
@@ -571,27 +548,12 @@ void         tTECSUnit_eUnit_main(tTECSUnit_IDX idx, const char_t* cell_path, co
 #define tTECSUnit_cEntryInfo_isInline( p_that ) \
 	  (p_that)->cEntryInfo.isInline__T( \
  )
-#define tTECSUnit_cTarget1_double( p_that, arg ) \
-	  (p_that)->cTarget1.double__T( \
- (arg) )
-#define tTECSUnit_cTarget2_add( p_that, arg1, arg2 ) \
-	  (p_that)->cTarget2.add__T( \
- (arg1), (arg2) )
-#define tTECSUnit_cTarget3_send( p_that, buf, len ) \
-	  (p_that)->cTarget3.send__T( \
+#define tTECSUnit_cSample_sayHello( p_that, times ) \
+	  (p_that)->cSample.sayHello__T( \
+ (times) )
+#define tTECSUnit_cSample_howAreYou( p_that, buf, len ) \
+	  (p_that)->cSample.howAreYou__T( \
  (buf), (len) )
-#define tTECSUnit_cTarget3_sendMessage( p_that, buf, len ) \
-	  (p_that)->cTarget3.sendMessage__T( \
- (buf), (len) )
-#define tTECSUnit_cTarget3_sendStruct( p_that, data ) \
-	  (p_that)->cTarget3.sendStruct__T( \
- (data) )
-#define tTECSUnit_cTarget3_receiveMessage( p_that, buf, len ) \
-	  (p_that)->cTarget3.receiveMessage__T( \
- (buf), (len) )
-#define tTECSUnit_cTarget3_checkER( p_that, eroor ) \
-	  (p_that)->cTarget3.checkER__T( \
- (eroor) )
 
 #endif /* TECSFLOW */
 #endif /* TOPPERS_CB_TYPE_ONLY */
@@ -762,55 +724,21 @@ tTECSUnit_cEntryInfo_unjoin( tTECSUnit_CB  *p_that  )
     (p_cellcb)->cEntryInfo = NULL;
 }
 
-/* [dynamic] cTarget1 */
+/* [dynamic] cSample */
 Inline void
-tTECSUnit_cTarget1_set_descriptor( tTECSUnit_CB  *p_that, Descriptor( sTarget1 ) des )
+tTECSUnit_cSample_set_descriptor( tTECSUnit_CB  *p_that, Descriptor( sSample ) des )
 {
     tTECSUnit_CB *p_cellcb = p_that;
     assert( des.vdes != NULL );
-    (p_cellcb)->cTarget1 = des.vdes;
+    (p_cellcb)->cSample = des.vdes;
 }
 
-/* [dynamic,optional] cTarget1 */
+/* [dynamic,optional] cSample */
 Inline void
-tTECSUnit_cTarget1_unjoin( tTECSUnit_CB  *p_that  )
+tTECSUnit_cSample_unjoin( tTECSUnit_CB  *p_that  )
 {
     tTECSUnit_CB *p_cellcb = p_that;
-    (p_cellcb)->cTarget1 = NULL;
-}
-
-/* [dynamic] cTarget2 */
-Inline void
-tTECSUnit_cTarget2_set_descriptor( tTECSUnit_CB  *p_that, Descriptor( sTarget2 ) des )
-{
-    tTECSUnit_CB *p_cellcb = p_that;
-    assert( des.vdes != NULL );
-    (p_cellcb)->cTarget2 = des.vdes;
-}
-
-/* [dynamic,optional] cTarget2 */
-Inline void
-tTECSUnit_cTarget2_unjoin( tTECSUnit_CB  *p_that  )
-{
-    tTECSUnit_CB *p_cellcb = p_that;
-    (p_cellcb)->cTarget2 = NULL;
-}
-
-/* [dynamic] cTarget3 */
-Inline void
-tTECSUnit_cTarget3_set_descriptor( tTECSUnit_CB  *p_that, Descriptor( sTarget3 ) des )
-{
-    tTECSUnit_CB *p_cellcb = p_that;
-    assert( des.vdes != NULL );
-    (p_cellcb)->cTarget3 = des.vdes;
-}
-
-/* [dynamic,optional] cTarget3 */
-Inline void
-tTECSUnit_cTarget3_unjoin( tTECSUnit_CB  *p_that  )
-{
-    tTECSUnit_CB *p_cellcb = p_that;
-    (p_cellcb)->cTarget3 = NULL;
+    (p_cellcb)->cSample = NULL;
 }
 
 #endif /* TOPPERS_CB_TYPE_ONLY */
@@ -979,20 +907,10 @@ tTECSUnit_cTarget3_unjoin( tTECSUnit_CB  *p_that  )
           tTECSUnit_cEntryInfo_getArraySize( p_cellcb )
 #define cEntryInfo_isInline( ) \
           tTECSUnit_cEntryInfo_isInline( p_cellcb )
-#define cTarget1_double( arg ) \
-          tTECSUnit_cTarget1_double( p_cellcb, arg )
-#define cTarget2_add( arg1, arg2 ) \
-          tTECSUnit_cTarget2_add( p_cellcb, arg1, arg2 )
-#define cTarget3_send( buf, len ) \
-          tTECSUnit_cTarget3_send( p_cellcb, buf, len )
-#define cTarget3_sendMessage( buf, len ) \
-          tTECSUnit_cTarget3_sendMessage( p_cellcb, buf, len )
-#define cTarget3_sendStruct( data ) \
-          tTECSUnit_cTarget3_sendStruct( p_cellcb, data )
-#define cTarget3_receiveMessage( buf, len ) \
-          tTECSUnit_cTarget3_receiveMessage( p_cellcb, buf, len )
-#define cTarget3_checkER( eroor ) \
-          tTECSUnit_cTarget3_checkER( p_cellcb, eroor )
+#define cSample_sayHello( times ) \
+          tTECSUnit_cSample_sayHello( p_cellcb, times )
+#define cSample_howAreYou( buf, len ) \
+          tTECSUnit_cSample_howAreYou( p_cellcb, buf, len )
 
 
 
@@ -1033,18 +951,10 @@ tTECSUnit_cTarget3_unjoin( tTECSUnit_CB  *p_that  )
           tTECSUnit_cEntryInfo_set_descriptor( p_cellcb, desc )
 #define cEntryInfo_unjoin(  )\
           tTECSUnit_cEntryInfo_unjoin( p_cellcb )
-#define cTarget1_set_descriptor( desc )\
-          tTECSUnit_cTarget1_set_descriptor( p_cellcb, desc )
-#define cTarget1_unjoin(  )\
-          tTECSUnit_cTarget1_unjoin( p_cellcb )
-#define cTarget2_set_descriptor( desc )\
-          tTECSUnit_cTarget2_set_descriptor( p_cellcb, desc )
-#define cTarget2_unjoin(  )\
-          tTECSUnit_cTarget2_unjoin( p_cellcb )
-#define cTarget3_set_descriptor( desc )\
-          tTECSUnit_cTarget3_set_descriptor( p_cellcb, desc )
-#define cTarget3_unjoin(  )\
-          tTECSUnit_cTarget3_unjoin( p_cellcb )
+#define cSample_set_descriptor( desc )\
+          tTECSUnit_cSample_set_descriptor( p_cellcb, desc )
+#define cSample_unjoin(  )\
+          tTECSUnit_cSample_unjoin( p_cellcb )
 
 /* optional call port test macro (abbrev) #_TOCPA_# */
 #define is_cNSInfo_joined()\
@@ -1065,12 +975,8 @@ tTECSUnit_cTarget3_unjoin( tTECSUnit_CB  *p_that  )
 		tTECSUnit_is_cREDInfo_joined(p_cellcb)
 #define is_cEntryInfo_joined()\
 		tTECSUnit_is_cEntryInfo_joined(p_cellcb)
-#define is_cTarget1_joined()\
-		tTECSUnit_is_cTarget1_joined(p_cellcb)
-#define is_cTarget2_joined()\
-		tTECSUnit_is_cTarget2_joined(p_cellcb)
-#define is_cTarget3_joined()\
-		tTECSUnit_is_cTarget3_joined(p_cellcb)
+#define is_cSample_joined()\
+		tTECSUnit_is_cSample_joined(p_cellcb)
 
 /* entry port function macro (abbrev) #_EPM_# */
 #define eUnit_main       tTECSUnit_eUnit_main

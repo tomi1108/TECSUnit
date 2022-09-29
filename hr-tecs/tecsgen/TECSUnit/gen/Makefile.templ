@@ -107,13 +107,10 @@ $(_TECS_OBJ_DIR)%.o : %.c
 $(_TECS_OBJ_DIR)tTask.o : tTask.c
 	$(CC) -c $(CFLAGS) -o $@ $<
  
-$(_TECS_OBJ_DIR)tTarget1.o : tTarget1.c
+$(_TECS_OBJ_DIR)tSample.o : tSample.c
 	$(CC) -c $(CFLAGS) -o $@ $<
  
-$(_TECS_OBJ_DIR)tTarget2.o : tTarget2.c
-	$(CC) -c $(CFLAGS) -o $@ $<
- 
-$(_TECS_OBJ_DIR)tTarget3.o : tTarget3.c
+$(_TECS_OBJ_DIR)tSimple.o : tSimple.c
 	$(CC) -c $(CFLAGS) -o $@ $<
  
 $(_TECS_OBJ_DIR)tTaskMain.o : tTaskMain.c

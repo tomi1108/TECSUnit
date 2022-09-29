@@ -72,7 +72,7 @@ ER           nTECSInfo_tStructTypeInfo_eTypeInfo_getMemberInfo(nTECSInfo_tStruct
 #ifndef TOPPERS_CB_TYPE_ONLY
 
 #define nTECSInfo_tStructTypeInfo_ID_BASE        (1)  /* ID Base  #_NIDB_# */
-#define nTECSInfo_tStructTypeInfo_N_CELL        (5)  /*  number of cells  #_NCEL_# */
+#define nTECSInfo_tStructTypeInfo_N_CELL        (4)  /*  number of cells  #_NCEL_# */
 
 /* IDX validation macro #_CVI_# */
 #define nTECSInfo_tStructTypeInfo_VALID_IDX(IDX) (1)

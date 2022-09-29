@@ -58,11 +58,15 @@
 #define tTask_cExceptionBody__b_skelton_useless            (true)
 #define tTask_cExceptionBody__b_cell_unique                (true)
 
-#include "tTarget1_tecsgen.h"
+#include "tSample_tecsgen.h"
 
-#include "tTarget2_tecsgen.h"
-
-#include "tTarget3_tecsgen.h"
+#include "tSimple_tecsgen.h"
+#define tSimple_cCall__offset                              (0xffffffff)
+#define tSimple_cCall__array_size                          (0)
+#define tSimple_cCall__place                               (CALL_PLACE_NON)
+#define tSimple_cCall__b_VMT_useless                       (true)
+#define tSimple_cCall__b_skelton_useless                   (true)
+#define tSimple_cCall__b_cell_unique                       (true)
 
 #include "tTaskMain_tecsgen.h"
 #define tTaskMain_cUnit__offset                            (0xffffffff)
@@ -205,24 +209,12 @@
 #define tTECSUnit_cEntryInfo__b_VMT_useless                (false)
 #define tTECSUnit_cEntryInfo__b_skelton_useless            (false)
 #define tTECSUnit_cEntryInfo__b_cell_unique                (false)
-#define tTECSUnit_cTarget1__offset                         ((uint32_t)(intptr_t)&((tTECSUnit_CB*)0)->cTarget1)
-#define tTECSUnit_cTarget1__array_size                     (0)
-#define tTECSUnit_cTarget1__place                          (CALL_PLACE_CB_DES)
-#define tTECSUnit_cTarget1__b_VMT_useless                  (false)
-#define tTECSUnit_cTarget1__b_skelton_useless              (false)
-#define tTECSUnit_cTarget1__b_cell_unique                  (false)
-#define tTECSUnit_cTarget2__offset                         ((uint32_t)(intptr_t)&((tTECSUnit_CB*)0)->cTarget2)
-#define tTECSUnit_cTarget2__array_size                     (0)
-#define tTECSUnit_cTarget2__place                          (CALL_PLACE_CB_DES)
-#define tTECSUnit_cTarget2__b_VMT_useless                  (false)
-#define tTECSUnit_cTarget2__b_skelton_useless              (false)
-#define tTECSUnit_cTarget2__b_cell_unique                  (false)
-#define tTECSUnit_cTarget3__offset                         ((uint32_t)(intptr_t)&((tTECSUnit_CB*)0)->cTarget3)
-#define tTECSUnit_cTarget3__array_size                     (0)
-#define tTECSUnit_cTarget3__place                          (CALL_PLACE_CB_DES)
-#define tTECSUnit_cTarget3__b_VMT_useless                  (false)
-#define tTECSUnit_cTarget3__b_skelton_useless              (false)
-#define tTECSUnit_cTarget3__b_cell_unique                  (false)
+#define tTECSUnit_cSample__offset                          ((uint32_t)(intptr_t)&((tTECSUnit_CB*)0)->cSample)
+#define tTECSUnit_cSample__array_size                      (0)
+#define tTECSUnit_cSample__place                           (CALL_PLACE_CB_DES)
+#define tTECSUnit_cSample__b_VMT_useless                   (false)
+#define tTECSUnit_cSample__b_skelton_useless               (false)
+#define tTECSUnit_cSample__b_cell_unique                   (false)
 
 #include "tJSMN_tecsgen.h"
 

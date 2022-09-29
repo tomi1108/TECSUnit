@@ -60,8 +60,6 @@ struct tag_tTECSUnit_CB tTECSUnit_CB_tab[] = {
         0,                                       /* #_CCP5_# */
         0,                                       /* #_CCP5_# */
         0,                                       /* #_CCP5_# */
-        0,                                       /* #_CCP5_# */
-        0,                                       /* #_CCP5_# */
         /* entry port #_EP_# */ 
         /* var */ 
         0,                                       /* data */

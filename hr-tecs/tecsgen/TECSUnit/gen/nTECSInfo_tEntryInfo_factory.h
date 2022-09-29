@@ -2,9 +2,8 @@
 #define tEntryInfo_FACTORY_H
 #include "include_all_signature_header.h"
 #define tTask_eTask__array_size                            (0)
-#define tTarget1_eTarget1__array_size                      (0)
-#define tTarget2_eTarget2__array_size                      (0)
-#define tTarget3_eTarget3__array_size                      (0)
+#define tSample_eEnt__array_size                           (0)
+#define tSimple_eBody__array_size                          (0)
 #define tTaskMain_eBody__array_size                        (0)
 #define tTECSUnit_eUnit__array_size                        (0)
 #define tJSMN_eJSMN__array_size                            (0)

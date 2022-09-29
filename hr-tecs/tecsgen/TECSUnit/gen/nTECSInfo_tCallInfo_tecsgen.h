@@ -79,7 +79,7 @@ void         nTECSInfo_tCallInfo_eCallInfo_getOptimizeInfo(nTECSInfo_tCallInfo_I
 #ifndef TOPPERS_CB_TYPE_ONLY
 
 #define nTECSInfo_tCallInfo_ID_BASE        (1)  /* ID Base  #_NIDB_# */
-#define nTECSInfo_tCallInfo_N_CELL       (29)  /*  number of cells  #_NCEL_# */
+#define nTECSInfo_tCallInfo_N_CELL       (28)  /*  number of cells  #_NCEL_# */
 
 /* IDX validation macro #_CVI_# */
 #define nTECSInfo_tCallInfo_VALID_IDX(IDX) (1)

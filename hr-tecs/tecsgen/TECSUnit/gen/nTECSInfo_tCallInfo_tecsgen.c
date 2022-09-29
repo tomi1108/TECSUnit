@@ -81,6 +81,8 @@ extern struct tag_nTECSInfo_sSignatureInfo_VDES rTEMP_rTECSInfo_sTaskBodySignatu
 
 extern struct tag_nTECSInfo_sSignatureInfo_VDES rTEMP_rTECSInfo_sTaskExceptionBodySignatureInfo_eSignatureInfo_des;
 
+extern struct tag_nTECSInfo_sSignatureInfo_VDES rTEMP_rTECSInfo_sSampleSignatureInfo_eSignatureInfo_des;
+
 extern struct tag_nTECSInfo_sSignatureInfo_VDES rTEMP_rTECSInfo_sTECSUnitSignatureInfo_eSignatureInfo_des;
 
 extern struct tag_nTECSInfo_sSignatureInfo_VDES rTEMP_rTECSInfo_sJSMNSignatureInfo_eSignatureInfo_des;
@@ -127,16 +129,11 @@ extern struct tag_nTECSInfo_sSignatureInfo_VDES rTEMP_rTECSInfo_nTECSInfo_sRawEn
 
 extern struct tag_nTECSInfo_sSignatureInfo_VDES rTEMP_rTECSInfo_nTECSInfo_sEntryInfoSignatureInfo_eSignatureInfo_des;
 
-extern struct tag_nTECSInfo_sSignatureInfo_VDES rTEMP_rTECSInfo_sTarget1SignatureInfo_eSignatureInfo_des;
-
-extern struct tag_nTECSInfo_sSignatureInfo_VDES rTEMP_rTECSInfo_sTarget2SignatureInfo_eSignatureInfo_des;
-
-extern struct tag_nTECSInfo_sSignatureInfo_VDES rTEMP_rTECSInfo_sTarget3SignatureInfo_eSignatureInfo_des;
+extern struct tag_nTECSInfo_sSignatureInfo_VDES rTEMP_rTECSInfo_sSampleSignatureInfo_eSignatureInfo_des;
 
 extern struct tag_nTECSInfo_sSignatureInfo_VDES rTEMP_rTECSInfo_nTECSInfo_sTECSInfoSignatureInfo_eSignatureInfo_des;
 
 /* call port array #_CPA_# */
-
 
 
 
@@ -208,7 +205,27 @@ nTECSInfo_tCallInfo_INIB nTECSInfo_tCallInfo_INIB_tab[] = {
         tTask_cExceptionBody__b_skelton_useless, /* b_skelton_useless */
         tTask_cExceptionBody__b_cell_unique,     /* b_cell_unique */
     },
-    /* cell: nTECSInfo_tCallInfo_CB_tab[2]:  tTaskMain_cUnitCallInfo id=3 */
+    /* cell: nTECSInfo_tCallInfo_CB_tab[2]:  tSimple_cCallCallInfo id=3 */
+    {
+        /* call port (INIB) #_CP_# */ 
+        &rTEMP_rTECSInfo_sSampleSignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
+        /* entry port #_EP_# */ 
+        /* attribute(RO) */ 
+        "cCall",                                 /* name */
+        tSimple_cCall__offset,                   /* offset */
+        tSimple_cCall__array_size,               /* array_size */
+        false,                                   /* b_optional */
+        false,                                   /* b_omit */
+        false,                                   /* b_dynamic */
+        false,                                   /* b_ref_desc */
+        false,                                   /* b_allocator_port */
+        false,                                   /* b_require_port */
+        tSimple_cCall__place,                    /* place */
+        tSimple_cCall__b_VMT_useless,            /* b_VMT_useless */
+        tSimple_cCall__b_skelton_useless,        /* b_skelton_useless */
+        tSimple_cCall__b_cell_unique,            /* b_cell_unique */
+    },
+    /* cell: nTECSInfo_tCallInfo_CB_tab[3]:  tTaskMain_cUnitCallInfo id=4 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_sTECSUnitSignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
@@ -228,7 +245,7 @@ nTECSInfo_tCallInfo_INIB nTECSInfo_tCallInfo_INIB_tab[] = {
         tTaskMain_cUnit__b_skelton_useless,      /* b_skelton_useless */
         tTaskMain_cUnit__b_cell_unique,          /* b_cell_unique */
     },
-    /* cell: nTECSInfo_tCallInfo_CB_tab[3]:  tTaskMain_cJSMNCallInfo id=4 */
+    /* cell: nTECSInfo_tCallInfo_CB_tab[4]:  tTaskMain_cJSMNCallInfo id=5 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_sJSMNSignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
@@ -248,7 +265,7 @@ nTECSInfo_tCallInfo_INIB nTECSInfo_tCallInfo_INIB_tab[] = {
         tTaskMain_cJSMN__b_skelton_useless,      /* b_skelton_useless */
         tTaskMain_cJSMN__b_cell_unique,          /* b_cell_unique */
     },
-    /* cell: nTECSInfo_tCallInfo_CB_tab[4]:  tTaskMain_cTECSInfoCallInfo id=5 */
+    /* cell: nTECSInfo_tCallInfo_CB_tab[5]:  tTaskMain_cTECSInfoCallInfo id=6 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_nTECSInfo_sTECSInfoSignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
@@ -268,7 +285,7 @@ nTECSInfo_tCallInfo_INIB nTECSInfo_tCallInfo_INIB_tab[] = {
         tTaskMain_cTECSInfo__b_skelton_useless,  /* b_skelton_useless */
         tTaskMain_cTECSInfo__b_cell_unique,      /* b_cell_unique */
     },
-    /* cell: nTECSInfo_tCallInfo_CB_tab[5]:  tTaskMain_cNSInfoCallInfo id=6 */
+    /* cell: nTECSInfo_tCallInfo_CB_tab[6]:  tTaskMain_cNSInfoCallInfo id=7 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_nTECSInfo_sNamespaceInfoSignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
@@ -288,7 +305,7 @@ nTECSInfo_tCallInfo_INIB nTECSInfo_tCallInfo_INIB_tab[] = {
         tTaskMain_cNSInfo__b_skelton_useless,    /* b_skelton_useless */
         tTaskMain_cNSInfo__b_cell_unique,        /* b_cell_unique */
     },
-    /* cell: nTECSInfo_tCallInfo_CB_tab[6]:  tTaskMain_cRegionInfoCallInfo id=7 */
+    /* cell: nTECSInfo_tCallInfo_CB_tab[7]:  tTaskMain_cRegionInfoCallInfo id=8 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_nTECSInfo_sRegionInfoSignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
@@ -308,7 +325,7 @@ nTECSInfo_tCallInfo_INIB nTECSInfo_tCallInfo_INIB_tab[] = {
         tTaskMain_cRegionInfo__b_skelton_useless, /* b_skelton_useless */
         tTaskMain_cRegionInfo__b_cell_unique,    /* b_cell_unique */
     },
-    /* cell: nTECSInfo_tCallInfo_CB_tab[7]:  tTaskMain_cCellInfoCallInfo id=8 */
+    /* cell: nTECSInfo_tCallInfo_CB_tab[8]:  tTaskMain_cCellInfoCallInfo id=9 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_nTECSInfo_sCellInfoSignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
@@ -328,7 +345,7 @@ nTECSInfo_tCallInfo_INIB nTECSInfo_tCallInfo_INIB_tab[] = {
         tTaskMain_cCellInfo__b_skelton_useless,  /* b_skelton_useless */
         tTaskMain_cCellInfo__b_cell_unique,      /* b_cell_unique */
     },
-    /* cell: nTECSInfo_tCallInfo_CB_tab[8]:  tTaskMain_cSignatureInfoCallInfo id=9 */
+    /* cell: nTECSInfo_tCallInfo_CB_tab[9]:  tTaskMain_cSignatureInfoCallInfo id=10 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_nTECSInfo_sSignatureInfoSignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
@@ -348,7 +365,7 @@ nTECSInfo_tCallInfo_INIB nTECSInfo_tCallInfo_INIB_tab[] = {
         tTaskMain_cSignatureInfo__b_skelton_useless, /* b_skelton_useless */
         tTaskMain_cSignatureInfo__b_cell_unique, /* b_cell_unique */
     },
-    /* cell: nTECSInfo_tCallInfo_CB_tab[9]:  tTaskMain_cCelltypeInfoCallInfo id=10 */
+    /* cell: nTECSInfo_tCallInfo_CB_tab[10]:  tTaskMain_cCelltypeInfoCallInfo id=11 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_nTECSInfo_sCelltypeInfoSignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
@@ -368,7 +385,7 @@ nTECSInfo_tCallInfo_INIB nTECSInfo_tCallInfo_INIB_tab[] = {
         tTaskMain_cCelltypeInfo__b_skelton_useless, /* b_skelton_useless */
         tTaskMain_cCelltypeInfo__b_cell_unique,  /* b_cell_unique */
     },
-    /* cell: nTECSInfo_tCallInfo_CB_tab[10]:  tTaskMain_cVarDeclInfoCallInfo id=11 */
+    /* cell: nTECSInfo_tCallInfo_CB_tab[11]:  tTaskMain_cVarDeclInfoCallInfo id=12 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_nTECSInfo_sVarDeclInfoSignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
@@ -388,7 +405,7 @@ nTECSInfo_tCallInfo_INIB nTECSInfo_tCallInfo_INIB_tab[] = {
         tTaskMain_cVarDeclInfo__b_skelton_useless, /* b_skelton_useless */
         tTaskMain_cVarDeclInfo__b_cell_unique,   /* b_cell_unique */
     },
-    /* cell: nTECSInfo_tCallInfo_CB_tab[11]:  tTaskMain_cTypeInfoCallInfo id=12 */
+    /* cell: nTECSInfo_tCallInfo_CB_tab[12]:  tTaskMain_cTypeInfoCallInfo id=13 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_nTECSInfo_sTypeInfoSignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
@@ -408,7 +425,7 @@ nTECSInfo_tCallInfo_INIB nTECSInfo_tCallInfo_INIB_tab[] = {
         tTaskMain_cTypeInfo__b_skelton_useless,  /* b_skelton_useless */
         tTaskMain_cTypeInfo__b_cell_unique,      /* b_cell_unique */
     },
-    /* cell: nTECSInfo_tCallInfo_CB_tab[12]:  tTaskMain_cFunctionInfoCallInfo id=13 */
+    /* cell: nTECSInfo_tCallInfo_CB_tab[13]:  tTaskMain_cFunctionInfoCallInfo id=14 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_nTECSInfo_sFunctionInfoSignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
@@ -428,7 +445,7 @@ nTECSInfo_tCallInfo_INIB nTECSInfo_tCallInfo_INIB_tab[] = {
         tTaskMain_cFunctionInfo__b_skelton_useless, /* b_skelton_useless */
         tTaskMain_cFunctionInfo__b_cell_unique,  /* b_cell_unique */
     },
-    /* cell: nTECSInfo_tCallInfo_CB_tab[13]:  tTaskMain_cParamInfoCallInfo id=14 */
+    /* cell: nTECSInfo_tCallInfo_CB_tab[14]:  tTaskMain_cParamInfoCallInfo id=15 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_nTECSInfo_sParamInfoSignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
@@ -448,7 +465,7 @@ nTECSInfo_tCallInfo_INIB nTECSInfo_tCallInfo_INIB_tab[] = {
         tTaskMain_cParamInfo__b_skelton_useless, /* b_skelton_useless */
         tTaskMain_cParamInfo__b_cell_unique,     /* b_cell_unique */
     },
-    /* cell: nTECSInfo_tCallInfo_CB_tab[14]:  tTaskMain_cEntryInfoCallInfo id=15 */
+    /* cell: nTECSInfo_tCallInfo_CB_tab[15]:  tTaskMain_cEntryInfoCallInfo id=16 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_nTECSInfo_sEntryInfoSignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
@@ -468,7 +485,7 @@ nTECSInfo_tCallInfo_INIB nTECSInfo_tCallInfo_INIB_tab[] = {
         tTaskMain_cEntryInfo__b_skelton_useless, /* b_skelton_useless */
         tTaskMain_cEntryInfo__b_cell_unique,     /* b_cell_unique */
     },
-    /* cell: nTECSInfo_tCallInfo_CB_tab[15]:  tTECSUnit_cTECSInfoCallInfo id=16 */
+    /* cell: nTECSInfo_tCallInfo_CB_tab[16]:  tTECSUnit_cTECSInfoCallInfo id=17 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_nTECSInfo_sTECSInfoSignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
@@ -488,7 +505,7 @@ nTECSInfo_tCallInfo_INIB nTECSInfo_tCallInfo_INIB_tab[] = {
         tTECSUnit_cTECSInfo__b_skelton_useless,  /* b_skelton_useless */
         tTECSUnit_cTECSInfo__b_cell_unique,      /* b_cell_unique */
     },
-    /* cell: nTECSInfo_tCallInfo_CB_tab[16]:  tTECSUnit_cNSInfoCallInfo id=17 */
+    /* cell: nTECSInfo_tCallInfo_CB_tab[17]:  tTECSUnit_cNSInfoCallInfo id=18 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_nTECSInfo_sNamespaceInfoSignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
@@ -508,7 +525,7 @@ nTECSInfo_tCallInfo_INIB nTECSInfo_tCallInfo_INIB_tab[] = {
         tTECSUnit_cNSInfo__b_skelton_useless,    /* b_skelton_useless */
         tTECSUnit_cNSInfo__b_cell_unique,        /* b_cell_unique */
     },
-    /* cell: nTECSInfo_tCallInfo_CB_tab[17]:  tTECSUnit_cRegionInfoCallInfo id=18 */
+    /* cell: nTECSInfo_tCallInfo_CB_tab[18]:  tTECSUnit_cRegionInfoCallInfo id=19 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_nTECSInfo_sRegionInfoSignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
@@ -528,7 +545,7 @@ nTECSInfo_tCallInfo_INIB nTECSInfo_tCallInfo_INIB_tab[] = {
         tTECSUnit_cRegionInfo__b_skelton_useless, /* b_skelton_useless */
         tTECSUnit_cRegionInfo__b_cell_unique,    /* b_cell_unique */
     },
-    /* cell: nTECSInfo_tCallInfo_CB_tab[18]:  tTECSUnit_cCellInfoCallInfo id=19 */
+    /* cell: nTECSInfo_tCallInfo_CB_tab[19]:  tTECSUnit_cCellInfoCallInfo id=20 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_nTECSInfo_sCellInfoSignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
@@ -548,7 +565,7 @@ nTECSInfo_tCallInfo_INIB nTECSInfo_tCallInfo_INIB_tab[] = {
         tTECSUnit_cCellInfo__b_skelton_useless,  /* b_skelton_useless */
         tTECSUnit_cCellInfo__b_cell_unique,      /* b_cell_unique */
     },
-    /* cell: nTECSInfo_tCallInfo_CB_tab[19]:  tTECSUnit_cSignatureInfoCallInfo id=20 */
+    /* cell: nTECSInfo_tCallInfo_CB_tab[20]:  tTECSUnit_cSignatureInfoCallInfo id=21 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_nTECSInfo_sSignatureInfoSignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
@@ -568,7 +585,7 @@ nTECSInfo_tCallInfo_INIB nTECSInfo_tCallInfo_INIB_tab[] = {
         tTECSUnit_cSignatureInfo__b_skelton_useless, /* b_skelton_useless */
         tTECSUnit_cSignatureInfo__b_cell_unique, /* b_cell_unique */
     },
-    /* cell: nTECSInfo_tCallInfo_CB_tab[20]:  tTECSUnit_cCelltypeInfoCallInfo id=21 */
+    /* cell: nTECSInfo_tCallInfo_CB_tab[21]:  tTECSUnit_cCelltypeInfoCallInfo id=22 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_nTECSInfo_sCelltypeInfoSignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
@@ -588,7 +605,7 @@ nTECSInfo_tCallInfo_INIB nTECSInfo_tCallInfo_INIB_tab[] = {
         tTECSUnit_cCelltypeInfo__b_skelton_useless, /* b_skelton_useless */
         tTECSUnit_cCelltypeInfo__b_cell_unique,  /* b_cell_unique */
     },
-    /* cell: nTECSInfo_tCallInfo_CB_tab[21]:  tTECSUnit_cVarDeclInfoCallInfo id=22 */
+    /* cell: nTECSInfo_tCallInfo_CB_tab[22]:  tTECSUnit_cVarDeclInfoCallInfo id=23 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_nTECSInfo_sVarDeclInfoSignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
@@ -608,7 +625,7 @@ nTECSInfo_tCallInfo_INIB nTECSInfo_tCallInfo_INIB_tab[] = {
         tTECSUnit_cVarDeclInfo__b_skelton_useless, /* b_skelton_useless */
         tTECSUnit_cVarDeclInfo__b_cell_unique,   /* b_cell_unique */
     },
-    /* cell: nTECSInfo_tCallInfo_CB_tab[22]:  tTECSUnit_cTypeInfoCallInfo id=23 */
+    /* cell: nTECSInfo_tCallInfo_CB_tab[23]:  tTECSUnit_cTypeInfoCallInfo id=24 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_nTECSInfo_sTypeInfoSignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
@@ -628,7 +645,7 @@ nTECSInfo_tCallInfo_INIB nTECSInfo_tCallInfo_INIB_tab[] = {
         tTECSUnit_cTypeInfo__b_skelton_useless,  /* b_skelton_useless */
         tTECSUnit_cTypeInfo__b_cell_unique,      /* b_cell_unique */
     },
-    /* cell: nTECSInfo_tCallInfo_CB_tab[23]:  tTECSUnit_cREDInfoCallInfo id=24 */
+    /* cell: nTECSInfo_tCallInfo_CB_tab[24]:  tTECSUnit_cREDInfoCallInfo id=25 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_nTECSInfo_sRawEntryDescriptorInfoSignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
@@ -648,7 +665,7 @@ nTECSInfo_tCallInfo_INIB nTECSInfo_tCallInfo_INIB_tab[] = {
         tTECSUnit_cREDInfo__b_skelton_useless,   /* b_skelton_useless */
         tTECSUnit_cREDInfo__b_cell_unique,       /* b_cell_unique */
     },
-    /* cell: nTECSInfo_tCallInfo_CB_tab[24]:  tTECSUnit_cEntryInfoCallInfo id=25 */
+    /* cell: nTECSInfo_tCallInfo_CB_tab[25]:  tTECSUnit_cEntryInfoCallInfo id=26 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_nTECSInfo_sEntryInfoSignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
@@ -668,67 +685,27 @@ nTECSInfo_tCallInfo_INIB nTECSInfo_tCallInfo_INIB_tab[] = {
         tTECSUnit_cEntryInfo__b_skelton_useless, /* b_skelton_useless */
         tTECSUnit_cEntryInfo__b_cell_unique,     /* b_cell_unique */
     },
-    /* cell: nTECSInfo_tCallInfo_CB_tab[25]:  tTECSUnit_cTarget1CallInfo id=26 */
+    /* cell: nTECSInfo_tCallInfo_CB_tab[26]:  tTECSUnit_cSampleCallInfo id=27 */
     {
         /* call port (INIB) #_CP_# */ 
-        &rTEMP_rTECSInfo_sTarget1SignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
+        &rTEMP_rTECSInfo_sSampleSignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
         /* entry port #_EP_# */ 
         /* attribute(RO) */ 
-        "cTarget1",                              /* name */
-        tTECSUnit_cTarget1__offset,              /* offset */
-        tTECSUnit_cTarget1__array_size,          /* array_size */
+        "cSample",                               /* name */
+        tTECSUnit_cSample__offset,               /* offset */
+        tTECSUnit_cSample__array_size,           /* array_size */
         true,                                    /* b_optional */
         false,                                   /* b_omit */
         true,                                    /* b_dynamic */
         false,                                   /* b_ref_desc */
         false,                                   /* b_allocator_port */
         false,                                   /* b_require_port */
-        tTECSUnit_cTarget1__place,               /* place */
-        tTECSUnit_cTarget1__b_VMT_useless,       /* b_VMT_useless */
-        tTECSUnit_cTarget1__b_skelton_useless,   /* b_skelton_useless */
-        tTECSUnit_cTarget1__b_cell_unique,       /* b_cell_unique */
+        tTECSUnit_cSample__place,                /* place */
+        tTECSUnit_cSample__b_VMT_useless,        /* b_VMT_useless */
+        tTECSUnit_cSample__b_skelton_useless,    /* b_skelton_useless */
+        tTECSUnit_cSample__b_cell_unique,        /* b_cell_unique */
     },
-    /* cell: nTECSInfo_tCallInfo_CB_tab[26]:  tTECSUnit_cTarget2CallInfo id=27 */
-    {
-        /* call port (INIB) #_CP_# */ 
-        &rTEMP_rTECSInfo_sTarget2SignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
-        /* entry port #_EP_# */ 
-        /* attribute(RO) */ 
-        "cTarget2",                              /* name */
-        tTECSUnit_cTarget2__offset,              /* offset */
-        tTECSUnit_cTarget2__array_size,          /* array_size */
-        true,                                    /* b_optional */
-        false,                                   /* b_omit */
-        true,                                    /* b_dynamic */
-        false,                                   /* b_ref_desc */
-        false,                                   /* b_allocator_port */
-        false,                                   /* b_require_port */
-        tTECSUnit_cTarget2__place,               /* place */
-        tTECSUnit_cTarget2__b_VMT_useless,       /* b_VMT_useless */
-        tTECSUnit_cTarget2__b_skelton_useless,   /* b_skelton_useless */
-        tTECSUnit_cTarget2__b_cell_unique,       /* b_cell_unique */
-    },
-    /* cell: nTECSInfo_tCallInfo_CB_tab[27]:  tTECSUnit_cTarget3CallInfo id=28 */
-    {
-        /* call port (INIB) #_CP_# */ 
-        &rTEMP_rTECSInfo_sTarget3SignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
-        /* entry port #_EP_# */ 
-        /* attribute(RO) */ 
-        "cTarget3",                              /* name */
-        tTECSUnit_cTarget3__offset,              /* offset */
-        tTECSUnit_cTarget3__array_size,          /* array_size */
-        true,                                    /* b_optional */
-        false,                                   /* b_omit */
-        true,                                    /* b_dynamic */
-        false,                                   /* b_ref_desc */
-        false,                                   /* b_allocator_port */
-        false,                                   /* b_require_port */
-        tTECSUnit_cTarget3__place,               /* place */
-        tTECSUnit_cTarget3__b_VMT_useless,       /* b_VMT_useless */
-        tTECSUnit_cTarget3__b_skelton_useless,   /* b_skelton_useless */
-        tTECSUnit_cTarget3__b_cell_unique,       /* b_cell_unique */
-    },
-    /* cell: nTECSInfo_tCallInfo_CB_tab[28]:  nTECSInfo_tTECSInfo_cTECSInfoCallInfo id=29 */
+    /* cell: nTECSInfo_tCallInfo_CB_tab[27]:  nTECSInfo_tTECSInfo_cTECSInfoCallInfo id=28 */
     {
         /* call port (INIB) #_CP_# */ 
         &rTEMP_rTECSInfo_nTECSInfo_sTECSInfoSignatureInfo_eSignatureInfo_des, /* cSignatureInfo #_CCP1_# */
@@ -761,138 +738,133 @@ const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTask_cExcept
     &nTECSInfo_tCallInfo_eCallInfo_MT_,
     &nTECSInfo_tCallInfo_INIB_tab[1],      /* INIB 3 */
 };
+extern const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tSimple_cCallCallInfo_eCallInfo_des;
+const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tSimple_cCallCallInfo_eCallInfo_des = {
+    &nTECSInfo_tCallInfo_eCallInfo_MT_,
+    &nTECSInfo_tCallInfo_INIB_tab[2],      /* INIB 3 */
+};
 extern const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTaskMain_cUnitCallInfo_eCallInfo_des;
 const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTaskMain_cUnitCallInfo_eCallInfo_des = {
     &nTECSInfo_tCallInfo_eCallInfo_MT_,
-    &nTECSInfo_tCallInfo_INIB_tab[2],      /* INIB 3 */
+    &nTECSInfo_tCallInfo_INIB_tab[3],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTaskMain_cJSMNCallInfo_eCallInfo_des;
 const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTaskMain_cJSMNCallInfo_eCallInfo_des = {
     &nTECSInfo_tCallInfo_eCallInfo_MT_,
-    &nTECSInfo_tCallInfo_INIB_tab[3],      /* INIB 3 */
+    &nTECSInfo_tCallInfo_INIB_tab[4],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTaskMain_cTECSInfoCallInfo_eCallInfo_des;
 const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTaskMain_cTECSInfoCallInfo_eCallInfo_des = {
     &nTECSInfo_tCallInfo_eCallInfo_MT_,
-    &nTECSInfo_tCallInfo_INIB_tab[4],      /* INIB 3 */
+    &nTECSInfo_tCallInfo_INIB_tab[5],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTaskMain_cNSInfoCallInfo_eCallInfo_des;
 const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTaskMain_cNSInfoCallInfo_eCallInfo_des = {
     &nTECSInfo_tCallInfo_eCallInfo_MT_,
-    &nTECSInfo_tCallInfo_INIB_tab[5],      /* INIB 3 */
+    &nTECSInfo_tCallInfo_INIB_tab[6],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTaskMain_cRegionInfoCallInfo_eCallInfo_des;
 const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTaskMain_cRegionInfoCallInfo_eCallInfo_des = {
     &nTECSInfo_tCallInfo_eCallInfo_MT_,
-    &nTECSInfo_tCallInfo_INIB_tab[6],      /* INIB 3 */
+    &nTECSInfo_tCallInfo_INIB_tab[7],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTaskMain_cCellInfoCallInfo_eCallInfo_des;
 const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTaskMain_cCellInfoCallInfo_eCallInfo_des = {
     &nTECSInfo_tCallInfo_eCallInfo_MT_,
-    &nTECSInfo_tCallInfo_INIB_tab[7],      /* INIB 3 */
+    &nTECSInfo_tCallInfo_INIB_tab[8],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTaskMain_cSignatureInfoCallInfo_eCallInfo_des;
 const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTaskMain_cSignatureInfoCallInfo_eCallInfo_des = {
     &nTECSInfo_tCallInfo_eCallInfo_MT_,
-    &nTECSInfo_tCallInfo_INIB_tab[8],      /* INIB 3 */
+    &nTECSInfo_tCallInfo_INIB_tab[9],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTaskMain_cCelltypeInfoCallInfo_eCallInfo_des;
 const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTaskMain_cCelltypeInfoCallInfo_eCallInfo_des = {
     &nTECSInfo_tCallInfo_eCallInfo_MT_,
-    &nTECSInfo_tCallInfo_INIB_tab[9],      /* INIB 3 */
+    &nTECSInfo_tCallInfo_INIB_tab[10],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTaskMain_cVarDeclInfoCallInfo_eCallInfo_des;
 const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTaskMain_cVarDeclInfoCallInfo_eCallInfo_des = {
     &nTECSInfo_tCallInfo_eCallInfo_MT_,
-    &nTECSInfo_tCallInfo_INIB_tab[10],      /* INIB 3 */
+    &nTECSInfo_tCallInfo_INIB_tab[11],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTaskMain_cTypeInfoCallInfo_eCallInfo_des;
 const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTaskMain_cTypeInfoCallInfo_eCallInfo_des = {
     &nTECSInfo_tCallInfo_eCallInfo_MT_,
-    &nTECSInfo_tCallInfo_INIB_tab[11],      /* INIB 3 */
+    &nTECSInfo_tCallInfo_INIB_tab[12],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTaskMain_cFunctionInfoCallInfo_eCallInfo_des;
 const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTaskMain_cFunctionInfoCallInfo_eCallInfo_des = {
     &nTECSInfo_tCallInfo_eCallInfo_MT_,
-    &nTECSInfo_tCallInfo_INIB_tab[12],      /* INIB 3 */
+    &nTECSInfo_tCallInfo_INIB_tab[13],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTaskMain_cParamInfoCallInfo_eCallInfo_des;
 const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTaskMain_cParamInfoCallInfo_eCallInfo_des = {
     &nTECSInfo_tCallInfo_eCallInfo_MT_,
-    &nTECSInfo_tCallInfo_INIB_tab[13],      /* INIB 3 */
+    &nTECSInfo_tCallInfo_INIB_tab[14],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTaskMain_cEntryInfoCallInfo_eCallInfo_des;
 const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTaskMain_cEntryInfoCallInfo_eCallInfo_des = {
     &nTECSInfo_tCallInfo_eCallInfo_MT_,
-    &nTECSInfo_tCallInfo_INIB_tab[14],      /* INIB 3 */
+    &nTECSInfo_tCallInfo_INIB_tab[15],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTECSUnit_cTECSInfoCallInfo_eCallInfo_des;
 const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTECSUnit_cTECSInfoCallInfo_eCallInfo_des = {
     &nTECSInfo_tCallInfo_eCallInfo_MT_,
-    &nTECSInfo_tCallInfo_INIB_tab[15],      /* INIB 3 */
+    &nTECSInfo_tCallInfo_INIB_tab[16],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTECSUnit_cNSInfoCallInfo_eCallInfo_des;
 const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTECSUnit_cNSInfoCallInfo_eCallInfo_des = {
     &nTECSInfo_tCallInfo_eCallInfo_MT_,
-    &nTECSInfo_tCallInfo_INIB_tab[16],      /* INIB 3 */
+    &nTECSInfo_tCallInfo_INIB_tab[17],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTECSUnit_cRegionInfoCallInfo_eCallInfo_des;
 const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTECSUnit_cRegionInfoCallInfo_eCallInfo_des = {
     &nTECSInfo_tCallInfo_eCallInfo_MT_,
-    &nTECSInfo_tCallInfo_INIB_tab[17],      /* INIB 3 */
+    &nTECSInfo_tCallInfo_INIB_tab[18],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTECSUnit_cCellInfoCallInfo_eCallInfo_des;
 const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTECSUnit_cCellInfoCallInfo_eCallInfo_des = {
     &nTECSInfo_tCallInfo_eCallInfo_MT_,
-    &nTECSInfo_tCallInfo_INIB_tab[18],      /* INIB 3 */
+    &nTECSInfo_tCallInfo_INIB_tab[19],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTECSUnit_cSignatureInfoCallInfo_eCallInfo_des;
 const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTECSUnit_cSignatureInfoCallInfo_eCallInfo_des = {
     &nTECSInfo_tCallInfo_eCallInfo_MT_,
-    &nTECSInfo_tCallInfo_INIB_tab[19],      /* INIB 3 */
+    &nTECSInfo_tCallInfo_INIB_tab[20],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTECSUnit_cCelltypeInfoCallInfo_eCallInfo_des;
 const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTECSUnit_cCelltypeInfoCallInfo_eCallInfo_des = {
     &nTECSInfo_tCallInfo_eCallInfo_MT_,
-    &nTECSInfo_tCallInfo_INIB_tab[20],      /* INIB 3 */
+    &nTECSInfo_tCallInfo_INIB_tab[21],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTECSUnit_cVarDeclInfoCallInfo_eCallInfo_des;
 const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTECSUnit_cVarDeclInfoCallInfo_eCallInfo_des = {
     &nTECSInfo_tCallInfo_eCallInfo_MT_,
-    &nTECSInfo_tCallInfo_INIB_tab[21],      /* INIB 3 */
+    &nTECSInfo_tCallInfo_INIB_tab[22],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTECSUnit_cTypeInfoCallInfo_eCallInfo_des;
 const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTECSUnit_cTypeInfoCallInfo_eCallInfo_des = {
     &nTECSInfo_tCallInfo_eCallInfo_MT_,
-    &nTECSInfo_tCallInfo_INIB_tab[22],      /* INIB 3 */
+    &nTECSInfo_tCallInfo_INIB_tab[23],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTECSUnit_cREDInfoCallInfo_eCallInfo_des;
 const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTECSUnit_cREDInfoCallInfo_eCallInfo_des = {
     &nTECSInfo_tCallInfo_eCallInfo_MT_,
-    &nTECSInfo_tCallInfo_INIB_tab[23],      /* INIB 3 */
+    &nTECSInfo_tCallInfo_INIB_tab[24],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTECSUnit_cEntryInfoCallInfo_eCallInfo_des;
 const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTECSUnit_cEntryInfoCallInfo_eCallInfo_des = {
     &nTECSInfo_tCallInfo_eCallInfo_MT_,
-    &nTECSInfo_tCallInfo_INIB_tab[24],      /* INIB 3 */
-};
-extern const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTECSUnit_cTarget1CallInfo_eCallInfo_des;
-const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTECSUnit_cTarget1CallInfo_eCallInfo_des = {
-    &nTECSInfo_tCallInfo_eCallInfo_MT_,
     &nTECSInfo_tCallInfo_INIB_tab[25],      /* INIB 3 */
 };
-extern const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTECSUnit_cTarget2CallInfo_eCallInfo_des;
-const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTECSUnit_cTarget2CallInfo_eCallInfo_des = {
+extern const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTECSUnit_cSampleCallInfo_eCallInfo_des;
+const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTECSUnit_cSampleCallInfo_eCallInfo_des = {
     &nTECSInfo_tCallInfo_eCallInfo_MT_,
     &nTECSInfo_tCallInfo_INIB_tab[26],      /* INIB 3 */
-};
-extern const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTECSUnit_cTarget3CallInfo_eCallInfo_des;
-const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_tTECSUnit_cTarget3CallInfo_eCallInfo_des = {
-    &nTECSInfo_tCallInfo_eCallInfo_MT_,
-    &nTECSInfo_tCallInfo_INIB_tab[27],      /* INIB 3 */
 };
 extern const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_nTECSInfo_tTECSInfo_cTECSInfoCallInfo_eCallInfo_des;
 const struct tag_nTECSInfo_tCallInfo_eCallInfo_DES rTEMP_rTECSInfo_nTECSInfo_tTECSInfo_cTECSInfoCallInfo_eCallInfo_des = {
     &nTECSInfo_tCallInfo_eCallInfo_MT_,
-    &nTECSInfo_tCallInfo_INIB_tab[28],      /* INIB 3 */
+    &nTECSInfo_tCallInfo_INIB_tab[27],      /* INIB 3 */
 };

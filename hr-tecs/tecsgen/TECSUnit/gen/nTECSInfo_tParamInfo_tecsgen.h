@@ -67,7 +67,7 @@ ER           nTECSInfo_tParamInfo_eParamInfo_getDir(nTECSInfo_tParamInfo_IDX idx
 #ifndef TOPPERS_CB_TYPE_ONLY
 
 #define nTECSInfo_tParamInfo_ID_BASE        (1)  /* ID Base  #_NIDB_# */
-#define nTECSInfo_tParamInfo_N_CELL      (231)  /*  number of cells  #_NCEL_# */
+#define nTECSInfo_tParamInfo_N_CELL      (223)  /*  number of cells  #_NCEL_# */
 
 /* IDX validation macro #_CVI_# */
 #define nTECSInfo_tParamInfo_VALID_IDX(IDX) (1)
