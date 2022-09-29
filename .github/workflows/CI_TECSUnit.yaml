@@ -12,11 +12,3 @@ jobs:
           echo Hello
           cd hr-tecs/tecsgen
           source set_env.sh
-
-      - name: TECSUnit
-        run: |
-          cd hr-tecs/tecsgen/TECSUnit
-          make clean
-          make tecs
-          make
-          ./TECSUni.exe
