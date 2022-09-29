@@ -7,8 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: set _env
+      - name: TECSUnit
         run: |
           echo Hello
-          cd hr-tecs/tecsgen
-          source set_env.sh
+          cd hr-tecs/tecsgen/TECSUnit
+          make clean
+          make tecs
+          make
+          ./TECSUnit.exe
