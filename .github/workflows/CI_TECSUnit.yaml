@@ -3,12 +3,12 @@ name: learn-github-actions
 on: [push]
 
 jobs:
-  CI_test_TECSUnt:
+  CI_test_TECSUnit:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
       - name: TECSUnit
-        run: | 
+      - uses: actions/checkout@v2
+      - run: | 
           cd hr-tecs/tecsgen
           ls
           source set_env.sh
