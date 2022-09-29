@@ -9,9 +9,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: TECSUnit
         run: |
-          echo Hello
-          cd hr-tecs/tecsgen/TECSUnit
-          make clean
-          make tecs
-          make
-          ./TECSUnit.exe
+          cd hr-tecs/tecsgen
+          source set_test.sh
+          
