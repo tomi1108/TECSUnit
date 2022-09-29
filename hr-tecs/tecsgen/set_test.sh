@@ -6,3 +6,4 @@ if [ $? = 0 ]; then
 else
 	PATH=$BASEDIR/tecsgen:$PATH
 fi
+echo "test end"
