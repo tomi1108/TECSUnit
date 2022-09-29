@@ -1,16 +1,17 @@
-name: learn-github-actions
+name: CI_TECSUnit
 
 on: [push]
 
 jobs:
-  CI_test_TECSUnit:
+  TECSUnit:
     runs-on: ubuntu-latest
     steps:
+      - name: Get Actions
+        uses: actions/checkout@v2
+      
       - name: TECSUnit
-      - uses: actions/checkout@v2
-      - run: | 
+        run: |
           cd hr-tecs/tecsgen
-          ls
           source set_env.sh
           cd TECSUnit
           make clean
