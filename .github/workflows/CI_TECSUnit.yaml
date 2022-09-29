@@ -6,17 +6,16 @@ jobs:
   TECSUnit:
     runs-on: ubuntu-latest
     steps:
-      - name: Get Actions
-        uses: actions/checkout@v2
-        with:
-            repository: tomi1108/TECSUnit
-      
-      - name: TECSUnit
+      - uses: actions/checkout@v2
+      - name: set _env
         run: |
           cd hr-tecs/tecsgen
           source set_env.sh
-          cd TECSUnit
+
+      - name: TECSUnit
+        run: |
+          cd hr-tecs/tecsgen/TECSUnit
           make clean
           make tecs
           make
-          ./TECSUnit.exe
+          ./TECSUni.exe
