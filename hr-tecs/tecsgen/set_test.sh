@@ -5,6 +5,7 @@ echo "test koko"
 if [ $? = 0 ]; then
 	echo "PATH: unchanged !!"
 else
+	echo "test if"
 	PATH=$BASEDIR/tecsgen:$PATH
 fi
 echo "test end"
