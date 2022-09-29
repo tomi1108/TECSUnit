@@ -8,6 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: cd hr-tecs/tecsgen
+      - run: ls
       - run: source set_env.sh
       - run: cd TECSUnit
       - run: make clean
