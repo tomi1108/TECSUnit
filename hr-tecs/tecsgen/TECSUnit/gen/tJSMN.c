@@ -279,13 +279,6 @@ eJSMN_json_parse_arg(CELLIDX idx, struct tecsunit_obj* arguments, struct tecsuni
                                 strcpy_n( VAR_tmp_str, t[i].end - t[i].start, VAR_json_str + t[i].start );
                             }
                         }else if( t[i].type == JSMN_STRING ){
-                            strcpy_n( VAR_tmp_str, t[i].end - t[i].start, VAR_json_str + t[i].start );
-                            if( !strcmp(VAR_tmp_str, "[out]") ){
-                                if( strstr(arguments[j].type,"const") != NULL ){
-                                    printf("Arg %d is not out arguments\n", j+1 );
-                                    return -1;
-                                }
-                            }
                         }else if( t[i].type == JSMN_PRIMITIVE ){
                             strcpy_n( VAR_tmp_str, t[i].end - t[i].start, VAR_json_str + t[i].start );
                             if( !strcmp(arguments[j].type,"int32_t") ){

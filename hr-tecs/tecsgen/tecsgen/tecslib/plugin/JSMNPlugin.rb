@@ -421,7 +421,6 @@ EOT
     # 3.文字列リストの出力
     print_char_list( file, char_list )
     file.print <<EOT
-                            }
                         }else if( t[i].type == JSMN_PRIMITIVE ){
                             strcpy_n( VAR_tmp_str, t[i].end - t[i].start, VAR_json_str + t[i].start );
 EOT
@@ -584,7 +583,8 @@ EOT
 
   # 3.文字列リストの出力
   def print_char_list( file, char_list )
-    file.print <<EOT
+    if !char_list.empty? then
+        file.print <<EOT
                             strcpy_n( VAR_tmp_str, t[i].end - t[i].start, VAR_json_str + t[i].start );
                             if( !strcmp(VAR_tmp_str, "[out]") ){
                                 if( strstr(arguments[j].type,"const") != NULL ){
@@ -592,25 +592,24 @@ EOT
                                     return -1;
                                 }
 EOT
-    char_list.each{ |obj|
-      if obj.include?("**") then
-        file.print <<EOT
+        char_list.each{ |obj|
+          if obj.include?("**") then
+            file.print <<EOT
                             }else if( !strcmp(arguments[j].type,"#{obj}") ){
                               /* ignore */
 EOT
-      else
-        file.print <<EOT
+          else
+            file.print <<EOT
                             }else if( !strcmp(arguments[j].type,"#{obj}") ){
                                 strcpy_n( arguments[j].data.mem_#{obj.sub(/\*/, '_buf').sub('const ', '').sub('_t', '')}, t[i].end - t[i].start, VAR_json_str + t[i].start );
 EOT
-      end
-    }
-    if !char_list.empty? then
-      file.print <<EOT
+          end
+        }
+        file.print <<EOT
                             }else{
                                 /* Arg is not char type */
                                 return -1;
-/*                            } */
+                            }
 EOT
     end
   end

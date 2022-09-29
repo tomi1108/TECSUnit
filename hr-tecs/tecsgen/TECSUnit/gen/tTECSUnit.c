@@ -170,13 +170,13 @@ eUnit_main(CELLIDX idx, const char_t* cell_path, const char_t* entry_path, const
   printf( "--- TECSUnit ---" );
   puts("");
   void *rawDesc;
-  Descriptor( sSample ) SampleDesc; //変数の宣言
+  Descriptor( sSample ) SampleDesc;
   sprintf( VAR_cell_entry, "%s.%s", cell_path, entry_path );
   getRawEntryDescriptor( p_cellcb, VAR_cell_entry, &rawDesc, signature_path );
 
   if( !strcmp(signature_path, "sSample" ) ){
-    setRawEntryDescriptor( SampleDesc, sSample, rawDesc ); //型変換
-    cSample_set_descriptor( SampleDesc ); //動的結合
+    setRawEntryDescriptor( SampleDesc, sSample, rawDesc );
+    cSample_set_descriptor( SampleDesc );
       if( !strcmp( function_path, "sayHello" ) ){
         printf("Call sayHello");
         puts("");
