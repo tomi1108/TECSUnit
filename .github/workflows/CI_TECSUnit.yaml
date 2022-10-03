@@ -15,7 +15,6 @@ jobs:
       - name: make
         run: |
           cd hr-tecs/tecsgen/TECSUnit
-          make clean
           make
           
       - name: exe
