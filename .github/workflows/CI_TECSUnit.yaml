@@ -6,7 +6,7 @@ jobs:
   TECSUnit:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v
       - name: set env
         run: |
           cd hr-tecs/tecsgen
