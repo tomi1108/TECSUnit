@@ -7,9 +7,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: TECSUnit
+      - name: set env
         run: |
-          sudo apt install grep
           cd hr-tecs/tecsgen
-          source set_test.sh
+          echo "TECSPATH=$PWD/tecsgen/tecs" >> $GITHUB_ENV
+      
+      - name: make
+        run: |
+          cd hr-tecs/tecsgen/TECSUnit
+          make clean
+          make
+          
+      - name: exe
+        run: |
+          cd hr-tecs/tecsgen/TECSUnit
+          ./TECSUnit.exe
           
