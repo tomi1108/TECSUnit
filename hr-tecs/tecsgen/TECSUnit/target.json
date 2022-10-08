@@ -1,7 +1,8 @@
 {
   "target1":{
     "cell":"Simple",
-    "entry":"eBody"
+    "entry":"eBody",
+    "function":""
   },
   "target2":{
     "cell":"Sample",
