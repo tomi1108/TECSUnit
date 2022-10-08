@@ -2,14 +2,14 @@
   "target1":{
     "cell":"Sample",
     "entry":"eEnt",
-    "function":"sayHelloGood",
+    "function":"sayHello",
     "argument":[3],
     "exp_val":0
   },
   "target2":{
     "cell":"Sample",
     "entry":"eEnt",
-    "function":"howAreYou",
+    "function":"howAreYouGood",
     "argument":["Sample: I'm fine!",1],
     "exp_val":0
   }
