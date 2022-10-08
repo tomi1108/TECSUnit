@@ -29,7 +29,7 @@ eEnt_sayHello(CELLIDX idx, int32_t times)
 }
 
 ER
-eEnt_howAreYou(CELLIDX idx, char_t* buf, int32_t len)
+eEnt_howAreYouGood(CELLIDX idx, char_t* buf, int32_t len)
 {
 	ER ercd = E_OK;
 	CELLCB *p_cellcb;

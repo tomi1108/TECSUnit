@@ -3,7 +3,7 @@ import_C("target_struct.h");
 
 signature sSample {
   ER sayHello( [in]int32_t times );
-  ER howAreYou( [out,string(len)]char_t *buf, [in]int32_t len);
+  ER howAreYouGood( [out,string(len)]char_t *buf, [in]int32_t len);
 };
 
 celltype tSample {
