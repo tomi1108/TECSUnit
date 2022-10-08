@@ -1,17 +1,12 @@
 {
   "target1":{
-    "cell":"Simple",
-    "entry":"eBody",
-    "function":""
-  },
-  "target2":{
     "cell":"Sample",
     "entry":"eEnt",
     "function":"sayHello",
     "argument":[3],
     "exp_val":0
   },
-  "target3":{
+  "target2":{
     "cell":"Sample",
     "entry":"eEnt",
     "function":"howAreYouGood",
