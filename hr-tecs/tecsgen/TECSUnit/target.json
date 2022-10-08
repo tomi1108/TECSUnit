@@ -2,7 +2,7 @@
   "target1":{
     "cell":"Sample",
     "entry":"eEnt",
-    "function":"sayHello",
+    "function":"sayHelloGood",
     "argument":[3],
     "exp_val":0
   },
