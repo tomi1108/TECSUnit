@@ -1,6 +1,6 @@
 name: CI_TECSUnit
 
-on: [push]
+on: []
 
 jobs:
   TECSUnit:
