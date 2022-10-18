@@ -1,6 +1,9 @@
-import( <cygwin_kernel.cdl> );
+/*import( <cygwin_kernel.cdl> );*/
+
 import( <TECSInfo.cdl> );
+
 /*import( <TECSInfoAccessor.cdl> );*/
+
 /* ターゲットのインクルード */
 import( <target.cdl> );
 
