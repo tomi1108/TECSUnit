@@ -43,4 +43,4 @@ eEnt_howAreYou(CELLIDX idx, char_t* buf, int32_t len)
 	strncpy( buf, "Sample: I'm fine!", len );
 
 	return(ercd);
-} 
+}
