@@ -218,6 +218,7 @@ eBody_main(CELLIDX idx)
 
     ercd = cJSMN_json_open();
     if( ercd != E_OK ) return;
+     /* 正しくcJSMN_json_parseが終了すれば続ける */
 
     for( j = 1; j < ATTR_TARGET_NUM + 1 ; j++ ) {
         /* 初期化 */
@@ -264,8 +265,11 @@ eBody_main(CELLIDX idx)
         strcpy( exp_val.type, VAR_exp_type );
         printf( "- Return Type: %s\n", exp_val.type );
         // argumentsにはtypeのみがTECSInfoにより入っている状態。
+
+        /* ----------cJSON_json_parse_arg-------------- */
         ercd = cJSMN_json_parse_arg( arguments, &exp_val, &arg_num, j, ATTR_NAME_LEN );
         if( ercd == -1 ) return; /* jsmnエラー */
+        
 
         if( arg_num != VAR_arg_num ){
             printf( "Error: Wrong number of arguments\n" );

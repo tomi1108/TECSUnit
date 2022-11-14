@@ -44,3 +44,21 @@ eEnt_howAreYou(CELLIDX idx, char_t* buf, int32_t len)
 
 	return(ercd);
 }
+
+ER
+eEnt_tasizan(CELLIDX idx, int8_t x)
+{
+	ER ercd = E_OK;
+	CELLCB *p_cellcb;
+	if (VALID_IDX(idx)) {
+		p_cellcb = GET_CELLCB(idx);
+	}
+	else {
+		return(E_ID);
+	}
+
+	x = x + 2;
+	printf("x = %d\n", x);
+
+	return(ercd);
+}

@@ -1,4 +1,4 @@
-/*import( <cygwin_kernel.cdl> );*/
+import( <cygwin_kernel.cdl> );
 
 import( <TECSInfo.cdl> );
 

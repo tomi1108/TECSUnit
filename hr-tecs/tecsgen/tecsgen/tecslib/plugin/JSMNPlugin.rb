@@ -184,7 +184,7 @@ ER    ercd = E_OK;
 
     sprintf( target_path, "target%d", target_num );
 
-    jsmn_init(&p);
+    jsmn_init(&p); /* pには現在パースされている文字列と、その文字列内の現在の位置が格納されている→それを初期化 */
     r = jsmn_parse( &p, VAR_json_str, strlen(VAR_json_str), t, sizeof(t)/sizeof(t[0]) );
     if(r < 0){
         printf( "Failed to parse JSON: %d", r );

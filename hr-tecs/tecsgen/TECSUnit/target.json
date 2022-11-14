@@ -3,13 +3,16 @@
     "cell":"Sample",
     "entry":"eEnt",
     "function":"sayHello",
-    "argument":[6],
+    "argument":[3],
     "exp_val":0
   },
   "target2":{
-    "cell":"Sample",
-    "entry":"eEnt",
-    "function":"howAreYou",
-    "exp_val":0
+    "cell":"Tample",
+    "entry":"eHello",
+    "function":"Hello",
+    "pre_cond":{"data":1},
+    "post_cond":{"data":2},
+    "argument":[2],
+    "exp_val":0,
   }
 }
