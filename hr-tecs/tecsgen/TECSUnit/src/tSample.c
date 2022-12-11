@@ -46,7 +46,7 @@ eEnt_howAreYou(CELLIDX idx, char_t* buf, int32_t len)
 }
 
 ER
-eEnt_tasizan(CELLIDX idx, int8_t x)
+eEnt_BoundarySample(CELLIDX idx, int8_t x)
 {
 	ER ercd = E_OK;
 	CELLCB *p_cellcb;

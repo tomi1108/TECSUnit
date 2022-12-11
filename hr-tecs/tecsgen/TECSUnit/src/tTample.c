@@ -18,7 +18,7 @@ eHello_Hello(CELLIDX idx, int16_t y)
         return(E_ID);
     }
 
-    y = y + VAR_data;
+    y = y + 1;
     printf("y = %d\n", y);
 
     return(ercd);

@@ -2,17 +2,8 @@
   "target1":{
     "cell":"Sample",
     "entry":"eEnt",
-    "function":"sayHello",
+    "function":"BoundarySample",
     "argument":[3],
     "exp_val":0
-  },
-  "target2":{
-    "cell":"Tample",
-    "entry":"eHello",
-    "function":"Hello",
-    "pre_cond":{"data":1},
-    "post_cond":{"data":2},
-    "argument":[2],
-    "exp_val":0,
   }
 }

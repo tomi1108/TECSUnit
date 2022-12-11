@@ -29,6 +29,7 @@ celltype tTaskMain {
         int16_t NAME_LEN = 128;
         int16_t ARG_NAME_LEN = 128;
         int16_t ARG_DIM = 32;
+        int16_t COND_DIM = 8;
         int16_t TARGET_NUM = 100;
     };
     var{
@@ -51,8 +52,16 @@ celltype tTaskMain {
             char_t *exp_type;
         char_t  arg[32][128];
         char_t  arg_type[32][128];
+
         int8_t find_entry;
         int8_t find_func;
+        
+        [size_is(COND_DIM)]
+            struct cond_obj *pre_cond;
+        [size_is(COND_DIM)]
+            struct cond_obj *post_cond;
+        int16_t n_pre_cond;
+        int16_t n_post_cond;
     };
 };
 

@@ -181,6 +181,10 @@ static void
 print_celltype( CELLCB   *p_cellcb, Descriptor( nTECSInfo_sCelltypeInfo )  CTdesc );
 static void
 print_entry(CELLCB  *p_cellcb, Descriptor( nTECSInfo_sEntryInfo )  Edesc );
+static void
+allocate_precond( CELLCB *p_cellcb );
+static void
+check_postcond( CELLCB *p_cellcb );
 int
 isNull( const char *str );
 /* 受け口関数 #_TEPF_# */
@@ -212,14 +216,15 @@ eBody_main(CELLIDX idx)
     } /* end if VALID_IDX(idx) */
 
     /* ここに処理本体を記述します #_TEFB_# */
-    struct tecsunit_obj arguments[ATTR_ARG_DIM];
-    struct tecsunit_obj exp_val;
+    struct tecsunit_obj arguments[ATTR_ARG_DIM]; /* せるTaskMainの持つ属性ARG_DIM = 32 / 多分引数に関する32個の構造体*/
+    struct tecsunit_obj exp_val; /* 期待値に関する構造体 */
     int i, j, arg_num, flag = 0;
 
     ercd = cJSMN_json_open();
     if( ercd != E_OK ) return;
-     /* 正しくcJSMN_json_parseが終了すれば続ける */
+     /* 正しくcJSMN_json_parseが終了すれば続ける / たぶんセルJSMNのセル変数json_strにテストケースが文字列として格納される */
 
+    /* j = 1~ATTR_TARGET_NUM(100) */
     for( j = 1; j < ATTR_TARGET_NUM + 1 ; j++ ) {
         /* 初期化 */
         VAR_find_entry = 0;
@@ -231,6 +236,7 @@ eBody_main(CELLIDX idx)
 
         ercd = cJSMN_json_parse_path( VAR_cell_path, VAR_entry_path_tmp, VAR_function_path_tmp, j, ATTR_NAME_LEN );
         if( ercd == 1 ) continue; /* そのtarget#は見つからなかった */
+
         if( ercd == -1 ) return; /* jsmnエラー */
 
         printf( "** Target%d\n", j );
@@ -245,7 +251,7 @@ eBody_main(CELLIDX idx)
         print_cell_by_path( p_cellcb, VAR_cell_path , &flag );
 
         if( flag ){
-            printf( "Eroor: Cell \"%s\" cannot found\n", VAR_cell_path );
+            printf( "Error: Cell \"%s\" cannot found\n", VAR_cell_path );
             return;
         }else if( isNull(VAR_entry_path) ){
             printf( "Error: Entry \"%s\" cannot found\n", VAR_entry_path_tmp );
@@ -269,7 +275,9 @@ eBody_main(CELLIDX idx)
         /* ----------cJSON_json_parse_arg-------------- */
         ercd = cJSMN_json_parse_arg( arguments, &exp_val, &arg_num, j, ATTR_NAME_LEN );
         if( ercd == -1 ) return; /* jsmnエラー */
-        
+
+        ercd = cJSMN_json_parse_cond( VAR_pre_cond, VAR_post_cond, &VAR_n_pre_cond, &VAR_n_post_cond, j, ATTR_COND_DIM );
+        if( ercd == -1 ) return; /* jsmnエラー */
 
         if( arg_num != VAR_arg_num ){
             printf( "Error: Wrong number of arguments\n" );
@@ -284,6 +292,7 @@ eBody_main(CELLIDX idx)
         }
     }
 
+    /* 正しく処理が終了しなかった場合に出力するメッセージ */
     if( j > ATTR_TARGET_NUM ){
         printf( "Error: Too many targets or keyword is wrong.\n" );
         printf( "Keyword is \"target#\" and keep the target number 1 ~ %d\n", ATTR_TARGET_NUM );
