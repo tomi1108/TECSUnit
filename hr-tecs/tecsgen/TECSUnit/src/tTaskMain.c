@@ -290,6 +290,7 @@ eBody_main(CELLIDX idx)
         if( ercd2 == -1 ) return;
         for (int bou_count = 0; bou_count < 2; bou_count++ ){
             printf("boundary%d = %d\n", bou_count, boundary[bou_count]);
+            cUnit_boundary_value_test( VAR_cell_path, VAR_entry_path, VAR_signature_path, VAR_function_path, boundary, &exp_val );
         }
         
         printf("\n\n");

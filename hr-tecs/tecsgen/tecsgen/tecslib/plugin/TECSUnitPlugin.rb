@@ -1,43 +1,3 @@
-# -*- coding: utf-8 -*-
-#
-#  TECS Generator
-#      Generator for TOPPERS Embedded Component System
-#
-#   Copyright (C) 2008-2017 by TOPPERS Project
-#--
-#   上記著作権者は，以下の(1)〜(4)の条件を満たす場合に限り，本ソフトウェ
-#   ア（本ソフトウェアを改変したものを含む．以下同じ）を使用・複製・改
-#   変・再配布（以下，利用と呼ぶ）することを無償で許諾する．
-#   (1) 本ソフトウェアをソースコードの形で利用する場合には，上記の著作
-#       権表示，この利用条件および下記の無保証規定が，そのままの形でソー
-#       スコード中に含まれていること．
-#   (2) 本ソフトウェアを，ライブラリ形式など，他のソフトウェア開発に使
-#       用できる形で再配布する場合には，再配布に伴うドキュメント（利用
-#       者マニュアルなど）に，上記の著作権表示，この利用条件および下記
-#       の無保証規定を掲載すること．
-#   (3) 本ソフトウェアを，機器に組み込むなど，他のソフトウェア開発に使
-#       用できない形で再配布する場合には，次のいずれかの条件を満たすこ
-#       と．
-#     (a) 再配布に伴うドキュメント（利用者マニュアルなど）に，上記の著
-#         作権表示，この利用条件および下記の無保証規定を掲載すること．
-#     (b) 再配布の形態を，別に定める方法によって，TOPPERSプロジェクトに
-#         報告すること．
-#   (4) 本ソフトウェアの利用により直接的または間接的に生じるいかなる損
-#       害からも，上記著作権者およびTOPPERSプロジェクトを免責すること．
-#       また，本ソフトウェアのユーザまたはエンドユーザからのいかなる理
-#       由に基づく請求からも，上記著作権者およびTOPPERSプロジェクトを
-#       免責すること．
-#
-#   本ソフトウェアは，無保証で提供されているものである．上記著作権者お
-#   よびTOPPERSプロジェクトは，本ソフトウェアに関して，特定の使用目的
-#   に対する適合性も含めて，いかなる保証も行わない．また，本ソフトウェ
-#   アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
-#   の責任を負わない．
-#
-#   $Id: MrubyBridgeCellPlugin.rb 3072 2019-05-02 23:47:42Z okuma-top $
-#++
-
-#== celltype プラグインの共通の親クラス
 class TECSUnitPlugin < CellPlugin
 
   # プラグイン引数名 => Proc
@@ -148,21 +108,28 @@ EOT
     }
   end
 
-#########################################################################################
-  #===  受け口関数の本体コードを生成（頭部と末尾は別途出力）
-  #ct_name:: Symbol    (プラグインで生成された) セルタイプ名 ．Symbol として送られてくる
+#################################################################################################
+
   def gen_ep_func_body( file, b_singleton, ct_name, global_ct_name, sig_name, ep_name, func_name, func_global_name, func_type, paramSet )
-    # tTECSUnit の受け口関数のセルタイプコード (C言語) を生成する
+    if func_name.to_s == "main" then
+      print_main( file, Namespace.get_root )
+    end
+    if func_name.to_s == "boundary_value_test" then
+      print_boundary_value_test( file, Namespace.get_root )
+    end
+  end
+
+  def print_main( file, namespace )
     file.print <<EOT
-  CELLCB  *p_cellcb;
+  CELLCB *p_cellcb;
   if (VALID_IDX(idx)) {
     p_cellcb = GET_CELLCB(idx);
   }
   else {
-    /* エラー処理コードをここに記述します */
+    /* エラー処理をここに記述します */
   } /* end if VALID_IDX(idx) */
   puts("");
-  printf( "--- TECSUnit ---" );
+  printf("--- TECSUnit ---" );
   puts("");
   void *rawDesc;
 EOT
@@ -173,6 +140,7 @@ EOT
   sprintf( VAR_cell_entry, "%s.%s", cell_path, entry_path );
   getRawEntryDescriptor( p_cellcb, VAR_cell_entry, &rawDesc, signature_path );
 EOT
+    
     # 2.本体コードの記述
     print_branch_sig( file, Namespace.get_root )
   end
@@ -457,5 +425,11 @@ ER getRawEntryDescriptor( CELLCB *p_cellcb, char_t *entry_path, void **rawEntryD
 EOT
 
   end
-end
 
+  def print_boundary_value_test( file, namespace )
+    file.print <<EOT
+    printf("!!!!!!");
+    puts("");
+EOT
+  end
+end
