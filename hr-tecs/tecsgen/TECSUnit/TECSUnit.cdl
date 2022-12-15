@@ -16,6 +16,13 @@ signature sTECSUnit {
              [in,string] const char_t *function_path,
              [in] const struct tecsunit_obj *arguments,
              [in] const struct tecsunit_obj *exp_val );
+  // void boundary_value_test(
+  //   [in,string] const char_t *cell_path,
+  //   [in,string] const char_t * entry_path,
+  //   [in,string] const char_t *signature_path,
+  //   [in,string] const char_t *function_path,
+  //   [in] const int *boundary,
+  //   [in] const struct tecsunit_obj *exp_val );
 };
 
 import( <tTaskMain.cdl> );

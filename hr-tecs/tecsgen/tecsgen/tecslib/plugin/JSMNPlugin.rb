@@ -721,6 +721,63 @@ EOT
   else {
     /* エラー処理コードをここに記述します */
   } /* end if VALID_IDX(idx) */
+
+  int r, i, j, k, l;
+  jsmn_parser p;
+  jsmntok_t t[128];
+  char target_path[10];
+
+  sprintf( target_path, "target%d", target_num );
+
+  jsmn_init(&p);
+  r = jsmn_parse( &p, VAR_json_str, strlen(VAR_json_str), t, sizeof(t)/sizeof(t[0]) );
+  if(r < 0){
+    printf( "Failed to parse JSON: %d", r );
+    return -1;
+  }
+  /* Assume the top-level element is an object */
+  if( r < 1 || t[0].type != JSMN_OBJECT ){
+    printf( "Object expected" );
+    return -1;
+  }
+
+  for( l = 1; l < r; l++ ){
+    if( jsoneq(VAR_json_str, &t[l], target_path) == 0 ){
+        if( t[l+1].type != JSMN_OBJECT ){
+            printf("Object expected for target");
+            return -1;
+        }
+        i = l + 2;
+        for( k = 0; k < t[l+1].size; k++ ){
+            if( jsoneq( VAR_json_str, &t[i], ATTR_key_cell ) == 0 ){
+                i += 2; /* ignore */
+            }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_entry ) == 0 ){
+                i += 2; /* ignore */
+            }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_function ) == 0 ){
+                i += 2; /* ignore */
+            }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_arg ) == 0 ){
+                i += 3;
+            }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_boundary ) == 0 ){
+                i += 2; /* 一つ目の境界値 */
+                strcpy_n( VAR_tmp_str, t[i].end - t[i].start, VAR_json_str + t[i].start );
+                boundary[0] = atoi( VAR_tmp_str );
+                i += 1;/* 2つ目の境界値 */
+                strcpy_n( VAR_tmp_str, t[i].end - t[i].start, VAR_json_str + t[i].start );
+                boundary[1] = atoi( VAR_tmp_str );
+                i += 1; /* 配列を抜ける */
+            }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_boundary ) == 0 ){
+                i += 2;
+            }
+        }
+        VAR_counter += 1;
+        if( VAR_counter >= t[0].size ){
+            return 2; /* もしかしたらtarget2以降があっても終了しちゃうかも */
+        }
+        return 0;
+    }
+  }
+  return 1;
+
 EOT
   end
 

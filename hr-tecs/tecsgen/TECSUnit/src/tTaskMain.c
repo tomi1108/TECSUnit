@@ -218,6 +218,7 @@ eBody_main(CELLIDX idx)
     /* ここに処理本体を記述します #_TEFB_# */
     struct tecsunit_obj arguments[ATTR_ARG_DIM]; /* せるTaskMainの持つ属性ARG_DIM = 32 / 多分引数に関する32個の構造体*/
     struct tecsunit_obj exp_val; /* 期待値に関する構造体 */
+    int boundary[2];
     int i, j, arg_num, flag = 0;
 
     ercd = cJSMN_json_open();
@@ -282,7 +283,17 @@ eBody_main(CELLIDX idx)
                 arg_num, VAR_function_path, VAR_arg_num );
         }
         cUnit_main( VAR_cell_path, VAR_entry_path, VAR_signature_path, VAR_function_path, arguments, &exp_val );
+        printf("\n");
+
+        printf("Start Boundary Value Test\n");
+        ercd2 = cJSMN_json_parse_boundary( &boundary, j, ATTR_NAME_LEN );
+        if( ercd2 == -1 ) return;
+        for (int bou_count = 0; bou_count < 2; bou_count++ ){
+            printf("boundary%d = %d\n", bou_count, boundary[bou_count]);
+        }
+        
         printf("\n\n");
+
         if( ercd == 2 ){
             printf( "All targets are checked\n" );
             return;
