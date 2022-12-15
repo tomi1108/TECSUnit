@@ -57,8 +57,10 @@ eEnt_BoundarySample(CELLIDX idx, int8_t x)
 		return(E_ID);
 	}
 
-	x = x + 2;
-	printf("x = %d\n", x);
-
-	return(ercd);
+	if( 0 < x || x < 100 ){
+		printf("The argument is OK\n");
+		return 0;
+	}
+	printf("The argument is out of range\n");
+	return -1;
 }

@@ -276,9 +276,6 @@ eBody_main(CELLIDX idx)
         ercd = cJSMN_json_parse_arg( arguments, &exp_val, &arg_num, j, ATTR_NAME_LEN );
         if( ercd == -1 ) return; /* jsmnエラー */
 
-        ercd = cJSMN_json_parse_cond( VAR_pre_cond, VAR_post_cond, &VAR_n_pre_cond, &VAR_n_post_cond, j, ATTR_COND_DIM );
-        if( ercd == -1 ) return; /* jsmnエラー */
-
         if( arg_num != VAR_arg_num ){
             printf( "Error: Wrong number of arguments\n" );
             printf( "You expected %d arguments. Function \"%s\" has %d arguments\n",

@@ -4,6 +4,7 @@
     "entry":"eEnt",
     "function":"BoundarySample",
     "argument":[3],
+    "boundary_val":[0,100],
     "exp_val":0
   }
 }

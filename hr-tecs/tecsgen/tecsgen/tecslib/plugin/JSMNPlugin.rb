@@ -76,6 +76,7 @@ celltype tJSMN {
     char_t *key_exp = "exp_val";
     char_t *key_pre_cond = "pre_cond";
     char_t *key_post_cond = "post_cond";
+    char_t *key_boundary = "boundary_val";
   };
   var {
     [size_is(LEN)]
@@ -97,16 +98,19 @@ EOT
   def gen_ep_func_body( file, b_singleton, ct_name, global_ct_name, sig_name, ep_name, func_name, func_global_name, func_type, paramSet )
     # tJSMN の受け口関数のセルタイプコード (C言語) を生成する以下の４つの関数
     if func_name.to_s == "json_open" then
-      print_json_open( file, Namespace.get_root )
+        print_json_open( file, Namespace.get_root )
     end
     if func_name.to_s == "json_parse_path" then
-      print_parse_path( file, Namespace.get_root )
+        print_parse_path( file, Namespace.get_root )
     end
     if func_name.to_s == "json_parse_arg" then
-      print_parse_arg( file, Namespace.get_root )
+        print_parse_arg( file, Namespace.get_root )
     end
     if func_name.to_s == "json_parse_cond" then
-      print_parse_cond( file, Namespace.get_root )
+        print_parse_cond( file, Namespace.get_root )
+    end
+    if func_name.to_s == "json_parse_boundary" then
+        print_parse_boundary( file, Namespace.get_root )
     end
   end
 
@@ -239,6 +243,8 @@ ER    ercd = E_OK;
                         }
                     }
                     i += 1; // 最後には配列を抜ける
+                }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_boundary ) == 0 ){
+                    i += 4;
                 }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_exp ) == 0 ){
                     i += 2; /* ignore */
                 } else {
@@ -434,6 +440,8 @@ EOT
                         }
                     }
                     i += 1; // 最後には配列を抜ける
+                }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_boundary) == 0 ){
+                    i+= 4;
                 /* 期待値 */
                 }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_exp ) == 0 ){
                     if( t[i+1].type == JSMN_ARRAY ){
@@ -697,6 +705,22 @@ EOT
     }
     file.print <<EOT
                         }
+EOT
+  end
+
+#
+# 境界値を取得する関数を定義
+#
+
+  def print_parse_boundary( file, namespace )
+    file.print <<EOT
+  CELLCB  *p_cellcb;
+  if (VALID_IDX(idx)) {
+    p_cellcb = GET_CELLCB(idx);
+  }
+  else {
+    /* エラー処理コードをここに記述します */
+  } /* end if VALID_IDX(idx) */
 EOT
   end
 
