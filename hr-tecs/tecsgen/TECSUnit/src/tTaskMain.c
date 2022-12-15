@@ -285,14 +285,10 @@ eBody_main(CELLIDX idx)
         cUnit_main( VAR_cell_path, VAR_entry_path, VAR_signature_path, VAR_function_path, arguments, &exp_val );
         printf("\n");
 
-        printf("Start Boundary Value Test\n");
         ercd2 = cJSMN_json_parse_boundary( &boundary, j, ATTR_NAME_LEN );
         if( ercd2 == -1 ) return;
-        for (int bou_count = 0; bou_count < 2; bou_count++ ){
-            printf("boundary%d = %d\n", bou_count, boundary[bou_count]);
-            cUnit_boundary_value_test( VAR_cell_path, VAR_entry_path, VAR_signature_path, VAR_function_path, boundary, &exp_val );
-        }
-        
+
+        cUnit_boundary_value_test( VAR_cell_path, VAR_entry_path, VAR_signature_path, VAR_function_path, boundary, &exp_val );
         printf("\n\n");
 
         if( ercd == 2 ){

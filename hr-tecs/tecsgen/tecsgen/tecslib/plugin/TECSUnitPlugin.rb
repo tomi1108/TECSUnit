@@ -428,8 +428,37 @@ EOT
 
   def print_boundary_value_test( file, namespace )
     file.print <<EOT
-    printf("!!!!!!");
+  CELLCB *p_cellcb;
+  if (VALID_IDX(idx)) {
+    p_cellcb = GET_CELLCB(idx);
+  }
+  else {
+    /* エラー処理をここに記述します */
+  } /* end if VALID_IDX(idx) */
+  int i;
+  puts("");
+  printf("--- Boundary Value Test ---");
+  puts("");
+  for( i = 0; i < 2; i++ ){
+    printf("boundary%d = %d", i+1, boundary[i]);
     puts("");
+  }
+  void *rawDesc;
+EOT
+    print_desc( file, Namespace.get_root )
+
+    file.print <<EOT
+  sprintf( VAR_cell_entry, "%s.%s", cell_path, entry_path );
+  getRawEntryDescriptor( p_cellcb, VAR_cell_entry, &rawDesc, signature_path );
+EOT
+    print_BVT_branch_sig( file, Namespace.get_root )
+  end
+
+  def print_BVT_branch_sig( file, namespace )
+    file.print <<EOT
+  printf("print_BVT_branch_sig Tesring!");
+  puts("");
 EOT
   end
+
 end
