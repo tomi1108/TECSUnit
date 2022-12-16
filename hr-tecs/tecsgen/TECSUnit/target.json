@@ -3,7 +3,7 @@
     "cell":"Sample",
     "entry":"eEnt",
     "function":"BoundarySample",
-    "argument":[3],
+    "argument":[2],
     "boundary_val":[0,100],
     "exp_val":0
   }

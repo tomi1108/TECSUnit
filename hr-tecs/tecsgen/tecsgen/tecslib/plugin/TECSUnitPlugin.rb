@@ -435,6 +435,7 @@ EOT
   else {
     /* エラー処理をここに記述します */
   } /* end if VALID_IDX(idx) */
+
   int i;
   puts("");
   printf("--- Boundary Value Test ---");
@@ -455,10 +456,71 @@ EOT
   end
 
   def print_BVT_branch_sig( file, namespace )
-    file.print <<EOT
-  printf("print_BVT_branch_sig Tesring!");
-  puts("");
+    flag = true
+    namespace.travers_all_signature{ |sig|
+      if  sig.get_namespace_path.to_s =~ /nTECSInfo::/ || \
+          sig.get_namespace_path.to_s =~ /::s.*Task.*/ || \
+          sig.get_namespace_path.to_s =~ /::sAccessor/ || \
+          sig.get_namespace_path.to_s =~ /::sTECSUnit/ || \
+          sig.get_namespace_path.to_s =~ /::sJSMN/ || \
+          sig.get_namespace_path.to_s =~ /::s.*Kernel/ || \
+          sig.get_namespace_path.to_s =~ /::s.*Semaphore/ || \
+          sig.get_namespace_path.to_s =~ /::s.*Eventflag/ || \
+          sig.get_namespace_path.to_s =~ /::s.*Dataqueue/ || \
+          sig.get_namespace_path.to_s =~ /::sInitialize.*/ || \
+          sig.get_namespace_path.to_s =~ /::s.*VM/ || \
+          sig.get_namespace_path.to_s =~ /::sMain/ || \
+          sig.get_namespace_path.to_s =~ /::s.*Alarm/ || \
+          sig.get_namespace_path.to_s =~ /::sFixedSizeMemoryPool/ || \
+          sig.get_namespace_path.to_s =~ /::sMessageBuffer/ || \
+          sig.get_namespace_path.to_s =~ /::sTerminateRoutineBody/ || \
+          sig.get_namespace_path.to_s =~ /::s.*HandlerBody/ || \
+          sig.get_namespace_path.to_s =~ /::sConfigInterrupt/ || \
+          sig.get_namespace_path.to_s =~ /::sCyclic/ || \
+          sig.get_namespace_path.to_s =~ /::sMalloc/ then
+      else
+
+        if flag then
+          flag = false
+          file.print <<EOT
+  if( !strcmp(signature_path, "#{sig.get_name}" ) ){
+    setRawEntryDescriptor( #{sig.get_name[1..-1]}Desc, #{sig.get_name}, rawDesc );
+    c#{sig.get_name[1..-1]}_set_descriptor( #{sig.get_name[1..-1]}Desc );
 EOT
+          print_BVT_branch_func( file, sig )
+          file.print <<EOT
+  }
+EOT
+        else
+
+        end
+      end
+      }
+  end
+
+  def print_BVT_branch_func( file, signature )
+    str = ""
+    paramSet = ""
+    param = ""
+    exp_val = ""
+    flag = true # 初回のみtrue、以降はelse ifを使いたい
+    # out引数のカウント
+    int_count = 0
+    double_count = 0
+    char_count = 0
+
+    signature.get_function_head_array.each{ |func|
+      paramSet = ""
+      exp_val = ""
+      # 期待値のパラメータを取得する
+      if func.get_return_type.get_type_str.include?("void") then
+        exp_val = ""
+      elsif func.get_return_type.get_type_str.include?("double") || func.get_return_type.get_type_str.include?("float") then
+        exp_val = "exp_val->" + "data.mem_#{func.get_return_type.get_type_str.sub(/\*/, '_buf').sub('const ', '').sub('struct ', '').sub('32_t', '').sub('64_t', '')}"
+      else
+        exp_val = "exp_val->" + "data.mem_#{func.get_return_type.get_type_str.sub(/\*/, '_buf').sub('const ', '').sub('struct ', '')}"
+      end
+    }
   end
 
 end

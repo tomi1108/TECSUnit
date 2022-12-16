@@ -55,13 +55,6 @@ celltype tTaskMain {
 
         int8_t find_entry;
         int8_t find_func;
-        
-        [size_is(COND_DIM)]
-            struct cond_obj *pre_cond;
-        [size_is(COND_DIM)]
-            struct cond_obj *post_cond;
-        int16_t n_pre_cond;
-        int16_t n_post_cond;
     };
 };
 
