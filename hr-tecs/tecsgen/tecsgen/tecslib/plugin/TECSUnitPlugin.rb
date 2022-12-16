@@ -231,7 +231,7 @@ EOT
     }
   end
 
-  def print_branch_func( file, signature )
+  def print_branch_func( file, signature ) # ここでのsignatureは全てのsigunatureを探索し、正規表現に引っかからなかったもの一つ一つ
     str = ""
     paramSet = ""
     param = ""
@@ -242,7 +242,7 @@ EOT
     double_count = 0
     char_count = 0
 
-    signature.get_function_head_array.each{ |func|
+    signature.get_function_head_array.each{ |func| # itemsに入ってるitemを一つ一つfuncとして実行(?)
       paramSet = ""
       exp_val = ""
       # 期待値のパラメータを取得する
@@ -255,8 +255,8 @@ EOT
       end
       # 関数の引数パラメータを取得する
       int_count, double_count, char_count = 0,0,0
-      n = func.get_paramlist.get_items.length
-      func.get_paramlist.get_items.each_with_index { |paramDecl, idx|
+      n = func.get_paramlist.get_items.length #lengthは配列のサイズを返す
+      func.get_paramlist.get_items.each_with_index { |paramDecl, idx| # idxには0,1,2,と処理の回数ごとに大きくなる値が入る
         param = paramDecl.get_type.get_type_str
       # TODO:ここから
         if param.include?("*") && !param.include?("const") then # paramが[out]指定子付きと判断
@@ -300,14 +300,12 @@ EOT
     if flag then
       file.print <<EOT
       if( !strcmp( function_path, "#{f_name}" ) ){
-        printf("Call #{f_name}");
-        puts("");
+        printf("Call #{f_name}\\n");
 EOT
     else
       file.print <<EOT
       else if( !strcmp( function_path, "#{f_name}" ) ){
-        printf("Call #{f_name}");
-        puts("");
+        printf("Call #{f_name}\\n");
 EOT
     end
 
@@ -326,14 +324,10 @@ EOT
       file.print <<EOT
         if( #{exp_val} == c#{signature.get_name[1..-1]}_#{f_name}( #{paramSet} ) ){
 /*            return 0; */
-            puts("");
-            printf("Result：OK");
-            puts("");
+            printf("\\nResult：OK\\n");
         }else{
 /*            return -1; */
-            puts("");
-            printf("Result：NG");
-            puts("");
+            printf("\\nResult：NG\\n");
         }
 EOT
     end
@@ -437,12 +431,9 @@ EOT
   } /* end if VALID_IDX(idx) */
 
   int i;
-  puts("");
-  printf("--- Boundary Value Test ---");
-  puts("");
+  printf("\\n--- Boundary Value Test ---\\n\\n");
   for( i = 0; i < 2; i++ ){
-    printf("boundary%d = %d", i+1, boundary[i]);
-    puts("");
+    printf("boundary%d = %d\\n", i+1, boundary[i]);
   }
   void *rawDesc;
 EOT
@@ -492,7 +483,15 @@ EOT
   }
 EOT
         else
-
+          file.print <<EOT
+  else if( !strcmp(signature_path, "#{sig.get_name}") ){
+    setRawEntryDescriptor( #{sig.get_name[1..-1]}Desc, #{sig.get_name}, rawDesc );
+    c#{sig.get_name[1..-1]}_set_descriptor( #{sig.get_name[1..-1]}Desc );
+EOT
+          print_BVT_branch_func( file, sig )
+          file.print <<EOT
+  }
+EOT
         end
       end
       }
@@ -513,6 +512,10 @@ EOT
       paramSet = ""
       exp_val = ""
       # 期待値のパラメータを取得する
+
+      #
+      # ここではテスト結果とテストケースで指定した返り値が等しいか比較するコードの左辺を作成している (例：exp_val->data.mem_ER)
+      #
       if func.get_return_type.get_type_str.include?("void") then
         exp_val = ""
       elsif func.get_return_type.get_type_str.include?("double") || func.get_return_type.get_type_str.include?("float") then
@@ -520,7 +523,102 @@ EOT
       else
         exp_val = "exp_val->" + "data.mem_#{func.get_return_type.get_type_str.sub(/\*/, '_buf').sub('const ', '').sub('struct ', '')}"
       end
+
+      #
+      #
+      #
+      int_count, double_count, char_count = 0, 0, 0
+      n = func.get_paramlist.get_items.length
+      func.get_paramlist.get_items.each_with_index { |paramDecl, idx|
+        param = paramDecl.get_type.get_type_str # paramにはテストする関数の引数の型が入っている (例：int32_tなど)
+        file.print <<EOT
+        /* param = #{param} */
+EOT
+        if param.include?("*") && !param.include?("const") then # paramが[out]指定子付きと判断
+          if param.include?("int") || param.include?("INT") || param.include?("short") ||\
+             param.include?("SHORT") || param.include?("long") || param.include?("LONG") then
+            paramSet.concat("(int *) ( VAR_data + sizeof(int)*#{int_count} + sizeof(double)*#{double_count} + sizeof(char)*#{char_count} )")
+            int_count += 1
+          elsif param.include?("double") || param.include?("float") then
+            paramSet.concat("(double *) ( VAR_data + sizeof(int)*#{int_count} + sizeof(double)*#{double_count} + sizeof(char)*#{char_count} )")
+            double_count += 1
+          elsif param.include?("char") || param.include?("CHAR") then
+            paramSet.concat("(char *) ( VAR_data + sizeof(int)*#{int_count} + sizeof(double)*#{double_count} + sizeof(char)*#{char_count} )")
+            char_count += 1
+          end
+      # ここまで
+        else #[in]指定子の場合
+          if param.include?("struct") then
+            paramSet.concat("&arguments[#{idx}].data.mem_#{param.sub(/\*/, '_buf').sub('const ', '').sub('struct ', '')}")
+          else
+            if param.include?("double") || param.include?("float") then
+              paramSet.concat("arguments[#{idx}].data.mem_#{param.sub(/\*/, '_buf').sub('const ', '').sub('32_t', '').sub('64_t', '')}")
+            elsif param.include?("char") || param.include?("CHAR") then
+              paramSet.concat("arguments[#{idx}].data.mem_#{param.sub(/\*/, '_buf').sub('const ', '').sub('_t', '')}")
+            else
+#              paramSet.concat("arguments[#{idx}].data.mem_#{param.sub(/\*/, '_buf').sub('const ', '')}")
+              paramSet.concat("boundary[test_count] + boundary_count") ######## ここを編集しています!!!!!
+            end
+          end
+        end
+        if idx + 1 < n then
+          paramSet.concat(", ")
+        end
+      }
+      print_BVT_call_desc( file, func.get_name.to_s, exp_val, signature, paramSet, int_count, double_count, char_count, flag )
+      flag = false
     }
+  end
+
+  def print_BVT_call_desc( file, f_name, exp_val, signature, paramSet, int_count, double_count, char_count, flag )
+    if flag then
+      file.print <<EOT
+      if( !strcmp( function_path, "#{f_name}") ){
+        printf("\\nCall #{f_name}\\n");
+EOT
+    else
+      file.print <<EOT
+      else if( !strcmp( function_path, "#{f_name}") ){
+        printf("\\nCall #{f_name}\\n");
+EOT
+    end
+
+    if int_count + double_count + char_count > 0 then
+      file.print <<EOT
+        VAR_data = malloc( sizeof(int)*#{int_count} + sizeof(double)*#{double_count} + sizeof(char)*#{char_count} );
+EOT
+    end
+
+    if exp_val == "" then
+      file.print <<EOT
+        c#{signature.get_name[1..-1]}_#{f_name}(  )}; /* この最後の括弧の中でテストする関数の引数を設定している */
+        return 0;
+EOT
+    else
+      file.print <<EOT
+        for( int test_count = 0; test_count < 2; test_count++ ){
+          for( int boundary_count = -1; boundary_count < 2; boundary_count++ ){
+            printf("\\n[input  : %d]\\n", boundary[test_count] + boundary_count);
+          /*  if( #{exp_val} == c#{signature.get_name[1..-1]}_#{f_name}( boundary[test_count] + boundary_count ) ){ */
+            if( #{exp_val} == c#{signature.get_name[1..-1]}_#{f_name}( #{paramSet} ) ){
+              printf("[Result : OK]\\n");
+            }else{
+              printf("[Result : NG]\\n");
+            }
+          }
+        }
+EOT
+    end
+
+    if int_count + double_count + char_count > 0 then
+      file.print <<EOT
+        free( VAR_data );
+EOT
+    end
+    out_check( file, int_count, double_count, char_count )
+    file.print <<EOT
+      }
+EOT
   end
 
 end

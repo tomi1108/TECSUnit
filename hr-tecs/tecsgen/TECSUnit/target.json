@@ -6,5 +6,13 @@
     "argument":[2],
     "boundary_val":[0,100],
     "exp_val":0
+  },
+  "target2":{
+    "cell":"Sample",
+    "entry":"eEnt",
+    "function":"sayHello",
+    "argument":[2],
+    "boundary_val":[0,10],
+    "exp_val":0
   }
 }

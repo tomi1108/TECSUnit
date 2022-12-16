@@ -19,11 +19,22 @@ eEnt_sayHello(CELLIDX idx, int32_t times)
 		return(E_ID);
 	}
 
-
-	printf( "Sample: " );
-	while( times-- > 0 )
-		printf( "hello " );
-	printf( "\n" );
+	if( 0 < times ){
+		if( times < 10){
+			printf("Sample: ");
+			while( times-- > 0 )
+				printf("hello ");
+			printf("\n");
+		}
+		else {
+			printf("The argument is too large\n");
+			return -1;
+		}
+	}
+	else {
+		printf("The argument is error number\n");
+		return -1;
+	}
 
 	return(ercd);
 }
