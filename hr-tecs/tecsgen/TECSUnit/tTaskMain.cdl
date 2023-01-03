@@ -64,7 +64,7 @@ cell tTask Task {
     priority      = 11;
     stackSize     = 4096;
     cBody         = rTEMP::TaskMain.eBody;
-//    cBody = Simple.eBody;
+//    cBody = Simple.eBody;     // この一文の追加でテスト対象をビルドできる
 };
 
 

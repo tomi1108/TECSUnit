@@ -1,5 +1,7 @@
 class TECSUnitPlugin < CellPlugin
 
+
+
   # プラグイン引数名 => Proc
   # @@cell_list = {}      # gen_cdl_file'ed list to avoid duplicate generation
   # @@signature_list = {}
@@ -111,12 +113,45 @@ EOT
 #################################################################################################
 
   def gen_ep_func_body( file, b_singleton, ct_name, global_ct_name, sig_name, ep_name, func_name, func_global_name, func_type, paramSet )
+
+    @test_case = ""    #テストケースを扱うための変数
+    @boundary_flag = [] #テストケースにboundary_valがあるかを判定
+
     if func_name.to_s == "main" then
       print_main( file, Namespace.get_root )
     end
+
     if func_name.to_s == "boundary_value_test" then
-      print_boundary_value_test( file, Namespace.get_root )
+      parse_json( file, Namespace.get_root) #テストケース解析
+      if @boundary_flag.find { |number| number == 1} == 1 then
+        print_boundary_value_test( file, Namespace.get_root )
+      end
     end
+
+  end
+
+  #
+  # target.jsonを読み取り、特定のキーワードを含む一文があるかどうかをチェック
+  #
+
+  def parse_json( file, namespace )
+    require 'json'
+    file = File.open("target.json")
+    @test_case = JSON.load(file)
+
+    # 
+    # 以下のfor文を増やすことで、チェックするキーワードを増やせる
+    # キーワードを増やした場合は、それに伴い追加で配列が必要
+    #
+    
+    for target_count in 1..@test_case.length do
+      if @test_case["target"+target_count.to_s].include?("boundary_val") then
+        @boundary_flag[target_count-1] = 1
+      else
+        @boundary_flag[target_count-1] = 0
+      end
+    end
+
   end
 
   def print_main( file, namespace )
@@ -447,6 +482,7 @@ EOT
   end
 
   def print_BVT_branch_sig( file, namespace )
+    @test_case_function_number = 1
     flag = true
     namespace.travers_all_signature{ |sig|
       if  sig.get_namespace_path.to_s =~ /nTECSInfo::/ || \
@@ -497,7 +533,7 @@ EOT
       }
   end
 
-  def print_BVT_branch_func( file, signature )
+  def print_BVT_branch_func( file, signature ) #signatureの数だけ呼び出される
     str = ""
     paramSet = ""
     param = ""
@@ -513,64 +549,72 @@ EOT
       exp_val = ""
       # 期待値のパラメータを取得する
 
-      #
-      # ここではテスト結果とテストケースで指定した返り値が等しいか比較するコードの左辺を作成している (例：exp_val->data.mem_ER)
-      #
-      if func.get_return_type.get_type_str.include?("void") then
-        exp_val = ""
-      elsif func.get_return_type.get_type_str.include?("double") || func.get_return_type.get_type_str.include?("float") then
-        exp_val = "exp_val->" + "data.mem_#{func.get_return_type.get_type_str.sub(/\*/, '_buf').sub('const ', '').sub('struct ', '').sub('32_t', '').sub('64_t', '')}"
-      else
-        exp_val = "exp_val->" + "data.mem_#{func.get_return_type.get_type_str.sub(/\*/, '_buf').sub('const ', '').sub('struct ', '')}"
-      end
+      for root_target_function in 1..@test_case.length do
+        if func.get_name.to_s == @test_case["target"+root_target_function.to_s]["function"] && @boundary_flag[root_target_function-1] == 1 then
 
-      #
-      #
-      #
-      int_count, double_count, char_count = 0, 0, 0
-      n = func.get_paramlist.get_items.length
-      func.get_paramlist.get_items.each_with_index { |paramDecl, idx|
-        param = paramDecl.get_type.get_type_str # paramにはテストする関数の引数の型が入っている (例：int32_tなど)
-        file.print <<EOT
-        /* param = #{param} */
-EOT
-        if param.include?("*") && !param.include?("const") then # paramが[out]指定子付きと判断
-          if param.include?("int") || param.include?("INT") || param.include?("short") ||\
-             param.include?("SHORT") || param.include?("long") || param.include?("LONG") then
-            paramSet.concat("(int *) ( VAR_data + sizeof(int)*#{int_count} + sizeof(double)*#{double_count} + sizeof(char)*#{char_count} )")
-            int_count += 1
-          elsif param.include?("double") || param.include?("float") then
-            paramSet.concat("(double *) ( VAR_data + sizeof(int)*#{int_count} + sizeof(double)*#{double_count} + sizeof(char)*#{char_count} )")
-            double_count += 1
-          elsif param.include?("char") || param.include?("CHAR") then
-            paramSet.concat("(char *) ( VAR_data + sizeof(int)*#{int_count} + sizeof(double)*#{double_count} + sizeof(char)*#{char_count} )")
-            char_count += 1
-          end
-      # ここまで
-        else #[in]指定子の場合
-          if param.include?("struct") then
-            paramSet.concat("&arguments[#{idx}].data.mem_#{param.sub(/\*/, '_buf').sub('const ', '').sub('struct ', '')}")
+          if func.get_return_type.get_type_str.include?("void") then
+            exp_val = ""
+          elsif func.get_return_type.get_type_str.include?("double") || func.get_return_type.get_type_str.include?("float") then
+            exp_val = "exp_val->" + "data.mem_#{func.get_return_type.get_type_str.sub(/\*/, '_buf').sub('const ', '').sub('struct ', '').sub('32_t', '').sub('64_t', '')}"
           else
-            if param.include?("double") || param.include?("float") then
-              paramSet.concat("arguments[#{idx}].data.mem_#{param.sub(/\*/, '_buf').sub('const ', '').sub('32_t', '').sub('64_t', '')}")
-            elsif param.include?("char") || param.include?("CHAR") then
-              paramSet.concat("arguments[#{idx}].data.mem_#{param.sub(/\*/, '_buf').sub('const ', '').sub('_t', '')}")
-            else
-#              paramSet.concat("arguments[#{idx}].data.mem_#{param.sub(/\*/, '_buf').sub('const ', '')}")
-              paramSet.concat("boundary[test_count] + boundary_count") ######## ここを編集しています!!!!!
-            end
+            exp_val = "exp_val->" + "data.mem_#{func.get_return_type.get_type_str.sub(/\*/, '_buf').sub('const ', '').sub('struct ', '')}"
           end
+
+          int_count, double_count, char_count = 0, 0, 0
+          n = func.get_paramlist.get_items.length
+          func.get_paramlist.get_items.each_with_index { |paramDecl, idx|
+            param = paramDecl.get_type.get_type_str # paramにはテストする関数の引数の型が入っている (例：int32_tなど)
+            if param.include?("*") && !param.include?("const") then # paramが[out]指定子付きと判断
+              if param.include?("int") || param.include?("INT") || param.include?("short") ||\
+                 param.include?("SHORT") || param.include?("long") || param.include?("LONG") then
+                paramSet.concat("(int *) ( VAR_data + sizeof(int)*#{int_count} + sizeof(double)*#{double_count} + sizeof(char)*#{char_count} )")
+                int_count += 1
+              elsif param.include?("double") || param.include?("float") then
+                paramSet.concat("(double *) ( VAR_data + sizeof(int)*#{int_count} + sizeof(double)*#{double_count} + sizeof(char)*#{char_count} )")
+                double_count += 1
+              elsif param.include?("char") || param.include?("CHAR") then
+                paramSet.concat("(char *) ( VAR_data + sizeof(int)*#{int_count} + sizeof(double)*#{double_count} + sizeof(char)*#{char_count} )")
+                char_count += 1
+              end
+            # ここまで
+            else #[in]指定子の場合
+              if param.include?("struct") then
+                paramSet.concat("&arguments[#{idx}].data.mem_#{param.sub(/\*/, '_buf').sub('const ', '').sub('struct ', '')}")
+              else
+                if param.include?("double") || param.include?("float") then
+                  paramSet.concat("arguments[#{idx}].data.mem_#{param.sub(/\*/, '_buf').sub('const ', '').sub('32_t', '').sub('64_t', '')}")
+                elsif param.include?("char") || param.include?("CHAR") then
+                  paramSet.concat("arguments[#{idx}].data.mem_#{param.sub(/\*/, '_buf').sub('const ', '').sub('_t', '')}")
+                else
+#                 paramSet.concat("arguments[#{idx}].data.mem_#{param.sub(/\*/, '_buf').sub('const ', '')}")
+                  paramSet.concat("boundary[test_count] + boundary_count") ######## ここを編集しています!!!!!
+                end
+              end
+            end
+            if idx + 1 < n then
+              paramSet.concat(", ")
+            end
+          }
+
+          print_BVT_call_desc( file, func.get_name.to_s, exp_val, signature, paramSet, int_count, double_count, char_count, flag )
+          flag = false
         end
-        if idx + 1 < n then
-          paramSet.concat(", ")
-        end
-      }
-      print_BVT_call_desc( file, func.get_name.to_s, exp_val, signature, paramSet, int_count, double_count, char_count, flag )
-      flag = false
+      end
     }
   end
 
   def print_BVT_call_desc( file, f_name, exp_val, signature, paramSet, int_count, double_count, char_count, flag )
+
+
+    # p @test_case["target1"]["function"]
+    # p f_name
+
+    # if @test_case["target"+@test_case_function_number.to_s]["function"] == f_name then
+    #   if @boundary_flag[@test_case_function_number-1] == 0
+    # end
+
+
+
     if flag then
       file.print <<EOT
       if( !strcmp( function_path, "#{f_name}") ){
