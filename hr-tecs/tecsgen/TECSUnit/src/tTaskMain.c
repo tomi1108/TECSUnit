@@ -203,7 +203,7 @@ void
 eBody_main(CELLIDX idx)
 {
     CELLCB  *p_cellcb;
-    ER      ercd, ercd2;
+    ER      ercd, ercd2, ercd3;
     uint32_t  n;
     Descriptor( nTECSInfo_sNamespaceInfo ) NSdesc;
     Descriptor( nTECSInfo_sRegionInfo )    RGNdesc;
@@ -218,7 +218,7 @@ eBody_main(CELLIDX idx)
     /* ここに処理本体を記述します #_TEFB_# */
     struct tecsunit_obj arguments[ATTR_ARG_DIM]; /* せるTaskMainの持つ属性ARG_DIM = 32 / 多分引数に関する32個の構造体*/
     struct tecsunit_obj exp_val; /* 期待値に関する構造体 */
-    int boundary[2];
+    int boundary[ATTR_BOUNDARY_DIM], EP_boundary[ATTR_BOUNDARY_DIM];
     int i, j, arg_num, flag = 0;
 
     ercd = cJSMN_json_open();
@@ -289,6 +289,12 @@ eBody_main(CELLIDX idx)
         if( ercd2 == -1 ) return;
 
         cUnit_boundary_value_test( VAR_cell_path, VAR_entry_path, VAR_signature_path, VAR_function_path, boundary, &exp_val );
+        printf("\n\n");
+
+        ercd3 = cJSMN_json_parse_EP_boundary( &EP_boundary, j, ATTR_NAME_LEN );
+        if ( ercd3 == -1 ) return;
+
+        cUnit_equivalence_partitioning_test( VAR_cell_path, VAR_entry_path, VAR_signature_path, VAR_function_path, EP_boundary, &exp_val );
         printf("\n\n");
 
         if( ercd == 2 ){

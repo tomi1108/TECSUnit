@@ -1,18 +1,20 @@
 {
   "target1":{
-    "cell":"Tample",
-    "entry":"eHello",
-    "function":"Hello",
-    "argument":[2], 
-    "boundary_val":[0,10], 
-    "exp_val":0
-  },
-  "target2":{
     "cell":"Sample",
     "entry":"eEnt",
     "function":"BoundarySample",
     "argument":[2], 
     "boundary_val":[0,100], 
+    "EP_boundary_val":[0,100],
+    "exp_val":0
+  },
+  "target2":{
+    "cell":"Sample",
+    "entry":"eEnt",
+    "function":"sayHello",
+    "argument":[2], 
+    "boundary_val":[0,10],
+    "EP_boundary_val":[10,0], 
     "exp_val":0
   }
 }

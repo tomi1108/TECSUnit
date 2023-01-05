@@ -77,6 +77,7 @@ celltype tJSMN {
     char_t *key_pre_cond = "pre_cond";
     char_t *key_post_cond = "post_cond";
     char_t *key_boundary = "boundary_val";
+    char_t *key_EP_boundary = "EP_boundary_val";
   };
   var {
     [size_is(LEN)]
@@ -87,6 +88,8 @@ celltype tJSMN {
       char_t  *target_path;
 
     int counter = 0; // targetの数を数える
+    int BVT_counter = 0;
+    int EPT_counter = 0;
   };
 };
 EOT
@@ -111,6 +114,9 @@ EOT
     end
     if func_name.to_s == "json_parse_boundary" then
         print_parse_boundary( file, Namespace.get_root )
+    end
+    if func_name.to_s == "json_parse_EP_boundary" then
+        print_parse_EP_boundary( file, Namespace.get_root )
     end
   end
 
@@ -244,6 +250,8 @@ ER    ercd = E_OK;
                     }
                     i += 1; // 最後には配列を抜ける
                 }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_boundary ) == 0 ){
+                    i += 4;
+                }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_EP_boundary ) == 0 ){
                     i += 4;
                 }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_exp ) == 0 ){
                     i += 2; /* ignore */
@@ -442,6 +450,8 @@ EOT
                     i += 1; // 最後には配列を抜ける
                 }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_boundary) == 0 ){
                     i+= 4;
+                }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_EP_boundary) == 0 ){
+                    i += 4;
                 /* 期待値 */
                 }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_exp ) == 0 ){
                     if( t[i+1].type == JSMN_ARRAY ){
@@ -765,12 +775,14 @@ EOT
                 strcpy_n( VAR_tmp_str, t[i].end - t[i].start, VAR_json_str + t[i].start );
                 boundary[1] = atoi( VAR_tmp_str );
                 i += 1; /* 配列を抜ける */
-            }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_boundary ) == 0 ){
+            }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_EP_boundary ) == 0 ){
+                i += 4;
+            }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_exp) == 0 ){
                 i += 2;
             }
         }
-        VAR_counter += 1;
-        if( VAR_counter >= t[0].size ){
+        VAR_BVT_counter += 1;
+        if( VAR_BVT_counter >= t[0].size ){
             return 2; /* もしかしたらtarget2以降があっても終了しちゃうかも */
         }
         return 0;
@@ -778,6 +790,106 @@ EOT
   }
   return 1;
 
+EOT
+  end
+
+  def print_parse_EP_boundary( file, namespace )
+    file.print <<EOT
+  CELLCB *p_cellcb;
+  if(VALID_IDX(idx)) {
+    p_cellcb = GET_CELLCB(idx);
+  }
+  else {
+    /* エラー処理コードをここに記述します */
+  } /* end if VALID_IDX(idx) */
+
+  int r, i, j, k, l, m, n, arg_size, EP_size;
+  jsmn_parser p;
+  jsmntok_t t[128];
+  char target_path[10];
+
+  sprintf( target_path, "target%d", target_num );
+
+  jsmn_init(&p);
+  r = jsmn_parse( &p, VAR_json_str, strlen(VAR_json_str), t, sizeof(t)/sizeof(t[0]) );
+  if(r < 0){
+    printf( "Failed to parse JSON: %d\\n", r );
+    return -1;
+  }
+
+  if( r < 1 || t[0].type != JSMN_OBJECT ){
+  printf( "Object expected" );
+  return -1;
+  }
+
+  for( l = 1; l < r; l++ ){
+    if( jsoneq(VAR_json_str, &t[l], target_path) == 0 ){
+      if( t[l+1].type != JSMN_OBJECT ){
+        printf("Object expected for target\\n");
+        return -1;
+      }
+      i = l + 2;
+      for( k = 0; k < t[l+1].size; k++ ){
+        if( jsoneq( VAR_json_str, &t[i], ATTR_key_cell ) == 0 ){
+            i += 2;
+        }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_entry ) == 0 ){
+            i += 2;
+        }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_function ) == 0 ){
+            i += 2;
+        }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_arg ) == 0 ){
+          i += 1;
+          arg_size = t[i].size;
+          for( j = 0; j < arg_size; j++ ){
+            i += 1;
+          } /* 本当は色々なパターンを考慮した形にしたほうが良いけど、今は無視する */
+          i += 1; /* 配列を抜ける */
+        }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_boundary ) == 0 || jsoneq( VAR_json_str, &t[i], ATTR_key_EP_boundary) == 0 ){
+          if( jsoneq(VAR_json_str, &t[i], ATTR_key_boundary ) == 0 ){
+              i += 1;
+              if( t[i].type == JSMN_ARRAY ){
+                  if( t[i].size == 2 ) {
+                      i += 2; /* boundary_valの対象先が正しく配列であり、その要素数が2なら飛ばす */
+                  } else {
+                      printf("ERROR: boundary_val\\n");
+                      return -1;
+                  }
+              } else {
+                  printf("ERROR: boundary_val\\n");
+                  return -1;
+              }
+              i += 1; /* 配列を抜ける */
+          }else if( jsoneq(VAR_json_str, &t[i], ATTR_key_EP_boundary ) == 0 ){
+            i += 1;
+            if( t[i].type == JSMN_ARRAY ){
+                EP_size = t[i].size;
+                if( EP_size > 0 ){
+                    for( n = 0; n < EP_size; n++ ) {
+                        i += 1;
+                        strcpy_n( VAR_tmp_str, t[i].end - t[i].start, VAR_json_str + t[i].start );
+                        EP_boundary[n] = atoi( VAR_tmp_str );
+                    }
+                } else {
+                    printf("ERROR: EP_boundary_val\\n"); /* 境界を示す配列の要素が0 */
+                    return -1;
+                }
+            } else {
+                printf("ERROR: EP_boundary_val\\n"); /* EP_boundary_valが示す先が配列じゃない */
+                return -1;
+            }
+            i += 1; /* 配列を抜ける */
+          }
+        }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_exp ) == 0 ){
+            i += 2;
+        }
+      }
+      VAR_EPT_counter += 1;
+      if( VAR_EPT_counter >= t[0].size ){
+        return 2;
+      }
+      return 0;
+    }
+  }
+  return 1;
 EOT
   end
 

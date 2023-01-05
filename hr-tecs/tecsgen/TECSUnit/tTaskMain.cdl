@@ -30,6 +30,7 @@ celltype tTaskMain {
         int16_t ARG_NAME_LEN = 128;
         int16_t ARG_DIM = 32;
         int16_t COND_DIM = 8;
+        int16_t BOUNDARY_DIM = 8;
         int16_t TARGET_NUM = 100;
     };
     var{
