@@ -529,28 +529,41 @@ EOT
           sig.get_namespace_path.to_s =~ /::sMalloc/ then
       else
 
-        if flag then
-          flag = false
-          file.print <<EOT
+        sig.get_function_head_array.each{ |func|
+          for i in 1..@test_case.length do
+            if func.get_name.to_s == @test_case["target"+i.to_s]["function"] then
+              signature_checker = 1
+              break
+            end
+          end
+
+          if signature_checker == 1 then
+            if flag then
+              flag = false
+              file.print <<EOT
   if( !strcmp(signature_path, "#{sig.get_name}" ) ){
     setRawEntryDescriptor( #{sig.get_name[1..-1]}Desc, #{sig.get_name}, rawDesc );
     c#{sig.get_name[1..-1]}_set_descriptor( #{sig.get_name[1..-1]}Desc );
 EOT
-          print_BVT_branch_func( file, sig )
-          file.print <<EOT
+              print_BVT_branch_func( file, sig )
+              file.print <<EOT
   }
 EOT
-        else
-          file.print <<EOT
+            else
+              file.print <<EOT
   else if( !strcmp(signature_path, "#{sig.get_name}") ){
     setRawEntryDescriptor( #{sig.get_name[1..-1]}Desc, #{sig.get_name}, rawDesc );
     c#{sig.get_name[1..-1]}_set_descriptor( #{sig.get_name[1..-1]}Desc );
 EOT
-          print_BVT_branch_func( file, sig )
-          file.print <<EOT
+              print_BVT_branch_func( file, sig )
+              file.print <<EOT
   }
 EOT
-        end
+            end
+            signature_checker = 0
+            break
+          end
+        }
       end
       }
   end
@@ -617,7 +630,6 @@ EOT
               paramSet.concat(", ")
             end
           }
-
           print_BVT_call_desc( file, func.get_name.to_s, exp_val, signature, paramSet, int_count, double_count, char_count, flag )
           flag = false
         end
