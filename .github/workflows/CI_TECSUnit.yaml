@@ -31,3 +31,10 @@ jobs:
         run: |
           cd hr-tecs/tecsgen/TECSUnit
           ./TECSUnit.exe
+          
+      - name: Publish Test Report
+        uses: mikepenz/action-junit-report@v3
+        if: always()
+        with:
+          report_paths: '**/junit-reports/TEST-*.xml'
+          
