@@ -24,6 +24,7 @@ jobs:
     needs: make
     runs-on: ubuntu-20.04
     steps:
+      - uses: actions/checkout@v3
       - name: execution
         run: |
           cd hr-tecs/tecsgen/TECSUnit
