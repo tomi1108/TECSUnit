@@ -12,6 +12,11 @@ jobs:
           cd hr-tecs/tecsgen
           echo "TECSPATH=$PWD/tecsgen/tecs" >> $GITHUB_ENV
       
+      - name: make tecs
+        run: |
+          cd hr-tecs/tecsgen/TECSUnit
+          make tecs
+      
       - name: make
         run: |
           cd hr-tecs/tecsgen/TECSUnit
