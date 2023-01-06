@@ -26,6 +26,5 @@ jobs:
     steps:
       - name: execution
         run: |
-          cd hr-tecs/tecsgen/TECSUnit
-          ./TECSUnit.exe >> $GITHUB_STEP_SUMMARY
+          ls
           
