@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   TECSUnit:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
       - name: set env
@@ -12,6 +12,16 @@ jobs:
           cd hr-tecs/tecsgen
           echo "TECSPATH=$PWD/tecsgen/tecs" >> $GITHUB_ENV
       
+      - name: test
+        run: |
+          cd hr-tecs/tecsgen/TECSUnit
+          echo "hello"
+      
+      - name: make tecs
+        run: |
+          cd hr-tecs/tecsgen/TECSUnit
+          make tecs
+          
       - name: make
         run: |
           cd hr-tecs/tecsgen/TECSUnit
@@ -20,5 +30,5 @@ jobs:
       - name: exe
         run: |
           cd hr-tecs/tecsgen/TECSUnit
-          ./TECSUnit.exe
+          ./TECSUnit.exe >> $GITHUB_STEP_SUMMARY
           
