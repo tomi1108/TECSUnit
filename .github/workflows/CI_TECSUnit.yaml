@@ -19,14 +19,15 @@ jobs:
         run: |
           cd hr-tecs/tecsgen/TECSUnit
           make
-          
-  execution:
-    needs: make
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v3
+      
       - name: execution
         run: |
           cd hr-tecs/tecsgen/TECSUnit
-          ls
+          ./TECSUnit.exe
+          
+      - name: coverage
+        run: |
+          cd hr-tecs/tecsgen/TECSUnit
+          gcov gen/*.gcda
+          cat *.gcov >> $GITHUB_STEP_SUMMARY
           
