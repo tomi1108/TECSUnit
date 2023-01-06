@@ -263,7 +263,7 @@ eBody_main(CELLIDX idx)
         }
         printf( "- Celltype: \"%s\"\n", VAR_celltype_path );
         printf( "- Signature: \"%s\"\n", VAR_signature_path );
-        printf( "- # of arg: %d\n", VAR_arg_num );
+        printf( "- number of arg: %d\n", VAR_arg_num );
 
         for( i = 0; i < VAR_arg_num; i++ ){
             printf( "  %d %s %s\n", i+1, VAR_arg_type[i], VAR_arg[i] );
