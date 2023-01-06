@@ -26,5 +26,6 @@ jobs:
     steps:
       - name: execution
         run: |
+          cd hr-tecs/tecsgen/TECSUnit
           ls
           
