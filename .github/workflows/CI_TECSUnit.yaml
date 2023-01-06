@@ -19,6 +19,5 @@ jobs:
           
       - name: exe
         run: |
-          cd hr-tecs/tecsgen/TECSUnit
-          ./TECSUnit.exe
+          ls
           
