@@ -1,6 +1,9 @@
 name: CI_TECSUnit
 
-on: [push]
+on:
+  push:
+    branches:
+      - workspace
 
 jobs:
   make:
@@ -16,8 +19,10 @@ jobs:
         run: |
           cd hr-tecs/tecsgen/TECSUnit
           make
-    
+          
   execution:
+    needs: make
+    runs-on: ubuntu-20.04
     steps:
       - name: execution
         run: |
