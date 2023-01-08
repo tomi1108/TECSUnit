@@ -24,10 +24,15 @@ jobs:
         run: |
           cd hr-tecs/tecsgen/TECSUnit
           ./TECSUnit.exe
+      
+      - name: test result
+        run: |
+          cd hr-tecs/tecsgen/TECSUnit
+          cat test_result.txt >> $GITHUB_STEP_SUMMARY
           
       - name: coverage
         run: |
           cd hr-tecs/tecsgen/TECSUnit
-          gcov gen/*.gcda
-          cat *.gcov >> $GITHUB_STEP_SUMMARY
+          gcov gen/*.gcda >> $GITHUB_STEP_SUMMARY
+          cat *.gcov
           
