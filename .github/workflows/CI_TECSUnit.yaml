@@ -1,9 +1,12 @@
 name: CI_TECSUnit
 
-on: [push]
+on:
+  push:
+    branches:
+      - workspace
 
 jobs:
-  TECSUnit:
+  make:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
@@ -11,24 +14,20 @@ jobs:
         run: |
           cd hr-tecs/tecsgen
           echo "TECSPATH=$PWD/tecsgen/tecs" >> $GITHUB_ENV
-      
-      - name: test
-        run: |
-          cd hr-tecs/tecsgen/TECSUnit
-          echo "hello"
-      
-      - name: make tecs
-        run: |
-          cd hr-tecs/tecsgen/TECSUnit
-          make tecs
           
       - name: make
         run: |
           cd hr-tecs/tecsgen/TECSUnit
           make
-          
-      - name: exe
+      
+      - name: execution
         run: |
           cd hr-tecs/tecsgen/TECSUnit
-          ./TECSUnit.exe >> $GITHUB_STEP_SUMMARY
+          ./TECSUnit.exe
+          
+      - name: coverage
+        run: |
+          cd hr-tecs/tecsgen/TECSUnit
+          gcov gen/*.gcda
+          cat *.gcov >> $GITHUB_STEP_SUMMARY
           
