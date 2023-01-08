@@ -220,10 +220,18 @@ eBody_main(CELLIDX idx)
     struct tecsunit_obj exp_val; /* 期待値に関する構造体 */
     int boundary[ATTR_BOUNDARY_DIM], EP_boundary[ATTR_BOUNDARY_DIM];
     int i, j, arg_num, flag = 0;
+    FILE *fp;
+
+    if( ( fp = fopen("test_result.txt", "w") ) == NULL ) {
+        printf("Failed to opne file\n");
+        return;
+    }
 
     ercd = cJSMN_json_open();
     if( ercd != E_OK ) return;
      /* 正しくcJSMN_json_parseが終了すれば続ける / たぶんセルJSMNのセル変数json_strにテストケースが文字列として格納される */
+
+    strcpy(VAR_result_str, "\n| test method | target function | result |\n|---|---|---|\n");
 
     /* j = 1~ATTR_TARGET_NUM(100) */
     for( j = 1; j < ATTR_TARGET_NUM + 1 ; j++ ) {
@@ -282,7 +290,7 @@ eBody_main(CELLIDX idx)
             printf( "You expected %d arguments. Function \"%s\" has %d arguments\n",
                 arg_num, VAR_function_path, VAR_arg_num );
         }
-        cUnit_main( VAR_cell_path, VAR_entry_path, VAR_signature_path, VAR_function_path, arguments, &exp_val );
+        cUnit_main( VAR_cell_path, VAR_entry_path, VAR_signature_path, VAR_function_path, VAR_result_str, arguments, &exp_val );
         printf("\n");
 
         ercd2 = cJSMN_json_parse_boundary( &boundary, j, ATTR_NAME_LEN );
@@ -299,6 +307,8 @@ eBody_main(CELLIDX idx)
 
         if( ercd == 2 ){
             printf( "All targets are checked\n" );
+            fprintf(fp, VAR_result_str);
+            fclose(fp);
             return;
         }
     }
@@ -308,6 +318,8 @@ eBody_main(CELLIDX idx)
         printf( "Error: Too many targets or keyword is wrong.\n" );
         printf( "Keyword is \"target#\" and keep the target number 1 ~ %d\n", ATTR_TARGET_NUM );
     }
+    // fputs(fp, VAR_result_str);
+    fclose(fp);
 }
 
 /* #[<POSTAMBLE>]#

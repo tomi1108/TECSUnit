@@ -15,6 +15,7 @@ signature sTECSUnit {
                 [in,string] const char_t *entry_path,
                 [in,string] const char_t *signature_path,
                 [in,string] const char_t *function_path,
+                [out,string] char_t *result_str, 
                 [in] const struct tecsunit_obj *arguments,
                 [in] const struct tecsunit_obj *exp_val
                 );

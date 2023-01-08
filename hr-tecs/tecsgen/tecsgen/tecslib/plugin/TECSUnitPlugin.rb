@@ -186,9 +186,8 @@ EOT
   else {
     /* エラー処理をここに記述します */
   } /* end if VALID_IDX(idx) */
-  puts("");
-  printf("--- TECSUnit ---" );
-  puts("");
+
+  printf("\\n--- TECSUnit ---\\n" );
   void *rawDesc;
 EOT
     # 1.descriptorの記述
@@ -383,9 +382,15 @@ EOT
         if( #{exp_val} == c#{signature.get_name[1..-1]}_#{f_name}( #{paramSet} ) ){
 /*            return 0; */
             printf("\\nResult：OK\\n");
+            printf("[ Expected result ]\\n");
+            strcat(result_str, "| Arg Test | #{signature.get_name[1..-1]}_#{f_name} | passed |\\n|---|---|---|\\n");
+            puts(result_str);
         }else{
 /*            return -1; */
             printf("\\nResult：NG\\n");
+            printf("[ Unexpected result ]\\n");
+            strcat(result_str, "| Arg Test | #{signature.get_name[1..-1]}_#{f_name} | failed |\\n|---|---|---|\\n");
+            puts(result_str);
         }
 EOT
     end
@@ -489,6 +494,9 @@ EOT
   } /* end if VALID_IDX(idx) */
 
   int i;
+  int count = 0;
+  int result_count[6] = { 0, 0, 0, 0, 0, 0 };
+  int expect_result[6] = { 0, 1, 1, 1, 1, 0 };
   printf("\\n--- Boundary Value Test ---\\n\\n");
   for( i = 0; i < 2; i++ ){
     printf("boundary%d = %d\\n", i+1, boundary[i]);
@@ -670,9 +678,22 @@ EOT
           /*  if( #{exp_val} == c#{signature.get_name[1..-1]}_#{f_name}( boundary[test_count] + boundary_count ) ){ */
             if( #{exp_val} == c#{signature.get_name[1..-1]}_#{f_name}( #{paramSet} ) ){
               printf("[Result : OK]\\n");
+              result_count[count] = 1;
             }else{
               printf("[Result : NG]\\n");
+              result_count[count] = 0;
             }
+            count += 1;
+          }
+        }
+        for( count = 0; count < 6; count++ ){
+          if( result_count[count] == expect_result[count] ){
+            if ( count == 5 ){
+              printf("[ Expected result ]\\n");
+            }
+          } else {
+            printf("[ Unexpected result ]\\n");
+            break;
           }
         }
 EOT
@@ -704,6 +725,8 @@ EOT
   } /* end if VALID_IDX(idx) */
 
   int i, j, k, tmp,  standard_val;
+  int result_count[3] = { 0, 0, 0 };
+  int expect_result[3] = { 0, 1, 0 }; 
   int EP_num = sizeof EP_boundary / sizeof EP_boundary[0];
   int EP_boundary_val[EP_num];
   int typical_val[EP_num+1];
@@ -913,8 +936,20 @@ EOT
           printf("\\n[input  : %d]\\n", typical_val[test_count]);
           if( #{exp_val} == c#{signature.get_name[1..-1]}_#{f_name}( #{paramSet} ) ){
             printf("[Result : OK]\\n");
+            result_count[test_count] = 1;
           } else {
-            printf("[Result : NG\\n");
+            printf("[Result : NG]\\n");
+            result_count[test_count] = 0;
+          }
+        }
+        for( int test_count = 0; test_count < EP_num+1; test_count++ ){
+          if( result_count[test_count] == expect_result[test_count] ){
+            if( test_count == EP_num ){
+              printf("[ Expected result ]\\n");
+            }
+          } else {
+            printf("[ Unexpected result ]\\n");
+            break;
           }
         }
 EOT

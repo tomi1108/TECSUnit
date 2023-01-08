@@ -32,6 +32,7 @@ celltype tTaskMain {
         int16_t COND_DIM = 8;
         int16_t BOUNDARY_DIM = 8;
         int16_t TARGET_NUM = 100;
+        int16_t RESULT_LEN = 1024;
     };
     var{
         [size_is(NAME_LEN)]
@@ -51,6 +52,8 @@ celltype tTaskMain {
         int8_t arg_num;
         [size_is(NAME_LEN)]
             char_t *exp_type;
+        [size_is(RESULT_LEN)]
+            char_t *result_str;
         char_t  arg[32][128];
         char_t  arg_type[32][128];
 

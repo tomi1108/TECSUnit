@@ -4,7 +4,7 @@
     "entry":"eEnt",
     "function":"BoundarySample",
     "argument":[2], 
-    "boundary_val":[0,100], 
+    "boundary_val":[1,99], 
     "EP_boundary_val":[0,100],
     "exp_val":0
   },
@@ -13,7 +13,7 @@
     "entry":"eEnt",
     "function":"sayHello",
     "argument":[2], 
-    "boundary_val":[0,10],
+    "boundary_val":[1,9],
     "EP_boundary_val":[10,0], 
     "exp_val":0
   }
