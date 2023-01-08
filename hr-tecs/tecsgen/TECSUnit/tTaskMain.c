@@ -231,7 +231,7 @@ eBody_main(CELLIDX idx)
     if( ercd != E_OK ) return;
      /* 正しくcJSMN_json_parseが終了すれば続ける / たぶんセルJSMNのセル変数json_strにテストケースが文字列として格納される */
 
-    strcpy(VAR_result_str, "\n| test method | target function | result |\n|---|---|---|\n");
+    strcpy(VAR_result_str, "\n| Test Method | Target Function | Result |\n|---|---|---|\n");
 
     /* j = 1~ATTR_TARGET_NUM(100) */
     for( j = 1; j < ATTR_TARGET_NUM + 1 ; j++ ) {
