@@ -33,7 +33,7 @@ jobs:
       - name: coverage
         run: |
           cd hr-tecs/tecsgen/TECSUnit
-          gcov gen/*.gcda >> coverage_results.txt
+          gcov -f gen/*.gcda >> coverage_results.txt
           ruby coverage_results.rb >> $GITHUB_STEP_SUMMARY
           cat *.gcov
           
