@@ -1,0 +1,15 @@
+# Celltype: tTask  #_MDEP_#
+$(_TECS_OBJ_DIR)tTask_tecsgen.o : tTask_tecsgen.c  $(GEN_DIR)/tSample_tecsgen.h  $(GEN_DIR)/tSimple_tecsgen.h $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/sTaskBody_tecsgen.h $(GEN_DIR)/sTaskExceptionBody_tecsgen.h $(GEN_DIR)/sTask_tecsgen.h $(GEN_DIR)/tTask_factory.h $(GEN_DIR)/tTask_tecsgen.h tTask_inline.h
+$(_TECS_OBJ_DIR)tTask_templ.o : tTask_templ.c  $(GEN_DIR)/tSample_tecsgen.h  $(GEN_DIR)/tSimple_tecsgen.h $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/sTaskBody_tecsgen.h $(GEN_DIR)/sTaskExceptionBody_tecsgen.h $(GEN_DIR)/sTask_tecsgen.h $(GEN_DIR)/tTask_factory.h $(GEN_DIR)/tTask_tecsgen.h tTask_inline.h
+$(_TECS_OBJ_DIR)tTask.o : tTask.c  $(GEN_DIR)/tSample_tecsgen.h  $(GEN_DIR)/tSimple_tecsgen.h $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/sTaskBody_tecsgen.h $(GEN_DIR)/sTaskExceptionBody_tecsgen.h $(GEN_DIR)/sTask_tecsgen.h $(GEN_DIR)/tTask_factory.h $(GEN_DIR)/tTask_tecsgen.h tTask_inline.h
+
+# Celltype: tSample  #_MDEP_#
+$(_TECS_OBJ_DIR)tSample_tecsgen.o : tSample_tecsgen.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/sSample_tecsgen.h $(GEN_DIR)/tSample_factory.h $(GEN_DIR)/tSample_tecsgen.h
+$(_TECS_OBJ_DIR)tSample_templ.o : tSample_templ.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/sSample_tecsgen.h $(GEN_DIR)/tSample_factory.h $(GEN_DIR)/tSample_tecsgen.h
+$(_TECS_OBJ_DIR)tSample.o : tSample.c $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/sSample_tecsgen.h $(GEN_DIR)/tSample_factory.h $(GEN_DIR)/tSample_tecsgen.h
+
+# Celltype: tSimple  #_MDEP_#
+$(_TECS_OBJ_DIR)tSimple_tecsgen.o : tSimple_tecsgen.c  $(GEN_DIR)/tSample_tecsgen.h $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/sSample_tecsgen.h $(GEN_DIR)/sTaskBody_tecsgen.h $(GEN_DIR)/tSimple_factory.h $(GEN_DIR)/tSimple_tecsgen.h
+$(_TECS_OBJ_DIR)tSimple_templ.o : tSimple_templ.c  $(GEN_DIR)/tSample_tecsgen.h $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/sSample_tecsgen.h $(GEN_DIR)/sTaskBody_tecsgen.h $(GEN_DIR)/tSimple_factory.h $(GEN_DIR)/tSimple_tecsgen.h
+$(_TECS_OBJ_DIR)tSimple.o : tSimple.c  $(GEN_DIR)/tSample_tecsgen.h $(GEN_DIR)/global_tecsgen.h $(GEN_DIR)/sSample_tecsgen.h $(GEN_DIR)/sTaskBody_tecsgen.h $(GEN_DIR)/tSimple_factory.h $(GEN_DIR)/tSimple_tecsgen.h
+
