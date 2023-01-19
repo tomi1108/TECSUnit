@@ -39,6 +39,8 @@ jobs:
       
       - name: Convert SUMMARY to HTML
         run: |
+          sudo apt-get install pandoc
+          pandoc --version
           pandoc -s -o SUMMARY.html hr-tecs/tecsgen/TECSUnit/SUMMARY.md
           sed -i 's/<td>/<td bgcolor="lightgreen">/g' SUMMARY.html
           
