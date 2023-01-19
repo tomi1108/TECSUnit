@@ -28,13 +28,13 @@ jobs:
       - name: test result
         run: |
           cd hr-tecs/tecsgen/TECSUnit
-          cat test_result.txt >> $GITHUB_STEP_SUMMARY
+          cat test_result.txt >> SUMMARY.md
           
       - name: coverage
         run: |
           cd hr-tecs/tecsgen/TECSUnit
           gcov -f gen/*.gcda >> coverage_results.txt
-          ruby coverage_results.rb >> $GITHUB_STEP_SUMMARY
+          ruby coverage_results.rb >> SUMMARY.md
           cat *.gcov
       
       - name: Convert SUMMARY to HTML
