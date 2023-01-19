@@ -12,3 +12,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      
+      - name: Environment
+        run: |
+          cd hr-tecs/tecsgen/
+          source set_env.sh
+      
+      - name: Build & Test
+        run: |
+          cd hr-tecs/tecsgen/TECSUnit
+          make tecs
+          make
+          ./TECSUnit.exe
