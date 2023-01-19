@@ -36,4 +36,15 @@ jobs:
           gcov -f gen/*.gcda >> coverage_results.txt
           ruby coverage_results.rb >> $GITHUB_STEP_SUMMARY
           cat *.gcov
+      
+      - name: Convert SUMMARY to HTML
+        run: |
+          pandoc -s -o SUMMARY.html SUMMARY.md
+          sed -i 's/<td>/<td bgcolor="lightgreen">/g' SUMMARY.html
+          
+      - name: Deploy HTML file
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
           
