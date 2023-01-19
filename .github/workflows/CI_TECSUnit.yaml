@@ -39,7 +39,7 @@ jobs:
       
       - name: Convert SUMMARY to HTML
         run: |
-          pandoc -s -o SUMMARY.html SUMMARY.md
+          pandoc -s -o SUMMARY.html hr-tecs/tecsgen/TECSUnit/SUMMARY.md
           sed -i 's/<td>/<td bgcolor="lightgreen">/g' SUMMARY.html
           
       - name: Deploy HTML file
