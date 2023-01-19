@@ -28,25 +28,11 @@ jobs:
       - name: test result
         run: |
           cd hr-tecs/tecsgen/TECSUnit
-          cat test_result.txt >> SUMMARY.md
+          cat test_result.txt >> $GITHUB_STEP_SUMMARY
           
       - name: coverage
         run: |
           cd hr-tecs/tecsgen/TECSUnit
           gcov -f gen/*.gcda >> coverage_results.txt
-          ruby coverage_results.rb >> SUMMARY.md
+          ruby coverage_results.rb >> $GITHUB_STEP_SUMMARY
           cat *.gcov
-      
-      - name: Convert SUMMARY to HTML
-        run: |
-          sudo apt-get install pandoc
-          pandoc --version
-          pandoc -s -o SUMMARY.html hr-tecs/tecsgen/TECSUnit/SUMMARY.md
-          sed -i 's/<td>/<td bgcolor="lightgreen">/g' SUMMARY.html
-          
-      - name: Deploy HTML file
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
-          
