@@ -16,7 +16,7 @@ jobs:
       - name: Environment
         run: |
           cd hr-tecs/tecsgen/
-          source set_env.sh
+          echo "TECSPATH=$PWD/tecsgen/tecs" >> $GITHUB_ENV
       
       - name: Build & Test
         run: |
@@ -24,3 +24,13 @@ jobs:
           make tecs
           make
           ./TECSUnit.exe
+      
+      - name: Convert to JUnit format
+        run: tecsunit-to-junit < test-result.xml > test-result.junit.xml
+      
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@releaes/v3
+        with:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: test-results
