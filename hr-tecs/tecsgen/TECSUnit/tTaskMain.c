@@ -219,7 +219,8 @@ eBody_main(CELLIDX idx)
     struct tecsunit_obj arguments[ATTR_ARG_DIM]; /* せるTaskMainの持つ属性ARG_DIM = 32 / 多分引数に関する32個の構造体*/
     struct tecsunit_obj exp_val; /* 期待値に関する構造体 */
     int boundary[ATTR_BOUNDARY_DIM], EP_boundary[ATTR_BOUNDARY_DIM];
-    int i, j, arg_num, flag = 0;
+    int i, j, k, arg_num, flag = 0;
+
     FILE *fp;
 
     if( ( fp = fopen("test_result.txt", "w") ) == NULL ) {
@@ -241,7 +242,6 @@ eBody_main(CELLIDX idx)
         memset( arguments, 0 , sizeof(arguments) );
         memset( VAR_arg, 0 , sizeof(VAR_arg) );
         memset( VAR_arg_type, 0 , sizeof(VAR_arg_type) );
-
 
         ercd = cJSMN_json_parse_path( VAR_cell_path, VAR_entry_path_tmp, VAR_function_path_tmp, j, ATTR_NAME_LEN );
         if( ercd == 1 ) continue; /* そのtarget#は見つからなかった */
@@ -293,16 +293,16 @@ eBody_main(CELLIDX idx)
         cUnit_main( VAR_cell_path, VAR_entry_path, VAR_signature_path, VAR_function_path, VAR_result_str, arguments, &exp_val );
         printf("\n");
 
-        ercd2 = cJSMN_json_parse_boundary( &boundary, j, ATTR_NAME_LEN );
+        ercd2 = cJSMN_json_parse_boundary( arguments, &exp_val, &arg_num, j, ATTR_NAME_LEN );
         if( ercd2 == -1 ) return;
 
-        cUnit_boundary_value_test( VAR_cell_path, VAR_entry_path, VAR_signature_path, VAR_function_path, VAR_result_str, boundary, &exp_val );
+        cUnit_boundary_value_test( VAR_cell_path, VAR_entry_path, VAR_signature_path, VAR_function_path, VAR_result_str, arguments, &exp_val );
         printf("\n\n");
 
-        ercd3 = cJSMN_json_parse_EP_boundary( &EP_boundary, j, ATTR_NAME_LEN );
+        ercd3 = cJSMN_json_parse_EP_boundary( arguments, &exp_val, &arg_num, j, ATTR_NAME_LEN );
         if ( ercd3 == -1 ) return;
 
-        cUnit_equivalence_partitioning_test( VAR_cell_path, VAR_entry_path, VAR_signature_path, VAR_function_path, VAR_result_str, EP_boundary, &exp_val );
+        cUnit_equivalence_partitioning_test( VAR_cell_path, VAR_entry_path, VAR_signature_path, VAR_function_path, VAR_result_str, arguments, &exp_val );
         printf("\n\n");
 
         if( ercd == 2 ){

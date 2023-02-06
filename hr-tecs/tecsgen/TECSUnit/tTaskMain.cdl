@@ -34,6 +34,7 @@ celltype tTaskMain {
         int16_t TARGET_NUM = 100;
         int16_t RESULT_LEN = 1024;
     };
+
     var{
         [size_is(NAME_LEN)]
             char_t  *cell_path;
@@ -71,10 +72,8 @@ cell tTask Task {
 //    cBody = Simple.eBody;     // この一文の追加でテスト対象をビルドできる
 };
 
-
 [in_through()]
 region rTEMP{
-
     cell tTaskMain TaskMain {
         cTECSInfo  = TECSInfo.eTECSInfo;
         cUnit = TECSUnit.eUnit;

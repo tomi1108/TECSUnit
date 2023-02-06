@@ -1,0 +1,28 @@
+Function 'tSample_eEnt_BoundarySample'
+Lines executed:100.00% of 8
+
+Function 'tSample_eEnt_howAreYou'
+Lines executed:0.00% of 5
+
+Function 'tSample_eEnt_sayHello'
+Lines executed:100.00% of 14
+
+Function 'tSimple_eBody_main'
+Lines executed:0.00% of 8
+
+Function 'tTample_eHello_Hello'
+Lines executed:0.00% of 6
+
+File 'src/tSample.c'
+Lines executed:81.48% of 27
+Creating 'tSample.c.gcov'
+
+File 'src/tSimple.c'
+Lines executed:0.00% of 8
+Creating 'tSimple.c.gcov'
+
+File 'src/tTample.c'
+Lines executed:0.00% of 6
+Creating 'tTample.c.gcov'
+
+Lines executed:53.66% of 41

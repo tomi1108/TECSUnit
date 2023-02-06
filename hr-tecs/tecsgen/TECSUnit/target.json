@@ -1,20 +1,19 @@
 {
   "target1":{
-    "cell":"Sample",
-    "entry":"eEnt",
-    "function":"BoundarySample",
-    "argument":[2], 
-    "EP_boundary_val":[1,99], 
-    "boundary_val":[0,100],
+    "cell":"Tample",
+    "entry":"eHello",
+    "function":"send",
+    "argument":[[1,2,3,1,2,3],5], 
+    "boundary_val":[[1,2,3,1,2,3],["BVT",1,6]],
+    "EP_boundary_val":[[1,2,3],["EPT",1,3]],
     "exp_val":0
-  },
-  "target2":{
-    "cell":"Sample",
-    "entry":"eEnt",
-    "function":"sayHello",
-    "argument":[2], 
-    "boundary_val":[1,9],
-    "EP_boundary_val":[10,0], 
-    "exp_val":0
+  // },
+  // "target2":{
+  //   "cell":"Sample",
+  //   "entry":"eEnt",
+  //   "function":"sayHello",
+  //   "argument":[2], 
+  //   "boundary_val":[1,9],
+  //   "exp_val":0
   }
 }

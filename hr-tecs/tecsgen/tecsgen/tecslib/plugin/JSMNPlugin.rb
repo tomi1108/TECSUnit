@@ -288,26 +288,56 @@ ER    ercd = E_OK;
                         }
                     }
                     i += 1; // 最後には配列を抜ける
-                }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_boundary ) == 0 || jsoneq( VAR_json_str, &t[i], ATTR_key_EP_boundary) == 0 ){
-                    if( jsoneq( VAR_json_str, &t[i], ATTR_key_boundary ) == 0 ){
+                }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_boundary) == 0 ){
+                    i += 1;
+                    arg_size = t[i].size;
+                    for( j = 0; j < arg_size; j++ ){
                         i += 1;
                         if( t[i].type == JSMN_ARRAY ){
-                          i += t[i].size;
-                        } else {
-                          printf("ERROR: boundary_val\\n");
-                          return -1;
+                            array_size = t[i].size;
+                            for( m = 0; m < array_size; m++ ){
+                                i += 1;
+                                if( t[i].size > 1 ){
+                                    i += t[i].size;
+                                }
+                            }
                         }
-                        i += 1; /* 配列を抜ける */
-                    }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_EP_boundary ) == 0 ){
-                        i += 1;
-                        if( t[i].type == JSMN_ARRAY ){
-                          i += t[i].size;
-                        } else {
-                          printf("ERROR: EP_boundary_val\\n");
-                          return -1;
+                        if( t[i].type == JSMN_OBJECT ){
+                            array_size =  t[i].size;
+                            for( m = 0; m < array_size; m++){
+                                i += 2; // member
+                                if( t[i].size > 1 ){
+                                  i += t[i].size;
+                                }
+                            }
                         }
-                        i += 1;
                     }
+                    i += 1;
+                }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_EP_boundary ) == 0 ){
+                    i += 1;
+                    arg_size = t[i].size;
+                    for( j = 0; j < arg_size; j++ ){
+                        i += 1;
+                        if( t[i].type == JSMN_ARRAY ){
+                            array_size = t[i].size;
+                            for( m = 0; m < array_size; m++ ){
+                                i += 1;
+                                if( t[i].size > 1 ){
+                                    i += t[i].size;
+                                }
+                            }
+                        }
+                        if( t[i].type == JSMN_OBJECT ){
+                            array_size =  t[i].size;
+                            for( m = 0; m < array_size; m++){
+                                i += 2; // member
+                                if( t[i].size > 1 ){
+                                  i += t[i].size;
+                                }
+                            }
+                        }
+                    }
+                    i += 1;
                 }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_exp ) == 0 ){
                     i += 2; /* ignore */
                 } else {
@@ -503,26 +533,56 @@ EOT
                         }
                     }
                     i += 1; // 最後には配列を抜ける
-                }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_boundary) == 0 || jsoneq( VAR_json_str, &t[i], ATTR_key_EP_boundary ) == 0 ){
-                    if( jsoneq( VAR_json_str, &t[i], ATTR_key_boundary ) == 0 ){
+                }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_boundary) == 0 ){
+                    i += 1;
+                    arg_size = t[i].size;
+                    for( j = 0; j < arg_size; j++ ){
                         i += 1;
                         if( t[i].type == JSMN_ARRAY ){
-                          i += t[i].size;
-                        } else {
-                          printf("ERROR: boundary_val\\n");
-                          return -1;
+                            array_size = t[i].size;
+                            for( m = 0; m < array_size; m++ ){
+                                i += 1;
+                                if( t[i].size > 1 ){
+                                    i += t[i].size;
+                                }
+                            }
                         }
-                        i += 1; /* 配列を抜ける */
-                    }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_EP_boundary ) == 0 ){
-                        i += 1;
-                        if( t[i].type == JSMN_ARRAY ){
-                          i += t[i].size;
-                        } else {
-                          printf("ERROR: EP_boundary_val\\n");
-                          return -1;
+                        if( t[i].type == JSMN_OBJECT ){
+                            array_size =  t[i].size;
+                            for( m = 0; m < array_size; m++){
+                                i += 2; // member
+                                if( t[i].size > 1 ){
+                                  i += t[i].size;
+                                }
+                            }
                         }
-                        i += 1;
                     }
+                    i += 1;
+                }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_EP_boundary ) == 0 ){
+                    i += 1;
+                    arg_size = t[i].size;
+                    for( j = 0; j < arg_size; j++ ){
+                        i += 1;
+                        if( t[i].type == JSMN_ARRAY ){
+                            array_size = t[i].size;
+                            for( m = 0; m < array_size; m++ ){
+                                i += 1;
+                                if( t[i].size > 1 ){
+                                    i += t[i].size;
+                                }
+                            }
+                        }
+                        if( t[i].type == JSMN_OBJECT ){
+                            array_size =  t[i].size;
+                            for( m = 0; m < array_size; m++){
+                                i += 2; // member
+                                if( t[i].size > 1 ){
+                                  i += t[i].size;
+                                }
+                            }
+                        }
+                    }
+                    i += 1;
                 /* 期待値 */
                 }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_exp ) == 0 ){
                     if( t[i+1].type == JSMN_ARRAY ){
@@ -792,202 +852,595 @@ EOT
 #
 # 境界値を取得する関数を定義
 #
-
   def print_parse_boundary( file, namespace )
-    file.print <<EOT
-  CELLCB  *p_cellcb;
-  if (VALID_IDX(idx)) {
-    p_cellcb = GET_CELLCB(idx);
-  }
-  else {
-    /* エラー処理コードをここに記述します */
-  } /* end if VALID_IDX(idx) */
+    char_list = []
 
-  int r, i, j, k, l;
-  jsmn_parser p;
-  jsmntok_t t[128];
-  char target_path[10];
+    struct_list = []
+    struct_mem = []
+    struct_mem_type = []
+    struct_mem_list = []
+    struct_mem_type_list = []
 
-  sprintf( target_path, "target%d", target_num );
+    arr_list = []
+    out_list = []
+    num_list = []
 
-  jsmn_init(&p);
-  r = jsmn_parse( &p, VAR_json_str, strlen(VAR_json_str), t, sizeof(t)/sizeof(t[0]) );
-  if(r < 0){
-    printf( "Failed to parse JSON: %d", r );
-    return -1;
-  }
-  /* Assume the top-level element is an object */
-  if( r < 1 || t[0].type != JSMN_OBJECT ){
-    printf( "Object expected" );
-    return -1;
-  }
+    ret_type_list = []
 
-  for( l = 1; l < r; l++ ){
-    if( jsoneq(VAR_json_str, &t[l], target_path) == 0 ){
-        if( t[l+1].type != JSMN_OBJECT ){
-            printf("Object expected for target");
-            return -1;
-        }
-        i = l + 2;
-        for( k = 0; k < t[l+1].size; k++ ){
-            if( jsoneq( VAR_json_str, &t[i], ATTR_key_cell ) == 0 ){
-                i += 2; /* ignore */
-            }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_entry ) == 0 ){
-                i += 2; /* ignore */
-            }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_function ) == 0 ){
-                i += 2; /* ignore */
-            }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_arg ) == 0 ){
-                i += 3;
-            }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_boundary ) == 0 ){
-                i += 2; /* 一つ目の境界値 */
-                strcpy_n( VAR_tmp_str, t[i].end - t[i].start, VAR_json_str + t[i].start );
-                boundary[0] = atoi( VAR_tmp_str );
-                i += 1;/* 2つ目の境界値 */
-                strcpy_n( VAR_tmp_str, t[i].end - t[i].start, VAR_json_str + t[i].start );
-                boundary[1] = atoi( VAR_tmp_str );
-                i += 1; /* 配列を抜ける */
-            }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_EP_boundary ) == 0 ){
-                i += 1;
-                if( t[i].type == JSMN_ARRAY ){
-                  i += t[i].size;
-                } else {
-                  printf("ERROR: EP_boundary_val\\n");
-                  return -1;
+    namespace.travers_all_signature{ |sig|
+      # ignnore these signatures (テスト対象外とみなします)
+      if  sig.get_namespace_path.to_s =~ /nTECSInfo::/ || \
+          sig.get_namespace_path.to_s =~ /::s.*Task.*/ || \
+          sig.get_namespace_path.to_s =~ /::sAccessor/ || \
+          sig.get_namespace_path.to_s =~ /::sTECSUnit/ || \
+          sig.get_namespace_path.to_s =~ /::sJSMN/ || \
+          sig.get_namespace_path.to_s =~ /::s.*Kernel/ || \
+          sig.get_namespace_path.to_s =~ /::s.*Semaphore/ || \
+          sig.get_namespace_path.to_s =~ /::s.*Eventflag/ || \
+          sig.get_namespace_path.to_s =~ /::s.*Dataqueue/ || \
+          sig.get_namespace_path.to_s =~ /::sInitialize.*/ || \
+          sig.get_namespace_path.to_s =~ /::s.*VM/ || \
+          sig.get_namespace_path.to_s =~ /::sMain/ || \
+          sig.get_namespace_path.to_s =~ /::s.*Alarm/ || \
+          sig.get_namespace_path.to_s =~ /::sFixedSizeMemoryPool/ || \
+          sig.get_namespace_path.to_s =~ /::sMessageBuffer/ || \
+          sig.get_namespace_path.to_s =~ /::sTerminateRoutineBody/ || \
+          sig.get_namespace_path.to_s =~ /::s.*HandlerBody/ || \
+          sig.get_namespace_path.to_s =~ /::sConfigInterrupt/ || \
+          sig.get_namespace_path.to_s =~ /::sCyclic/ || \
+          sig.get_namespace_path.to_s =~ /::sMalloc/ then
+      else
+        sig.each_param{ |decl, paramDecl| # decl:関数, paramDecl:関数の各引数
+          # 引数の設定
+          param = paramDecl.get_type.get_type_str
+          if param.include?("*") then
+            if param.include?("const") then
+              if param.include?("char") || param.include?("CHAR") then # [in]: char*型
+                if !char_list.include?(param) then
+                  char_list << param
+                end
+              elsif param.include?("struct") then # [in]: struct*型
+                paramDecl.get_type.get_type.get_members_decl.get_items.each { |decl|
+                  struct_mem << decl.get_name.to_s
+                  struct_mem_type << decl.get_type.get_type_str
                 }
-                i += 1;
-            }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_exp) == 0 ){
-                i += 2;
-            }
+                struct_mem_list << struct_mem
+                struct_mem_type_list << struct_mem_type
+                struct_mem = [] # リセット
+                struct_mem_type = [] # リセット
+                if !struct_list.include?(param) then
+                  struct_list << param
+                end
+              else
+                if !arr_list.include?(param) then # [in]: num*, typedef*型
+                  arr_list << param
+                end
+              end
+            else
+              if !out_list.include?(param) then # [out]: 型
+                out_list << param
+              end
+            end
+          else
+            if !num_list.include?(param) then # [in]: num型,typedef型
+              num_list << param
+            end
+          end
+          # 返り値の設定
+          ret_type = decl.get_type.get_type_str # ポインタ型は無視
+          if !ret_type.include?("*") && !ret_type_list.include?(ret_type) then
+            ret_type_list << decl.get_type.get_type_str
+          end
         }
-        VAR_BVT_counter += 1;
-        if( VAR_BVT_counter >= t[0].size ){
-            return 2; /* もしかしたらtarget2以降があっても終了しちゃうかも */
-        }
-        return 0;
+      end
     }
-  }
-  return 1;
 
+    file.print <<EOT
+    ER ercd = E_OK;
+    CELLCB *p_cellcb;
+    if (VALID_IDX(idx)) {
+        p_cellcb = GET_CELLCB(idx);
+    }
+    else {
+        return(E_ID);
+    }
+
+    int r, i, j, k, l, m, array_count, arg_size, array_size; /* mはprint_arr_listを使うための変数 */
+    jsmn_parser p;
+    jsmntok_t t[128];
+    char target_path[10];
+
+    sprintf( target_path, "target%d", target_num );
+
+    jsmn_init(&p);
+    r = jsmn_parse( &p, VAR_json_str, strlen(VAR_json_str), t, sizeof(t)/sizeof(t[0]) );
+    if(r < 0){
+        printf( "Failed to parse JSON: %d\\n", r);
+        return -1;
+    }
+    if( r < 1 || t[0].type != JSMN_OBJECT ){
+        printf( "Object expected\\n" );
+        return -1;
+    }
+
+    for( l = 1; l < r; l++ ){
+        if( jsoneq(VAR_json_str, &t[l], target_path) == 0 ){
+            if( t[l+1].type != JSMN_OBJECT ){
+                printf("Object expected for target\\n");
+                return -1;
+            }
+            i = l + 2;
+            for( k = 0; k < t[l+1].size; k++ ){
+                if( jsoneq( VAR_json_str, &t[i], ATTR_key_cell) == 0 ){
+                    i += 2;
+                }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_entry) == 0 ){
+                    i += 2;
+                }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_function) == 0 ){
+                    i += 2;
+                }else if( jsoneq(VAR_json_str, &t[i], ATTR_key_arg) == 0 ){
+                    i += 1;
+                    arg_size = t[i].size;
+                    for( j = 0; j < arg_size; j++ ){
+                        i += 1;
+                        if( t[i].type == JSMN_ARRAY ){
+                            array_size = t[i].size;
+                            for( array_count = 0; array_count < array_size; array_count++ ){
+                                i += 1;
+                                if( t[i].size > 1 ){
+                                    i += t[i].size;
+                                }
+                            }
+                        }
+                        if( t[i].type == JSMN_OBJECT ){
+                            array_size = t[i].size;
+                            for( array_count = 0; array_count < array_size; array_count++ ){
+                                i += 2;
+                                if( t[i].size > 1 ){
+                                    i += t[i].size;
+                                }
+                            }
+                        }
+                    }
+                    i += 1;
+                }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_boundary) == 0 ){
+                    i += 1;
+                    if( t[i].type != JSMN_ARRAY ){
+                        printf( "Arguments is not specified with array\\n" );
+                        return -1;
+                    }
+                    arg_size = t[i].size;
+                    *arg_num = arg_size;
+                    for( j = 0; j < arg_size; j++ ){
+                        i += 1;
+                        if( t[i].type == JSMN_OBJECT ){
+                            if( strstr( arguments[j].type, "const struct" ) == NULL ){
+                                printf("Arg %d is not struct type\\n", j+1 );
+                                return -1;
+                            }
+                            array_size = t[i].size;
+                            for( m = 0; m < array_size; m++ ){
+                                i += 1;
+                                strcpy_n( VAR_tmp_str, t[i].end - t[i].start, VAR_json_str + t[i].start );
 EOT
+    print_struct_list( file, struct_list, struct_mem_list, struct_mem_type_list )
+    file.print <<EOT
+                            }
+                        }else if( t[i].type == JSMN_ARRAY ){
+                            array_size = t[i].size;
+                            strcpy_n( VAR_tmp_str, t[i+1].end - t[i+1].start, VAR_json_str + t[i+1].start );
+                            if( !strcmp(VAR_tmp_str, "BVT") && t[i+2].type == JSMN_PRIMITIVE && t[i+3].type == JSMN_PRIMITIVE && array_size == 3 ){
+                                i += 1;
+                                for( m = 0; m < array_size-1; m++ ){
+                                    i += 1;
+                                    strcpy_n( VAR_tmp_str, t[i].end - t[i].start, VAR_json_str + t[i].start );
+EOT
+    print_BVT_arr_list( file, num_list )
+    file.print <<EOT
+                                }
+                            } else {
+                                for( m = 0; m < array_size; m++ ){
+                                    i += 1;
+                                    strcpy_n( VAR_tmp_str, t[i].end - t[i].start, VAR_json_str + t[i].start );
+EOT
+    print_arr_list( file, arr_list )
+    file.print <<EOT
+                                }
+                            }
+                        }else if( t[i].type == JSMN_STRING ){
+EOT
+    print_char_list( file, char_list )
+    file.print <<EOT
+                        }else if( t[i].type == JSMN_PRIMITIVE ){
+EOT
+    print_num_list( file, num_list )
+    file.print <<EOT
+                        }else if( t[i].type == JSMN_UNDEFINED ){
+                            printf( "Unexpeted value %.*s\\n", t[i].end - t[i].start, VAR_json_str + t[i].start );
+                        }else{
+                            printf( "Wrong Type: %.*s", t[i].end - t[i].start, VAR_json_str + t[i].start );
+                        }
+                    }
+                    i += 1;
+                }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_EP_boundary) == 0 ){
+                    i += 1;
+                    arg_size = t[i].size;
+                    for( j = 0; j < arg_size; j++ ){
+                        i += 1;
+                        if( t[i].type == JSMN_ARRAY ){
+                            array_size = t[i].size;
+                            for( array_count = 0; array_count < array_size; array_count++ ){
+                                i += 1;
+                                if( t[i].size > 1 ){
+                                    i += t[i].size;
+                                }
+                            }
+                        }
+                        if( t[i].type == JSMN_OBJECT ){
+                            array_size = t[i].size;
+                            for( array_count = 0; array_count < array_size; array_count++ ){
+                                i += 2;
+                                if( t[i].size > 1 ){
+                                    i += t[i].size;
+                                }
+                            }
+                        }
+                    }
+                    i += 1;
+                }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_exp) == 0){
+                    i += 2;
+                }
+            }
+            VAR_BVT_counter += 1;
+            if( VAR_BVT_counter >= t[0].size ){
+                return 2;
+            }
+            return 0;
+        }
+    }
+    return 1;
+EOT
+  end
+
+  def print_BVT_arr_list( file, num_list )
+    num_list.each_with_index{ |obj, idx|
+        if obj.include?("double") || obj.include?("float") then
+            if idx == 0 then
+                file.print <<EOT
+                                    if( !srtcmp(arguments[j].type, "#{obj}") ){
+                                        arguments[j].data_mem_#{obj.sub('32_t', '').sub('64_t', '')}[m] = atof( VAR_tmp_str );
+EOT
+            else
+                file.print <<EOT
+                                    }else if( !srtcmp(arguments[j].type, "#{obj}") ){
+                                        arguments[j].data_mem_#{obj.sub('32_t', '').sub('64_t', '')}[m] = atof( VAR_tmp_str );
+EOT
+            end
+        else
+            if idx == 0 then
+                file.print <<EOT
+                                    if( !strcmp(arguments[j].type,"#{obj}") ){
+                                        arguments[j].data.mem_#{obj.sub(/\*/, '_buf').sub('const ', '')}_buf[m] = atoi( VAR_tmp_str );
+EOT
+            else
+            file.print <<EOT
+                                    }else if( !strcmp(arguments[j].type,"#{obj}") ){
+                                        arguments[j].data.mem_#{obj.sub(/\*/, '_buf').sub('const ', '')}_buf[m] = atoi( VAR_tmp_str );
+EOT
+            end
+        end
+    }
+    if !num_list.empty? then
+        file.print <<EOT
+                                    }else{
+                                        printf("Arg %d is not numeric type", j+1 );
+                                        return -1;
+                                    }
+EOT
+    end
   end
 
   def print_parse_EP_boundary( file, namespace )
+    char_list = []
+
+    struct_list = []
+    struct_mem = []
+    struct_mem_type = []
+    struct_mem_list = []
+    struct_mem_type_list = []
+
+    arr_list = []
+    out_list = []
+    num_list = []
+
+    ret_type_list = []
+
+    namespace.travers_all_signature{ |sig|
+      # ignnore these signatures (テスト対象外とみなします)
+      if  sig.get_namespace_path.to_s =~ /nTECSInfo::/ || \
+          sig.get_namespace_path.to_s =~ /::s.*Task.*/ || \
+          sig.get_namespace_path.to_s =~ /::sAccessor/ || \
+          sig.get_namespace_path.to_s =~ /::sTECSUnit/ || \
+          sig.get_namespace_path.to_s =~ /::sJSMN/ || \
+          sig.get_namespace_path.to_s =~ /::s.*Kernel/ || \
+          sig.get_namespace_path.to_s =~ /::s.*Semaphore/ || \
+          sig.get_namespace_path.to_s =~ /::s.*Eventflag/ || \
+          sig.get_namespace_path.to_s =~ /::s.*Dataqueue/ || \
+          sig.get_namespace_path.to_s =~ /::sInitialize.*/ || \
+          sig.get_namespace_path.to_s =~ /::s.*VM/ || \
+          sig.get_namespace_path.to_s =~ /::sMain/ || \
+          sig.get_namespace_path.to_s =~ /::s.*Alarm/ || \
+          sig.get_namespace_path.to_s =~ /::sFixedSizeMemoryPool/ || \
+          sig.get_namespace_path.to_s =~ /::sMessageBuffer/ || \
+          sig.get_namespace_path.to_s =~ /::sTerminateRoutineBody/ || \
+          sig.get_namespace_path.to_s =~ /::s.*HandlerBody/ || \
+          sig.get_namespace_path.to_s =~ /::sConfigInterrupt/ || \
+          sig.get_namespace_path.to_s =~ /::sCyclic/ || \
+          sig.get_namespace_path.to_s =~ /::sMalloc/ then
+      else
+        sig.each_param{ |decl, paramDecl| # decl:関数, paramDecl:関数の各引数
+          # 引数の設定
+          param = paramDecl.get_type.get_type_str
+          if param.include?("*") then
+            if param.include?("const") then
+              if param.include?("char") || param.include?("CHAR") then # [in]: char*型
+                if !char_list.include?(param) then
+                  char_list << param
+                end
+              elsif param.include?("struct") then # [in]: struct*型
+                paramDecl.get_type.get_type.get_members_decl.get_items.each { |decl|
+                  struct_mem << decl.get_name.to_s
+                  struct_mem_type << decl.get_type.get_type_str
+                }
+                struct_mem_list << struct_mem
+                struct_mem_type_list << struct_mem_type
+                struct_mem = [] # リセット
+                struct_mem_type = [] # リセット
+                if !struct_list.include?(param) then
+                  struct_list << param
+                end
+              else
+                if !arr_list.include?(param) then # [in]: num*, typedef*型
+                  arr_list << param
+                end
+              end
+            else
+              if !out_list.include?(param) then # [out]: 型
+                out_list << param
+              end
+            end
+          else
+            if !num_list.include?(param) then # [in]: num型,typedef型
+              num_list << param
+            end
+          end
+          # 返り値の設定
+          ret_type = decl.get_type.get_type_str # ポインタ型は無視
+          if !ret_type.include?("*") && !ret_type_list.include?(ret_type) then
+            ret_type_list << decl.get_type.get_type_str
+          end
+        }
+      end
+    }
+
     file.print <<EOT
-  CELLCB *p_cellcb;
-  if(VALID_IDX(idx)) {
-    p_cellcb = GET_CELLCB(idx);
-  }
-  else {
-    /* エラー処理コードをここに記述します */
-  } /* end if VALID_IDX(idx) */
+    ER ercd = E_OK;
+    CELLCB *p_cellcb;
+    if (VALID_IDX(idx)) {
+        p_cellcb = GET_CELLCB(idx);
+    }
+    else {
+        return(E_ID);
+    }
 
-  int r, i, j, k, l, m, n, arg_size, array_size, EP_size;
-  jsmn_parser p;
-  jsmntok_t t[128];
-  char target_path[10];
+    int r, i, j, k, l, m, array_count, arg_size, array_size; /* mはprint_arr_listを使うための変数 */
+    int tmp, standard_val;
+    int ep_val[2] = { 0, 0 };
+    int EP_val[3] = { 0, 0, 0 };
+    jsmn_parser p;
+    jsmntok_t t[128];
+    char target_path[10];
 
-  sprintf( target_path, "target%d", target_num );
+    sprintf( target_path, "target%d", target_num );
 
-  jsmn_init(&p);
-  r = jsmn_parse( &p, VAR_json_str, strlen(VAR_json_str), t, sizeof(t)/sizeof(t[0]) );
-  if(r < 0){
-    printf( "Failed to parse JSON: %d\\n", r );
-    return -1;
-  }
-
-  if( r < 1 || t[0].type != JSMN_OBJECT ){
-  printf( "Object expected" );
-  return -1;
-  }
-
-  for( l = 1; l < r; l++ ){
-    if( jsoneq(VAR_json_str, &t[l], target_path) == 0 ){
-      if( t[l+1].type != JSMN_OBJECT ){
-        printf("Object expected for target\\n");
+    jsmn_init(&p);
+    r = jsmn_parse( &p, VAR_json_str, strlen(VAR_json_str), t, sizeof(t)/sizeof(t[0]) );
+    if(r < 0){
+        printf( "Failed to parse JSON: %d\\n", r);
         return -1;
-      }
-      i = l + 2;
-      for( k = 0; k < t[l+1].size; k++ ){
-        if( jsoneq( VAR_json_str, &t[i], ATTR_key_cell ) == 0 ){
-            i += 2;
-        }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_entry ) == 0 ){
-            i += 2;
-        }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_function ) == 0 ){
-            i += 2;
-        }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_arg ) == 0 ){
-          i += 1;
-          arg_size = t[i].size;
-          for( j = 0; j < arg_size; j++ ){
-            i += 1;
-            if( t[i].type == JSMN_ARRAY ){
-              array_size = t[i].type;
-              for( m = 0; m < array_size; m++ ){
-                i += 1;
-                if ( t[i].size > 1 ){
-                    i += t[i].size;
-                }
-              }
-            }
-            if( t[i].type == JSMN_OBJECT ){
-              array_size = t[i].size;
-              for( m = 0; m < array_size; m++ ){
-                i += 2;
-                if( t[i].size > 1 ){
-                    i += t[i].size;
-                }
-              }
-            }
-          }
-          i += 1; /* 配列を抜ける */
-        }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_boundary ) == 0 || jsoneq( VAR_json_str, &t[i], ATTR_key_EP_boundary) == 0 ){
-          if( jsoneq(VAR_json_str, &t[i], ATTR_key_boundary ) == 0 ){
-              i += 1;
-              if( t[i].type == JSMN_ARRAY ){
-                  if( t[i].size == 2 ) {
-                      i += 2; /* boundary_valの対象先が正しく配列であり、その要素数が2なら飛ばす */
-                  } else {
-                      printf("ERROR: boundary_val\\n");
-                      return -1;
-                  }
-              } else {
-                  printf("ERROR: boundary_val\\n");
-                  return -1;
-              }
-              i += 1; /* 配列を抜ける */
-          }else if( jsoneq(VAR_json_str, &t[i], ATTR_key_EP_boundary ) == 0 ){
-            i += 1;
-            if( t[i].type == JSMN_ARRAY ){
-                EP_size = t[i].size;
-                if( EP_size > 0 ){
-                    for( n = 0; n < EP_size; n++ ) {
-                        i += 1;
-                        strcpy_n( VAR_tmp_str, t[i].end - t[i].start, VAR_json_str + t[i].start );
-                        EP_boundary[n] = atoi( VAR_tmp_str );
-                    }
-                } else {
-                    printf("ERROR: EP_boundary_val\\n"); /* 境界を示す配列の要素が0 */
-                    return -1;
-                }
-            } else {
-                printf("ERROR: EP_boundary_val\\n"); /* EP_boundary_valが示す先が配列じゃない */
+    }
+    if( r < 1 || t[0].type != JSMN_OBJECT ){
+        printf( "Object expected\\n" );
+        return -1;
+    }
+
+    for( l = 1; l < r; l++ ){
+        if( jsoneq(VAR_json_str, &t[l], target_path) == 0 ){
+            if( t[l+1].type != JSMN_OBJECT ){
+                printf("Object expected for target\\n");
                 return -1;
             }
-            i += 1; /* 配列を抜ける */
-          }
-        }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_exp ) == 0 ){
-            i += 2;
+            i = l + 2;
+            for( k = 0; k < t[l+1].size; k++ ){
+                if( jsoneq( VAR_json_str, &t[i], ATTR_key_cell) == 0 ){
+                    i += 2;
+                }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_entry) == 0 ){
+                    i += 2;
+                }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_function) == 0 ){
+                    i += 2;
+                }else if( jsoneq(VAR_json_str, &t[i], ATTR_key_arg) == 0 ){
+                    i += 1;
+                    arg_size = t[i].size;
+                    for( j = 0; j < arg_size; j++ ){
+                        i += 1;
+                        if( t[i].type == JSMN_ARRAY ){
+                            array_size = t[i].size;
+                            for( array_count = 0; array_count < array_size; array_count++ ){
+                                i += 1;
+                                if( t[i].size > 1 ){
+                                    i += t[i].size;
+                                }
+                            }
+                        }
+                        if( t[i].type == JSMN_OBJECT ){
+                            array_size = t[i].size;
+                            for( array_count = 0; array_count < array_size; array_count++ ){
+                                i += 2;
+                                if( t[i].size > 1 ){
+                                    i += t[i].size;
+                                }
+                            }
+                        }
+                    }
+                    i += 1;
+                }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_boundary ) == 0 ){
+                    i += 1;
+                    arg_size = t[i].size;
+                    for( j = 0; j < arg_size; j++ ){
+                        i += 1;
+                        if( t[i].type == JSMN_ARRAY ){
+                            array_size = t[i].size;
+                            for( array_count = 0; array_count < array_size; array_count++ ){
+                                i += 1;
+                                if( t[i].size > 1 ){
+                                    i += t[i].size;
+                                }
+                            }
+                        }
+                    }
+                    if( t[i].type == JSMN_OBJECT ){
+                        array_size = t[i].size;
+                        for( array_count = 0; array_count < array_size; array_count++ ){
+                            i += 2;
+                            if( t[i].size > 1 ){
+                                i += t[i].size;
+                            }
+                        }
+                    }
+                    i += 1;
+                }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_EP_boundary ) == 0 ){
+                    i += 1;
+                    if( t[i].type != JSMN_ARRAY ){
+                        printf( "Argumnets is not specified with array\\n");
+                        return -1;
+                    }
+                    arg_size = t[i].size;
+                    *arg_num = arg_size;
+                    for( j = 0; j < arg_size; j++ ){
+                        i += 1;
+                        if( t[i].type == JSMN_OBJECT ){
+                            if( strstr( arguments[j].type, "const struct" ) == NULL ){
+                                printf("Arg %d is not struct type\\n", j+1 );
+                                return -1;
+                            }
+                            array_size = t[i].size;
+                            for( m = 0; m < array_size; m++ ){
+                                i += 1;
+                                strcpy_n( VAR_tmp_str, t[i].end - t[i].start, VAR_json_str + t[i].start );
+EOT
+    print_struct_list( file, struct_list, struct_mem_list, struct_mem_type_list );
+    file.print <<EOT
+                            }
+                        }else if( t[i].type == JSMN_ARRAY){
+                            array_size = t[i].size;
+                            strcpy_n( VAR_tmp_str, t[i+1].end - t[i+1].start, VAR_json_str + t[i+1].start );
+                            if( !strcmp(VAR_tmp_str, "EPT") && t[i+2].type == JSMN_PRIMITIVE && t[i+3].type == JSMN_PRIMITIVE && array_size == 3 ){
+                                i += 1;
+                                for( array_count = 0; array_count < 2; array_count++ ){
+                                    i += 1;
+                                    strcpy_n( VAR_tmp_str, t[i].end - t[i].start, VAR_json_str + t[i].start );
+                                    ep_val[array_count] = atoi( VAR_tmp_str );
+                                }
+                                if( ep_val[0] > ep_val[1] ){
+                                    tmp = ep_val[1];
+                                    ep_val[1] = ep_val[0];
+                                    ep_val[0] = tmp;
+                                }
+                                standard_val = ( ep_val[1] - ep_val[0] ) / 2;
+                                EP_val[0] = ep_val[0] - standard_val;
+                                EP_val[1] = ( ep_val[0] + ep_val[1] ) / 2;
+                                EP_val[2] = ep_val[1] + standard_val;
+                                for( m = 0; m < 3; m++ ){
+EOT
+    print_EPT_arr_list( file, num_list )
+    file.print <<EOT
+                                }
+                            } else {
+                                for( m = 0; m < array_size; m++ ){
+                                    i += 1;
+                                    strcpy_n( VAR_tmp_str, t[i].end - t[i].start, VAR_json_str + t[i].start );
+EOT
+    print_arr_list( file, arr_list )
+    file.print <<EOT
+                                }
+                            }
+                        }else if( t[i].type == JSMN_STRING ){
+EOT
+    print_char_list( file, char_list )
+    file.print <<EOT
+                        }else if( t[i].type == JSMN_PRIMITIVE ){
+EOT
+    print_num_list( file, num_list )
+    file.print <<EOT
+                        }else if( t[i].type == JSMN_UNDEFINED ){
+                            printf( "Unexpected value %.*s\\n", t[i].end - t[i].start, VAR_json_str + t[i].start );
+                        }else{
+                            printf( "Wrong Type: %.*s", t[i].end - t[i].start, VAR_json_str + t[i].start );
+                        }
+                    }
+                    i += 1;
+                }else if( jsoneq( VAR_json_str, &t[i], ATTR_key_exp ) == 0 ){
+                    i += 2;
+                }
+            }
+            VAR_EPT_counter += 1;
+            if( VAR_EPT_counter >= t[0].size ){
+                return 2;
+            }
+            return 0;
         }
-      }
-      VAR_EPT_counter += 1;
-      if( VAR_EPT_counter >= t[0].size ){
-        return 2;
-      }
-      return 0;
     }
-  }
-  return 1;
+    return 1;
 EOT
   end
+
+  def print_EPT_arr_list( file, num_list )
+    num_list.each_with_index{ |obj, idx|
+        if obj.include?("double") || obj.include?("float") then
+            if idx == 0 then
+                file.print <<EOT
+                                    if( !srtcmp(arguments[j].type, "#{obj}") ){
+                                        arguments[j].data_mem_#{obj.sub('32_t', '').sub('64_t', '')}[m] = EP_val[m];
+EOT
+            else
+                file.print <<EOT
+                                    }else if( !srtcmp(arguments[j].type, "#{obj}") ){
+                                        arguments[j].data_mem_#{obj.sub('32_t', '').sub('64_t', '')}[m] = EP_val[m];
+EOT
+            end
+        else
+            if idx == 0 then
+                file.print <<EOT
+                                    if( !strcmp(arguments[j].type,"#{obj}") ){
+                                        arguments[j].data.mem_#{obj.sub(/\*/, '_buf').sub('const ', '')}_buf[m] = EP_val[m];
+EOT
+            else
+            file.print <<EOT
+                                    }else if( !strcmp(arguments[j].type,"#{obj}") ){
+                                        arguments[j].data.mem_#{obj.sub(/\*/, '_buf').sub('const ', '')}_buf[m] = EP_val[m];
+EOT
+            end
+        end
+    }
+    if !num_list.empty? then
+        file.print <<EOT
+                                    }else{
+                                        printf("Arg %d is not numeric type", j+1 );
+                                        return -1;
+                                    }
+EOT
+    end
+  end
+
 
 # entry function : json_parse_cond の出力
   def print_parse_cond( file, namespace )

@@ -491,14 +491,12 @@ EOT
     /* エラー処理をここに記述します */
   } /* end if VALID_IDX(idx) */
 
-  int i;
+  int i, m, test_count;
   int count = 0;
   int result_count[6] = { 0, 0, 0, 0, 0, 0 };
   int expect_result[6] = { 0, 1, 1, 1, 1, 0 };
   printf("\\n--- Boundary Value Test ---\\n\\n");
-  for( i = 0; i < 2; i++ ){
-    printf("boundary%d = %d\\n", i+1, boundary[i]);
-  }
+
   void *rawDesc;
 EOT
     print_desc( file, Namespace.get_root )
@@ -584,14 +582,28 @@ EOT
     int_count = 0
     double_count = 0
     char_count = 0
+    bvt_locate = 0
+    locate = 0
+    boundary_val1 = ""
+    boundary_val2 = ""
 
     signature.get_function_head_array.each{ |func|
       paramSet = ""
       exp_val = ""
+      bvt_locate = 0
       # 期待値のパラメータを取得する
 
       for target_function in 1..@test_case.length do
         if func.get_name.to_s == @test_case["target"+target_function.to_s]["function"] && @boundary_flag[target_function-1] == 1 then
+          for bvt_locate in 1..@test_case["target"+target_function.to_s]["boundary_val"].length do
+            if @test_case["target"+target_function.to_s]["boundary_val"][bvt_locate-1][0] == "BVT"
+              locate = bvt_locate
+              boundary_val1 = @test_case["target"+target_function.to_s]["boundary_val"][bvt_locate-1][1]
+              boundary_val2 = @test_case["target"+target_function.to_s]["boundary_val"][bvt_locate-1][2]
+              bvt_locate = 0
+              break
+            end
+          end
 
           if func.get_return_type.get_type_str.include?("void") then
             exp_val = ""
@@ -626,9 +638,10 @@ EOT
                   paramSet.concat("boundary[test_count] + boundary_count") # ここを編集した
                 elsif param.include?("char") || param.include?("CHAR") then
                   paramSet.concat("arguments[#{idx}].data.mem_#{param.sub(/\*/, '_buf').sub('const ', '').sub('_t', '')}")
+                elsif idx == locate-1
+                  paramSet.concat("arguments[#{idx}].data.mem_#{param.sub(/\*/, '_buf').sub('const ', '')}_buf[m] + test_count")
                 else
-#                 paramSet.concat("arguments[#{idx}].data.mem_#{param.sub(/\*/, '_buf').sub('const ', '')}")
-                  paramSet.concat("boundary[test_count] + boundary_count") # ここを編集した
+                  paramSet.concat("arguments[#{idx}].data.mem_#{param.sub(/\*/, '_buf').sub('const ', '')}")
                 end
               end
             end
@@ -636,14 +649,14 @@ EOT
               paramSet.concat(", ")
             end
           }
-          print_BVT_call_desc( file, func.get_name.to_s, exp_val, signature, paramSet, int_count, double_count, char_count, flag )
+          print_BVT_call_desc( file, func.get_name.to_s, exp_val, signature, paramSet, int_count, double_count, char_count, flag, boundary_val1, boundary_val2 )
           flag = false
         end
       end
     }
   end
 
-  def print_BVT_call_desc( file, f_name, exp_val, signature, paramSet, int_count, double_count, char_count, flag )
+  def print_BVT_call_desc( file, f_name, exp_val, signature, paramSet, int_count, double_count, char_count, flag, val1, val2 )
 
     if flag then
       file.print <<EOT
@@ -665,19 +678,22 @@ EOT
 
     if exp_val == "" then
       file.print <<EOT
-        c#{signature.get_name[1..-1]}_#{f_name}(  )}; /* この最後の括弧の中でテストする関数の引数を設定している */
+        c#{signature.get_name[1..-1]}_#{f_name}( #{paramSet} )}; /* この最後の括弧の中でテストする関数の引数を設定している */
         return 0;
 EOT
     else
       file.print <<EOT
-        for( int test_count = 0; test_count < 2; test_count++ ){
-          for( int boundary_count = -1; boundary_count < 2; boundary_count++ ){
-            printf("\\n[input  : %d]\\n", boundary[test_count] + boundary_count);
-          /*  if( #{exp_val} == c#{signature.get_name[1..-1]}_#{f_name}( boundary[test_count] + boundary_count ) ){ */
+      printf("Effective Range : #{val1} ≤ input ≤ #{val2}\\n");
+        for( m = 0; m < 2; m++ ){
+          for( test_count = -1; test_count < 2; test_count++ ){
+            if( m == 0 )
+              printf("case : %d\\n", #{val1}+test_count);
+            if( m == 1 )
+              printf("case : %d\\n", #{val2}+test_count);
             if( #{exp_val} == c#{signature.get_name[1..-1]}_#{f_name}( #{paramSet} ) ){
               printf("[Result : OK]\\n");
               result_count[count] = 1;
-            }else{
+            } else {
               printf("[Result : NG]\\n");
               result_count[count] = 0;
             }
@@ -692,7 +708,7 @@ EOT
             }
           } else {
             printf("[ Unexpected result ]\\n");
-            strcat(result_str, "| BV Test | #{signature.get_name[1..-1]}_#{f_name} | **failed ✓** |\\n");
+            strcat(result_str, "| BV Test | #{signature.get_name[1..-1]}_#{f_name} | **failed ✘** |\\n");
             break;
           }
         }
@@ -724,44 +740,11 @@ EOT
     /* エラー処理はここに記述します */
   } /* end if VALID_IDX(idx) */
 
-  int i, j, k, tmp,  standard_val;
+  int i, j, k, m;
   int result_count[3] = { 0, 0, 0 };
   int expect_result[3] = { 0, 1, 0 }; 
-  int EP_num = sizeof EP_boundary / sizeof EP_boundary[0];
-  int EP_boundary_val[EP_num];
-  int typical_val[EP_num+1];
-
-  for( k = 0; k < EP_num; k++ ){
-    EP_boundary_val[k] = EP_boundary[k];
-  }
-
-  if( EP_num != 1 ){ /* 複数の境界値を持てるように昇順にする */
-    for( i = 0; i < EP_num-1; i ++ ){
-      for( j = i+1; j < EP_num; j++ ){
-        if( EP_boundary_val[i] > EP_boundary_val[j] ){
-          tmp = EP_boundary_val[i];
-          EP_boundary_val[i] = EP_boundary_val[j];
-          EP_boundary_val[j] = tmp;
-        }
-      }
-    } /* ここは一旦境界値二つの場合のみで考える */
-    standard_val = ( EP_boundary_val[1] - EP_boundary_val[0] ) / 2;
-    typical_val[0] = EP_boundary_val[0] - standard_val;
-    typical_val[1] = ( EP_boundary_val[0] + EP_boundary_val[1] ) / 2;
-    typical_val[2] = EP_boundary_val[1] + standard_val;
-  } else {
-    typical_val[0] = EP_boundary_val[0] - 50;
-    typical_val[0] = EP_boundary_val[0] + 50;
-  }
 
   printf("\\n--- Equivalence Partitioning Test ---\\n\\n");
-
-  printf("input = [");
-  for( k = 0; k < EP_num+1; k++ ){
-    printf(" %d", typical_val[k]);
-  }
-  printf(" ]\\n");
-
   void *rawDesc;
 EOT
     print_desc( file, Namespace.get_root )
@@ -849,14 +832,27 @@ EOT
     int_count = 0
     double_count = 0
     char_count = 0
+    ept_locate = 0
+    locate = 0
+    boundary_val1 = 0
+    boundary_val2 = 0
 
     signature.get_function_head_array.each{ |func|
       paramSet = ""
       exp_val = ""
+      ept_locate = 0
 
       for target_function in 1..@test_case.length do
         if func.get_name.to_s == @test_case["target"+target_function.to_s]["function"] && @EP_flag[target_function-1] == 1 then
-
+          for ept_locate in 1..@test_case["target"+target_function.to_s]["EP_boundary_val"].length do
+            if @test_case["target"+target_function.to_s]["EP_boundary_val"][ept_locate-1][0] == "EPT"
+              locate = ept_locate
+              boundary_val1 = @test_case["target"+target_function.to_s]["EP_boundary_val"][ept_locate-1][1].to_i
+              boundary_val2 = @test_case["target"+target_function.to_s]["EP_boundary_val"][ept_locate-1][2].to_i
+              ept_locate = 0
+              break
+            end
+          end
           if func.get_return_type.get_type_str.include?("void") then
             exp_val = ""
           elsif func.get_return_type.get_type_str.include?("double") || func.get_return_type.get_type_str.include?("float") then
@@ -889,9 +885,10 @@ EOT
                   paramSet.concat("typical_val[test_count]") # ここを編集する必要あり
                 elsif param.include?("char") || param.include?("CHAR") then
                   paramSet.concat("arguments[#{idx}].data.mem_#{param.sub(/\*/, '_buf').sub('const ', '').sub('_t', '')}")
+                elsif idx == locate-1
+                  paramSet.concat("arguments[#{idx}].data.mem_#{param.sub(/\*/, '_buf').sub('const ', '')}_buf[m]")
                 else
-#                 paramSet.concat("arguments[#{idx}].data.mem_#{param.sub(/\*/, '_buf').sub('const ', '')}")
-                  paramSet.concat("typical_val[test_count]") # ここを編集する必要あり
+                  paramSet.concat("arguments[#{idx}].data.mem_#{param.sub(/\*/, '_buf').sub('const ', '')}")
                 end
               end
             end
@@ -899,14 +896,27 @@ EOT
               paramSet.concat(", ")
             end
           }
-          print_EPT_call_desc( file, func.get_name.to_s, exp_val, signature, paramSet, int_count, double_count, char_count, flag )
+          print_EPT_call_desc( file, func.get_name.to_s, exp_val, signature, paramSet, int_count, double_count, char_count, flag, boundary_val1, boundary_val2 )
           flag = false
         end
       end
     }
   end
 
-  def print_EPT_call_desc( file, f_name, exp_val, signature, paramSet, int_count,double_count, char_count, flag )
+  def print_EPT_call_desc( file, f_name, exp_val, signature, paramSet, int_count, double_count, char_count, flag, val1, val2 )
+    ep_val = [ 0, 0, 0 ]
+
+    if val1 > val2 then
+      tmp = val1
+      val1 = val2
+      val2 = val1
+    end
+
+    standard_val = ( val2 - val1 ) / 2
+    ep_val[0] = val1 - standard_val
+    ep_val[1] = ( val1 + val2 ) /2
+    ep_val[2] = val2 + standard_val
+
     if flag then
       file.print <<EOT
       if( !strcmp(function_path, "#{f_name}") ){
@@ -932,19 +942,25 @@ EOT
 EOT
     else
       file.print <<EOT
-        for( int test_count = 0; test_count < EP_num+1; test_count++ ){
-          printf("\\n[input  : %d]\\n", typical_val[test_count]);
+        printf("Effective Range : #{val1} ≤ input ≤ #{val2}}\\n");
+        for( int m = 0; m < 3; m++ ){
+          if( m == 0 )
+            printf("case : #{ep_val[0]}\\n");
+          if( m == 1 )
+            printf("case : #{ep_val[1]}\\n");
+          if( m == 2 )
+            printf("case : #{ep_val[2]}\\n");
           if( #{exp_val} == c#{signature.get_name[1..-1]}_#{f_name}( #{paramSet} ) ){
             printf("[Result : OK]\\n");
-            result_count[test_count] = 1;
+            result_count[m] = 1;
           } else {
             printf("[Result : NG]\\n");
-            result_count[test_count] = 0;
+            result_count[m] = 0;
           }
         }
-        for( int test_count = 0; test_count < EP_num+1; test_count++ ){
-          if( result_count[test_count] == expect_result[test_count] ){
-            if( test_count == EP_num ){
+        for( int m = 0; m < 3; m++ ){
+          if( result_count[m] == expect_result[m] ){
+            if( m == 3 ){
               printf("[ Expected result ]\\n");
               strcat(result_str, "| EP Test | #{signature.get_name[1..-1]}_#{f_name} | **passed ✓** |\\n");
             }

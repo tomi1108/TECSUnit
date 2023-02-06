@@ -15,7 +15,7 @@ signature sTECSUnit {
                 [in,string] const char_t *entry_path,
                 [in,string] const char_t *signature_path,
                 [in,string] const char_t *function_path,
-                [out,string] char_t *result_str, 
+                [out,string(1024)] char_t *result_str, 
                 [in] const struct tecsunit_obj *arguments,
                 [in] const struct tecsunit_obj *exp_val
                 );
@@ -24,17 +24,17 @@ signature sTECSUnit {
                 [in,string] const char_t * entry_path,
                 [in,string] const char_t *signature_path,
                 [in,string] const char_t *function_path,
-                [out,string] char_t *result_str,
-                [in] const int *boundary,
-                [in] const struct tecsunit_obj *exp_val 
+                [out,string(1024)] char_t *result_str,
+                [in] const struct tecsunit_obj *arguments,
+                [in] const struct tecsunit_obj *exp_val
                 );
   void equivalence_partitioning_test(
                 [in,string] const char_t *cell_path,
                 [in,string] const char_t * entry_path,
                 [in,string] const char_t *signature_path,
                 [in,string] const char_t *function_path,
-                [out,string] char_t *result_str,
-                [in] const int *EP_boundary,
+                [out,string(1024)] char_t *result_str,
+                [in] const struct tecsunit_obj *arguments,
                 [in] const struct tecsunit_obj *exp_val 
                 );
 };
@@ -47,7 +47,6 @@ generate( JSMNPlugin, rTEMP::TaskMain, "" );
 /* rTEMP::TaskMainをTaskにしても問題なくビルドを行うことができた、なぜ？ */
 
 region rTEMP{
-
     cell tTECSUnit TECSUnit {
         cTECSInfo  = TECSInfo.eTECSInfo;
     };

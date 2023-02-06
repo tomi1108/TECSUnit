@@ -9,6 +9,11 @@ signature sSample {
 
 signature sTample {
   ER Hello( [in]int16_t y );
+  ER send( [in, size_is(len)] const int8_t *buf, [in] int8_t len );
+  ER sendMessage( [in, size_is(len)] const char_t *buf, [in] int8_t len );
+  ER sendStruct( [in] const struct target_struct *data );
+  ER receiveMessage( [out, size_is(len)] char_t *buf, [in] int8_t len );
+  ER checkER( [in] ER error );
 };
 
 celltype tTample {
@@ -41,14 +46,3 @@ cell tSample Sample {
 cell tSimple Simple {
   cCall = Sample.eEnt;
 };
-
-/*
- *cell tTask Task {
- *  cBody = Simple.eBody;
- *  priority = 11;
- *  stackSize = 1024;
- *  taskAttribute = C_EXP( "TA_ACT" );
- *};
- */
-
- /* Test*/

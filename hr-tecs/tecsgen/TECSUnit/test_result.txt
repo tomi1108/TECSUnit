@@ -1,0 +1,6 @@
+
+| Test Method | Target Function | Result |
+|:---:|:---:|:---:|
+| Arg Test | Tample_send | **passed ✓** |
+| BV Test | Tample_send | **failed ✘** |
+| EP Test | Tample_send | **failed ✓** |
