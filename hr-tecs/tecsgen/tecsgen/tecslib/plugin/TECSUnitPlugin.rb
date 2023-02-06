@@ -966,7 +966,7 @@ EOT
             }
           } else {
             printf("[ Unexpected result ]\\n");
-            strcat(result_str, "| EP Test | #{signature.get_name[1..-1]}_#{f_name} | **failed ✓** |\\n");
+            strcat(result_str, "| EP Test | #{signature.get_name[1..-1]}_#{f_name} | **failed ✘** |\\n");
             break;
           }
         }
