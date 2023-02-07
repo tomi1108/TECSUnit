@@ -67,5 +67,5 @@ celltype tMotor{
 };
 
 cell tMotor Motor{
-  port = 1;
+  port = 2;
 };
