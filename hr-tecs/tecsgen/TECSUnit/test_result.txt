@@ -3,3 +3,4 @@
 |:---:|:---:|:---:|
 | Arg Test | Motor_setPower | **passed ✓** |
 | BV Test | Motor_setPower | **passed ✓** |
+| EP Test | Motor_setPower | **passed ✓** |

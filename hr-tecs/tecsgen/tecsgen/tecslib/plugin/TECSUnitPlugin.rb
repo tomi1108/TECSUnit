@@ -960,7 +960,7 @@ EOT
         }
         for( int m = 0; m < 3; m++ ){
           if( result_count[m] == expect_result[m] ){
-            if( m == 3 ){
+            if( m == 2 ){
               printf("[ Expected result ]\\n");
               strcat(result_str, "| EP Test | #{signature.get_name[1..-1]}_#{f_name} | **passed ✓** |\\n");
             }
