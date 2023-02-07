@@ -1,48 +1,71 @@
 import( <cygwin_kernel.cdl> );
 import_C("target_struct.h");
 
-signature sSample {
-  ER sayHello( [in]int32_t times );
-  ER howAreYou( [out,string(len)]char_t *buf, [in]int32_t len);
-  ER BoundarySample( [in]int8_t x );
+// signature sSample {
+//   ER sayHello( [in]int32_t times );
+//   ER howAreYou( [out,string(len)]char_t *buf, [in]int32_t len);
+//   ER BoundarySample( [in]int8_t x );
+// };
+
+// signature sTample {
+//   ER Hello( [in]int16_t y );
+//   ER send( [in, size_is(len)] const int8_t *buf, [in] int8_t len );
+//   ER sendMessage( [in, size_is(len)] const char_t *buf, [in] int8_t len );
+//   ER sendStruct( [in] const struct target_struct *data );
+//   ER receiveMessage( [out, size_is(len)] char_t *buf, [in] int8_t len );
+//   ER checkER( [in] ER error );
+// };
+
+// celltype tTample {
+//   entry sTample eHello;
+//   attr {
+//     int8_t initialstate = 0;
+//   };
+//   var {
+//     int8_t data = initialstate;
+//   };
+// };
+
+// celltype tSample {
+//   call sTample cTample;
+//   entry sSample eEnt;
+// };
+
+// celltype tSimple {
+//   call sSample cCall;
+//   entry sTaskBody eBody;
+// };
+
+// cell tTample Tample {
+// };
+
+// cell tSample Sample {
+//   cTample = Tample.eHello;
+// };
+
+// cell tSimple Simple {
+//   cCall = Sample.eEnt;
+// };
+
+signature sMotor{
+  // ER_UINT getType(void);
+  // int32_t getCounts(void);
+  // int getPower(void);
+  //ER resetCounts(void);
+  ER setPower([in]int power);
+  //ER stop([in] bool_t brake); 
+  //ER rotate([in] int degrees, [in] uint32_t speed_abs, [in]bool_t blocking);
+  // ER ev3_motor_steer(motor_port_t left_motor, motor_port_t right_motor, int power, int turn_ratio);
+  // void initializePort([in]int32_t type);
 };
 
-signature sTample {
-  ER Hello( [in]int16_t y );
-  ER send( [in, size_is(len)] const int8_t *buf, [in] int8_t len );
-  ER sendMessage( [in, size_is(len)] const char_t *buf, [in] int8_t len );
-  ER sendStruct( [in] const struct target_struct *data );
-  ER receiveMessage( [out, size_is(len)] char_t *buf, [in] int8_t len );
-  ER checkER( [in] ER error );
-};
-
-celltype tTample {
-  entry sTample eHello;
-  attr {
-    int8_t initialstate = 0;
+celltype tMotor{
+  entry sMotor eMotor;
+  attr{
+    int32_t port;
   };
-  var {
-    int8_t data = initialstate;
-  };
 };
 
-celltype tSample {
-  call sTample cTample;
-  entry sSample eEnt;
-};
-
-celltype tSimple {
-  call sSample cCall;
-  entry sTaskBody eBody;
-};
-
-cell tTample Tample {
-};
-
-cell tSample Sample {
-  cTample = Tample.eHello;
-};
-
-cell tSimple Simple {
-  cCall = Sample.eEnt;
+cell tMotor Motor{
+  port = 1;
 };

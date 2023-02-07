@@ -1,7 +1,10 @@
+puts "| File | Function | Line Coverage |"
+puts "|:---:|:---:|:---:|"
 coverage_results = File.read("coverage_results.txt")
 function_coverage_data = {}
 file_coverage_data = {}
 lines_coverage_data = {}
+output = "" #出力する表の行
 current_function = ""
 current_file = ""
 line_data = "" #実行した関数名、ファイル名を含む一文
@@ -21,9 +24,9 @@ coverage_results.each_line do |line|
     lines = line.split("of")[1].split("\n")[0]
     if percentage > 0
     	if line_data.include?("Function '")
-    		puts line_data
-    		puts line
-    		puts ""
+        puts "| | " + current_function + " | " + line.delete("Lines executed:").chomp + " |"
+#    		puts line
+#    		puts ""
     		lines_coverage_data[current_function] = lines
     	elsif line_data.include?("File '")
     		func_name = line_data.split("/")[1].split(".")[0]
@@ -34,9 +37,10 @@ coverage_results.each_line do |line|
     			end
     		end
     		coverage_rate = total_val / total_lines
-    		puts line_data
-    		puts "Lines executed:" + coverage_rate.to_s + " of " + total_lines.to_s
-    		puts ""
+        puts "| " + current_file + " | | " + coverage_rate.to_s + " of " + total_lines.to_s + " |"
+#    		puts line_data
+#    		puts "Lines executed:" + coverage_rate.to_s + " of " + total_lines.to_s
+#    		puts ""
     		total_lines = 0
     		total_val = 0.0
     	end

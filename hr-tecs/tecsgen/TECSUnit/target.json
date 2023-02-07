@@ -1,11 +1,11 @@
 {
   "target1":{
-    "cell":"Tample",
-    "entry":"eHello",
-    "function":"send",
-    "argument":[[1,2,3,1,2,3],5], 
-    "boundary_val":[[1,2,3,1,2,3],["BVT",1,6]],
-    "EP_boundary_val":[[1,2,3],["EPT",1,3]],
+    "cell":"Motor",
+    "entry":"eMotor",
+    "function":"setPower",
+    "argument":[2], 
+    "boundary_val":[["BVT", -100, 100]],
+    "EP_boundary_val":[["EPT", -100, 100]],
     "exp_val":0
   // },
   // "target2":{
