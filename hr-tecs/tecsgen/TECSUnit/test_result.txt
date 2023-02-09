@@ -1,0 +1,6 @@
+
+| Test Method | Target Function | Result |
+|:---:|:---:|:---:|
+| Arg Test | Motor_setPower | **passed ✓** |
+| BV Test | Motor_setPower | **passed ✓** |
+| EP Test | Motor_setPower | **passed ✓** |

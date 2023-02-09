@@ -53,6 +53,15 @@ signature sMotor{
   // int getPower(void);
   //ER resetCounts(void);
   ER setPower([in]int power);
+  ER setPower2([in]int power);
+  ER setPower3([in]int power);
+  ER setPower4([in]int power);
+  ER setPower5([in]int power);
+  ER setPower6([in]int power);
+  ER setPower7([in]int power);
+  ER setPower8([in]int power);
+  ER setPower9([in]int power);
+  ER setPower10([in]int power);
   //ER stop([in] bool_t brake); 
   //ER rotate([in] int degrees, [in] uint32_t speed_abs, [in]bool_t blocking);
   // ER ev3_motor_steer(motor_port_t left_motor, motor_port_t right_motor, int power, int turn_ratio);

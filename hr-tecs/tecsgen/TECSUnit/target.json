@@ -8,12 +8,85 @@
     "EP_boundary_val":[["EPT", -100, 100]],
     "exp_val":0
   // },
-  // "target2":{
-  //   "cell":"Sample",
-  //   "entry":"eEnt",
-  //   "function":"sayHello",
+  //   "target2":{
+  //   "cell":"Motor",
+  //   "entry":"eMotor",
+  //   "function":"setPower2",
+  //   "argument":[200], 
+  //   "boundary_val":[["BVT", -100, 100]],
+  //   "EP_boundary_val":[["EPT", -100, 100]],
+  //   "exp_val":0
+  // },
+  //   "target3":{
+  //   "cell":"Motor",
+  //   "entry":"eMotor",
+  //   "function":"setPower3",
+  //   "argument":[200], 
+  //   "boundary_val":[["BVT", -100, 100]],
+  //   "EP_boundary_val":[["EPT", -100, 100]],
+  //   "exp_val":0
+  // },
+  //   "target4":{
+  //   "cell":"Motor",
+  //   "entry":"eMotor",
+  //   "function":"setPower4",
   //   "argument":[2], 
-  //   "boundary_val":[1,9],
+  //   "boundary_val":[["BVT", -100, 100]],
+  //   "EP_boundary_val":[["EPT", -100, 100]],
+  //   "exp_val":0
+  // },
+  //   "target5":{
+  //   "cell":"Motor",
+  //   "entry":"eMotor",
+  //   "function":"setPower5",
+  //   "argument":[2], 
+  //   "boundary_val":[["BVT", -100, 100]],
+  //   "EP_boundary_val":[["EPT", -100, 100]],
+  //   "exp_val":0
+  // },
+  //   "target6":{
+  //   "cell":"Motor",
+  //   "entry":"eMotor",
+  //   "function":"setPower6",
+  //   "argument":[2], 
+  //   "boundary_val":[["BVT", -100, 100]],
+  //   "EP_boundary_val":[["EPT", -100, 100]],
+  //   "exp_val":0
+  // },
+  //   "target7":{
+  //   "cell":"Motor",
+  //   "entry":"eMotor",
+  //   "function":"setPower7",
+  //   "argument":[2], 
+  //   "boundary_val":[["BVT", -100, 100]],
+  //   "EP_boundary_val":[["EPT", -100, 100]],
+  //   "exp_val":0
+  // },
+  //   "target8":{
+  //   "cell":"Motor",
+  //   "entry":"eMotor",
+  //   "function":"setPower8",
+  //   "argument":[2], 
+  //   "boundary_val":[["BVT", -100, 100]],
+  //   "EP_boundary_val":[["EPT", -100, 100]],
+  //   "exp_val":0
+  // },
+  //   "target9":{
+  //   "cell":"Motor",
+  //   "entry":"eMotor",
+  //   "function":"setPower9",
+  //   "argument":[2], 
+  //   "boundary_val":[["BVT", -100, 100]],
+  //   "EP_boundary_val":[["EPT", -100, 100]],
+  //   "exp_val":0
+  // },
+  //   "target10":{
+  //   "cell":"Motor",
+  //   "entry":"eMotor",
+  //   "function":"setPower10",
+  //   "argument":[2], 
+  //   "boundary_val":[["BVT", -100, 100]],
+  //   "EP_boundary_val":[["EPT", -100, 100]],
   //   "exp_val":0
   }
 }
