@@ -20,7 +20,7 @@ ER eMotor_setPower(CELLIDX idx, int power)
 		return -1;
 	}
 
-	return E_OK;
+	return E_OK; //Test
 }
 
 ER eMotor_setPower2(CELLIDX idx, int power)
