@@ -3,4 +3,5 @@ hr-tecs/tecsgen/TECSUnit/TECSUnit.exe
 hr-tecs/tecsgen/TECSUnit/jsmn/libjsmn.a
 hr-tecs/workspace
 hr-tecs/tecsgen/TECSUnit/test_result.txt
+hr-tecs/tecsgen/TECSUnit/coverage_results.txt
 hr-tecs/tecsgen/TECSUnit/*.gcov
