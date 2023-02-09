@@ -227,7 +227,7 @@ ER    ercd = E_OK;
   /* ここに処理本体を記述します #_TEFB_# */
     int r, i, j, k, l, m, array_size, arg_size, EP_size;
     jsmn_parser p;
-    jsmntok_t t[128]; /* We expect no more than 128 tokens */
+    jsmntok_t t[1024]; /* We expect no more than 128 tokens */
     char target_path[10];
     char str_tmp[8];
 
@@ -450,7 +450,7 @@ EOT
   /* ここに処理本体を記述します #_TEFB_# */
     int r, i, j, k, l, m, arg_size, array_size;
     jsmn_parser p;
-    jsmntok_t t[128]; /* We expect no more than 128 tokens */
+    jsmntok_t t[1024]; /* We expect no more than 128 tokens */
     char target_path[10];
 
     sprintf( target_path, "target%d", target_num );
@@ -947,7 +947,7 @@ EOT
 
     int r, i, j, k, l, m, array_count, arg_size, array_size; /* mはprint_arr_listを使うための変数 */
     jsmn_parser p;
-    jsmntok_t t[128];
+    jsmntok_t t[1024];
     char target_path[10];
 
     sprintf( target_path, "target%d", target_num );
@@ -1237,7 +1237,7 @@ EOT
     int ep_val[2] = { 0, 0 };
     int EP_val[3] = { 0, 0, 0 };
     jsmn_parser p;
-    jsmntok_t t[128];
+    jsmntok_t t[1024];
     char target_path[10];
 
     sprintf( target_path, "target%d", target_num );
@@ -1471,7 +1471,7 @@ EOT
   /* ここに処理本体を記述します #_TEFB_# */
     int r, i, j, k, l, m, array_size, arg_size, cond_size;
     jsmn_parser p;
-    jsmntok_t t[128]; /* We expect no more than 128 tokens */
+    jsmntok_t t[1024]; /* We expect no more than 128 tokens */
 
     sprintf( VAR_target_path, "target%d", target_num );
 
