@@ -1,5 +1,5 @@
-puts "| File | Function | Line Coverage |"
-puts "|:---:|:---:|:---:|"
+puts "| File / Function | Line Coverage |"
+puts "|:---:|:---:|"
 coverage_results = File.read("coverage_results.txt")
 function_coverage_data = {}
 file_coverage_data = {}
@@ -37,7 +37,7 @@ coverage_results.each_line do |line|
     			end
     		end
     		coverage_rate = total_val / total_lines
-        puts "| File: " + current_file.delete("src/") + " | " + coverage_rate.to_s + " of " + total_lines.to_s + " |"
+        puts "| File: " + current_file.sub(/src\//, '') { |match|  } + " | " + coverage_rate.to_s + " of " + total_lines.to_s + " |"
 #    		puts line_data
 #    		puts "Lines executed:" + coverage_rate.to_s + " of " + total_lines.to_s
 #    		puts ""
