@@ -7,12 +7,16 @@
 #define E_ID (-18)
 #endif
 
-ER eMotor_setPower(CELLIDX idx, int power)
+static motor_type_t mts[TNUM_MOTOR_PORT];
+
+ER eMotor_setPower(CELLIDX idx, int port, int power)
 {
 	CELLCB	*p_cellcb;
 	if (VALID_IDX(idx)) {
 		p_cellcb = GET_CELLCB(idx);
 	}
+
+	motor_type_t mt = mts[port];
 
 	if( power >= -100 && power <= 100 ){
 		printf("power = %d\n", power );
@@ -20,149 +24,26 @@ ER eMotor_setPower(CELLIDX idx, int power)
 		return -1;
 	}
 
-	return E_OK; //Test
-}
+	char buf[3];
 
-ER eMotor_setPower2(CELLIDX idx, int power)
-{
-	CELLCB	*p_cellcb;
-	if (VALID_IDX(idx)) {
-		p_cellcb = GET_CELLCB(idx);
-	}
-
-	if( power >= -100 && power <= 100 ){
-		printf("power = %d\n", power );
+	if (mt == UNREGULATED_MOTOR) {
+	    // Set unregulated power
+	    buf[0] = opOUTPUT_POWER;
 	} else {
-		return -1;
+		// Set regulated speed
+	    buf[0] = opOUTPUT_SPEED;
 	}
+    buf[1] = 1 << port;
+    buf[2] = power;
+	//motor_command(buf, sizeof(buf));
 
-	return E_OK;	
-}
-
-ER eMotor_setPower3(CELLIDX idx, int power)
-{
-	CELLCB	*p_cellcb;
-	if (VALID_IDX(idx)) {
-		p_cellcb = GET_CELLCB(idx);
-	}
-
-	if( power >= -100 && power <= 100 ){
-		printf("power = %d\n", power );
-	} else {
-		return -1;
-	}
-
-	return E_OK;	
-}
-
-ER eMotor_setPower4(CELLIDX idx, int power)
-{
-	CELLCB	*p_cellcb;
-	if (VALID_IDX(idx)) {
-		p_cellcb = GET_CELLCB(idx);
-	}
-
-	if( power >= -100 && power <= 100 ){
-		printf("power = %d\n", power );
-	} else {
-		return -1;
-	}
-
-	return E_OK;	
-}
-
-ER eMotor_setPower5(CELLIDX idx, int power)
-{
-	CELLCB	*p_cellcb;
-	if (VALID_IDX(idx)) {
-		p_cellcb = GET_CELLCB(idx);
-	}
-
-	if( power >= -100 && power <= 100 ){
-		printf("power = %d\n", power );
-	} else {
-		return -1;
-	}
-
-	return E_OK;	
-}
-
-ER eMotor_setPower6(CELLIDX idx, int power)
-{
-	CELLCB	*p_cellcb;
-	if (VALID_IDX(idx)) {
-		p_cellcb = GET_CELLCB(idx);
-	}
-
-	if( power >= -100 && power <= 100 ){
-		printf("power = %d\n", power );
-	} else {
-		return -1;
-	}
-
-	return E_OK;	
-}
-
-ER eMotor_setPower7(CELLIDX idx, int power)
-{
-	CELLCB	*p_cellcb;
-	if (VALID_IDX(idx)) {
-		p_cellcb = GET_CELLCB(idx);
-	}
-
-	if( power >= -100 && power <= 100 ){
-		printf("power = %d\n", power );
-	} else {
-		return -1;
-	}
-
-	return E_OK;	
-}
-
-ER eMotor_setPower8(CELLIDX idx, int power)
-{
-	CELLCB	*p_cellcb;
-	if (VALID_IDX(idx)) {
-		p_cellcb = GET_CELLCB(idx);
-	}
-
-	if( power >= -100 && power <= 100 ){
-		printf("power = %d\n", power );
-	} else {
-		return -1;
-	}
-
-	return E_OK;	
-}
-
-ER eMotor_setPower9(CELLIDX idx, int power)
-{
-	CELLCB	*p_cellcb;
-	if (VALID_IDX(idx)) {
-		p_cellcb = GET_CELLCB(idx);
-	}
-
-	if( power >= -100 && power <= 100 ){
-		printf("power = %d\n", power );
-	} else {
-		return -1;
-	}
-
-	return E_OK;	
-}
-
-ER eMotor_setPower10(CELLIDX idx, int power)
-{
-	CELLCB	*p_cellcb;
-	if (VALID_IDX(idx)) {
-		p_cellcb = GET_CELLCB(idx);
-	}
-
-	if( power >= -100 && power <= 100 ){
-		printf("power = %d\n", power );
-	} else {
-		return -1;
-	}
+    /**
+     * Start the motor
+     */
+    //motor_command(buf, sizeof(buf));
+    buf[0] = opOUTPUT_START;
+    buf[1] = 1 << port;
+    //motor_command(buf, sizeof(buf));
 
 	return E_OK;	
 }

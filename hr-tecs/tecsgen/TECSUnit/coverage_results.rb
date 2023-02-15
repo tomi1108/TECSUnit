@@ -1,4 +1,4 @@
-puts "| File / Function | Line Coverage |"
+puts "| Function | Line Coverage |"
 puts "|:---:|:---:|"
 coverage_results = File.read("coverage_results.txt")
 function_coverage_data = {}
@@ -12,6 +12,8 @@ lines = "" #実行した関数のコード行数
 func_name = "" #実行した関数の定義を含むファイルの.cを省いたファイル名
 total_lines = 0
 total_val = 0.0
+file_array = []
+file_array_count = 0
 coverage_results.each_line do |line|
   if line.include?("Function '")
   	line_data = line
@@ -37,7 +39,9 @@ coverage_results.each_line do |line|
     			end
     		end
     		coverage_rate = total_val / total_lines
-        puts "| File: " + current_file.sub(/src\//, '') { |match|  } + " | " + coverage_rate.to_s + " of " + total_lines.to_s + " |"
+        file_array[file_array_count] = "| File: " + current_file.sub(/src\//, '') { |match|  } + " | " + coverage_rate.to_s + " of " + total_lines.to_s + " |"
+        file_array_count += 1
+#        puts "| File: " + current_file.sub(/src\//, '') { |match|  } + " | " + coverage_rate.to_s + " of " + total_lines.to_s + " |"
 #    		puts line_data
 #    		puts "Lines executed:" + coverage_rate.to_s + " of " + total_lines.to_s
 #    		puts ""
@@ -56,6 +60,12 @@ coverage_results.each_line do |line|
     lines = ""
   end
 end
+
+puts "|:---:|:---:|"
+puts "| File | Line Coverage |"
+puts "|:---:|:---:|"
+puts file_array
+puts "|:---:|:---:|"
 
 # puts "Function coverage data : #{function_coverage_data}"
 # puts "File coverage data : #{file_coverage_data}"
