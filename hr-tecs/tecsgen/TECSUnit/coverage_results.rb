@@ -61,11 +61,8 @@ coverage_results.each_line do |line|
   end
 end
 
-puts "|:---:|:---:|"
 puts "| File | Line Coverage |"
-puts "|:---:|:---:|"
 puts file_array
-puts "|:---:|:---:|"
 
 # puts "Function coverage data : #{function_coverage_data}"
 # puts "File coverage data : #{file_coverage_data}"

@@ -26,13 +26,7 @@ ER eMotor_setPower(CELLIDX idx, int port, int power)
 
 	char buf[3];
 
-	if (mt == UNREGULATED_MOTOR) {
-	    // Set unregulated power
-	    buf[0] = opOUTPUT_POWER;
-	} else {
-		// Set regulated speed
-	    buf[0] = opOUTPUT_SPEED;
-	}
+    buf[0] = opOUTPUT_SPEED;
     buf[1] = 1 << port;
     buf[2] = power;
 	//motor_command(buf, sizeof(buf));
