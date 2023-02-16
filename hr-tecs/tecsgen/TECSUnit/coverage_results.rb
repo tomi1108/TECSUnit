@@ -26,7 +26,7 @@ coverage_results.each_line do |line|
     lines = line.split("of")[1].split("\n")[0]
     if percentage > 0
     	if line_data.include?("Function '")
-        puts "| Function: " + current_function + " | " + line.delete("Lines executed:").chomp + " |"
+        puts "| " + current_function + " | " + line.delete("Lines executed:").chomp + " |"
 #    		puts line
 #    		puts ""
     		lines_coverage_data[current_function] = lines
@@ -39,7 +39,7 @@ coverage_results.each_line do |line|
     			end
     		end
     		coverage_rate = total_val / total_lines
-        file_array[file_array_count] = "| File: " + current_file.sub(/src\//, '') { |match|  } + " | " + coverage_rate.to_s + " of " + total_lines.to_s + " |"
+        file_array[file_array_count] = "| " + current_file.sub(/src\//, '') { |match|  } + " | " + coverage_rate.to_s + " of " + total_lines.to_s + " |"
         file_array_count += 1
 #        puts "| File: " + current_file.sub(/src\//, '') { |match|  } + " | " + coverage_rate.to_s + " of " + total_lines.to_s + " |"
 #    		puts line_data
